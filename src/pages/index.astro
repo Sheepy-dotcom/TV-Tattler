@@ -1,0 +1,29 @@
+---
+// Stage 1 placeholder homepage. Proves the collections load and the site
+// builds. The real listings-stack homepage arrives in a later stage.
+import { getArticles } from '../lib/relations';
+
+const articles = await getArticles();
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TV Tattler</title>
+  </head>
+  <body>
+    <h1>TV Tattler</h1>
+    <p>Stage 1 build — schemas and relations in place.</p>
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <strong>{article.data.title}</strong> — {article.data.standfirst}
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>
