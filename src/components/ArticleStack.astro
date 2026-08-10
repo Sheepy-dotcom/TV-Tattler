@@ -1,0 +1,45 @@
+---
+import ListingRow from './ListingRow.astro';
+import { accentForArticle, type Article } from '../lib/relations';
+import { getShowAccentMap } from '../lib/relations';
+
+interface Props {
+  articles: Article[];
+  /** Give the first article the large lead treatment. */
+  withLead?: boolean;
+  /** Message shown when there are no articles. Should say what to do. */
+  emptyMessage?: string;
+}
+
+const { articles, withLead = false, emptyMessage } = Astro.props;
+const accentMap = await getShowAccentMap();
+
+const lead = withLead ? articles[0] : undefined;
+const rest = withLead ? articles.slice(1) : articles;
+---
+
+{
+  articles.length === 0 ? (
+    <div class="empty card">
+      <h2>Nothing here yet</h2>
+      <p>{emptyMessage ?? 'When articles are published they will appear here, newest first.'}</p>
+    </div>
+  ) : (
+    <div class="stack listings">
+      {lead && <ListingRow article={lead} accent={accentForArticle(lead, accentMap)} lead />}
+      {rest.map((article) => (
+        <ListingRow article={article} accent={accentForArticle(article, accentMap)} />
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .listings > * + * {
+    margin-top: var(--space-3);
+  }
+  .empty {
+    padding: var(--space-6);
+    text-align: center;
+  }
+</style>

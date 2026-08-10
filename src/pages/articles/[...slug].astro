@@ -1,0 +1,289 @@
+---
+import { getEntries, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ListingRow from '../../components/ListingRow.astro';
+import {
+  getArticles,
+  getShowAccentMap,
+  accentForArticle,
+  readNext,
+} from '../../lib/relations';
+import { formatDate, isoDate, kindLabel, sectionLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { data } = article;
+const { Content } = await render(article);
+
+// Resolve the entities this article points at, so we can name and link them.
+const [shows, characters, people] = await Promise.all([
+  getEntries(data.shows),
+  getEntries(data.characters),
+  getEntries(data.people),
+]);
+
+const accentMap = await getShowAccentMap();
+const accent = accentForArticle(article, accentMap);
+
+// "Read next", ranked by shared entities.
+const next = await readNext(article, 4);
+
+// The spoiler band is named for the show(s) the article concerns.
+const spoilerFor =
+  shows.length > 0
+    ? shows.map((s) => s.data.title).join(' & ')
+    : undefined;
+---
+
+<BaseLayout title={data.title} description={data.standfirst} accent={accent}>
+  <article class="article">
+    <nav class="crumbs mono" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href={`/section/${data.section}/`}>{sectionLabel(data.section)}</a>
+    </nav>
+
+    <header class="article__header">
+      <div class="article__chips">
+        <span class="chip chip--accent">{kindLabel(data.kind)}</span>
+        {data.spoiler && <span class="chip chip--spoiler">Spoiler</span>}
+      </div>
+      <h1>{data.title}</h1>
+      <p class="article__standfirst">{data.standfirst}</p>
+      <p class="article__byline mono">
+        By {data.author}
+        <span aria-hidden="true"> · </span>
+        <time datetime={isoDate(data.publishedAt)}>{formatDate(data.publishedAt)}</time>
+        {
+          data.updatedAt && (
+            <>
+              <span aria-hidden="true"> · </span>
+              <span>Updated <time datetime={isoDate(data.updatedAt)}>{formatDate(data.updatedAt)}</time></span>
+            </>
+          )
+        }
+      </p>
+    </header>
+
+    {
+      data.spoiler && (
+        <aside class="spoiler-band" role="note">
+          <span aria-hidden="true">⚠</span>
+          <span>
+            <strong>Spoilers ahead{spoilerFor ? ` for ${spoilerFor}` : ''}.</strong> This
+            article discusses story details you may not have seen yet.
+          </span>
+        </aside>
+      )
+    }
+
+    <div class="article__body">
+      <Content />
+    </div>
+
+    {
+      (shows.length > 0 || characters.length > 0 || people.length > 0) && (
+        <section class="refs" aria-label="In this article">
+          <h2 class="refs__heading mono">In this article</h2>
+          <div class="refs__groups">
+            {shows.length > 0 && (
+              <div class="refs__group">
+                <span class="refs__label mono">Shows</span>
+                <ul>
+                  {shows.map((s) => (
+                    <li>
+                      <a class="chip chip--accent" style={`--accent: ${s.data.accent};`} href={`/shows/${s.id}/`}>
+                        {s.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {characters.length > 0 && (
+              <div class="refs__group">
+                <span class="refs__label mono">Characters</span>
+                <ul>
+                  {characters.map((c) => (
+                    <li>
+                      <a class="chip" href={`/characters/${c.id}/`}>
+                        {c.data.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {people.length > 0 && (
+              <div class="refs__group">
+                <span class="refs__label mono">People</span>
+                <ul>
+                  {people.map((p) => (
+                    <li>
+                      <a class="chip" href={`/people/${p.id}/`}>
+                        {p.data.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          {data.tags.length > 0 && (
+            <p class="refs__tags mono">
+              {data.tags.map((t) => (
+                <span class="tag">#{t}</span>
+              ))}
+            </p>
+          )}
+        </section>
+      )
+    }
+
+    {
+      next.length > 0 && (
+        <section class="read-next" aria-label="Read next">
+          <h2 class="read-next__heading">Read next</h2>
+          <div class="stack read-next__list">
+            {next.map(({ article: a }) => (
+              <ListingRow article={a} accent={accentForArticle(a, accentMap)} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    max-width: 44rem;
+  }
+
+  .crumbs {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    margin-bottom: var(--space-4);
+  }
+  .crumbs a {
+    color: var(--ink-60);
+    text-decoration: none;
+  }
+  .crumbs a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  /* A thick accent rule under the header, echoing the listing-row bar. */
+  .article__header {
+    border-bottom: 4px solid var(--accent, var(--ink));
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .article__chips {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .article__standfirst {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    margin-bottom: var(--space-3);
+  }
+  .article__byline {
+    margin: 0;
+    color: var(--ink-60);
+  }
+
+  .spoiler-band {
+    margin-bottom: var(--space-5);
+  }
+
+  /* Body copy — serif, generous measure. */
+  .article__body {
+    font-size: var(--step-0);
+    max-width: var(--measure);
+  }
+  .article__body :global(p) {
+    margin-bottom: var(--space-4);
+  }
+  .article__body :global(h2) {
+    font-size: var(--step-2);
+    margin-top: var(--space-6);
+  }
+  .article__body :global(h3) {
+    font-size: var(--step-1);
+    margin-top: var(--space-5);
+  }
+  .article__body :global(a) {
+    text-decoration-color: var(--accent, var(--line-strong));
+    text-decoration-thickness: 2px;
+  }
+  .article__body :global(blockquote) {
+    margin: var(--space-5) 0;
+    padding-left: var(--space-4);
+    border-left: 4px solid var(--accent, var(--line-strong));
+    color: var(--ink-80);
+    font-style: italic;
+  }
+
+  /* ---- Entity references ------------------------------------------------ */
+  .refs {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+  .refs__heading {
+    margin-bottom: var(--space-4);
+    color: var(--ink-60);
+  }
+  .refs__groups {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .refs__group {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .refs__label {
+    color: var(--ink-40);
+  }
+  .refs__group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .refs__group a {
+    text-decoration: none;
+  }
+  .refs__tags {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    color: var(--ink-40);
+  }
+
+  /* ---- Read next -------------------------------------------------------- */
+  .read-next {
+    margin-top: var(--space-7);
+  }
+  .read-next__heading {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-4);
+  }
+  .read-next__list > * + * {
+    margin-top: var(--space-3);
+  }
+</style>

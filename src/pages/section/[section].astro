@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleStack from '../../components/ArticleStack.astro';
+import { SECTIONS } from '../../content.config';
+import { articlesInSection } from '../../lib/relations';
+import { sectionLabel, kindLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  return SECTIONS.map((section) => ({ params: { section } }));
+}
+
+const { section } = Astro.params;
+const label = sectionLabel(section);
+const articles = await articlesInSection(section as (typeof SECTIONS)[number]);
+
+// Kinds actually present in this section, so the filter chips never lead
+// to an empty page.
+const kindsPresent = [...new Set(articles.map((a) => a.data.kind))].sort();
+
+const blurb: Record<string, string> = {
+  soaps: 'Continuing dramas — the storylines, the cast, and who plays whom.',
+  'tv-and-film': 'Series, one-offs and films, with the people behind them.',
+  celebrities: 'The presenters and performers, and the roles they are known for.',
+  news: 'What is changing across UK telly.',
+};
+---
+
+<BaseLayout title={label} description={blurb[section] ?? `${label} on TV Tattler.`}>
+  <header class="section-head">
+    <p class="mono section-head__kicker">Section</p>
+    <h1>{label}</h1>
+    <p class="section-head__blurb">{blurb[section]}</p>
+
+    {
+      kindsPresent.length > 1 && (
+        <nav class="kind-filter" aria-label="Filter by kind">
+          {kindsPresent.map((k) => (
+            <a class="chip" href={`/kind/${k}/`}>
+              {kindLabel(k)}
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </header>
+
+  <ArticleStack
+    articles={articles}
+    withLead
+    emptyMessage={`No ${label} articles yet. Set section: ${section} in an article's frontmatter to file it here.`}
+  />
+</BaseLayout>
+
+<style>
+  .section-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 4px solid var(--live);
+  }
+  .section-head__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .section-head__blurb {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+    margin-bottom: var(--space-4);
+  }
+  .kind-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .kind-filter a {
+    text-decoration: none;
+  }
+  .kind-filter a:hover {
+    border-color: var(--ink);
+  }
+</style>

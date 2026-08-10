@@ -1,0 +1,57 @@
+---
+// A kind listing gathers one type of piece across every section — so
+// "cast changes" and "spoilers" get their own page without becoming rival
+// sections that compete in search. (An addition to the core routes list.)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleStack from '../../components/ArticleStack.astro';
+import { KINDS } from '../../content.config';
+import { articlesOfKind } from '../../lib/relations';
+import { kindLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  return KINDS.map((kind) => ({ params: { kind } }));
+}
+
+const { kind } = Astro.params;
+const label = kindLabel(kind);
+const articles = await articlesOfKind(kind as (typeof KINDS)[number]);
+
+const blurb: Record<string, string> = {
+  'cast-change': 'Recasts, arrivals and departures across UK soaps and drama.',
+  spoiler: 'What is coming up — mind how you go.',
+  guide: 'Explainers and reference guides.',
+  feature: 'Longer reads.',
+  review: 'Our verdicts.',
+  news: 'The latest updates.',
+};
+---
+
+<BaseLayout title={label} description={blurb[kind] ?? `${label} on TV Tattler.`}>
+  <header class="kind-head">
+    <p class="mono kind-head__kicker">Every {label.toLowerCase()}</p>
+    <h1>{label}</h1>
+    <p class="kind-head__blurb">{blurb[kind]}</p>
+  </header>
+
+  <ArticleStack
+    articles={articles}
+    emptyMessage={`No ${label.toLowerCase()} articles yet. Set kind: ${kind} in an article's frontmatter to list it here.`}
+  />
+</BaseLayout>
+
+<style>
+  .kind-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 4px solid var(--ink);
+  }
+  .kind-head__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .kind-head__blurb {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+</style>
