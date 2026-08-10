@@ -1,0 +1,205 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleStack from '../../components/ArticleStack.astro';
+import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
+import { formatDate, yearRange } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const people = await getCollection('people');
+  return people.map((person) => ({
+    params: { slug: person.id },
+    props: { person },
+  }));
+}
+
+const { person } = Astro.props;
+const { data } = person;
+
+const [roles, articles, { Content }] = await Promise.all([
+  groupedRolesForPerson(person.id),
+  articlesForPerson(person.id),
+  render(person),
+]);
+---
+
+<BaseLayout title={data.name} description={data.summary}>
+  <article class="person">
+    <header class="person__header">
+      <p class="mono person__kicker">Person</p>
+      <h1>{data.name}</h1>
+      <p class="person__known">{data.knownFor}</p>
+      {
+        data.born && (
+          <p class="person__born mono">
+            Born <time datetime={data.born.toISOString().slice(0, 10)}>{formatDate(data.born)}</time>
+          </p>
+        )
+      }
+      <p class="person__summary">{data.summary}</p>
+    </header>
+
+    <div class="person__prose">
+      <Content />
+    </div>
+
+    <section class="person__section" aria-labelledby="roles-heading">
+      <h2 id="roles-heading" class="person__h2">Roles</h2>
+      <p class="person__note mono">Derived from every character's portrayal record.</p>
+      {
+        roles.length === 0 ? (
+          <p class="muted">
+            No roles yet. Add this person to a character's <code>portrayals</code> and the
+            role appears here automatically — no filmography to maintain by hand.
+          </p>
+        ) : (
+          <ul class="roles">
+            {roles.map((role) => (
+              <li class="role" style={`--accent: ${role.show.data.accent};`}>
+                <span class="role__bar" aria-hidden="true" />
+                <span class="role__body">
+                  <a class="role__character" href={`/characters/${role.character.id}/`}>
+                    {role.character.data.name}
+                  </a>
+                  <a class="role__show" href={`/shows/${role.show.id}/`}>
+                    {role.show.data.title}
+                  </a>
+                  <span class="role__years mono">
+                    {role.stints.map((s) => yearRange(s.from, s.to)).join(', ')}
+                    {role.ongoing && <span class="role__ongoing"> · current</span>}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="person__section" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="person__h2">Coverage</h2>
+      <ArticleStack
+        articles={articles}
+        emptyMessage={`No articles reference ${data.name} yet. Add ${person.id} to an article's people: list.`}
+      />
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .person {
+    max-width: 48rem;
+  }
+
+  .person__header {
+    border-bottom: 4px solid var(--ink);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .person__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .person__known {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    margin-bottom: var(--space-2);
+  }
+  .person__born {
+    color: var(--ink-60);
+    margin-bottom: var(--space-3);
+  }
+  .person__summary {
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  .person__prose {
+    max-width: var(--measure);
+    margin-bottom: var(--space-6);
+  }
+  .person__prose:empty {
+    display: none;
+  }
+
+  .person__section {
+    margin-top: var(--space-6);
+  }
+  .person__h2 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-1);
+  }
+  .person__note {
+    color: var(--ink-40);
+    margin-bottom: var(--space-4);
+  }
+
+  /* ---- Roles (derived filmography) ------------------------------------- */
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .role {
+    display: grid;
+    grid-template-columns: 6px 1fr;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .role__bar {
+    background: var(--accent);
+  }
+  .role__body {
+    padding: var(--space-3) var(--space-4);
+    display: grid;
+    gap: var(--space-1);
+  }
+  .role__character {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    text-decoration: none;
+    color: var(--ink);
+    width: fit-content;
+  }
+  .role__character:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+  .role__show {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    text-decoration: none;
+    font-size: var(--step-0);
+    width: fit-content;
+  }
+  .role__show:hover {
+    text-decoration: underline;
+  }
+  .role__years {
+    color: var(--ink-60);
+    margin-top: var(--space-1);
+  }
+  .role__ongoing {
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  .muted {
+    color: var(--ink-60);
+    max-width: var(--measure);
+  }
+  .muted code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

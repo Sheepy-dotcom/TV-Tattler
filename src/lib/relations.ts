@@ -50,6 +50,12 @@ export async function articlesForPerson(personId: string): Promise<Article[]> {
   return articles.filter((a) => references(a, 'people', personId));
 }
 
+/** All shows, alphabetical by title. */
+export async function getShows(): Promise<Show[]> {
+  const shows = await getCollection('shows');
+  return shows.sort((a, b) => a.data.title.localeCompare(b.data.title));
+}
+
 /** All characters belonging to a show. */
 export async function charactersForShow(showId: string): Promise<Character[]> {
   const characters = await getCollection('characters');
@@ -109,6 +115,47 @@ export async function rolesForPerson(personId: string): Promise<Role[]> {
   }
 
   return roles.sort((a, b) => b.from - a.from);
+}
+
+/**
+ * A person's roles grouped by character: one entry per character, with all of
+ * that character's stints folded in. (rolesForPerson returns one row per stint;
+ * this is the view a person page wants — Cindy Beale once, not once per stint.)
+ */
+export interface GroupedRole {
+  character: Character;
+  show: Show;
+  stints: { from: number; to?: number; ongoing: boolean; note?: string }[];
+  firstYear: number;
+  ongoing: boolean;
+}
+
+export async function groupedRolesForPerson(personId: string): Promise<GroupedRole[]> {
+  const roles = await rolesForPerson(personId);
+
+  const byCharacter = new Map<string, GroupedRole>();
+  for (const role of roles) {
+    const existing = byCharacter.get(role.character.id);
+    const stint = { from: role.from, to: role.to, ongoing: role.ongoing, note: role.note };
+    if (existing) {
+      existing.stints.push(stint);
+      existing.firstYear = Math.min(existing.firstYear, role.from);
+      existing.ongoing = existing.ongoing || role.ongoing;
+    } else {
+      byCharacter.set(role.character.id, {
+        character: role.character,
+        show: role.show,
+        stints: [stint],
+        firstYear: role.from,
+        ongoing: role.ongoing,
+      });
+    }
+  }
+
+  const grouped = [...byCharacter.values()];
+  for (const g of grouped) g.stints.sort((a, b) => a.from - b.from);
+  // Most recent role first.
+  return grouped.sort((a, b) => b.firstYear - a.firstYear);
 }
 
 // ---------------------------------------------------------------------------
@@ -180,6 +227,86 @@ export async function articlesInSection(
 export async function articlesOfKind(kind: Article['data']['kind']): Promise<Article[]> {
   const articles = await getArticles();
   return articles.filter((a) => a.data.kind === kind);
+}
+
+// ---------------------------------------------------------------------------
+// Portrayal timeline — the signature element.
+//
+// One band per actor (grouped from the portrayals rows), each band holding one
+// or more segments. A recast is two bands; a break-and-return is one band with
+// two segments. Everything is drawn to scale against a shared year range.
+// ---------------------------------------------------------------------------
+
+export interface TimelineSegment {
+  from: number;
+  to?: number;
+  ongoing: boolean; // no end year yet → drawn striped
+  note?: string;
+}
+
+export interface TimelineBand {
+  personId: string;
+  personName: string;
+  segments: TimelineSegment[];
+  /** Earliest start across this band's segments, for ordering. */
+  earliest: number;
+}
+
+export interface Timeline {
+  bands: TimelineBand[];
+  minYear: number;
+  maxYear: number;
+  /** A few evenly-spaced years for the axis. */
+  ticks: number[];
+}
+
+/** Build the portrayal timeline for a character. */
+export async function timelineForCharacter(character: Character): Promise<Timeline> {
+  const currentYear = new Date().getFullYear();
+  const people = await getCollection('people');
+  const nameById = new Map(people.map((p) => [p.id, p.data.name]));
+
+  // Group portrayal rows by the actor.
+  const byPerson = new Map<string, TimelineSegment[]>();
+  for (const p of character.data.portrayals) {
+    const seg: TimelineSegment = {
+      from: p.from,
+      to: p.to,
+      ongoing: p.to === undefined,
+      note: p.note,
+    };
+    const list = byPerson.get(p.person.id);
+    if (list) list.push(seg);
+    else byPerson.set(p.person.id, [seg]);
+  }
+
+  const bands: TimelineBand[] = [];
+  for (const [personId, segments] of byPerson) {
+    segments.sort((a, b) => a.from - b.from);
+    bands.push({
+      personId,
+      personName: nameById.get(personId) ?? personId,
+      segments,
+      earliest: Math.min(...segments.map((s) => s.from)),
+    });
+  }
+  // Oldest stint first — the timeline reads top-to-bottom as history.
+  bands.sort((a, b) => a.earliest - b.earliest);
+
+  const allFrom = character.data.portrayals.map((p) => p.from);
+  const allTo = character.data.portrayals.map((p) => p.to ?? currentYear);
+  const minYear = allFrom.length ? Math.min(...allFrom) : currentYear;
+  const maxYear = allTo.length ? Math.max(...allTo, currentYear) : currentYear;
+
+  // 4–6 tick marks, rounded to whole years.
+  const span = Math.max(1, maxYear - minYear);
+  const tickCount = Math.min(5, span);
+  const ticks: number[] = [];
+  for (let i = 0; i <= tickCount; i++) {
+    ticks.push(Math.round(minYear + (span * i) / tickCount));
+  }
+
+  return { bands, minYear, maxYear, ticks: [...new Set(ticks)] };
 }
 
 // ---------------------------------------------------------------------------

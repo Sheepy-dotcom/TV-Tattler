@@ -1,0 +1,195 @@
+---
+import { getCollection, getEntry, getEntries, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleStack from '../../components/ArticleStack.astro';
+import PortrayalTimeline from '../../components/PortrayalTimeline.astro';
+import { articlesForCharacter, timelineForCharacter } from '../../lib/relations';
+import { statusLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const characters = await getCollection('characters');
+  return characters.map((character) => ({
+    params: { slug: character.id },
+    props: { character },
+  }));
+}
+
+const { character } = Astro.props;
+const { data } = character;
+
+const show = await getEntry(data.show);
+const accent = show?.data.accent ?? '#17122A';
+
+const [family, timeline, articles, { Content }] = await Promise.all([
+  getEntries(data.family),
+  timelineForCharacter(character),
+  articlesForCharacter(character.id),
+  render(character),
+]);
+---
+
+<BaseLayout title={data.name} description={data.summary} accent={accent}>
+  <article class="character">
+    <nav class="crumbs mono" aria-label="Breadcrumb">
+      <a href="/shows/">Shows</a>
+      <span aria-hidden="true">/</span>
+      {show && <a href={`/shows/${show.id}/`}>{show.data.title}</a>}
+    </nav>
+
+    <header class="character__header">
+      <div class="character__chips">
+        <span class:list={['chip', 'chip--accent', `status-${data.status}`]}>
+          {statusLabel(data.status)}
+        </span>
+        {show && (
+          <a class="chip chip--accent" href={`/shows/${show.id}/`}>
+            {show.data.title}
+          </a>
+        )}
+      </div>
+      <h1>{data.name}</h1>
+      <p class="character__summary">{data.summary}</p>
+    </header>
+
+    <div class="character__prose">
+      <Content />
+    </div>
+
+    <section class="character__section" aria-labelledby="timeline-heading">
+      <h2 id="timeline-heading" class="sr-only">Portrayal timeline</h2>
+      {
+        timeline.bands.length > 0 ? (
+          <PortrayalTimeline timeline={timeline} accent={accent} />
+        ) : (
+          <p class="muted">
+            No portrayals recorded yet. Add a <code>portrayals</code> entry — one row
+            per stint — to draw the timeline.
+          </p>
+        )
+      }
+    </section>
+
+    {
+      family.length > 0 && (
+        <section class="character__section" aria-labelledby="family-heading">
+          <h2 id="family-heading" class="character__h2">Family</h2>
+          <ul class="family">
+            {family.map((member) => (
+              <li>
+                <a class="family__link" href={`/characters/${member.id}/`}>
+                  {member.data.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <section class="character__section" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="character__h2">Coverage</h2>
+      <ArticleStack
+        articles={articles}
+        emptyMessage={`No articles reference ${data.name} yet. Add ${character.id} to an article's characters: list.`}
+      />
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .character {
+    max-width: 48rem;
+  }
+
+  .crumbs {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    margin-bottom: var(--space-4);
+  }
+  .crumbs a {
+    color: var(--ink-60);
+    text-decoration: none;
+  }
+  .crumbs a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .character__header {
+    border-bottom: 5px solid var(--accent);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .character__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .character__chips a {
+    text-decoration: none;
+  }
+  .status-deceased {
+    opacity: 0.85;
+  }
+  .character__summary {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  .character__prose {
+    max-width: var(--measure);
+    margin-bottom: var(--space-6);
+  }
+  .character__prose:empty {
+    display: none;
+  }
+
+  .character__section {
+    margin-top: var(--space-6);
+  }
+  .character__h2 {
+    font-size: var(--step-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--line);
+    margin-bottom: var(--space-4);
+  }
+
+  .family {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .family__link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .family__link:hover {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .muted {
+    color: var(--ink-60);
+    max-width: var(--measure);
+  }
+  .muted code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

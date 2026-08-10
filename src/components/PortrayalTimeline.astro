@@ -1,0 +1,226 @@
+---
+import type { Timeline } from '../lib/relations';
+import { yearRange } from '../lib/format';
+
+interface Props {
+  timeline: Timeline;
+  accent: string; // the show's accent — the timeline is drawn in it
+}
+
+const { timeline, accent } = Astro.props;
+const { bands, minYear, maxYear, ticks } = timeline;
+const span = Math.max(1, maxYear - minYear);
+
+// Position helpers, in percent across the shared range.
+const left = (year: number) => ((year - minYear) / span) * 100;
+const width = (from: number, to: number) => ((to - from) / span) * 100;
+
+const hasOngoing = bands.some((b) => b.segments.some((s) => s.ongoing));
+---
+
+<figure class="timeline" style={`--accent: ${accent};`}>
+  <figcaption class="timeline__cap">
+    <span class="mono">Portrayal timeline</span>
+    <span class="timeline__legend mono">
+      {hasOngoing && (
+        <span class="legend__item">
+          <span class="legend__swatch legend__swatch--ongoing" aria-hidden="true"></span>
+          ongoing
+        </span>
+      )}
+      <span class="legend__item">
+        <span class="legend__swatch" aria-hidden="true"></span>
+        past stint
+      </span>
+    </span>
+  </figcaption>
+
+  <ol class="timeline__bands" role="list">
+    {
+      bands.map((band) => {
+        const range =
+          band.segments.length === 1
+            ? yearRange(band.segments[0].from, band.segments[0].to)
+            : `${Math.min(...band.segments.map((s) => s.from))}–${
+                band.segments.some((s) => s.ongoing)
+                  ? ''
+                  : Math.max(...band.segments.map((s) => s.to ?? s.from))
+              }`;
+        return (
+          <li class="band">
+            <div class="band__head">
+              <a class="band__name" href={`/people/${band.personId}/`}>
+                {band.personName}
+              </a>
+              <span class="band__years mono">{range}</span>
+            </div>
+            <div class="band__track" role="img" aria-label={`${band.personName}, ${range.replace('–', ' to ')}`}>
+              {band.segments.map((seg) => {
+                const end = seg.to ?? maxYear;
+                return (
+                  <a
+                    class:list={['seg', { 'seg--ongoing': seg.ongoing }]}
+                    href={`/people/${band.personId}/`}
+                    style={`left: ${left(seg.from)}%; width: ${Math.max(width(seg.from, end), 1.5)}%;`}
+                    title={`${band.personName} · ${yearRange(seg.from, seg.to)}${seg.note ? ` · ${seg.note}` : ''}`}
+                  >
+                    <span class="sr-only">
+                      {band.personName}, {yearRange(seg.from, seg.to)}
+                      {seg.note ? `, ${seg.note}` : ''}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </li>
+        );
+      })
+    }
+  </ol>
+
+  <div class="timeline__axis" aria-hidden="true">
+    {
+      ticks.map((year) => (
+        <span class="tick mono" style={`left: ${left(year)}%;`}>
+          {year}
+        </span>
+      ))
+    }
+  </div>
+</figure>
+
+<style>
+  .timeline {
+    margin: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .timeline__cap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    color: var(--ink-60);
+  }
+  .timeline__legend {
+    display: flex;
+    gap: var(--space-4);
+  }
+  .legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .legend__swatch {
+    width: 1.4em;
+    height: 0.7em;
+    border-radius: 3px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .legend__swatch--ongoing {
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--accent),
+      var(--accent) 3px,
+      color-mix(in srgb, var(--accent) 45%, white) 3px,
+      color-mix(in srgb, var(--accent) 45%, white) 6px
+    );
+  }
+
+  /* ---- Bands ------------------------------------------------------------ */
+  .timeline__bands {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .band__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .band__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .band__name:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+  .band__years {
+    color: var(--ink-60);
+    white-space: nowrap;
+  }
+
+  /* The track: a full-width rail; segments are absolutely positioned to scale. */
+  .band__track {
+    position: relative;
+    height: 2rem;
+    background: var(--paper);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .seg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: var(--accent);
+    border-radius: 999px;
+    transition: filter 0.15s ease, transform 0.15s ease;
+    min-width: 8px;
+  }
+  .seg:hover,
+  .seg:focus-visible {
+    filter: brightness(1.08);
+    transform: scaleY(1.06);
+  }
+  /* Ongoing stint: striped, because it has no end yet. */
+  .seg--ongoing {
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--accent),
+      var(--accent) 6px,
+      color-mix(in srgb, var(--accent) 55%, white) 6px,
+      color-mix(in srgb, var(--accent) 55%, white) 12px
+    );
+  }
+
+  /* ---- Axis ------------------------------------------------------------- */
+  .timeline__axis {
+    position: relative;
+    height: 1.5rem;
+    margin-top: var(--space-3);
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-2);
+  }
+  .tick {
+    position: absolute;
+    top: var(--space-2);
+    transform: translateX(-50%);
+    color: var(--ink-40);
+    white-space: nowrap;
+  }
+  /* Keep the first and last ticks from spilling off the edges. */
+  .tick:first-child {
+    transform: translateX(0);
+  }
+  .tick:last-child {
+    transform: translateX(-100%);
+  }
+</style>

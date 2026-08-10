@@ -1,0 +1,200 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleStack from '../../components/ArticleStack.astro';
+import {
+  getShows,
+  charactersForShow,
+  articlesForShow,
+  castChangesForShow,
+} from '../../lib/relations';
+import { yearRange, statusLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const shows = await getShows();
+  return shows.map((show) => ({ params: { slug: show.id }, props: { show } }));
+}
+
+const { show } = Astro.props;
+const { data } = show;
+const accent = data.accent;
+
+const [characters, articles, castChanges, { Content }] = await Promise.all([
+  charactersForShow(show.id),
+  articlesForShow(show.id),
+  castChangesForShow(show.id),
+  render(show),
+]);
+
+// General coverage excludes the cast-changes, which get their own subsection.
+const coverage = articles.filter((a) => a.data.kind !== 'cast-change');
+
+const statusOrder = ['current', 'occasional', 'departed', 'deceased'];
+const sortedCharacters = [...characters].sort(
+  (a, b) => statusOrder.indexOf(a.data.status) - statusOrder.indexOf(b.data.status),
+);
+---
+
+<BaseLayout title={data.title} description={data.summary} accent={accent}>
+  <article class="show">
+    <header class="show__header">
+      <p class="mono show__kicker">Show</p>
+      <h1>{data.title}</h1>
+      <p class="show__meta mono">
+        {data.broadcaster}
+        <span aria-hidden="true"> · </span>
+        {yearRange(data.startYear, data.endYear)}
+        {data.airs && (
+          <>
+            <span aria-hidden="true"> · </span>
+            {data.airs}
+          </>
+        )}
+      </p>
+      <p class="show__summary">{data.summary}</p>
+    </header>
+
+    <div class="show__prose">
+      <Content />
+    </div>
+
+    <section class="show__section" aria-labelledby="cast-heading">
+      <h2 id="cast-heading" class="show__h2">Characters</h2>
+      {
+        sortedCharacters.length === 0 ? (
+          <p class="muted">
+            No characters logged yet. Add a file to <code>src/content/characters/</code>
+            with <code>show: {show.id}</code> to build the cast list.
+          </p>
+        ) : (
+          <ul class="cast">
+            {sortedCharacters.map((c) => (
+              <li>
+                <a class="cast__row" href={`/characters/${c.id}/`}>
+                  <span class="cast__name">{c.data.name}</span>
+                  <span class:list={['cast__status', 'mono', `is-${c.data.status}`]}>
+                    {statusLabel(c.data.status)}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="show__section" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="show__h2">Coverage</h2>
+      <ArticleStack
+        articles={coverage}
+        emptyMessage={`No articles reference ${data.title} yet. Add ${show.id} to an article's shows: list to wire it up.`}
+      />
+    </section>
+
+    <section class="show__section" aria-labelledby="castchange-heading">
+      <h2 id="castchange-heading" class="show__h2">Cast changes</h2>
+      {
+        castChanges.length === 0 ? (
+          <p class="muted">
+            No cast changes logged. Publish an article with <code>kind: cast-change</code>
+            that references {data.title} and it will collect here.
+          </p>
+        ) : (
+          <ArticleStack articles={castChanges} />
+        )
+      }
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .show__header {
+    border-bottom: 5px solid var(--accent);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .show__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .show__meta {
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+    margin-bottom: var(--space-3);
+  }
+  .show__summary {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  .show__prose {
+    max-width: var(--measure);
+    margin-bottom: var(--space-6);
+  }
+  .show__prose:empty {
+    display: none;
+  }
+
+  .show__section {
+    margin-top: var(--space-7);
+  }
+  .show__h2 {
+    font-size: var(--step-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--line);
+    margin-bottom: var(--space-4);
+  }
+
+  /* ---- Cast list -------------------------------------------------------- */
+  .cast {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .cast__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .cast__row:hover {
+    transform: translateX(2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .cast__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+  }
+  .cast__status {
+    color: var(--ink-60);
+  }
+  .cast__status.is-deceased {
+    color: var(--ink-40);
+  }
+  .cast__status.is-current {
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  .muted {
+    color: var(--ink-60);
+    max-width: var(--measure);
+  }
+  .muted code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>
