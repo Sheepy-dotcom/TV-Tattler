@@ -1,29 +1,63 @@
 ---
-// Stage 1 placeholder homepage. Proves the collections load and the site
-// builds. The real listings-stack homepage arrives in a later stage.
-import { getArticles } from '../lib/relations';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ListingRow from '../components/ListingRow.astro';
+import { getArticles, getShowAccentMap, accentForArticle } from '../lib/relations';
 
 const articles = await getArticles();
+const accentMap = await getShowAccentMap();
+
+// The lead is the first article flagged `lead`, falling back to the newest.
+const leadIndex = articles.findIndex((a) => a.data.lead);
+const lead = leadIndex >= 0 ? articles[leadIndex] : articles[0];
+const rest = articles.filter((a) => a !== lead);
 ---
 
-<!doctype html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TV Tattler</title>
-  </head>
-  <body>
-    <h1>TV Tattler</h1>
-    <p>Stage 1 build — schemas and relations in place.</p>
-    <ul>
-      {
-        articles.map((article) => (
-          <li>
-            <strong>{article.data.title}</strong> — {article.data.standfirst}
-          </li>
-        ))
-      }
-    </ul>
-  </body>
-</html>
+<BaseLayout
+  title="TV Tattler"
+  description="A soaps-first UK entertainment site: complete, accurate reference pages for every show, character and actor, kept up to date."
+>
+  <div class="home">
+    <p class="home__kicker mono">UK soaps · telly · celebrity</p>
+
+    {
+      articles.length === 0 ? (
+        <div class="empty card">
+          <h2>No articles yet</h2>
+          <p>
+            Add a markdown file to <code>src/content/articles/</code> and it will
+            appear here, newest first. Set <code>lead: true</code> on one to give
+            it the large slot at the top of the stack.
+          </p>
+        </div>
+      ) : (
+        <div class="stack listings">
+          {lead && <ListingRow article={lead} accent={accentForArticle(lead, accentMap)} lead />}
+          {rest.map((article) => (
+            <ListingRow article={article} accent={accentForArticle(article, accentMap)} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .home__kicker {
+    margin-bottom: var(--space-4);
+    color: var(--ink-60);
+  }
+  .listings > * + * {
+    margin-top: var(--space-3);
+  }
+  .empty {
+    padding: var(--space-6);
+    text-align: center;
+  }
+  .empty code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

@@ -181,3 +181,27 @@ export async function articlesOfKind(kind: Article['data']['kind']): Promise<Art
   const articles = await getArticles();
   return articles.filter((a) => a.data.kind === kind);
 }
+
+// ---------------------------------------------------------------------------
+// Accent resolution — colour is data. Every listing row is coloured by the
+// accent of the show it belongs to.
+// ---------------------------------------------------------------------------
+
+/** Map of show id → accent hex, for cheap lookups when rendering many rows. */
+export async function getShowAccentMap(): Promise<Map<string, string>> {
+  const shows = await getCollection('shows');
+  return new Map(shows.map((s) => [s.id, s.data.accent]));
+}
+
+/**
+ * The accent an article should wear: the accent of its first referenced show.
+ * Articles with no show (e.g. a celebrity profile) get no accent, and the row
+ * falls back to the neutral ink bar via the CSS default.
+ */
+export function accentForArticle(
+  article: Article,
+  accentMap: Map<string, string>,
+): string | undefined {
+  const first = article.data.shows[0];
+  return first ? accentMap.get(first.id) : undefined;
+}
