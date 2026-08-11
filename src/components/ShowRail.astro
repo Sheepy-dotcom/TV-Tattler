@@ -1,0 +1,73 @@
+---
+import type { Show } from '../lib/relations';
+import ShowCard from './ShowCard.astro';
+
+interface Props {
+  shows: Show[];
+  title: string;
+  href?: string; // optional "see all" link
+  hrefLabel?: string;
+}
+
+const { shows, title, href, hrefLabel = 'All shows' } = Astro.props;
+---
+
+{
+  shows.length > 0 && (
+    <section class="showrail" aria-label={title}>
+      <div class="showrail__head">
+        <h2 class="showrail__title">{title}</h2>
+        {href && (
+          <a class="showrail__all" href={href}>
+            {hrefLabel} →
+          </a>
+        )}
+      </div>
+      <div class="showrail__grid">
+        {shows.map((show) => (
+          <ShowCard show={show} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .showrail {
+    margin-bottom: var(--space-7);
+  }
+  .showrail__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .showrail__title {
+    font-size: var(--step-2);
+    margin: 0;
+    padding-bottom: var(--space-2);
+    border-bottom: 3px solid var(--live);
+    display: inline-block;
+  }
+  .showrail__all {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: color-mix(in srgb, var(--live) 80%, var(--ink));
+    white-space: nowrap;
+  }
+  .showrail__all:hover {
+    text-decoration: underline;
+  }
+  .showrail__grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 52rem) {
+    .showrail__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

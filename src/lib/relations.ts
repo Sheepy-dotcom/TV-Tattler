@@ -56,6 +56,12 @@ export async function getShows(): Promise<Show[]> {
   return shows.sort((a, b) => a.data.title.localeCompare(b.data.title));
 }
 
+/** Shows that belong to a section (e.g. all soaps), alphabetical. */
+export async function showsInSection(section: Show['data']['section']): Promise<Show[]> {
+  const shows = await getShows();
+  return shows.filter((s) => s.data.section === section);
+}
+
 /** All characters belonging to a show. */
 export async function charactersForShow(showId: string): Promise<Character[]> {
   const characters = await getCollection('characters');

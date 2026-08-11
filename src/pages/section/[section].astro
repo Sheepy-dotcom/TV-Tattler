@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
+import ShowRail from '../../components/ShowRail.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { SECTIONS } from '../../content.config';
-import { articlesInSection } from '../../lib/relations';
+import { articlesInSection, showsInSection } from '../../lib/relations';
 import { sectionMeta, kindLabel } from '../../lib/format';
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ const { section } = Astro.params;
 const meta = sectionMeta(section);
 const label = meta.label;
 const articles = await articlesInSection(section as (typeof SECTIONS)[number]);
+const shows = await showsInSection(section as (typeof SECTIONS)[number]);
 
 // Kinds actually present in this section, so the filter chips never lead
 // to an empty page.
@@ -42,8 +44,11 @@ const kindsPresent = [...new Set(articles.map((a) => a.data.kind))].sort();
     }
   </header>
 
+  <ShowRail shows={shows} title={`${label} we cover`} />
+
   <div class="layout">
     <div class="layout__main">
+      <h2 class="rail-title" style={`--cat: ${meta.color};`}>Latest in {label}</h2>
       <ArticleGrid
         articles={articles}
         withHero
@@ -94,6 +99,14 @@ const kindsPresent = [...new Set(articles.map((a) => a.data.kind))].sort();
   }
   .kind-filter a:hover {
     border-color: var(--ink);
+  }
+
+  .rail-title {
+    font-size: var(--step-2);
+    margin: 0 0 var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 3px solid var(--cat, var(--live));
+    display: inline-block;
   }
 
   .layout {

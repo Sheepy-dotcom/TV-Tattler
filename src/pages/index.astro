@@ -3,12 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCard from '../components/HeroCard.astro';
 import StoryCard from '../components/StoryCard.astro';
 import ArticleGrid from '../components/ArticleGrid.astro';
+import ShowRail from '../components/ShowRail.astro';
 import Sidebar from '../components/Sidebar.astro';
-import { getArticles, getShowLookup, posterForArticle } from '../lib/relations';
+import { getArticles, getShows, getShowLookup, posterForArticle } from '../lib/relations';
 import { SECTIONS } from '../content.config';
 import { sectionMeta } from '../lib/format';
 
 const articles = await getArticles();
+const shows = await getShows();
 const lookup = await getShowLookup();
 
 // Float the flagged lead to the top; the rest keep newest-first order.
@@ -77,9 +79,16 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
           }
         </nav>
 
+        <ShowRail
+          shows={shows}
+          title="The shows — every one on record"
+          href="/shows/"
+          hrefLabel="All shows"
+        />
+
         <div class="layout">
           <div class="layout__main">
-            <h2 class="rail-title rail-title--major">Latest</h2>
+            <h2 class="rail-title rail-title--major">Latest stories</h2>
             <ArticleGrid articles={latest} columns={2} />
           </div>
           <Sidebar />

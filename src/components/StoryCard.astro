@@ -23,7 +23,7 @@ const href = `/articles/${article.id}/`;
       accent={accent}
       showTitle={showTitle}
       kind={data.kind}
-      image={data.image}
+      image={variant === 'compact' ? undefined : data.image}
       imageAlt={data.imageAlt}
       ratio={variant === 'compact' ? '1 / 1' : '16 / 10'}
       compact={variant === 'compact'}
