@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SECTIONS } from '../content.config';
 import { sectionLabel } from '../lib/format';
+import { getShows } from '../lib/relations';
 
 interface Props {
   title: string;
@@ -13,10 +14,18 @@ interface Props {
 const { title, description, accent } = Astro.props;
 const fullTitle = title === 'TV Tattler' ? title : `${title} — TV Tattler`;
 const currentPath = Astro.url.pathname;
+const shows = await getShows();
 
-function isActiveSection(section: string): boolean {
-  return currentPath.startsWith(`/section/${section}`);
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
 }
+
+const primaryNav = [
+  { href: '/', label: 'Home' },
+  ...SECTIONS.map((s) => ({ href: `/section/${s}/`, label: sectionLabel(s) })),
+  { href: '/shows/', label: 'Shows' },
+];
 ---
 
 <!doctype html>
@@ -36,27 +45,44 @@ function isActiveSection(section: string): boolean {
     <a href="#main" class="skip-link">Skip to content</a>
 
     <header class="site-header">
-      <div class="container site-header__inner">
-        <a href="/" class="wordmark" aria-label="TV Tattler home">
-          <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
-        </a>
-        <nav class="site-nav" aria-label="Sections">
+      <!-- Utility strip: reference-first tagline + quick links to the kinds -->
+      <div class="utility">
+        <div class="container utility__inner">
+          <span class="utility__tag mono">Reference-first UK entertainment</span>
+          <nav class="utility__links mono" aria-label="Quick links">
+            <a href="/kind/spoiler/">Spoilers</a>
+            <a href="/kind/cast-change/">Cast changes</a>
+            <a href="/kind/guide/">Guides</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Masthead: the wordmark on a light band -->
+      <div class="masthead">
+        <div class="container masthead__inner">
+          <a href="/" class="wordmark" aria-label="TV Tattler home">
+            <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
+          </a>
+          <p class="masthead__strap">Complete, maintained reference pages for every UK soap, show, character and actor.</p>
+        </div>
+      </div>
+
+      <!-- Primary navigation: sticky bar -->
+      <nav class="mainnav" aria-label="Primary">
+        <div class="container mainnav__inner">
           <ul>
             {
-              SECTIONS.map((section) => (
+              primaryNav.map((item) => (
                 <li>
-                  <a
-                    href={`/section/${section}/`}
-                    aria-current={isActiveSection(section) ? 'page' : undefined}
-                  >
-                    {sectionLabel(section)}
+                  <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                    {item.label}
                   </a>
                 </li>
               ))
             }
           </ul>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
 
     <main id="main" class="container site-main">
@@ -64,40 +90,107 @@ function isActiveSection(section: string): boolean {
     </main>
 
     <footer class="site-footer">
-      <div class="container site-footer__inner">
-        <p class="wordmark wordmark--footer">
-          <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
-        </p>
-        <p class="mono">Reference depth for UK soaps, telly &amp; celebrity.</p>
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="wordmark wordmark--footer">
+            <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
+          </p>
+          <p class="site-footer__about">
+            A soaps-first UK entertainment site built on evergreen reference depth:
+            complete, accurate pages for every show, character and actor — kept up to date.
+          </p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Sections">
+          <h2 class="site-footer__h">Sections</h2>
+          <ul>
+            {SECTIONS.map((s) => <li><a href={`/section/${s}/`}>{sectionLabel(s)}</a></li>)}
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-label="Browse">
+          <h2 class="site-footer__h">Browse</h2>
+          <ul>
+            <li><a href="/shows/">All shows</a></li>
+            <li><a href="/kind/spoiler/">Spoilers</a></li>
+            <li><a href="/kind/cast-change/">Cast changes</a></li>
+            <li><a href="/kind/guide/">Guides</a></li>
+            <li><a href="/kind/feature/">Features</a></li>
+          </ul>
+        </nav>
+
+        {
+          shows.length > 0 && (
+            <nav class="site-footer__col" aria-label="Shows">
+              <h2 class="site-footer__h">Shows</h2>
+              <ul>
+                {shows.map((show) => (
+                  <li>
+                    <a href={`/shows/${show.id}/`}>
+                      <span class="dot" style={`--accent: ${show.data.accent};`} aria-hidden="true" />
+                      {show.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+      </div>
+      <div class="site-footer__base">
+        <div class="container site-footer__base-inner mono">
+          <span>© {new Date().getFullYear()} TV Tattler</span>
+          <span>Reference depth for UK soaps, telly &amp; celebrity.</span>
+        </div>
       </div>
     </footer>
 
     <style>
-      /* ---- Header -------------------------------------------------------- */
-      .site-header {
-        background: var(--ink);
-        color: var(--paper);
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        border-bottom: 3px solid var(--accent, var(--live));
+      /* ---- Utility strip ------------------------------------------------- */
+      .utility {
+        background: #0f0b1c;
+        color: var(--ink-40);
       }
-      .site-header__inner {
+      .utility__inner {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         gap: var(--space-2) var(--space-4);
-        padding-block: var(--space-3);
+        padding-block: var(--space-2);
+        font-size: var(--step--1);
+      }
+      .utility__links {
+        display: flex;
+        gap: var(--space-4);
+      }
+      .utility__links a {
+        color: var(--ink-40);
+        text-decoration: none;
+      }
+      .utility__links a:hover {
+        color: #fff;
       }
 
+      /* ---- Masthead ------------------------------------------------------ */
+      .masthead {
+        background: var(--card);
+        border-bottom: 1px solid var(--line);
+      }
+      .masthead__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--space-2) var(--space-5);
+        padding-block: var(--space-4);
+      }
       .wordmark {
         font-family: var(--font-display);
         font-weight: 800;
-        font-size: var(--step-1);
+        font-size: var(--step-3);
         letter-spacing: -0.02em;
         text-decoration: none;
-        color: inherit;
+        color: var(--ink);
         display: inline-flex;
         align-items: baseline;
         gap: 0.28em;
@@ -106,36 +199,53 @@ function isActiveSection(section: string): boolean {
       .wordmark__tv {
         background: var(--live);
         color: #fff;
-        padding: 0.12em 0.3em;
+        padding: 0.1em 0.28em;
         border-radius: var(--radius-sm);
       }
-      .wordmark__tattler {
-        color: inherit;
+      .masthead__strap {
+        margin: 0;
+        color: var(--ink-60);
+        font-size: var(--step-0);
+        max-width: 40ch;
       }
 
-      /* ---- Nav ----------------------------------------------------------- */
-      .site-nav ul {
+      /* ---- Primary nav (sticky) ----------------------------------------- */
+      .mainnav {
+        background: var(--ink);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: var(--shadow-sm);
+      }
+      .mainnav__inner {
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .mainnav__inner::-webkit-scrollbar {
+        display: none;
+      }
+      .mainnav ul {
         list-style: none;
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-1) var(--space-4);
+        gap: var(--space-1);
       }
-      .site-nav a {
+      .mainnav a {
+        display: inline-block;
+        white-space: nowrap;
         font-family: var(--font-display);
         font-weight: 600;
         font-size: var(--step-0);
         color: var(--paper);
         text-decoration: none;
-        padding: var(--space-1) 0;
-        border-bottom: 2px solid transparent;
-        display: inline-block;
+        padding: var(--space-3) var(--space-3);
+        border-bottom: 3px solid transparent;
       }
-      .site-nav a:hover {
-        border-bottom-color: var(--paper);
+      .mainnav a:hover {
+        background: rgba(255, 255, 255, 0.06);
       }
-      .site-nav a[aria-current='page'] {
+      .mainnav a[aria-current='page'] {
         border-bottom-color: var(--live);
       }
 
@@ -151,21 +261,75 @@ function isActiveSection(section: string): boolean {
         color: var(--paper);
         margin-top: var(--space-8);
       }
-      .site-footer__inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-        padding-block: var(--space-6);
+      .site-footer__grid {
+        display: grid;
+        gap: var(--space-6);
+        padding-block: var(--space-7);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 40rem) {
+        .site-footer__grid {
+          grid-template-columns: 1.5fr 1fr 1fr;
+        }
+      }
+      @media (min-width: 60rem) {
+        .site-footer__grid {
+          grid-template-columns: 2fr 1fr 1fr 1.2fr;
+        }
+      }
+      .site-footer__about {
+        color: var(--ink-40);
+        max-width: 42ch;
+        margin: var(--space-3) 0 0;
+        font-size: var(--step-0);
       }
       .wordmark--footer {
         margin: 0;
         color: var(--paper);
       }
-      .site-footer .mono {
+      .site-footer__h {
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
         color: var(--ink-40);
+        margin: 0 0 var(--space-3);
+      }
+      .site-footer__col ul {
+        list-style: none;
         margin: 0;
+        padding: 0;
+        display: grid;
+        gap: var(--space-2);
+      }
+      .site-footer__col a {
+        color: var(--paper);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+      }
+      .site-footer__col a:hover {
+        text-decoration: underline;
+      }
+      .dot {
+        width: 0.6em;
+        height: 0.6em;
+        border-radius: 999px;
+        background: var(--accent);
+        flex: none;
+      }
+      .site-footer__base {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .site-footer__base-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-2);
+        padding-block: var(--space-4);
+        color: var(--ink-40);
+        font-size: var(--step--1);
       }
     </style>
   </body>

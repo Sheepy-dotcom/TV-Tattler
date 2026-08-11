@@ -74,7 +74,7 @@
 
   /* --- Layout ----------------------------------------------------------- */
   --measure: 66ch;        /* comfortable reading width for body copy        */
-  --container: 62rem;     /* outer max width                                */
+  --container: 74rem;     /* outer max width — room for a content sidebar    */
 
   /* Accent fallback when an item belongs to no show. The neutral ink bar
      keeps the coloured-bar system consistent without inventing a colour. */

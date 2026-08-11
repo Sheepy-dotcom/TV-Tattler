@@ -3,16 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCard from '../components/HeroCard.astro';
 import StoryCard from '../components/StoryCard.astro';
 import ArticleGrid from '../components/ArticleGrid.astro';
-import {
-  getArticles,
-  getShows,
-  getShowLookup,
-  posterForArticle,
-} from '../lib/relations';
-import { yearRange } from '../lib/format';
+import Sidebar from '../components/Sidebar.astro';
+import { getArticles, getShowLookup, posterForArticle } from '../lib/relations';
 
 const articles = await getArticles();
-const shows = await getShows();
 const lookup = await getShowLookup();
 
 // Float the flagged lead to the top; the rest keep newest-first order.
@@ -23,8 +17,8 @@ const ordered =
     : articles;
 
 const lead = ordered[0];
-const secondary = ordered.slice(1, 3); // side column beside the hero
-const latest = ordered.slice(3); // the grid below
+const secondary = ordered.slice(1, 3);
+const latest = ordered.slice(1); // full feed for the main column (minus the hero)
 
 const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
 ---
@@ -48,7 +42,7 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
             </div>
           )}
           {secondary.length > 0 && (
-            <aside class="lead-band__side">
+            <div class="lead-band__side">
               <h2 class="rail-title">More top stories</h2>
               <div class="rail">
                 {secondary.map((article) => {
@@ -63,33 +57,17 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
                   );
                 })}
               </div>
-            </aside>
+            </div>
           )}
         </section>
 
-        {shows.length > 0 && (
-          <nav class="shows-strip" aria-label="Browse by show">
-            <span class="shows-strip__label mono">Browse by show</span>
-            <ul>
-              {shows.map((show) => (
-                <li>
-                  <a class="show-pill" href={`/shows/${show.id}/`} style={`--accent: ${show.data.accent};`}>
-                    <span class="show-pill__dot" aria-hidden="true" />
-                    {show.data.title}
-                    <span class="show-pill__years mono">{yearRange(show.data.startYear, show.data.endYear)}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-
-        {latest.length > 0 && (
-          <section class="latest" aria-labelledby="latest-heading">
-            <h2 id="latest-heading" class="rail-title rail-title--major">Latest</h2>
-            <ArticleGrid articles={latest} columns={3} />
-          </section>
-        )}
+        <div class="layout">
+          <div class="layout__main">
+            <h2 class="rail-title rail-title--major">Latest</h2>
+            <ArticleGrid articles={latest} columns={2} />
+          </div>
+          <Sidebar />
+        </div>
       </>
     )
   }
@@ -100,19 +78,16 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
   .lead-band {
     display: grid;
     gap: var(--space-4);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-7);
   }
   @media (min-width: 60rem) {
     .lead-band {
-      grid-template-columns: 1.7fr 1fr;
+      grid-template-columns: 1.9fr 1fr;
       gap: var(--space-5);
       align-items: start;
     }
   }
-
   .lead-band__side {
-    display: grid;
-    gap: var(--space-3);
     align-content: start;
   }
   .rail {
@@ -133,58 +108,16 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
     font-size: var(--step-2);
   }
 
-  /* ---- Browse-by-show strip -------------------------------------------- */
-  .shows-strip {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2) var(--space-3);
-    padding: var(--space-4);
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--space-7);
+  /* ---- Main + sidebar layout ------------------------------------------- */
+  .layout {
+    display: grid;
+    gap: var(--space-6);
   }
-  .shows-strip__label {
-    color: var(--ink-40);
-  }
-  .shows-strip ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-  .show-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.45em 0.8em;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--accent) 10%, white);
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, white);
-    color: color-mix(in srgb, var(--accent) 80%, var(--ink));
-    font-family: var(--font-display);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .show-pill:hover {
-    background: color-mix(in srgb, var(--accent) 18%, white);
-    border-color: var(--accent);
-  }
-  .show-pill__dot {
-    width: 0.7em;
-    height: 0.7em;
-    border-radius: 999px;
-    background: var(--accent);
-  }
-  .show-pill__years {
-    color: var(--ink-40);
-    font-size: 0.75em;
-  }
-
-  .latest {
-    margin-top: var(--space-6);
+  @media (min-width: 60rem) {
+    .layout {
+      grid-template-columns: 1fr 20rem;
+      gap: var(--space-7);
+      align-items: start;
+    }
   }
 </style>

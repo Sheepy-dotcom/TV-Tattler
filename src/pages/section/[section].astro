@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import { SECTIONS } from '../../content.config';
 import { articlesInSection } from '../../lib/relations';
 import { sectionLabel, kindLabel } from '../../lib/format';
@@ -44,12 +45,17 @@ const blurb: Record<string, string> = {
     }
   </header>
 
-  <ArticleGrid
-    articles={articles}
-    withHero
-    columns={3}
-    emptyMessage={`No ${label} articles yet. Set section: ${section} in an article's frontmatter to file it here.`}
-  />
+  <div class="layout">
+    <div class="layout__main">
+      <ArticleGrid
+        articles={articles}
+        withHero
+        columns={2}
+        emptyMessage={`No ${label} articles yet. Set section: ${section} in an article's frontmatter to file it here.`}
+      />
+    </div>
+    <Sidebar />
+  </div>
 </BaseLayout>
 
 <style>
@@ -79,5 +85,17 @@ const blurb: Record<string, string> = {
   }
   .kind-filter a:hover {
     border-color: var(--ink);
+  }
+
+  .layout {
+    display: grid;
+    gap: var(--space-6);
+  }
+  @media (min-width: 60rem) {
+    .layout {
+      grid-template-columns: 1fr 20rem;
+      gap: var(--space-7);
+      align-items: start;
+    }
   }
 </style>
