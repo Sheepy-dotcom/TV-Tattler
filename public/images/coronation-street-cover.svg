@@ -1,20 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Coronation Street cover art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Coronation Street — terraced rooftops at dusk">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2e8f8a"/>
-      <stop offset="0.55" stop-color="#1f6f6b"/>
-      <stop offset="1" stop-color="#0d3a37"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d3a37"/>
+      <stop offset="0.65" stop-color="#1f6f6b"/>
+      <stop offset="1" stop-color="#2e8f8a"/>
     </linearGradient>
   </defs>
-  <rect width="1600" height="900" fill="url(#g)"/>
-  <circle cx="1360" cy="170" r="230" fill="#ffffff" fill-opacity="0.08"/>
-  <circle cx="1520" cy="700" r="150" fill="#ffffff" fill-opacity="0.06"/>
-  <circle cx="240" cy="120" r="80" fill="#ffffff" fill-opacity="0.07"/>
-  <g fill="#ffffff" fill-opacity="0.55"><circle cx="92" cy="120" r="11"/><circle cx="134" cy="120" r="11"/><circle cx="176" cy="120" r="11"/></g>
-  <g transform="translate(1330,560)">
-    <circle r="86" fill="#ffffff" fill-opacity="0.16"/>
-    <path d="M-26 -40 L44 0 L-26 40 Z" fill="#ffffff" fill-opacity="0.9"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1320" cy="210" r="80" fill="#ffe9c7" fill-opacity="0.85"/>
+  <!-- terraced houses with pitched roofs -->
+  <g fill="#0b2d2b">
+    <path d="M0 520 L120 460 L240 520 L240 900 L0 900 Z"/>
+    <path d="M240 540 L360 480 L480 540 L480 900 L240 900 Z"/>
+    <path d="M480 520 L600 460 L720 520 L720 900 L480 900 Z"/>
+    <path d="M720 540 L840 480 L960 540 L960 900 L720 900 Z"/>
+    <path d="M960 520 L1080 460 L1200 520 L1200 900 L960 900 Z"/>
+    <path d="M1200 540 L1320 480 L1440 540 L1440 900 L1200 900 Z"/>
+    <path d="M1440 520 L1560 470 L1680 520 L1680 900 L1440 900 Z"/>
   </g>
-  <text x="80" y="560" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="150" font-weight="700" fill="#ffffff" fill-opacity="0.95" letter-spacing="-4">CORONATION</text>
-  <text x="80" y="710" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="150" font-weight="700" fill="#ffffff" fill-opacity="0.95" letter-spacing="-4">STREET</text>
+  <!-- chimneys -->
+  <g fill="#08211f">
+    <rect x="100" y="430" width="46" height="60"/><rect x="580" y="430" width="46" height="60"/>
+    <rect x="1060" y="430" width="46" height="60"/><rect x="1300" y="450" width="46" height="60"/>
+  </g>
+  <!-- lit windows -->
+  <g fill="#ffd166">
+    <rect x="70" y="640" width="42" height="56" rx="4"/><rect x="150" y="640" width="42" height="56" rx="4"/>
+    <rect x="540" y="640" width="42" height="56" rx="4"/><rect x="620" y="640" width="42" height="56" rx="4"/>
+    <rect x="1020" y="640" width="42" height="56" rx="4"/><rect x="1260" y="650" width="42" height="56" rx="4"/>
+  </g>
+  <!-- street lamp with glow -->
+  <circle cx="820" cy="560" r="70" fill="#ffd166" fill-opacity="0.28"/>
+  <rect x="812" y="560" width="16" height="300" fill="#08211f"/>
+  <circle cx="820" cy="556" r="20" fill="#ffe08a"/>
+  <!-- cobbles -->
+  <g stroke="#0b2d2b" stroke-width="6" fill="none" opacity="0.5">
+    <path d="M0 870 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0 q40 -20 80 0 q40 20 80 0"/>
+  </g>
+  <text x="72" y="150" font-family="'DM Mono',monospace" font-size="30" letter-spacing="8" fill="#ffffff" fill-opacity="0.85">WEATHERFIELD</text>
 </svg>

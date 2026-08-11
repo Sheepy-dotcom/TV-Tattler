@@ -1,19 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="EastEnders cover art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="EastEnders — Walford at night">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a8355a"/>
-      <stop offset="0.55" stop-color="#7a1f3d"/>
-      <stop offset="1" stop-color="#40101f"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#40101f"/>
+      <stop offset="0.6" stop-color="#7a1f3d"/>
+      <stop offset="1" stop-color="#9a2e4f"/>
     </linearGradient>
   </defs>
-  <rect width="1600" height="900" fill="url(#g)"/>
-  <circle cx="1360" cy="170" r="230" fill="#ffffff" fill-opacity="0.08"/>
-  <circle cx="1520" cy="700" r="150" fill="#ffffff" fill-opacity="0.06"/>
-  <circle cx="240" cy="120" r="80" fill="#ffffff" fill-opacity="0.07"/>
-  <g fill="#ffffff" fill-opacity="0.55"><circle cx="92" cy="120" r="11"/><circle cx="134" cy="120" r="11"/><circle cx="176" cy="120" r="11"/></g>
-  <g transform="translate(1330,560)">
-    <circle r="86" fill="#ffffff" fill-opacity="0.16"/>
-    <path d="M-26 -40 L44 0 L-26 40 Z" fill="#ffffff" fill-opacity="0.9"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- moon + stars -->
+  <circle cx="1330" cy="200" r="92" fill="#ffe9c7" fill-opacity="0.9"/>
+  <circle cx="1300" cy="185" r="92" fill="#7a1f3d"/>
+  <g fill="#ffffff" fill-opacity="0.7">
+    <circle cx="220" cy="150" r="4"/><circle cx="380" cy="110" r="3"/><circle cx="540" cy="180" r="4"/>
+    <circle cx="760" cy="120" r="3"/><circle cx="980" cy="170" r="4"/><circle cx="1120" cy="120" r="3"/>
   </g>
-  <text x="80" y="560" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="150" font-weight="700" fill="#ffffff" fill-opacity="0.95" letter-spacing="-4">EASTENDERS</text>
+  <!-- terraced skyline -->
+  <g fill="#2a0a14">
+    <rect x="0" y="560" width="180" height="340"/>
+    <rect x="180" y="600" width="150" height="300"/>
+    <rect x="330" y="560" width="160" height="340"/>
+    <rect x="1180" y="590" width="170" height="310"/>
+    <rect x="1350" y="560" width="250" height="340"/>
+  </g>
+  <!-- The Queen Vic (centre) -->
+  <g>
+    <rect x="560" y="500" width="480" height="400" fill="#33101d"/>
+    <rect x="560" y="500" width="480" height="70" fill="#c0203f"/>
+    <!-- hanging pub sign -->
+    <rect x="1050" y="560" width="16" height="120" fill="#1c0710"/>
+    <rect x="1000" y="600" width="120" height="86" rx="8" fill="#e8134b"/>
+    <text x="1060" y="654" text-anchor="middle" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="40" font-weight="700" fill="#fff">VIC</text>
+  </g>
+  <!-- lit windows -->
+  <g fill="#ffd166">
+    <rect x="600" y="600" width="46" height="60" rx="4"/><rect x="680" y="600" width="46" height="60" rx="4"/>
+    <rect x="760" y="600" width="46" height="60" rx="4"/><rect x="600" y="700" width="46" height="60" rx="4"/>
+    <rect x="30" y="620" width="40" height="52" rx="4"/><rect x="380" y="620" width="40" height="52" rx="4"/>
+    <rect x="1400" y="620" width="40" height="52" rx="4"/><rect x="1470" y="620" width="40" height="52" rx="4"/>
+  </g>
+  <!-- name plate -->
+  <text x="72" y="150" font-family="'DM Mono',monospace" font-size="30" letter-spacing="8" fill="#ffffff" fill-opacity="0.85">WALFORD · E20</text>
 </svg>
