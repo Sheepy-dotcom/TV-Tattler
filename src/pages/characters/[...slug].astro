@@ -2,6 +2,7 @@
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import PortrayalTimeline from '../../components/PortrayalTimeline.astro';
 import { articlesForCharacter, timelineForCharacter } from '../../lib/relations';
 import { statusLabel } from '../../lib/format';
@@ -29,7 +30,8 @@ const [family, timeline, articles, { Content }] = await Promise.all([
 ---
 
 <BaseLayout title={data.name} description={data.summary} accent={accent}>
-  <article class="character">
+  <div class="layout">
+    <article class="character layout__main">
     <nav class="crumbs mono" aria-label="Breadcrumb">
       <a href="/shows/">Shows</a>
       <span aria-hidden="true">/</span>
@@ -94,12 +96,14 @@ const [family, timeline, articles, { Content }] = await Promise.all([
         emptyMessage={`No articles reference ${data.name} yet. Add ${character.id} to an article's characters: list.`}
       />
     </section>
-  </article>
+    </article>
+    <Sidebar />
+  </div>
 </BaseLayout>
 
 <style>
   .character {
-    max-width: 48rem;
+    max-width: 52rem;
   }
 
   .crumbs {

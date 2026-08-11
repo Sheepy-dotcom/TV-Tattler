@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Search"
+  description="Search TV Tattler's shows, characters, actors and articles."
+>
+  <div class="search">
+    <header class="search__header">
+      <p class="mono search__kicker">Search</p>
+      <h1>Search the archive</h1>
+      <form class="search__form" role="search" action="/search/" method="get">
+        <label class="sr-only" for="q">Search shows, characters, actors and articles</label>
+        <input
+          id="q"
+          name="q"
+          type="search"
+          autocomplete="off"
+          placeholder="Try “Cindy Beale”, “EastEnders”, “Michelle Collins”…"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <div id="results" class="search__results" aria-live="polite">
+      <p class="search__empty">Loading the index…</p>
+    </div>
+
+    <noscript>
+      <p class="search__empty">
+        Search needs JavaScript. You can still browse by
+        <a href="/shows/">show</a> or by <a href="/">section</a>.
+      </p>
+    </noscript>
+  </div>
+</BaseLayout>
+
+<script>
+  interface Entry {
+    type: string;
+    title: string;
+    url: string;
+    meta: string;
+    text: string;
+  }
+
+  const input = document.querySelector<HTMLInputElement>('#q')!;
+  const results = document.querySelector<HTMLDivElement>('#results')!;
+  let index: Entry[] = [];
+
+  const escapeHtml = (s: string) =>
+    s.replace(/[&<>"']/g, (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string,
+    );
+
+  function score(e: Entry, q: string): number {
+    const t = e.title.toLowerCase();
+    if (t === q) return 100;
+    if (t.startsWith(q)) return 50;
+    if (t.includes(q)) return 25;
+    if (e.meta.toLowerCase().includes(q)) return 10;
+    return 1;
+  }
+
+  function render(raw: string) {
+    const q = raw.trim().toLowerCase();
+    if (!q) {
+      results.innerHTML =
+        '<p class="search__empty">Type to search shows, characters, actors and articles.</p>';
+      return;
+    }
+    const matches = index
+      .filter((e) => `${e.title} ${e.meta} ${e.text}`.toLowerCase().includes(q))
+      .sort((a, b) => score(b, q) - score(a, q));
+
+    if (!matches.length) {
+      results.innerHTML = `<p class="search__empty">No results for “${escapeHtml(
+        raw.trim(),
+      )}”. Try a show or character name.</p>`;
+      return;
+    }
+
+    results.innerHTML =
+      `<p class="search__count mono">${matches.length} result${matches.length === 1 ? '' : 's'}</p>` +
+      '<ul class="hits">' +
+      matches
+        .slice(0, 40)
+        .map(
+          (e) => `
+        <li class="hit">
+          <a href="${e.url}">
+            <span class="hit__type mono">${escapeHtml(e.type)}</span>
+            <span class="hit__title">${escapeHtml(e.title)}</span>
+            ${e.meta ? `<span class="hit__meta mono">${escapeHtml(e.meta)}</span>` : ''}
+          </a>
+        </li>`,
+        )
+        .join('') +
+      '</ul>';
+  }
+
+  const params = new URLSearchParams(location.search);
+  input.value = params.get('q') ?? '';
+
+  fetch('/search-index.json')
+    .then((r) => r.json())
+    .then((data: Entry[]) => {
+      index = data;
+      render(input.value);
+    })
+    .catch(() => {
+      results.innerHTML =
+        '<p class="search__empty">Could not load the search index. Please try again.</p>';
+    });
+
+  let t: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      render(input.value);
+      const url = new URL(location.href);
+      if (input.value) url.searchParams.set('q', input.value);
+      else url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    }, 120);
+  });
+
+  // Don't full-page-submit; the live filter already has it.
+  input.form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    render(input.value);
+  });
+</script>
+
+<style>
+  .search {
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+  .search__header {
+    border-bottom: 4px solid var(--live);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .search__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .search__form {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  #q {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: var(--step-1);
+    padding: var(--space-3) var(--space-4);
+    border: 2px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--ink);
+  }
+  #q:focus-visible {
+    outline: 3px solid var(--live);
+    outline-offset: 1px;
+    border-color: var(--live);
+  }
+  .search__form button {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+    padding: 0 var(--space-4);
+    border: none;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: #fff;
+    cursor: pointer;
+  }
+  .search__form button:hover {
+    background: var(--live);
+  }
+
+  /* Results are injected by client JS, so they don't get Astro's scope
+     attribute — these selectors must be global to match them. Scoped under
+     .search so they don't leak site-wide. */
+  .search :global(.search__empty) {
+    color: var(--ink-60);
+    padding: var(--space-5) 0;
+  }
+  .search :global(.search__count) {
+    color: var(--ink-40);
+    margin-bottom: var(--space-3);
+  }
+  .search :global(.hits) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .search :global(.hit a) {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .search :global(.hit a:hover) {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--line-strong);
+  }
+  .search :global(.hit__type) {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: var(--ink);
+    padding: 0.2em 0.5em;
+    border-radius: var(--radius-sm);
+    align-self: center;
+  }
+  .search :global(.hit__title) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+  }
+  .search :global(.hit__meta) {
+    color: var(--ink-40);
+    text-align: right;
+  }
+  @media (max-width: 32rem) {
+    .search :global(.hit a) {
+      grid-template-columns: auto 1fr;
+    }
+    .search :global(.hit__meta) {
+      grid-column: 2;
+      text-align: left;
+    }
+  }
+</style>

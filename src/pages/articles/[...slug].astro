@@ -2,6 +2,7 @@
 import { getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StoryCard from '../../components/StoryCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import {
   getArticles,
   getShowAccentMap,
@@ -46,7 +47,8 @@ const spoilerFor =
 ---
 
 <BaseLayout title={data.title} description={data.standfirst} accent={accent}>
-  <article class="article">
+  <div class="layout">
+    <article class="article layout__main">
     <nav class="crumbs mono" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
@@ -163,12 +165,16 @@ const spoilerFor =
         </section>
       )
     }
-  </article>
+    </article>
+    <Sidebar />
+  </div>
 </BaseLayout>
 
 <style>
-  .article {
-    max-width: 44rem;
+  /* The reading column caps its prose for readability (see body/standfirst),
+     while wide elements like read-next fill the main column. */
+  .article__standfirst {
+    max-width: 46ch;
   }
 
   .crumbs {

@@ -196,6 +196,22 @@ img {
   margin-top: var(--space-4);
 }
 
+/* Main-column + sidebar layout, used across the site's pages. */
+.layout {
+  display: grid;
+  gap: var(--space-6);
+}
+.layout__main {
+  min-width: 0; /* let grid children shrink instead of overflowing */
+}
+@media (min-width: 60rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--space-7);
+    align-items: start;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Mono metadata — small uppercase continuity-slate treatment.
    Used for air dates, years and episode data only.

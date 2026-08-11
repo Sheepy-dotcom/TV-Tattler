@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
 import { formatDate, yearRange } from '../../lib/format';
 
@@ -24,7 +25,8 @@ const [roles, articles, { Content }] = await Promise.all([
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
-  <article class="person">
+  <div class="layout">
+    <article class="person layout__main">
     <header class="person__header">
       <p class="mono person__kicker">Person</p>
       <h1>{data.name}</h1>
@@ -84,12 +86,14 @@ const [roles, articles, { Content }] = await Promise.all([
         emptyMessage={`No articles reference ${data.name} yet. Add ${person.id} to an article's people: list.`}
       />
     </section>
-  </article>
+    </article>
+    <Sidebar />
+  </div>
 </BaseLayout>
 
 <style>
   .person {
-    max-width: 48rem;
+    max-width: 52rem;
   }
 
   .person__header {

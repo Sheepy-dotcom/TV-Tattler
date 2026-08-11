@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import {
   getShows,
   charactersForShow,
@@ -36,7 +37,8 @@ const sortedCharacters = [...characters].sort(
 ---
 
 <BaseLayout title={data.title} description={data.summary} accent={accent}>
-  <article class="show">
+  <div class="layout">
+    <article class="show layout__main">
     <header class="show__header">
       <p class="mono show__kicker">Show</p>
       <h1>{data.title}</h1>
@@ -105,7 +107,9 @@ const sortedCharacters = [...characters].sort(
         )
       }
     </section>
-  </article>
+    </article>
+    <Sidebar />
+  </div>
 </BaseLayout>
 
 <style>

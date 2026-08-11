@@ -53,6 +53,7 @@ const primaryNav = [
             <a href="/kind/spoiler/">Spoilers</a>
             <a href="/kind/cast-change/">Cast changes</a>
             <a href="/kind/guide/">Guides</a>
+            <a href="/about/">About</a>
           </nav>
         </div>
       </div>
@@ -64,6 +65,16 @@ const primaryNav = [
             <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
           </a>
           <p class="masthead__strap">Complete, maintained reference pages for every UK soap, show, character and actor.</p>
+          <form class="masthead__search" role="search" action="/search/" method="get">
+            <label class="sr-only" for="masthead-q">Search TV Tattler</label>
+            <input id="masthead-q" name="q" type="search" placeholder="Search shows, characters…" autocomplete="off" />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
 
@@ -116,6 +127,8 @@ const primaryNav = [
             <li><a href="/kind/cast-change/">Cast changes</a></li>
             <li><a href="/kind/guide/">Guides</a></li>
             <li><a href="/kind/feature/">Features</a></li>
+            <li><a href="/search/">Search</a></li>
+            <li><a href="/about/">About</a></li>
           </ul>
         </nav>
 
@@ -180,9 +193,61 @@ const primaryNav = [
       .masthead__inner {
         display: flex;
         flex-wrap: wrap;
-        align-items: baseline;
-        gap: var(--space-2) var(--space-5);
+        align-items: center;
+        gap: var(--space-3) var(--space-5);
         padding-block: var(--space-4);
+      }
+      .masthead__strap {
+        align-self: baseline;
+      }
+
+      /* Search box in the masthead — a GET form so it works without JS
+         (the /search/ page filters live once loaded). */
+      .masthead__search {
+        margin-left: auto;
+        display: flex;
+        align-items: stretch;
+        border: 2px solid var(--line-strong);
+        border-radius: 999px;
+        overflow: hidden;
+        background: var(--card);
+      }
+      .masthead__search:focus-within {
+        border-color: var(--live);
+      }
+      .masthead__search input {
+        border: none;
+        background: transparent;
+        padding: var(--space-2) var(--space-3);
+        font-family: var(--font-body);
+        font-size: var(--step-0);
+        color: var(--ink);
+        min-width: 12rem;
+      }
+      .masthead__search input:focus {
+        outline: none;
+      }
+      .masthead__search button {
+        border: none;
+        background: var(--ink);
+        color: #fff;
+        padding-inline: var(--space-3);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      .masthead__search button:hover {
+        background: var(--live);
+      }
+      @media (max-width: 30rem) {
+        .masthead__search {
+          margin-left: 0;
+          width: 100%;
+        }
+        .masthead__search input {
+          flex: 1;
+          min-width: 0;
+        }
       }
       .wordmark {
         font-family: var(--font-display);
