@@ -1,0 +1,146 @@
+---
+import type { Article } from '../lib/relations';
+import CardMedia from './CardMedia.astro';
+import { formatDate, isoDate, kindLabel } from '../lib/format';
+
+interface Props {
+  article: Article;
+  accent?: string;
+  showTitle?: string;
+}
+
+const { article, accent, showTitle } = Astro.props;
+const { data } = article;
+const href = `/articles/${article.id}/`;
+---
+
+<article class="hero" style={accent ? `--accent: ${accent};` : undefined}>
+  <a class="hero__media" href={href} tabindex="-1" aria-hidden="true">
+    <CardMedia
+      accent={accent}
+      showTitle={showTitle}
+      kind={data.kind}
+      image={data.image}
+      imageAlt={data.imageAlt}
+      ratio="16 / 9"
+      large
+    />
+  </a>
+  <div class="hero__body">
+    <div class="hero__meta">
+      <span class="hero__kicker">{kindLabel(data.kind)}</span>
+      {showTitle && <span class="hero__show">{showTitle}</span>}
+      {data.spoiler && <span class="hero__flag">Spoiler</span>}
+    </div>
+    <h2 class="hero__title">
+      <a href={href}>{data.title}</a>
+    </h2>
+    <p class="hero__standfirst">{data.standfirst}</p>
+    <time class="hero__date mono" datetime={isoDate(data.publishedAt)}>
+      {formatDate(data.publishedAt)}
+    </time>
+  </div>
+</article>
+
+<style>
+  .hero {
+    --accent: var(--ink);
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .hero:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  /* A thick accent band down the left edge, echoing the listing system. */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--accent);
+    z-index: 3;
+  }
+
+  .hero__body {
+    padding: var(--space-5);
+  }
+  @media (min-width: 48rem) {
+    .hero__body {
+      padding: var(--space-6);
+    }
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  .hero__kicker {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 0.35em 0.6em;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: #fff;
+  }
+  .hero__show {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+  .hero__flag {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25em 0.6em;
+    border-radius: 999px;
+    background: var(--spoiler);
+    color: #4a3a06;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-4);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3);
+    text-wrap: balance;
+  }
+  .hero__title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .hero__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.1em;
+  }
+
+  .hero__standfirst {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: 48ch;
+    margin: 0 0 var(--space-3);
+  }
+  .hero__date {
+    color: var(--ink-40);
+  }
+</style>

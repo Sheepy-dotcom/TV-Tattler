@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ArticleStack from '../../components/ArticleStack.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
 import { SECTIONS } from '../../content.config';
 import { articlesInSection } from '../../lib/relations';
 import { sectionLabel, kindLabel } from '../../lib/format';
@@ -44,9 +44,10 @@ const blurb: Record<string, string> = {
     }
   </header>
 
-  <ArticleStack
+  <ArticleGrid
     articles={articles}
-    withLead
+    withHero
+    columns={3}
     emptyMessage={`No ${label} articles yet. Set section: ${section} in an article's frontmatter to file it here.`}
   />
 </BaseLayout>

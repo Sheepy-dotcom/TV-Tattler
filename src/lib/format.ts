@@ -61,6 +61,16 @@ export function kindLabel(kind: string): string {
   }
 }
 
+/**
+ * A short monogram for a show, for small poster thumbnails.
+ * "EastEnders" → "EE", "Coronation Street" → "CS".
+ */
+export function monogram(title: string): string {
+  const caps = title.match(/[A-Z]/g);
+  if (caps && caps.length >= 2) return caps.slice(0, 2).join('');
+  return title.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase();
+}
+
 /** Human label for a character status. */
 export function statusLabel(status: string): string {
   switch (status) {

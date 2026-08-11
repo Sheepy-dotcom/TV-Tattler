@@ -84,6 +84,11 @@ const articles = defineCollection({
     standfirst: z.string(), // deck / summary line; also the meta description source
     section: z.enum(SECTIONS),
     kind: z.enum(KINDS),
+    // Optional hero image. When absent, cards fall back to a bold accent
+    // "poster" in the show's colour — so the site looks complete before any
+    // photography exists, and real images drop straight in later.
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     author: z.string(),

@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ArticleStack from '../../components/ArticleStack.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
 import PortrayalTimeline from '../../components/PortrayalTimeline.astro';
 import { articlesForCharacter, timelineForCharacter } from '../../lib/relations';
 import { statusLabel } from '../../lib/format';
@@ -88,8 +88,9 @@ const [family, timeline, articles, { Content }] = await Promise.all([
 
     <section class="character__section" aria-labelledby="coverage-heading">
       <h2 id="coverage-heading" class="character__h2">Coverage</h2>
-      <ArticleStack
+      <ArticleGrid
         articles={articles}
+        columns={2}
         emptyMessage={`No articles reference ${data.name} yet. Add ${character.id} to an article's characters: list.`}
       />
     </section>

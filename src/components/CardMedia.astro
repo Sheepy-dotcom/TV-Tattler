@@ -1,0 +1,142 @@
+---
+import { kindLabel, monogram } from '../lib/format';
+
+interface Props {
+  accent?: string;
+  showTitle?: string;
+  kind: string;
+  image?: string;
+  imageAlt?: string;
+  /** Aspect ratio of the media box. */
+  ratio?: string;
+  /** Bigger poster watermark for hero media. */
+  large?: boolean;
+  /** Small thumbnail: show a centred monogram instead of the full title. */
+  compact?: boolean;
+}
+
+const {
+  accent,
+  showTitle,
+  kind,
+  image,
+  imageAlt,
+  ratio = '16 / 10',
+  large = false,
+  compact = false,
+} = Astro.props;
+const ink = '#17122A';
+const base = accent ?? ink;
+---
+
+<div
+  class:list={['media', { 'media--large': large, 'media--compact': compact, 'media--photo': !!image }]}
+  style={`--media-accent: ${base}; aspect-ratio: ${ratio};`}
+>
+  {
+    image ? (
+      <img class="media__img" src={image} alt={imageAlt ?? ''} loading="lazy" decoding="async" />
+    ) : (
+      <div class="media__poster" aria-hidden="true">
+        {showTitle &&
+          (compact ? (
+            <span class="media__monogram">{monogram(showTitle)}</span>
+          ) : (
+            <span class="media__watermark">{showTitle}</span>
+          ))}
+      </div>
+    )
+  }
+  {!compact && <span class="media__kicker">{kindLabel(kind)}</span>}
+</div>
+
+<style>
+  .media {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--media-accent);
+    isolation: isolate;
+  }
+
+  /* Accent poster: a rich duotone of the show colour, with the show name as a
+     big clipped watermark. Bold, branded, and different for every show. */
+  .media__poster {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 140% at 85% 15%, rgba(255, 255, 255, 0.22), transparent 60%),
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--media-accent) 88%, white) 0%,
+        var(--media-accent) 45%,
+        color-mix(in srgb, var(--media-accent) 62%, black) 100%
+      );
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-3);
+  }
+  .media__watermark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.1rem, 0.8rem + 2.4vw, 1.9rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    mix-blend-mode: soft-light;
+    max-width: 100%;
+    /* Wrap at spaces only — never break a word across lines. */
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  .media--large .media__watermark {
+    font-size: clamp(2.4rem, 1.4rem + 6vw, 5rem);
+  }
+
+  /* Compact thumbnails: a clean centred monogram, no clipped watermark. */
+  .media--compact .media__poster {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .media__monogram {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 3px rgba(23, 18, 42, 0.25);
+  }
+
+  .media__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Category kicker over the media — the Digital-Spy-style coloured label. */
+  .media__kicker {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 0.4em 0.6em;
+    border-radius: var(--radius-sm);
+    background: var(--ink);
+    color: #fff;
+  }
+  .media--photo .media__kicker {
+    background: var(--media-accent);
+  }
+</style>

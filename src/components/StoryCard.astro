@@ -1,0 +1,155 @@
+---
+import type { Article } from '../lib/relations';
+import CardMedia from './CardMedia.astro';
+import { formatDate, isoDate } from '../lib/format';
+
+interface Props {
+  article: Article;
+  accent?: string;
+  showTitle?: string;
+  /** 'poster' = media on top (grid tile). 'compact' = small thumb beside text. */
+  variant?: 'poster' | 'compact';
+  showStandfirst?: boolean;
+}
+
+const { article, accent, showTitle, variant = 'poster', showStandfirst = false } = Astro.props;
+const { data } = article;
+const href = `/articles/${article.id}/`;
+---
+
+<article class:list={['card2', `card2--${variant}`]} style={accent ? `--accent: ${accent};` : undefined}>
+  <a class="card2__media" href={href} tabindex="-1" aria-hidden="true">
+    <CardMedia
+      accent={accent}
+      showTitle={showTitle}
+      kind={data.kind}
+      image={data.image}
+      imageAlt={data.imageAlt}
+      ratio={variant === 'compact' ? '1 / 1' : '16 / 10'}
+      compact={variant === 'compact'}
+    />
+  </a>
+  <div class="card2__body">
+    <div class="card2__meta">
+      {showTitle && <span class="card2__show">{showTitle}</span>}
+      {data.spoiler && <span class="card2__flag">Spoiler</span>}
+    </div>
+    <h3 class="card2__title">
+      <a href={href}>{data.title}</a>
+    </h3>
+    {showStandfirst && <p class="card2__standfirst">{data.standfirst}</p>}
+    <time class="card2__date mono" datetime={isoDate(data.publishedAt)}>
+      {formatDate(data.publishedAt)}
+    </time>
+  </div>
+</article>
+
+<style>
+  .card2 {
+    --accent: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    height: 100%;
+  }
+  .card2:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+
+  .card2__media {
+    display: block;
+  }
+
+  .card2__body {
+    padding: var(--space-4);
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+
+  .card2__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 1em;
+  }
+  /* Coloured category kicker in the show accent — the eye-catching label. */
+  .card2__show {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--accent) 78%, var(--ink));
+  }
+  .card2__flag {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2em 0.5em;
+    border-radius: 999px;
+    background: var(--spoiler);
+    color: #4a3a06;
+  }
+
+  .card2__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .card2__title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .card2__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.12em;
+  }
+
+  .card2__standfirst {
+    margin: 0;
+    color: var(--ink-80);
+    font-size: var(--step-0);
+  }
+  .card2__date {
+    color: var(--ink-40);
+  }
+
+  /* ---- Compact: small square thumb beside the text --------------------- */
+  .card2--compact {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    align-items: stretch;
+    border-radius: var(--radius);
+  }
+  .card2--compact .card2__media :global(.media) {
+    border-radius: 0;
+    height: 100%;
+  }
+  .card2--compact .card2__body {
+    padding: var(--space-3);
+    gap: var(--space-1);
+  }
+  .card2--compact .card2__title {
+    font-size: var(--step-0);
+  }
+  @media (min-width: 30rem) {
+    .card2--compact {
+      grid-template-columns: 7rem 1fr;
+    }
+    .card2--compact .card2__title {
+      font-size: var(--step-1);
+    }
+  }
+</style>

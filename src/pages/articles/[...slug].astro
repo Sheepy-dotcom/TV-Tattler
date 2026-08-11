@@ -1,11 +1,13 @@
 ---
 import { getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ListingRow from '../../components/ListingRow.astro';
+import StoryCard from '../../components/StoryCard.astro';
 import {
   getArticles,
   getShowAccentMap,
+  getShowLookup,
   accentForArticle,
+  posterForArticle,
   readNext,
 } from '../../lib/relations';
 import { formatDate, isoDate, kindLabel, sectionLabel } from '../../lib/format';
@@ -33,7 +35,8 @@ const accentMap = await getShowAccentMap();
 const accent = accentForArticle(article, accentMap);
 
 // "Read next", ranked by shared entities.
-const next = await readNext(article, 4);
+const next = await readNext(article, 3);
+const lookup = await getShowLookup();
 
 // The spoiler band is named for the show(s) the article concerns.
 const spoilerFor =
@@ -151,10 +154,11 @@ const spoilerFor =
       next.length > 0 && (
         <section class="read-next" aria-label="Read next">
           <h2 class="read-next__heading">Read next</h2>
-          <div class="stack read-next__list">
-            {next.map(({ article: a }) => (
-              <ListingRow article={a} accent={accentForArticle(a, accentMap)} />
-            ))}
+          <div class="read-next__grid">
+            {next.map(({ article: a }) => {
+              const p = posterForArticle(a, lookup);
+              return <StoryCard article={a} accent={p.accent} showTitle={p.showTitle} />;
+            })}
           </div>
         </section>
       )
@@ -282,8 +286,18 @@ const spoilerFor =
   .read-next__heading {
     font-size: var(--step-2);
     margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 3px solid var(--accent, var(--live));
+    display: inline-block;
   }
-  .read-next__list > * + * {
-    margin-top: var(--space-3);
+  .read-next__grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 34rem) {
+    .read-next__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>

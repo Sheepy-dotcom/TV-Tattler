@@ -3,7 +3,7 @@
 // "cast changes" and "spoilers" get their own page without becoming rival
 // sections that compete in search. (An addition to the core routes list.)
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ArticleStack from '../../components/ArticleStack.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
 import { KINDS } from '../../content.config';
 import { articlesOfKind } from '../../lib/relations';
 import { kindLabel } from '../../lib/format';
@@ -33,8 +33,10 @@ const blurb: Record<string, string> = {
     <p class="kind-head__blurb">{blurb[kind]}</p>
   </header>
 
-  <ArticleStack
+  <ArticleGrid
     articles={articles}
+    withHero
+    columns={3}
     emptyMessage={`No ${label.toLowerCase()} articles yet. Set kind: ${kind} in an article's frontmatter to list it here.`}
   />
 </BaseLayout>

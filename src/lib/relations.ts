@@ -320,6 +320,31 @@ export async function getShowAccentMap(): Promise<Map<string, string>> {
   return new Map(shows.map((s) => [s.id, s.data.accent]));
 }
 
+/** What a card needs to draw its accent poster: the show's colour and title. */
+export interface Poster {
+  accent?: string;
+  showTitle?: string;
+}
+
+/** Map of show id → { accent, title }, for building card posters. */
+export async function getShowLookup(): Promise<Map<string, { accent: string; title: string }>> {
+  const shows = await getCollection('shows');
+  return new Map(shows.map((s) => [s.id, { accent: s.data.accent, title: s.data.title }]));
+}
+
+/**
+ * The poster an article's card should wear — its first referenced show's colour
+ * and title. Articles with no show get an empty poster (drawn in neutral ink).
+ */
+export function posterForArticle(
+  article: Article,
+  lookup: Map<string, { accent: string; title: string }>,
+): Poster {
+  const first = article.data.shows[0];
+  const show = first ? lookup.get(first.id) : undefined;
+  return { accent: show?.accent, showTitle: show?.title };
+}
+
 /**
  * The accent an article should wear: the accent of its first referenced show.
  * Articles with no show (e.g. a celebrity profile) get no accent, and the row
