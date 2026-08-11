@@ -99,6 +99,22 @@ const articles = defineCollection({
     // photography exists, and real images drop straight in later.
     image: z.string().optional(),
     imageAlt: z.string().optional(),
+    // Required credit line for a press/licensed image, e.g. "© BBC". Only use
+    // images you are licensed for (press images are editorial-use, credited,
+    // unaltered) — this renders the mandatory attribution.
+    imageCredit: z.string().optional(),
+    // Official sources this article draws facts from — e.g. a BBC Media Centre
+    // or ITV Press Centre release. We cite and link them; we never republish
+    // their text. Facts are extracted; the prose here is our own.
+    sources: z
+      .array(
+        z.object({
+          title: z.string(),
+          url: z.string().url(),
+          publisher: z.string().optional(), // e.g. "BBC Media Centre"
+        }),
+      )
+      .default([]),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     author: z.string(),

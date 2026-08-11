@@ -19,6 +19,10 @@ tags:
 spoiler: false
 lead: false
 draft: false
+sources:
+  - title: Coronation Street press releases
+    url: https://www.itv.com/presscentre
+    publisher: ITV Press Centre
 ---
 
 When Coronation Street opened its first episode on 9 December 1960, a young

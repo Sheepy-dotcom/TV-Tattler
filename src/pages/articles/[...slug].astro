@@ -78,6 +78,15 @@ const spoilerFor =
     </header>
 
     {
+      data.image && (
+        <figure class="article__figure">
+          <img src={data.image} alt={data.imageAlt ?? ''} />
+          {data.imageCredit && <figcaption class="mono">{data.imageCredit}</figcaption>}
+        </figure>
+      )
+    }
+
+    {
       data.spoiler && (
         <aside class="spoiler-band" role="note">
           <span aria-hidden="true">⚠</span>
@@ -153,6 +162,25 @@ const spoilerFor =
     }
 
     {
+      data.sources.length > 0 && (
+        <section class="sources" aria-labelledby="sources-heading">
+          <h2 id="sources-heading" class="sources__heading mono">Sources</h2>
+          <ul class="sources__list">
+            {data.sources.map((s) => (
+              <li>
+                <a href={s.url} rel="external nofollow">{s.title}</a>
+                {s.publisher && <span class="sources__pub mono"> · {s.publisher}</span>}
+              </li>
+            ))}
+          </ul>
+          <p class="sources__note mono">
+            Facts drawn from the official sources above and written up in our own words.
+          </p>
+        </section>
+      )
+    }
+
+    {
       next.length > 0 && (
         <section class="read-next" aria-label="Read next">
           <h2 class="read-next__heading">Read next</h2>
@@ -215,6 +243,20 @@ const spoilerFor =
 
   .spoiler-band {
     margin-bottom: var(--space-5);
+  }
+
+  /* Hero image with a mandatory credit line for licensed/press images. */
+  .article__figure {
+    margin: 0 0 var(--space-5);
+  }
+  .article__figure img {
+    width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .article__figure figcaption {
+    color: var(--ink-40);
+    margin-top: var(--space-2);
   }
 
   /* Body copy — serif, generous measure. */
@@ -283,6 +325,37 @@ const spoilerFor =
     flex-wrap: wrap;
     gap: var(--space-3);
     color: var(--ink-40);
+  }
+
+  /* ---- Sources ---------------------------------------------------------- */
+  .sources {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+  .sources__heading {
+    color: var(--ink-60);
+    margin-bottom: var(--space-3);
+  }
+  .sources__list {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .sources__list a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration-color: var(--accent, var(--line-strong));
+    text-decoration-thickness: 2px;
+  }
+  .sources__pub {
+    color: var(--ink-40);
+  }
+  .sources__note {
+    color: var(--ink-40);
+    margin: 0;
   }
 
   /* ---- Read next -------------------------------------------------------- */

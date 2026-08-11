@@ -20,6 +20,12 @@ tags:
 spoiler: true
 lead: true
 draft: false
+# Cite the official source you drew facts from. Deep-link the specific press
+# release where possible; the media-centre landing page is a placeholder.
+sources:
+  - title: EastEnders press releases
+    url: https://www.bbc.co.uk/mediacentre
+    publisher: BBC Media Centre
 ---
 
 Few EastEnders characters have had a life quite like Cindy Beale's. She arrived in
