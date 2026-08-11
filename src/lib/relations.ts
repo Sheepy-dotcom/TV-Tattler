@@ -229,6 +229,15 @@ export async function articlesOfKind(kind: Article['data']['kind']): Promise<Art
   return articles.filter((a) => a.data.kind === kind);
 }
 
+/**
+ * The spoilers hub: everything spoilery in one place — articles of kind
+ * `spoiler` plus any article flagged `spoiler: true`. Newest first.
+ */
+export async function articlesForSpoilers(): Promise<Article[]> {
+  const articles = await getArticles();
+  return articles.filter((a) => a.data.spoiler || a.data.kind === 'spoiler');
+}
+
 // ---------------------------------------------------------------------------
 // Portrayal timeline — the signature element.
 //

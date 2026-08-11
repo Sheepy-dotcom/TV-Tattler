@@ -10,9 +10,11 @@
    body, with mono doing continuity-slate duty on dates, years and episode data.
    ========================================================================== */
 
-/* Self-hosted fonts (no external requests — good for Cloudflare + offline). */
-@import '@fontsource-variable/bricolage-grotesque';
-@import '@fontsource-variable/source-serif-4';
+/* Self-hosted fonts (no external requests — good for Cloudflare + offline).
+   Inter for body clarity, Space Grotesk for display character, DM Mono for the
+   continuity-slate metadata. */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
 @import '@fontsource/dm-mono/400.css';
 @import '@fontsource/dm-mono/500.css';
 
@@ -25,11 +27,12 @@
   --spoiler: #ffd166;    /* amber — spoiler warnings                        */
 
   /* Ink at reduced strength, for muted metadata and borders. Kept as solid
-     colours (not opacity) so text on white stays crisp. */
-  --ink-80: #35304a;
-  --ink-60: #635d78;
-  --ink-40: #948fa6;
-  --ink-20: #d9d5e2;
+     colours (not opacity) so text on white stays crisp. Darkened for stronger
+     contrast / legibility. */
+  --ink-80: #2e2942;
+  --ink-60: #524c68;
+  --ink-40: #6a6480;
+  --ink-20: #cfcadb;
 
   /* Soft lines — a lilac tint, never hairline grey. */
   --line: #e4dfec;
@@ -40,17 +43,18 @@
   --spoiler-edge: #e8b93e;
 
   /* --- Type ------------------------------------------------------------- */
-  --font-display: 'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'Space Grotesk Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-  /* Fluid type scale (mobile-first: the min is the phone size). */
-  --step--1: clamp(0.79rem, 0.77rem + 0.1vw, 0.85rem);
-  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
-  --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
-  --step-2: clamp(1.45rem, 1.3rem + 0.75vw, 1.9rem);
-  --step-3: clamp(1.75rem, 1.5rem + 1.25vw, 2.55rem);
-  --step-4: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+  /* Fluid type scale (mobile-first: the min is the phone size). Bumped a little
+     for readability. */
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.88rem);
+  --step-0: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.32rem + 0.8vw, 2rem);
+  --step-3: clamp(1.8rem, 1.5rem + 1.35vw, 2.7rem);
+  --step-4: clamp(2.15rem, 1.7rem + 2.1vw, 3.5rem);
 
   /* --- Spacing (a soft 4px-ish scale) ----------------------------------- */
   --space-1: 0.25rem;
@@ -115,10 +119,11 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--step-0);
-  line-height: 1.6;
+  line-height: 1.65;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Display face for headings, tightened. */
@@ -127,9 +132,9 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   margin: 0 0 var(--space-3);
   text-wrap: balance;
 }

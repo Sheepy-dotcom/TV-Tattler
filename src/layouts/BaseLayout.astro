@@ -22,9 +22,10 @@ function isActive(href: string): boolean {
 }
 
 const primaryNav = [
-  { href: '/', label: 'Home' },
-  ...SECTIONS.map((s) => ({ href: `/section/${s}/`, label: sectionLabel(s) })),
-  { href: '/shows/', label: 'Shows' },
+  { href: '/', label: 'Home', accent: false },
+  ...SECTIONS.map((s) => ({ href: `/section/${s}/`, label: sectionLabel(s), accent: false })),
+  { href: '/shows/', label: 'Shows', accent: false },
+  { href: '/kind/spoiler/', label: 'Spoilers', accent: true },
 ];
 ---
 
@@ -85,7 +86,12 @@ const primaryNav = [
             {
               primaryNav.map((item) => (
                 <li>
-                  <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                  <a
+                    href={item.href}
+                    class:list={{ 'nav-spoiler': item.accent }}
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                  >
+                    {item.accent && <span class="nav-spoiler__dot" aria-hidden="true">⚠</span>}
                     {item.label}
                   </a>
                 </li>
@@ -297,21 +303,38 @@ const primaryNav = [
         gap: var(--space-1);
       }
       .mainnav a {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
         white-space: nowrap;
         font-family: var(--font-display);
         font-weight: 600;
         font-size: var(--step-0);
         color: var(--paper);
         text-decoration: none;
-        padding: var(--space-3) var(--space-3);
+        padding: var(--space-3) var(--space-4);
         border-bottom: 3px solid transparent;
       }
       .mainnav a:hover {
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.08);
       }
       .mainnav a[aria-current='page'] {
         border-bottom-color: var(--live);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      /* The Spoilers link stands out in amber. */
+      .mainnav a.nav-spoiler {
+        color: var(--spoiler);
+        font-weight: 700;
+      }
+      .mainnav a.nav-spoiler:hover {
+        background: color-mix(in srgb, var(--spoiler) 22%, transparent);
+      }
+      .mainnav a.nav-spoiler[aria-current='page'] {
+        border-bottom-color: var(--spoiler);
+      }
+      .nav-spoiler__dot {
+        font-size: 0.9em;
       }
 
       /* ---- Main ---------------------------------------------------------- */
