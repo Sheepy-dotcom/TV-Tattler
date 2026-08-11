@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="EastEnders cover art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Emmerdale cover art">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#a8355a"/>
-      <stop offset="0.55" stop-color="#7a1f3d"/>
-      <stop offset="1" stop-color="#40101f"/>
+      <stop offset="0" stop-color="#51cf66"/>
+      <stop offset="0.55" stop-color="#2f9e44"/>
+      <stop offset="1" stop-color="#14622a"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#g)"/>
@@ -15,5 +15,5 @@
     <circle r="86" fill="#ffffff" fill-opacity="0.16"/>
     <path d="M-26 -40 L44 0 L-26 40 Z" fill="#ffffff" fill-opacity="0.9"/>
   </g>
-  <text x="80" y="560" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="150" font-weight="700" fill="#ffffff" fill-opacity="0.95" letter-spacing="-4">EASTENDERS</text>
+  <text x="80" y="560" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="150" font-weight="700" fill="#ffffff" fill-opacity="0.95" letter-spacing="-4">EMMERDALE</text>
 </svg>

@@ -4,33 +4,30 @@ import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { SECTIONS } from '../../content.config';
 import { articlesInSection } from '../../lib/relations';
-import { sectionLabel, kindLabel } from '../../lib/format';
+import { sectionMeta, kindLabel } from '../../lib/format';
 
 export async function getStaticPaths() {
   return SECTIONS.map((section) => ({ params: { section } }));
 }
 
 const { section } = Astro.params;
-const label = sectionLabel(section);
+const meta = sectionMeta(section);
+const label = meta.label;
 const articles = await articlesInSection(section as (typeof SECTIONS)[number]);
 
 // Kinds actually present in this section, so the filter chips never lead
 // to an empty page.
 const kindsPresent = [...new Set(articles.map((a) => a.data.kind))].sort();
-
-const blurb: Record<string, string> = {
-  soaps: 'Continuing dramas — the storylines, the cast, and who plays whom.',
-  'tv-and-film': 'Series, one-offs and films, with the people behind them.',
-  celebrities: 'The presenters and performers, and the roles they are known for.',
-  news: 'What is changing across UK telly.',
-};
 ---
 
-<BaseLayout title={label} description={blurb[section] ?? `${label} on TV Tattler.`}>
-  <header class="section-head">
+<BaseLayout title={label} description={meta.blurb || `${label} on TV Tattler.`}>
+  <header class="section-head" style={`--cat: ${meta.color};`}>
     <p class="mono section-head__kicker">Section</p>
-    <h1>{label}</h1>
-    <p class="section-head__blurb">{blurb[section]}</p>
+    <h1 class="section-head__title">
+      <span class="section-head__emoji" aria-hidden="true">{meta.emoji}</span>
+      {label}
+    </h1>
+    <p class="section-head__blurb">{meta.blurb}</p>
 
     {
       kindsPresent.length > 1 && (
@@ -61,12 +58,24 @@ const blurb: Record<string, string> = {
 <style>
   .section-head {
     margin-bottom: var(--space-6);
-    padding-bottom: var(--space-4);
-    border-bottom: 4px solid var(--live);
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--cat) 10%, white);
+    border: 1px solid color-mix(in srgb, var(--cat) 30%, white);
+    border-left: 8px solid var(--cat);
   }
   .section-head__kicker {
-    color: var(--ink-40);
+    color: color-mix(in srgb, var(--cat) 65%, var(--ink));
     margin-bottom: var(--space-2);
+  }
+  .section-head__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: color-mix(in srgb, var(--cat) 45%, var(--ink));
+  }
+  .section-head__emoji {
+    font-size: 0.9em;
   }
   .section-head__blurb {
     font-size: var(--step-1);

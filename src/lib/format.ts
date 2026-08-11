@@ -41,6 +41,48 @@ export function sectionLabel(section: string): string {
   }
 }
 
+/** Fun identity for each section: a label, an emoji and a colour, for
+    colourful wayfinding across the nav, section headers and category buttons. */
+export interface SectionMeta {
+  label: string;
+  emoji: string;
+  color: string;
+  blurb: string;
+}
+
+const SECTION_META: Record<string, SectionMeta> = {
+  soaps: {
+    label: 'Soaps',
+    emoji: '📺',
+    color: '#d6336c',
+    blurb: 'Continuing dramas — the storylines, the cast, and who plays whom.',
+  },
+  'tv-and-film': {
+    label: 'TV & Film',
+    emoji: '🎬',
+    color: '#6741d9',
+    blurb: 'Series, one-offs and films, with the people behind them.',
+  },
+  celebrities: {
+    label: 'Celebrities',
+    emoji: '⭐',
+    color: '#e8590c',
+    blurb: 'The presenters and performers, and the roles they are known for.',
+  },
+  news: {
+    label: 'News',
+    emoji: '📰',
+    color: '#1c7ed6',
+    blurb: 'What is changing across UK telly.',
+  },
+};
+
+export function sectionMeta(section: string): SectionMeta {
+  return (
+    SECTION_META[section] ?? { label: section, emoji: '📺', color: '#17122a', blurb: '' }
+  );
+}
+
 /** Human label for a kind slug. */
 export function kindLabel(kind: string): string {
   switch (kind) {

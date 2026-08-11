@@ -5,6 +5,8 @@ import StoryCard from '../components/StoryCard.astro';
 import ArticleGrid from '../components/ArticleGrid.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { getArticles, getShowLookup, posterForArticle } from '../lib/relations';
+import { SECTIONS } from '../content.config';
+import { sectionMeta } from '../lib/format';
 
 const articles = await getArticles();
 const lookup = await getShowLookup();
@@ -60,6 +62,20 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
             </div>
           )}
         </section>
+
+        <nav class="cats" aria-label="Browse by section">
+          {
+            SECTIONS.map((s) => {
+              const m = sectionMeta(s);
+              return (
+                <a class="cat" href={`/section/${s}/`} style={`--cat: ${m.color};`}>
+                  <span class="cat__emoji" aria-hidden="true">{m.emoji}</span>
+                  <span class="cat__label">{m.label}</span>
+                </a>
+              );
+            })
+          }
+        </nav>
 
         <div class="layout">
           <div class="layout__main">
@@ -119,5 +135,43 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
       gap: var(--space-7);
       align-items: start;
     }
+  }
+
+  /* ---- Fun, colourful category buttons --------------------------------- */
+  .cats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-7);
+  }
+  @media (min-width: 44rem) {
+    .cats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .cat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--cat) 12%, white);
+    border: 2px solid color-mix(in srgb, var(--cat) 35%, white);
+    text-decoration: none;
+    color: color-mix(in srgb, var(--cat) 82%, var(--ink));
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  }
+  .cat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    background: color-mix(in srgb, var(--cat) 18%, white);
+    border-color: var(--cat);
+  }
+  .cat__emoji {
+    font-size: 1.6em;
+    line-height: 1;
   }
 </style>
