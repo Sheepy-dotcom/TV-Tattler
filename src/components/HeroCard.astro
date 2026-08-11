@@ -1,5 +1,6 @@
 ---
 import type { Article } from '../lib/relations';
+import CardMedia from './CardMedia.astro';
 import { formatDate, isoDate, kindLabel } from '../lib/format';
 
 interface Props {
@@ -11,23 +12,22 @@ interface Props {
 const { article, accent, showTitle } = Astro.props;
 const { data } = article;
 const href = `/articles/${article.id}/`;
-const ink = '#17122A';
-const base = accent ?? ink;
 ---
 
-<article class="hero" style={`--accent: ${base};`}>
-  <div class="hero__bg" aria-hidden="true">
-    {
-      data.image ? (
-        <img class="hero__img" src={data.image} alt={data.imageAlt ?? ''} />
-      ) : (
-        showTitle && <span class="hero__watermark">{showTitle}</span>
-      )
-    }
-  </div>
-  <div class="hero__scrim" aria-hidden="true"></div>
-
-  <div class="hero__content">
+<article class="hero" style={accent ? `--accent: ${accent};` : undefined}>
+  <a class="hero__media" href={href} tabindex="-1" aria-hidden="true">
+    <CardMedia
+      accent={accent}
+      showTitle={showTitle}
+      kind={data.kind}
+      image={data.image}
+      imageAlt={data.imageAlt}
+      ratio="16 / 9"
+      large
+    />
+    {data.image && data.imageCredit && <span class="hero__credit mono">{data.imageCredit}</span>}
+  </a>
+  <div class="hero__body">
     <div class="hero__meta">
       <span class="hero__kicker">{kindLabel(data.kind)}</span>
       {showTitle && <span class="hero__show">{showTitle}</span>}
@@ -45,83 +45,58 @@ const base = accent ?? ink;
 
 <style>
   .hero {
+    --accent: var(--ink);
     position: relative;
-    display: grid;
-    align-items: end;
-    min-height: clamp(22rem, 20rem + 22vw, 34rem);
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow);
-    isolation: isolate;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
   .hero:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
   }
-
-  /* Background: a rich duotone of the show accent (or a photo when present). */
-  .hero__bg {
+  /* Thick accent band down the left edge for brand continuity. */
+  .hero::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(120% 120% at 82% 12%, rgba(255, 255, 255, 0.22), transparent 55%),
-      linear-gradient(
-        150deg,
-        color-mix(in srgb, var(--accent) 88%, white) 0%,
-        var(--accent) 45%,
-        color-mix(in srgb, var(--accent) 58%, black) 100%
-      );
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: var(--space-4);
-  }
-  .hero__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  /* A faint show-name watermark, tucked top-right behind the scrim. */
-  .hero__watermark {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2.5rem, 1.5rem + 6vw, 5.5rem);
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    text-align: right;
-    color: rgba(255, 255, 255, 0.16);
-    max-width: 65%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--accent);
+    z-index: 3;
   }
 
-  /* Scrim: darkens the bottom so white text stays legible over any accent. */
-  .hero__scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(
-      to top,
-      rgba(11, 8, 22, 0.9) 0%,
-      rgba(11, 8, 22, 0.62) 32%,
-      rgba(11, 8, 22, 0.15) 62%,
-      transparent 82%
-    );
-  }
-
-  .hero__content {
+  /* Media sits on top; the headline lives below it on the card — never over
+     the image. */
+  .hero__media {
+    display: block;
     position: relative;
+  }
+  .hero__media :global(.media) {
+    border-radius: 0;
+  }
+  .hero__credit {
+    position: absolute;
+    right: var(--space-2);
+    bottom: var(--space-2);
     z-index: 2;
-    padding: var(--space-5);
+    background: rgba(11, 8, 22, 0.7);
     color: #fff;
+    padding: 0.25em 0.5em;
+    border-radius: var(--radius-sm);
+    font-size: var(--step--1);
+  }
+
+  .hero__body {
+    padding: var(--space-5);
   }
   @media (min-width: 48rem) {
-    .hero__content {
+    .hero__body {
       padding: var(--space-6);
-      max-width: 90%;
     }
   }
 
@@ -129,7 +104,7 @@ const base = accent ?? ink;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-2) var(--space-3);
     margin-bottom: var(--space-3);
   }
   .hero__kicker {
@@ -140,15 +115,15 @@ const base = accent ?? ink;
     font-weight: 500;
     padding: 0.35em 0.6em;
     border-radius: var(--radius-sm);
-    background: #fff;
-    color: var(--ink);
+    background: var(--accent);
+    color: #fff;
   }
   .hero__show {
     font-family: var(--font-mono);
     font-size: var(--step--1);
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: rgba(255, 255, 255, 0.85);
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
   }
   .hero__flag {
     font-family: var(--font-mono);
@@ -162,44 +137,36 @@ const base = accent ?? ink;
   }
 
   .hero__title {
-    font-family: var(--font-display);
-    font-weight: 800;
     font-size: var(--step-4);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    line-height: 1.05;
     margin: 0 0 var(--space-3);
     text-wrap: balance;
-    color: #fff;
   }
   .hero__title a {
-    color: inherit;
+    color: var(--ink);
     text-decoration: none;
   }
-  /* Stretched link — the whole hero is clickable, headline stays the target. */
+  /* Stretched link — whole card clickable, headline stays the target. */
   .hero__title a::after {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 1;
   }
-  .hero:hover .hero__title a {
+  .hero__title a:hover {
     text-decoration: underline;
+    text-decoration-color: var(--accent);
     text-decoration-thickness: 3px;
     text-underline-offset: 0.1em;
   }
 
   .hero__standfirst {
     font-size: var(--step-1);
-    color: rgba(255, 255, 255, 0.92);
-    max-width: 46ch;
+    color: var(--ink-80);
+    max-width: 52ch;
     margin: 0 0 var(--space-3);
   }
   .hero__date {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  :focus-visible .hero__title a,
-  .hero__title a:focus-visible {
-    outline: 3px solid #fff;
+    color: var(--ink-40);
   }
 </style>

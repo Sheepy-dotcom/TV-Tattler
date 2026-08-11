@@ -19,6 +19,9 @@ tags:
 spoiler: false
 lead: false
 draft: false
+image: /images/coronation-street-cover.svg
+imageAlt: Coronation Street cover art
+imageCredit: 'Illustration: TV Tattler'
 sources:
   - title: Coronation Street press releases
     url: https://www.itv.com/presscentre

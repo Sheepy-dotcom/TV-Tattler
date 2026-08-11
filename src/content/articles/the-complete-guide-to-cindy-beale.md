@@ -20,6 +20,11 @@ tags:
 spoiler: true
 lead: true
 draft: false
+# Placeholder cover art (our own illustration). Swap for a licensed photo — the
+# card/hero/article image and its credit line all come from these two fields.
+image: /images/eastenders-cover.svg
+imageAlt: EastEnders cover art
+imageCredit: 'Illustration: TV Tattler'
 # Cite the official source you drew facts from. Deep-link the specific press
 # release where possible; the media-centre landing page is a placeholder.
 sources:
