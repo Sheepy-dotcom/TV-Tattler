@@ -5,6 +5,7 @@ import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
 import { formatDate, yearRange } from '../../lib/format';
+import { factsForPerson, wikidataUrl } from '../../lib/wikidata';
 
 export async function getStaticPaths() {
   const people = await getCollection('people');
@@ -22,6 +23,14 @@ const [roles, articles, { Content }] = await Promise.all([
   articlesForPerson(person.id),
   render(person),
 ]);
+
+// Build-time enrichment: Wikidata (CC0) fills the birth date if the frontmatter
+// omits it, and supplies external reference links. Falls back cleanly when the
+// cache has no entry for this person.
+const facts = factsForPerson(person.id);
+const born = data.born ?? (facts?.dateOfBirth ? new Date(facts.dateOfBirth) : undefined);
+const wdUrl = wikidataUrl(facts?.qid);
+const hasLinks = Boolean(facts?.wikipedia || wdUrl);
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
@@ -32,9 +41,9 @@ const [roles, articles, { Content }] = await Promise.all([
       <h1>{data.name}</h1>
       <p class="person__known">{data.knownFor}</p>
       {
-        data.born && (
+        born && (
           <p class="person__born mono">
-            Born <time datetime={data.born.toISOString().slice(0, 10)}>{formatDate(data.born)}</time>
+            Born <time datetime={born.toISOString().slice(0, 10)}>{formatDate(born)}</time>
           </p>
         )
       }
@@ -86,6 +95,23 @@ const [roles, articles, { Content }] = await Promise.all([
         emptyMessage={`No articles reference ${data.name} yet. Add ${person.id} to an article's people: list.`}
       />
     </section>
+
+    {
+      hasLinks && (
+        <section class="person__section refbox" aria-labelledby="links-heading">
+          <h2 id="links-heading" class="person__h2">External links</h2>
+          <ul class="reflist">
+            {facts?.wikipedia && (
+              <li><a href={facts.wikipedia} rel="external">Wikipedia</a></li>
+            )}
+            {wdUrl && <li><a href={wdUrl} rel="external">Wikidata</a></li>}
+          </ul>
+          <p class="refcredit mono">
+            Selected facts checked against Wikidata (CC0). Links open external sites.
+          </p>
+        </section>
+      )
+    }
     </article>
     <Sidebar />
   </div>
@@ -139,6 +165,35 @@ const [roles, articles, { Content }] = await Promise.all([
   .person__note {
     color: var(--ink-40);
     margin-bottom: var(--space-4);
+  }
+
+  /* External reference links (from the Wikidata enrichment). */
+  .reflist {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .reflist a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .reflist a:hover {
+    border-color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+  .refcredit {
+    color: var(--ink-40);
+    margin: 0;
   }
 
   /* ---- Roles (derived filmography) ------------------------------------- */

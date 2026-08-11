@@ -10,6 +10,7 @@ import {
   castChangesForShow,
 } from '../../lib/relations';
 import { yearRange, statusLabel } from '../../lib/format';
+import { factsForShow, wikidataUrl } from '../../lib/wikidata';
 
 export async function getStaticPaths() {
   const shows = await getShows();
@@ -34,6 +35,12 @@ const statusOrder = ['current', 'occasional', 'departed', 'deceased'];
 const sortedCharacters = [...characters].sort(
   (a, b) => statusOrder.indexOf(a.data.status) - statusOrder.indexOf(b.data.status),
 );
+
+// Build-time enrichment (Wikidata, CC0): external links + a live episode tally
+// the scheduled refresh keeps current.
+const facts = factsForShow(show.id);
+const wdUrl = wikidataUrl(facts?.qid);
+const hasLinks = Boolean(facts?.wikipedia || wdUrl);
 ---
 
 <BaseLayout title={data.title} description={data.summary} accent={accent}>
@@ -50,6 +57,12 @@ const sortedCharacters = [...characters].sort(
           <>
             <span aria-hidden="true"> · </span>
             {data.airs}
+          </>
+        )}
+        {facts?.episodes && (
+          <>
+            <span aria-hidden="true"> · </span>
+            {facts.episodes.toLocaleString('en-GB')} episodes
           </>
         )}
       </p>
@@ -107,6 +120,23 @@ const sortedCharacters = [...characters].sort(
         )
       }
     </section>
+
+    {
+      hasLinks && (
+        <section class="show__section" aria-labelledby="links-heading">
+          <h2 id="links-heading" class="show__h2">External links</h2>
+          <ul class="reflist">
+            {facts?.wikipedia && (
+              <li><a href={facts.wikipedia} rel="external">Wikipedia</a></li>
+            )}
+            {wdUrl && <li><a href={wdUrl} rel="external">Wikidata</a></li>}
+          </ul>
+          <p class="refcredit mono">
+            Episode tally and selected facts via Wikidata (CC0), refreshed at build.
+          </p>
+        </section>
+      )
+    }
     </article>
     <Sidebar />
   </div>
@@ -189,6 +219,34 @@ const sortedCharacters = [...characters].sort(
   }
   .cast__status.is-current {
     color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  .reflist {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .reflist a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .reflist a:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  .refcredit {
+    color: var(--ink-40);
+    margin: 0;
   }
 
   .muted {

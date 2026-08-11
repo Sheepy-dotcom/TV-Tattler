@@ -29,6 +29,14 @@ const hexColour = z
 // A sensible year range so a fat-fingered `1066` or `20255` is caught early.
 const year = z.number().int().min(1922).max(2100);
 
+// A Wikidata QID (e.g. Q1362) used to pin an entity to its Wikidata record, so
+// the build-time enrichment fetches facts for the right subject. Optional —
+// the enrichment can also resolve by name.
+const qid = z
+  .string()
+  .regex(/^Q\d+$/, 'wikidata must be a QID like Q1362')
+  .optional();
+
 const shows = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/shows' }),
   schema: z.object({
@@ -40,6 +48,7 @@ const shows = defineCollection({
     endYear: year.optional(),
     airs: z.string().optional(), // e.g. "Mon, Wed, Fri" — human-readable schedule
     summary: z.string(),
+    wikidata: qid,
   }),
 });
 
@@ -50,6 +59,7 @@ const people = defineCollection({
     born: z.coerce.date().optional(),
     knownFor: z.string(), // one-line hook, e.g. "Cindy Beale in EastEnders"
     summary: z.string(),
+    wikidata: qid,
   }),
 });
 
