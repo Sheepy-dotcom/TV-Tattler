@@ -6,6 +6,8 @@ knownFor: Cindy Beale in EastEnders and Stella Price in Coronation Street
 summary: >-
   English actress best known to soap audiences for two landlady-adjacent roles a
   world apart: Cindy Beale in EastEnders and Stella Price in Coronation Street.
+useWikidataImage: true
+
 ---
 
 Michelle Collins is one of the few performers to have held major roles in both of

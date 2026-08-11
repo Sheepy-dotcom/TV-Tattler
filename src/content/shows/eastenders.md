@@ -15,6 +15,7 @@ summary: >-
 image: /images/eastenders-cover.svg
 imageAlt: EastEnders cover art
 imageCredit: 'Illustration: TV Tattler'
+useWikidataImage: true
 ---
 
 EastEnders first aired on 19 February 1985 and is built around the residents of

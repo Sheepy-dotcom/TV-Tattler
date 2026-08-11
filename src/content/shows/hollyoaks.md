@@ -13,6 +13,7 @@ summary: >-
 image: /images/hollyoaks-cover.svg
 imageAlt: Hollyoaks cover art
 imageCredit: 'Illustration: TV Tattler'
+useWikidataImage: true
 ---
 
 Hollyoaks began on 23 October 1995 on Channel 4. Created by Phil Redmond — also

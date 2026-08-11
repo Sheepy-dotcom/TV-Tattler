@@ -6,6 +6,8 @@ knownFor: Phil Mitchell in EastEnders
 summary: >-
   English actor who has played Phil Mitchell in EastEnders since 1990 — one of the
   soap's central figures for over three decades.
+useWikidataImage: true
+
 ---
 
 Steve McFadden joined EastEnders in 1990 as Phil Mitchell and has anchored the

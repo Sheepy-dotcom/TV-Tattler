@@ -11,6 +11,7 @@ summary: >-
 image: /images/portrait-placeholder.svg
 imageAlt: Portrait placeholder for William Roache
 imageCredit: Placeholder
+useWikidataImage: true
 ---
 
 William Roache appeared in the very first episode of Coronation Street on

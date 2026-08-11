@@ -15,6 +15,7 @@ summary: >-
 image: /images/coronation-street-cover.svg
 imageAlt: Coronation Street cover art
 imageCredit: 'Illustration: TV Tattler'
+useWikidataImage: true
 ---
 
 Coronation Street began on 9 December 1960 and follows the residents of a terraced

@@ -14,6 +14,7 @@ summary: >-
 image: /images/emmerdale-cover.svg
 imageAlt: Emmerdale cover art
 imageCredit: 'Illustration: TV Tattler'
+useWikidataImage: true
 ---
 
 Emmerdale first aired on 16 October 1972 as "Emmerdale Farm", set among the farms

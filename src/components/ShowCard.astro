@@ -2,6 +2,7 @@
 import type { Show } from '../lib/relations';
 import { charactersForShow } from '../lib/relations';
 import { yearRange } from '../lib/format';
+import { factsForShow, resolveEntityImage } from '../lib/wikidata';
 
 interface Props {
   show: Show;
@@ -11,13 +12,24 @@ const { show } = Astro.props;
 const { data } = show;
 const count = (await charactersForShow(show.id)).length;
 const ended = Boolean(data.endYear);
+
+// Prefer a real (credited) Commons image when opted in; fall back to the
+// self-hosted illustration.
+const img = resolveEntityImage({
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.title,
+  facts: factsForShow(show.id),
+});
 ---
 
 <a class="showcard" href={`/shows/${show.id}/`} style={`--accent: ${data.accent};`}>
   <div class="showcard__media">
     {
-      data.image ? (
-        <img src={data.image} alt={data.imageAlt ?? data.title} loading="lazy" />
+      img ? (
+        <img src={img.src} alt={img.alt ?? data.title} loading="lazy" />
       ) : (
         <span class="showcard__poster">{data.title}</span>
       )

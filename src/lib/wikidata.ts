@@ -91,9 +91,9 @@ interface EntityImageInput {
 }
 
 export function resolveEntityImage(input: EntityImageInput): ResolvedImage | undefined {
-  if (input.image) {
-    return { src: input.image, alt: input.imageAlt ?? input.name, credit: input.imageCredit };
-  }
+  // When opted in, a real (credited) Commons image is preferred; a self-hosted
+  // `image` is the fallback until the enrichment has one (e.g. before the first
+  // refresh, or when Wikidata has no P18 for the entity).
   const suggestion = input.facts?.imageSuggestion;
   if (input.useWikidataImage && suggestion) {
     return {
@@ -102,6 +102,9 @@ export function resolveEntityImage(input: EntityImageInput): ResolvedImage | und
       credit: suggestion.credit,
       creditUrl: suggestion.descriptionUrl,
     };
+  }
+  if (input.image) {
+    return { src: input.image, alt: input.imageAlt ?? input.name, credit: input.imageCredit };
   }
   return undefined;
 }

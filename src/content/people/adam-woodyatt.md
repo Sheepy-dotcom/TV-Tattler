@@ -6,6 +6,8 @@ knownFor: Ian Beale in EastEnders
 summary: >-
   English actor who has played Ian Beale in EastEnders since the very first
   episode in 1985 — the only actor ever to take the role.
+useWikidataImage: true
+
 ---
 
 Adam Woodyatt joined EastEnders as a teenager for its launch in 1985 and has
