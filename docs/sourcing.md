@@ -93,7 +93,13 @@ shown until you opt in.
   amber review note with the credit.
 - To use it, set `useWikidataImage: true` in the person/show frontmatter — the
   page then shows the Commons image with the licence credit filled in.
-- A self-hosted `image:` always wins over the suggestion.
+- With `useWikidataImage: true`, the Commons image is **preferred** and the
+  self-hosted illustration becomes the fallback.
+- Name matching is disambiguated by entity type, exact name, acting occupation,
+  UK citizenship and a hint from `knownFor` (so the British "Michelle Collins"
+  is chosen over the American TV host). For total certainty, **pin the QID**
+  with `wikidata: Q…` — that skips name resolution entirely.
+- Always eyeball the first refresh: the rendered credit line names the source.
 - Commons licences are usually **CC BY-SA** (credit required, sometimes
   share-alike). The credit line covers attribution; check the licence link
   before relying on it, and prefer downloading + self-hosting for production.

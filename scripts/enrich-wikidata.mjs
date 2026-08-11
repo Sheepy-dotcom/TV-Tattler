@@ -32,6 +32,27 @@ const COMMONS = 'https://commons.wikimedia.org/w/api.php';
 const PERSON_TYPES = new Set(['Q5']); // human
 const SHOW_TYPES = new Set(['Q5398426', 'Q23739', 'Q15416']); // TV series, soap opera, TV programme
 
+// Occupations that mark an acting career, and UK-ish citizenships — used to
+// disambiguate common names (e.g. the British actress "Michelle Collins" from
+// the American TV host of the same name).
+const ACTOR_OCCUPATIONS = new Set([
+  'Q33999', // actor
+  'Q10800557', // film actor
+  'Q10798782', // television actor
+  'Q2405480', // voice actor
+  'Q2259451', // stage actor
+]);
+const UK_CITIZENSHIP = new Set([
+  'Q145', // United Kingdom
+  'Q21', // England
+  'Q22', // Scotland
+  'Q25', // Wales
+  'Q26', // Northern Ireland
+]);
+
+const tokens = (s) =>
+  (typeof s === 'string' ? s.toLowerCase().match(/[a-z]{4,}/g) : null) ?? [];
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getJson(url) {
@@ -137,22 +158,47 @@ async function commonsImageSuggestion(ent) {
   };
 }
 
-async function resolveQid(name, acceptTypes) {
+// Score a candidate: reject wrong-type entities (-1), otherwise reward an exact
+// name match, an acting occupation, UK citizenship, a description that echoes
+// the hint, and the presence of an English Wikipedia article.
+function scoreCandidate(ent, name, acceptTypes, opts) {
+  const types = claimIds(ent, 'P31');
+  if (!types.some((t) => acceptTypes.has(t))) return -1;
+  let s = 0;
+  const label = (ent.labels?.en?.value ?? '').toLowerCase();
+  if (label === name.toLowerCase()) s += 3;
+  if (opts.occupations) {
+    if (claimIds(ent, 'P106').some((o) => opts.occupations.has(o))) s += 3;
+    if (claimIds(ent, 'P27').some((c) => UK_CITIZENSHIP.has(c))) s += 2;
+  }
+  const desc = (ent.descriptions?.en?.value ?? '').toLowerCase();
+  if (opts.hint?.length && opts.hint.some((t) => desc.includes(t))) s += 2;
+  if (ent.sitelinks?.enwiki) s += 1;
+  return s;
+}
+
+/** Resolve a name to the best-matching entity by type + disambiguating signals. */
+async function resolveQid(name, acceptTypes, opts = {}) {
   const url = `${API}?action=wbsearchentities&search=${encodeURIComponent(
     name,
-  )}&language=en&type=item&limit=6&format=json`;
+  )}&language=en&type=item&limit=7&format=json`;
   const { search = [] } = await getJson(url);
+  let best;
+  let bestScore = -1;
   for (const cand of search) {
     await sleep(150);
     try {
       const ent = await entity(cand.id);
-      const types = claimIds(ent, 'P31');
-      if (types.some((t) => acceptTypes.has(t))) return { qid: cand.id, ent };
+      const s = scoreCandidate(ent, name, acceptTypes, opts);
+      if (s > bestScore) {
+        bestScore = s;
+        best = { qid: cand.id, ent };
+      }
     } catch {
       /* skip candidate */
     }
   }
-  return undefined;
+  return bestScore >= 0 ? best : undefined;
 }
 
 async function enrichPerson(fm) {
@@ -160,7 +206,11 @@ async function enrichPerson(fm) {
   let ent;
   if (qid) ent = await entity(qid);
   else {
-    const r = await resolveQid(fm.name, PERSON_TYPES);
+    // Disambiguate on acting occupation, UK citizenship and the knownFor hint.
+    const r = await resolveQid(fm.name, PERSON_TYPES, {
+      occupations: ACTOR_OCCUPATIONS,
+      hint: tokens(fm.knownFor),
+    });
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
