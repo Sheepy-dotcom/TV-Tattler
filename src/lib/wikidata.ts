@@ -12,11 +12,23 @@ import cache from '../data/wikidata.json';
 // entity and its Wikipedia article, because that is useful reference furniture.
 // ---------------------------------------------------------------------------
 
+/** A Commons image the enrichment found, with the credit already assembled.
+    A suggestion only — never used without an explicit opt-in. */
+export interface ImageSuggestion {
+  file: string;
+  thumbUrl: string;
+  descriptionUrl?: string;
+  credit: string; // "Author · CC BY-SA 4.0 · Wikimedia Commons"
+  licence?: string;
+  licenceUrl?: string;
+}
+
 export interface PersonFacts {
   source?: string;
   qid?: string | null;
   wikipedia?: string;
   dateOfBirth?: string; // ISO yyyy-mm-dd
+  imageSuggestion?: ImageSuggestion;
 }
 
 export interface ShowFacts {
@@ -25,6 +37,7 @@ export interface ShowFacts {
   wikipedia?: string;
   inception?: number;
   episodes?: number; // maintained by the live refresh; grows over time
+  imageSuggestion?: ImageSuggestion;
 }
 
 interface Cache {
@@ -51,4 +64,55 @@ export function wikidataUrl(qid?: string | null): string | undefined {
 /** When the enrichment cache was last refreshed (null until the first run). */
 export function enrichmentDate(): string | null {
   return data.generatedAt;
+}
+
+// ---------------------------------------------------------------------------
+// Image resolution — the approval gate.
+//
+// A self-hosted `image` always wins. Otherwise the Commons suggestion is used
+// ONLY when the entity opted in with `useWikidataImage: true`. Nothing licensed
+// is ever shown without that opt-in, and the credit is carried through.
+// ---------------------------------------------------------------------------
+
+export interface ResolvedImage {
+  src: string;
+  alt?: string;
+  credit?: string;
+  creditUrl?: string;
+}
+
+interface EntityImageInput {
+  image?: string;
+  imageAlt?: string;
+  imageCredit?: string;
+  useWikidataImage?: boolean;
+  name?: string;
+  facts?: PersonFacts | ShowFacts;
+}
+
+export function resolveEntityImage(input: EntityImageInput): ResolvedImage | undefined {
+  if (input.image) {
+    return { src: input.image, alt: input.imageAlt ?? input.name, credit: input.imageCredit };
+  }
+  const suggestion = input.facts?.imageSuggestion;
+  if (input.useWikidataImage && suggestion) {
+    return {
+      src: suggestion.thumbUrl,
+      alt: input.imageAlt ?? input.name,
+      credit: suggestion.credit,
+      creditUrl: suggestion.descriptionUrl,
+    };
+  }
+  return undefined;
+}
+
+/**
+ * A Commons image suggestion that exists but hasn't been approved yet — for a
+ * dev-only review hint. Returns undefined in production, or when there's nothing
+ * to suggest, or when an image is already in use.
+ */
+export function pendingImageSuggestion(input: EntityImageInput): ImageSuggestion | undefined {
+  if (!import.meta.env.DEV) return undefined;
+  if (input.image || input.useWikidataImage) return undefined;
+  return input.facts?.imageSuggestion;
 }

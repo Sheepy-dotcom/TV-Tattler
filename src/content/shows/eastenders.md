@@ -12,6 +12,9 @@ airs: 'Mon–Thu'
 summary: >-
   The BBC's flagship continuing drama, set around Albert Square in the fictional
   East London borough of Walford. On air since February 1985.
+image: /images/eastenders-cover.svg
+imageAlt: EastEnders cover art
+imageCredit: 'Illustration: TV Tattler'
 ---
 
 EastEnders first aired on 19 February 1985 and is built around the residents of

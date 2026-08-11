@@ -82,6 +82,22 @@ npm run new -- \
 Then open the created file, write the standfirst and body, set `draft: false`,
 and commit.
 
+## Image suggestions from Wikidata → Commons
+
+The enrichment also looks up each person's/show's image (Wikidata property P18,
+which points to **Wikimedia Commons**) and records the file **with its author and
+licence** — a ready-made credit line. This is a *suggestion only*: nothing is
+shown until you opt in.
+
+- During `astro dev`, an entity with a suggestion but no image shows a small
+  amber review note with the credit.
+- To use it, set `useWikidataImage: true` in the person/show frontmatter — the
+  page then shows the Commons image with the licence credit filled in.
+- A self-hosted `image:` always wins over the suggestion.
+- Commons licences are usually **CC BY-SA** (credit required, sometimes
+  share-alike). The credit line covers attribution; check the licence link
+  before relying on it, and prefer downloading + self-hosting for production.
+
 ## Reference facts (dates, episode counts)
 
 These come from **Wikidata (CC0)** via the build-time enrichment

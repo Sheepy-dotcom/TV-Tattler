@@ -10,7 +10,12 @@ import {
   castChangesForShow,
 } from '../../lib/relations';
 import { yearRange, statusLabel } from '../../lib/format';
-import { factsForShow, wikidataUrl } from '../../lib/wikidata';
+import {
+  factsForShow,
+  wikidataUrl,
+  resolveEntityImage,
+  pendingImageSuggestion,
+} from '../../lib/wikidata';
 
 export async function getStaticPaths() {
   const shows = await getShows();
@@ -41,11 +46,43 @@ const sortedCharacters = [...characters].sort(
 const facts = factsForShow(show.id);
 const wdUrl = wikidataUrl(facts?.qid);
 const hasLinks = Boolean(facts?.wikipedia || wdUrl);
+
+const imageInput = {
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.title,
+  facts,
+};
+const cover = resolveEntityImage(imageInput);
+const suggestion = pendingImageSuggestion(imageInput);
 ---
 
 <BaseLayout title={data.title} description={data.summary} accent={accent}>
   <div class="layout">
     <article class="show layout__main">
+    {
+      suggestion && (
+        <aside class="img-suggestion">
+          <strong>Image suggestion (Wikidata → Commons):</strong> {suggestion.credit}. Set
+          <code>useWikidataImage: true</code> to use it (credit added automatically), or drop
+          your own into <code>image:</code>. Dev-only note.
+        </aside>
+      )
+    }
+    {
+      cover && (
+        <figure class="show__cover">
+          <img src={cover.src} alt={cover.alt ?? data.title} />
+          {cover.credit && (
+            <figcaption class="mono">
+              {cover.creditUrl ? <a href={cover.creditUrl} rel="external">{cover.credit}</a> : cover.credit}
+            </figcaption>
+          )}
+        </figure>
+      )
+    }
     <header class="show__header">
       <p class="mono show__kicker">Show</p>
       <h1>{data.title}</h1>
@@ -143,6 +180,42 @@ const hasLinks = Boolean(facts?.wikipedia || wdUrl);
 </BaseLayout>
 
 <style>
+  .show__cover {
+    margin: 0 0 var(--space-5);
+  }
+  .show__cover img {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .show__cover figcaption {
+    color: var(--ink-40);
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+  .show__cover figcaption a {
+    color: inherit;
+  }
+
+  .img-suggestion {
+    background: #fff7e6;
+    border: 1px dashed var(--spoiler-edge);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    color: #4a3a06;
+    font-size: var(--step--1);
+  }
+  .img-suggestion code {
+    font-family: var(--font-mono);
+    background: #fff;
+    padding: 0.05em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
   .show__header {
     border-bottom: 5px solid var(--accent);
     padding-bottom: var(--space-4);

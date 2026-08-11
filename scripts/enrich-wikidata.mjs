@@ -26,6 +26,7 @@ const OUT = path.join(ROOT, 'src/data/wikidata.json');
 const UA =
   'TVTattler/0.1 (build-time enrichment; https://tvtattler.co.uk; editor@tvtattler.co.uk)';
 const API = 'https://www.wikidata.org/w/api.php';
+const COMMONS = 'https://commons.wikimedia.org/w/api.php';
 
 // Acceptable "instance of" (P31) values when resolving by name.
 const PERSON_TYPES = new Set(['Q5']); // human
@@ -99,6 +100,43 @@ function enwiki(ent) {
   return s.url ?? `https://en.wikipedia.org/wiki/${encodeURIComponent(s.title.replace(/ /g, '_'))}`;
 }
 
+const stripHtml = (s) =>
+  typeof s === 'string' ? s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : undefined;
+
+/**
+ * The image an entity points at on Wikimedia Commons (Wikidata P18), together
+ * with its author and licence, so we can suggest it WITH the credit already
+ * filled in. Returns undefined if there is no image. This is a suggestion only —
+ * nothing uses it without an explicit opt-in.
+ */
+async function commonsImageSuggestion(ent) {
+  const file = ent?.claims?.P18?.[0]?.mainsnak?.datavalue?.value; // e.g. "William Roache.jpg"
+  if (typeof file !== 'string') return undefined;
+  const title = `File:${file}`;
+  const url =
+    `${COMMONS}?action=query&format=json&prop=imageinfo&titles=${encodeURIComponent(title)}` +
+    `&iiprop=url|extmetadata&iiurlwidth=1024`;
+  const data = await getJson(url);
+  const pages = data?.query?.pages ?? {};
+  const page = Object.values(pages)[0];
+  const info = page?.imageinfo?.[0];
+  if (!info) return undefined;
+  const meta = info.extmetadata ?? {};
+  const author = stripHtml(meta.Artist?.value);
+  const licence = stripHtml(meta.LicenseShortName?.value);
+  const licenceUrl = meta.LicenseUrl?.value;
+  // A ready-to-use credit line. Attribution is mandatory for CC-BY/BY-SA.
+  const credit = [author, licence, 'Wikimedia Commons'].filter(Boolean).join(' · ');
+  return {
+    file: title,
+    thumbUrl: info.thumburl ?? info.url,
+    descriptionUrl: info.descriptionurl,
+    credit,
+    licence,
+    licenceUrl,
+  };
+}
+
 async function resolveQid(name, acceptTypes) {
   const url = `${API}?action=wbsearchentities&search=${encodeURIComponent(
     name,
@@ -131,6 +169,7 @@ async function enrichPerson(fm) {
     qid,
     wikipedia: enwiki(ent),
     dateOfBirth: isoDate(firstTime(ent, 'P569')),
+    imageSuggestion: await commonsImageSuggestion(ent),
   };
 }
 
@@ -149,6 +188,7 @@ async function enrichShow(fm) {
     wikipedia: enwiki(ent),
     inception: year(firstTime(ent, 'P571')),
     episodes: firstAmount(ent, 'P1113'),
+    imageSuggestion: await commonsImageSuggestion(ent),
   };
 }
 

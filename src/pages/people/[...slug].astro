@@ -5,7 +5,12 @@ import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
 import { formatDate, yearRange } from '../../lib/format';
-import { factsForPerson, wikidataUrl } from '../../lib/wikidata';
+import {
+  factsForPerson,
+  wikidataUrl,
+  resolveEntityImage,
+  pendingImageSuggestion,
+} from '../../lib/wikidata';
 
 export async function getStaticPaths() {
   const people = await getCollection('people');
@@ -31,12 +36,45 @@ const facts = factsForPerson(person.id);
 const born = data.born ?? (facts?.dateOfBirth ? new Date(facts.dateOfBirth) : undefined);
 const wdUrl = wikidataUrl(facts?.qid);
 const hasLinks = Boolean(facts?.wikipedia || wdUrl);
+
+const imageInput = {
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.name,
+  facts,
+};
+const portrait = resolveEntityImage(imageInput);
+const suggestion = pendingImageSuggestion(imageInput);
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
   <div class="layout">
     <article class="person layout__main">
-    <header class="person__header">
+    {
+      suggestion && (
+        <aside class="img-suggestion">
+          <strong>Image suggestion (Wikidata → Commons):</strong> {suggestion.credit}. Set
+          <code>useWikidataImage: true</code> to use it (credit is added automatically), or
+          drop your own into <code>image:</code>. This note only shows in dev.
+        </aside>
+      )
+    }
+    <header class:list={['person__header', { 'person__header--portrait': portrait }]}>
+      {
+        portrait && (
+          <figure class="person__portrait">
+            <img src={portrait.src} alt={portrait.alt ?? data.name} loading="lazy" />
+            {portrait.credit && (
+              <figcaption class="mono">
+                {portrait.creditUrl ? <a href={portrait.creditUrl} rel="external">{portrait.credit}</a> : portrait.credit}
+              </figcaption>
+            )}
+          </figure>
+        )
+      }
+      <div class="person__headtext">
       <p class="mono person__kicker">Person</p>
       <h1>{data.name}</h1>
       <p class="person__known">{data.knownFor}</p>
@@ -48,6 +86,7 @@ const hasLinks = Boolean(facts?.wikipedia || wdUrl);
         )
       }
       <p class="person__summary">{data.summary}</p>
+      </div>
     </header>
 
     <div class="person__prose">
@@ -126,6 +165,53 @@ const hasLinks = Boolean(facts?.wikipedia || wdUrl);
     border-bottom: 4px solid var(--ink);
     padding-bottom: var(--space-4);
     margin-bottom: var(--space-5);
+  }
+  /* Portrait beside the header text on wider screens, stacked on mobile. */
+  .person__header--portrait {
+    display: grid;
+    gap: var(--space-4);
+  }
+  @media (min-width: 34rem) {
+    .person__header--portrait {
+      grid-template-columns: 12rem 1fr;
+      align-items: end;
+    }
+  }
+  .person__portrait {
+    margin: 0;
+  }
+  .person__portrait img {
+    width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--paper);
+  }
+  .person__portrait figcaption {
+    color: var(--ink-40);
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+  .person__portrait figcaption a {
+    color: inherit;
+  }
+
+  /* Dev-only review hint for an unapproved Commons image suggestion. */
+  .img-suggestion {
+    background: #fff7e6;
+    border: 1px dashed var(--spoiler-edge);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    color: #4a3a06;
+    font-size: var(--step--1);
+  }
+  .img-suggestion code {
+    font-family: var(--font-mono);
+    background: #fff;
+    padding: 0.05em 0.35em;
+    border-radius: var(--radius-sm);
   }
   .person__kicker {
     color: var(--ink-40);

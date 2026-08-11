@@ -37,6 +37,16 @@ const qid = z
   .regex(/^Q\d+$/, 'wikidata must be a QID like Q1362')
   .optional();
 
+// Image fields shared by people and shows. A self-hosted `image` always wins;
+// `useWikidataImage: true` opts in to the Commons image the enrichment
+// suggested (with its licence credit) — nothing is used without this opt-in.
+const entityImageFields = {
+  image: z.string().optional(),
+  imageAlt: z.string().optional(),
+  imageCredit: z.string().optional(),
+  useWikidataImage: z.boolean().default(false),
+};
+
 const shows = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/shows' }),
   schema: z.object({
@@ -49,6 +59,7 @@ const shows = defineCollection({
     airs: z.string().optional(), // e.g. "Mon, Wed, Fri" — human-readable schedule
     summary: z.string(),
     wikidata: qid,
+    ...entityImageFields,
   }),
 });
 
@@ -60,6 +71,7 @@ const people = defineCollection({
     knownFor: z.string(), // one-line hook, e.g. "Cindy Beale in EastEnders"
     summary: z.string(),
     wikidata: qid,
+    ...entityImageFields,
   }),
 });
 

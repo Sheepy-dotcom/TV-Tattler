@@ -12,6 +12,9 @@ airs: 'Mon, Wed, Fri'
 summary: >-
   ITV's cobbled institution, set in the fictional Manchester suburb of Weatherfield.
   The world's longest-running television soap opera, on air since December 1960.
+image: /images/coronation-street-cover.svg
+imageAlt: Coronation Street cover art
+imageCredit: 'Illustration: TV Tattler'
 ---
 
 Coronation Street began on 9 December 1960 and follows the residents of a terraced
