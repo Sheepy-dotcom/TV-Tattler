@@ -31,7 +31,7 @@ const base = accent ?? ink;
     <div class="hero__meta">
       <span class="hero__kicker">{kindLabel(data.kind)}</span>
       {showTitle && <span class="hero__show">{showTitle}</span>}
-      {data.spoiler && <span class="hero__flag">Spoiler</span>}
+      {data.spoiler && data.kind !== 'spoiler' && <span class="hero__flag">Spoiler</span>}
     </div>
     <h2 class="hero__title">
       <a href={href}>{data.title}</a>

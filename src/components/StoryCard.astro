@@ -32,7 +32,7 @@ const href = `/articles/${article.id}/`;
   <div class="card2__body">
     <div class="card2__meta">
       {showTitle && <span class="card2__show">{showTitle}</span>}
-      {data.spoiler && <span class="card2__flag">Spoiler</span>}
+      {data.spoiler && data.kind !== 'spoiler' && <span class="card2__flag">Spoiler</span>}
     </div>
     <h3 class="card2__title">
       <a href={href}>{data.title}</a>

@@ -58,7 +58,7 @@ const spoilerFor =
     <header class="article__header">
       <div class="article__chips">
         <span class="chip chip--accent">{kindLabel(data.kind)}</span>
-        {data.spoiler && <span class="chip chip--spoiler">Spoiler</span>}
+        {data.spoiler && data.kind !== 'spoiler' && <span class="chip chip--spoiler">Spoiler</span>}
       </div>
       <h1>{data.title}</h1>
       <p class="article__standfirst">{data.standfirst}</p>
