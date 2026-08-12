@@ -727,7 +727,16 @@
       "source": "wikidata",
       "qid": "Q1247575",
       "wikipedia": "https://en.wikipedia.org/wiki/Emmerdale",
-      "episodes": 10624
+      "episodes": 10624,
+      "imageSuggestion": {
+        "file": "File:Set of Emmerdale, Cavendish Street, Leeds - geograph.org.uk - 4920125.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Set_of_Emmerdale,_Cavendish_Street,_Leeds_-_geograph.org.uk_-_4920125.jpg",
+        "credit": "Mark Stevenson · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/show-emmerdale.jpg"
+      }
     },
     "hollyoaks": {
       "source": "wikidata",

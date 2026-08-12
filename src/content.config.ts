@@ -45,6 +45,10 @@ const entityImageFields = {
   imageAlt: z.string().optional(),
   imageCredit: z.string().optional(),
   useWikidataImage: z.boolean().default(false),
+  // Pin a specific Wikimedia Commons file (e.g. "File:Foo.jpg") for the
+  // enrichment to use as the image, ahead of P18/lead/category resolution.
+  // Use this when auto-resolution is unreliable for an entity.
+  commonsImage: z.string().optional(),
 };
 
 const shows = defineCollection({

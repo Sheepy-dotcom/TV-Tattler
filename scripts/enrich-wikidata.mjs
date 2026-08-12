@@ -385,9 +385,11 @@ async function enrichPerson(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
-  // Pick the nicest portrait across P18, the Wikipedia lead, and the person's
-  // Commons category — a proper head-and-shoulders shot beats a full-length one.
-  const imageSuggestion = await bestPersonImageSuggestion(ent);
+  // A pinned Commons file wins; otherwise pick the nicest portrait across P18 and
+  // the Wikipedia lead — a proper head-and-shoulders shot beats a full-length one.
+  const imageSuggestion =
+    (fm.commonsImage ? await commonsSuggestionForFile(fm.commonsImage) : undefined) ??
+    (await bestPersonImageSuggestion(ent));
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `person-${slug}`);
   }
@@ -409,8 +411,10 @@ async function enrichShow(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
-  // P18 → free Wikipedia lead → first decent photo in the show's Commons category.
+  // A pinned Commons file wins; otherwise P18 → free Wikipedia lead → first decent
+  // photo in the show's Commons category.
   const imageSuggestion =
+    (fm.commonsImage ? await commonsSuggestionForFile(fm.commonsImage) : undefined) ??
     (await commonsImageSuggestion(ent)) ??
     (await wikipediaLeadImageSuggestion(ent)) ??
     (await commonsCategoryImageSuggestion(ent, fm.title));

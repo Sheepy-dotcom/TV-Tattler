@@ -15,6 +15,9 @@ image: /images/emmerdale-cover.svg
 imageAlt: Emmerdale cover art
 imageCredit: 'Illustration: TV Tattler'
 useWikidataImage: true
+# Auto-resolution is unreliable for Emmerdale (no P18; the set photo sits deep in
+# its Commons category). Pin the known-good, free set photograph directly.
+commonsImage: 'File:Set of Emmerdale, Cavendish Street, Leeds - geograph.org.uk - 4920125.jpg'
 ---
 
 Emmerdale first aired on 16 October 1972 as "Emmerdale Farm", set among the farms
