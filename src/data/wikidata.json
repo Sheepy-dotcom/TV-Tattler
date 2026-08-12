@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T14:30:18.910Z",
+  "generatedAt": "2026-08-12T15:03:30.666Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -745,6 +745,33 @@
         "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
         "imageLocal": "/images/wikidata/person-tameka-empson.jpg"
       }
+    },
+    "georgia-taylor": {
+      "source": "wikidata",
+      "qid": "Q5547822",
+      "wikipedia": "https://en.wikipedia.org/wiki/Georgia_Taylor",
+      "dateOfBirth": "1980-02-26"
+    },
+    "jamie-borthwick": {
+      "source": "wikidata",
+      "qid": "Q968086",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jamie_Borthwick",
+      "dateOfBirth": "1994-06-23",
+      "imageSuggestion": {
+        "file": "File:Jamie Borthwick 2016.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Jamie_Borthwick_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jamie_Borthwick_2016.jpg",
+        "credit": "AnemoneProjectors · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-jamie-borthwick.jpg"
+      }
+    },
+    "peter-ash": {
+      "source": "wikidata",
+      "qid": "Q7172570",
+      "wikipedia": "https://en.wikipedia.org/wiki/Peter_Ash",
+      "dateOfBirth": "1985-02-04"
     }
   },
   "shows": {
