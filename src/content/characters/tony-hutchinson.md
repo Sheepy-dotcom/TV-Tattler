@@ -8,6 +8,7 @@ summary: >-
 family:
   - darren-osborne
   - cindy-cunningham
+  - diane-hutchinson
 portrayals:
   - person: nick-pickard
     from: 1995
