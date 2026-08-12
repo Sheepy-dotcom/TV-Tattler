@@ -17,6 +17,7 @@
 import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PEOPLE_DIR = path.join(ROOT, 'src/content/people');
@@ -138,18 +139,18 @@ async function downloadImage(url, name) {
   try {
     const res = await fetch(url, { headers: { 'User-Agent': UA } });
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-    const type = res.headers.get('content-type') ?? '';
-    const ext = type.includes('png')
-      ? 'png'
-      : type.includes('gif')
-        ? 'gif'
-        : type.includes('webp')
-          ? 'webp'
-          : 'jpg';
-    const buf = Buffer.from(await res.arrayBuffer());
+    const input = Buffer.from(await res.arrayBuffer());
+    // Normalise to a lean, capped JPEG. A 1024px Commons PNG can be several MB;
+    // as a width-capped JPEG it's a fraction, and every committed image is a
+    // consistent, web-friendly size regardless of the source format.
+    const out = await sharp(input)
+      .rotate() // respect EXIF orientation
+      .resize({ width: 1024, height: 1024, fit: 'inside', withoutEnlargement: true })
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toBuffer();
     await mkdir(IMG_DIR, { recursive: true });
-    const fileName = `${name}.${ext}`;
-    await writeFile(path.join(IMG_DIR, fileName), buf);
+    const fileName = `${name}.jpg`;
+    await writeFile(path.join(IMG_DIR, fileName), out);
     return `${IMG_WEB}/${fileName}`;
   } catch (e) {
     console.warn(`  image ✗ ${name}: ${e.message} (keeping external URL)`);
