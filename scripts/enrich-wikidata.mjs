@@ -304,7 +304,7 @@ async function commonsCategoryImageSuggestion(ent, showName) {
   if (typeof cat !== 'string') return undefined;
   const url =
     `${COMMONS}?action=query&format=json&list=categorymembers&cmtype=file` +
-    `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=30`;
+    `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=100`;
   const data = await getJson(url);
   const members = data?.query?.categorymembers ?? [];
   const skip =
