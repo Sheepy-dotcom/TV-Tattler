@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T14:20:07.716Z",
+  "generatedAt": "2026-08-12T14:30:18.910Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -686,6 +686,65 @@
         "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
         "imageLocal": "/images/wikidata/person-daniel-brocklebank.jpg"
       }
+    },
+    "elle-mulvaney": {
+      "source": "wikidata",
+      "qid": "Q48965126",
+      "wikipedia": "https://en.wikipedia.org/wiki/Elle_Mulvaney",
+      "dateOfBirth": "2002-10-01",
+      "imageSuggestion": {
+        "file": "File:Elle Mulvaney 2023.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elle_Mulvaney_2023.jpg/1280px-Elle_Mulvaney_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Elle_Mulvaney_2023.jpg",
+        "credit": "Meena · CC0 · Wikimedia Commons",
+        "licence": "CC0",
+        "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "imageLocal": "/images/wikidata/person-elle-mulvaney.jpg"
+      }
+    },
+    "karen-blick": {
+      "source": "wikidata",
+      "qid": "Q131544730",
+      "wikipedia": "https://en.wikipedia.org/wiki/Karen_Blick",
+      "dateOfBirth": "1974-10-25",
+      "imageSuggestion": {
+        "file": "File:Karen Blick 2019.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Karen_Blick_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Karen_Blick_2019.jpg",
+        "credit": "DarkGlow · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-karen-blick.jpg"
+      }
+    },
+    "ross-adams": {
+      "source": "wikidata",
+      "qid": "Q7369167",
+      "wikipedia": "https://en.wikipedia.org/wiki/Ross_Adams",
+      "imageSuggestion": {
+        "file": "File:Ross_Adams_2023.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Ross_Adams_2023.jpg/1280px-Ross_Adams_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Ross_Adams_2023.jpg",
+        "credit": "Meena · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-ross-adams.jpg"
+      }
+    },
+    "tameka-empson": {
+      "source": "wikidata",
+      "qid": "Q6138516",
+      "wikipedia": "https://en.wikipedia.org/wiki/Tameka_Empson",
+      "dateOfBirth": "1977-04-16",
+      "imageSuggestion": {
+        "file": "File:Tameka Empson.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Tameka_Empson.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Tameka_Empson.jpg",
+        "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-tameka-empson.jpg"
+      }
     }
   },
   "shows": {
@@ -730,11 +789,13 @@
       "episodes": 10624,
       "imageSuggestion": {
         "file": "File:Set of Emmerdale, Cavendish Street, Leeds - geograph.org.uk - 4920125.jpg",
-        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg/1280px-Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Set_of_Emmerdale,_Cavendish_Street,_Leeds_-_geograph.org.uk_-_4920125.jpg",
         "credit": "Mark Stevenson · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
         "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "width": 6016,
+        "height": 3348,
         "imageLocal": "/images/wikidata/show-emmerdale.jpg"
       }
     },
