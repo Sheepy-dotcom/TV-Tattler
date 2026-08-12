@@ -10,6 +10,7 @@ summary: >-
   on screen from the very first episode in 1985.
 family:
   - cindy-beale
+  - kathy-beale
 portrayals:
   - person: adam-woodyatt
     from: 1985

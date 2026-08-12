@@ -5,7 +5,7 @@ import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import {
   getShows,
-  charactersForShow,
+  castForShow,
   articlesForShow,
   castChangesForShow,
 } from '../../lib/relations';
@@ -26,8 +26,8 @@ const { show } = Astro.props;
 const { data } = show;
 const accent = data.accent;
 
-const [characters, articles, castChanges, { Content }] = await Promise.all([
-  charactersForShow(show.id),
+const [cast, articles, castChanges, { Content }] = await Promise.all([
+  castForShow(show.id),
   articlesForShow(show.id),
   castChangesForShow(show.id),
   render(show),
@@ -37,8 +37,10 @@ const [characters, articles, castChanges, { Content }] = await Promise.all([
 const coverage = articles.filter((a) => a.data.kind !== 'cast-change');
 
 const statusOrder = ['current', 'occasional', 'departed', 'deceased'];
-const sortedCharacters = [...characters].sort(
-  (a, b) => statusOrder.indexOf(a.data.status) - statusOrder.indexOf(b.data.status),
+const sortedCast = [...cast].sort(
+  (a, b) =>
+    statusOrder.indexOf(a.character.data.status) -
+    statusOrder.indexOf(b.character.data.status),
 );
 
 // Build-time enrichment (Wikidata, CC0): external links + a live episode tally
@@ -113,19 +115,27 @@ const suggestion = pendingImageSuggestion(imageInput);
     <section class="show__section" aria-labelledby="cast-heading">
       <h2 id="cast-heading" class="show__h2">Characters</h2>
       {
-        sortedCharacters.length === 0 ? (
+        sortedCast.length === 0 ? (
           <p class="muted">
             No characters logged yet. Add a file to <code>src/content/characters/</code>
             with <code>show: {show.id}</code> to build the cast list.
           </p>
         ) : (
           <ul class="cast">
-            {sortedCharacters.map((c) => (
+            {sortedCast.map((entry) => (
               <li>
-                <a class="cast__row" href={`/characters/${c.id}/`}>
-                  <span class="cast__name">{c.data.name}</span>
-                  <span class:list={['cast__status', 'mono', `is-${c.data.status}`]}>
-                    {statusLabel(c.data.status)}
+                <a class="cast__row" href={`/characters/${entry.character.id}/`}>
+                  <span class="cast__main">
+                    <span class="cast__name">{entry.character.data.name}</span>
+                    {entry.actors.length > 0 && (
+                      <span class="cast__actor mono">
+                        {entry.actors.join(', ')}
+                        {entry.from && <> · {yearRange(entry.from, entry.to)}</>}
+                      </span>
+                    )}
+                  </span>
+                  <span class:list={['cast__status', 'mono', `is-${entry.character.data.status}`]}>
+                    {statusLabel(entry.character.data.status)}
                   </span>
                 </a>
               </li>
@@ -279,13 +289,23 @@ const suggestion = pendingImageSuggestion(imageInput);
     transform: translateX(2px);
     box-shadow: var(--shadow-sm);
   }
+  .cast__main {
+    display: grid;
+    gap: 0.15em;
+    min-width: 0;
+  }
   .cast__name {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: var(--step-1);
   }
+  .cast__actor {
+    color: var(--ink-60);
+  }
   .cast__status {
     color: var(--ink-60);
+    flex: none;
+    align-self: center;
   }
   .cast__status.is-deceased {
     color: var(--ink-40);

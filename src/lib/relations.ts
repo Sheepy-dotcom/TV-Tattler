@@ -71,6 +71,41 @@ export async function charactersForShow(showId: string): Promise<Character[]> {
 }
 
 /**
+ * A show's cast, each character with the actor(s) who play them and the overall
+ * year span — so a show page can list "Ken Barlow · William Roache · 1960–".
+ */
+export interface CastEntry {
+  character: Character;
+  actors: string[];
+  from?: number;
+  to?: number;
+  ongoing: boolean;
+}
+
+export async function castForShow(showId: string): Promise<CastEntry[]> {
+  const [characters, people] = await Promise.all([
+    charactersForShow(showId),
+    getCollection('people'),
+  ]);
+  const nameById = new Map(people.map((p) => [p.id, p.data.name]));
+
+  return characters.map((character) => {
+    const ps = character.data.portrayals;
+    const actors = [...new Set(ps.map((p) => nameById.get(p.person.id) ?? p.person.id))];
+    const froms = ps.map((p) => p.from);
+    const ongoing = ps.some((p) => p.to === undefined);
+    const tos = ps.map((p) => p.to).filter((t): t is number => t !== undefined);
+    return {
+      character,
+      actors,
+      from: froms.length ? Math.min(...froms) : undefined,
+      to: ongoing || tos.length === 0 ? undefined : Math.max(...tos),
+      ongoing,
+    };
+  });
+}
+
+/**
  * The cast-changes subsection for a show: its articles filtered to
  * `kind: cast-change`. A show page shows these separately from general coverage.
  */

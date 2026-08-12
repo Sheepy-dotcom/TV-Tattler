@@ -25,6 +25,7 @@ const primaryNav = [
   { href: '/', label: 'Home', accent: false },
   ...SECTIONS.map((s) => ({ href: `/section/${s}/`, label: sectionLabel(s), accent: false })),
   { href: '/shows/', label: 'Shows', accent: false },
+  { href: '/people/', label: 'Cast', accent: false },
   { href: '/kind/spoiler/', label: 'Spoilers', accent: true },
 ];
 ---
@@ -131,6 +132,7 @@ const primaryNav = [
           <h2 class="site-footer__h">Browse</h2>
           <ul>
             <li><a href="/shows/">All shows</a></li>
+            <li><a href="/people/">Cast</a></li>
             <li><a href="/kind/spoiler/">Spoilers</a></li>
             <li><a href="/kind/cast-change/">Cast changes</a></li>
             <li><a href="/kind/guide/">Guides</a></li>

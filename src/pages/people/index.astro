@@ -1,0 +1,206 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { factsForPerson, resolveEntityImage } from '../../lib/wikidata';
+import { monogram } from '../../lib/format';
+
+const people = (await getCollection('people')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+
+// Group A–Z by first letter for quick scanning.
+const groups = new Map<string, typeof people>();
+for (const person of people) {
+  const letter = person.data.name[0]?.toUpperCase() ?? '#';
+  const list = groups.get(letter) ?? [];
+  list.push(person);
+  groups.set(letter, list);
+}
+const letters = [...groups.keys()].sort();
+
+const cards = people.map((person) => ({
+  person,
+  img: resolveEntityImage({
+    image: person.data.image,
+    imageAlt: person.data.imageAlt,
+    imageCredit: person.data.imageCredit,
+    useWikidataImage: person.data.useWikidataImage,
+    name: person.data.name,
+    facts: factsForPerson(person.id),
+  }),
+}));
+const imgFor = (id: string) => cards.find((c) => c.person.id === id)?.img;
+---
+
+<BaseLayout
+  title="Cast"
+  description="Browse every actor and presenter TV Tattler covers — with their roles derived from the portrayal records."
+>
+  <header class="cast-head">
+    <p class="mono cast-head__kicker">Reference</p>
+    <h1>Cast &amp; presenters</h1>
+    <p class="cast-head__blurb">
+      Everyone we hold a page for. Each person's roles are read straight from the
+      portrayal records on the characters they've played — never maintained by hand.
+    </p>
+    <nav class="az" aria-label="Jump to letter">
+      {letters.map((l) => <a href={`#letter-${l}`}>{l}</a>)}
+    </nav>
+  </header>
+
+  {
+    letters.map((letter) => (
+      <section class="cast-group" aria-labelledby={`letter-${letter}`}>
+        <h2 id={`letter-${letter}`} class="cast-group__letter">{letter}</h2>
+        <ul class="cast-grid">
+          {groups.get(letter)!.map((person) => {
+            const img = imgFor(person.id);
+            return (
+              <li>
+                <a class="pcard" href={`/people/${person.id}/`}>
+                  <span class="pcard__avatar">
+                    {img ? (
+                      <img src={img.src} alt="" loading="lazy" />
+                    ) : (
+                      <span class="pcard__mono" aria-hidden="true">{monogram(person.data.name)}</span>
+                    )}
+                  </span>
+                  <span class="pcard__text">
+                    <span class="pcard__name">{person.data.name}</span>
+                    <span class="pcard__known">{person.data.knownFor}</span>
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .cast-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 4px solid var(--live);
+  }
+  .cast-head__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .cast-head__blurb {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+    margin-bottom: var(--space-4);
+  }
+  .az {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .az a {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-decoration: none;
+    color: var(--ink-60);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.25em 0.6em;
+  }
+  .az a:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .cast-group {
+    margin-bottom: var(--space-6);
+    scroll-margin-top: 5rem;
+  }
+  .cast-group__letter {
+    font-family: var(--font-mono);
+    font-size: var(--step-0);
+    color: var(--ink-40);
+    border-bottom: 2px solid var(--line);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .cast-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 34rem) {
+    .cast-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 56rem) {
+    .cast-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pcard {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    height: 100%;
+  }
+  .pcard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .pcard__avatar {
+    flex: none;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--ink);
+    display: grid;
+    place-items: center;
+  }
+  .pcard__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pcard__mono {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #fff;
+    font-size: var(--step-0);
+  }
+  .pcard__text {
+    display: grid;
+    gap: 0.1em;
+    min-width: 0;
+  }
+  .pcard__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+  }
+  .pcard__known {
+    color: var(--ink-60);
+    font-size: var(--step--1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
