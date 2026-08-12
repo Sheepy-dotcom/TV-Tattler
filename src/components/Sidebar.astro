@@ -21,9 +21,17 @@ const kindCounts = KINDS.map((kind) => ({
   kind,
   count: articles.filter((a) => a.data.kind === kind).length,
 })).filter((k) => k.count > 0);
+
+// When a page supplies its own contextual widget, lead with that and drop the
+// article-type index (it's global navigation, out of place on a reference page).
+const hasContext = Astro.slots.has('default');
 ---
 
 <aside class="sidebar" aria-label="Browse the archive">
+  <!-- Page-specific widgets (e.g. "Appears in" on a person page) render first,
+       so the rail leads with what's relevant to the page you're on. -->
+  <slot />
+
   <Widget title="Browse shows">
     <ul class="shows">
       {
@@ -43,7 +51,7 @@ const kindCounts = KINDS.map((kind) => ({
   </Widget>
 
   {
-    kindCounts.length > 0 && (
+    !hasContext && kindCounts.length > 0 && (
       <Widget title="By type">
         <ul class="kinds">
           {kindCounts.map(({ kind, count }) => (

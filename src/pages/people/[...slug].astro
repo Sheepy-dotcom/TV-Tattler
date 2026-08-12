@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
+import Widget from '../../components/Widget.astro';
 import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
 import { formatDate, yearRange } from '../../lib/format';
 import {
@@ -28,6 +29,20 @@ const [roles, articles, { Content }] = await Promise.all([
   articlesForPerson(person.id),
   render(person),
 ]);
+
+// Shows this person appears in — the contextual sidebar for a cast page. Group
+// their roles by show so each show lists once, with the character(s) played.
+const appearsIn: { show: (typeof roles)[number]['show']; characters: (typeof roles)[number]['character'][] }[] = [];
+const showSeen = new Map<string, (typeof appearsIn)[number]>();
+for (const role of roles) {
+  let entry = showSeen.get(role.show.id);
+  if (!entry) {
+    entry = { show: role.show, characters: [] };
+    showSeen.set(role.show.id, entry);
+    appearsIn.push(entry);
+  }
+  entry.characters.push(role.character);
+}
 
 // Build-time enrichment: Wikidata (CC0) fills the birth date if the frontmatter
 // omits it, and supplies external reference links. Falls back cleanly when the
@@ -152,7 +167,32 @@ const suggestion = pendingImageSuggestion(imageInput);
       )
     }
     </article>
-    <Sidebar />
+    <Sidebar>
+      {
+        appearsIn.length > 0 && (
+          <Widget title="Appears in">
+            <ul class="appears">
+              {appearsIn.map(({ show, characters }) => (
+                <li class="appears__row" style={`--accent: ${show.data.accent};`}>
+                  <a class="appears__show" href={`/shows/${show.id}/`}>
+                    <span class="appears__dot" aria-hidden="true" />
+                    {show.data.title}
+                  </a>
+                  <span class="appears__chars">
+                    {characters.map((c, i) => (
+                      <>
+                        {i > 0 && ', '}
+                        <a href={`/characters/${c.id}/`}>{c.data.name}</a>
+                      </>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Widget>
+        )
+      }
+    </Sidebar>
   </div>
 </BaseLayout>
 
@@ -173,7 +213,8 @@ const suggestion = pendingImageSuggestion(imageInput);
   }
   @media (min-width: 34rem) {
     .person__header--portrait {
-      grid-template-columns: 12rem 1fr;
+      grid-template-columns: 14rem 1fr;
+      gap: var(--space-5);
       align-items: end;
     }
   }
@@ -182,12 +223,13 @@ const suggestion = pendingImageSuggestion(imageInput);
   }
   .person__portrait img {
     width: 100%;
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center top;
     background: var(--paper);
+    box-shadow: var(--shadow);
   }
   .person__portrait figcaption {
     color: var(--ink-40);
@@ -339,6 +381,50 @@ const suggestion = pendingImageSuggestion(imageInput);
   }
   .role__ongoing {
     color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  /* ---- "Appears in" contextual sidebar widget -------------------------- */
+  .appears {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .appears__row {
+    display: grid;
+    gap: 0.15em;
+  }
+  .appears__show {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .appears__show:hover {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+  }
+  .appears__dot {
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 999px;
+    background: var(--accent);
+    flex: none;
+  }
+  .appears__chars {
+    padding-left: 1.15em;
+    font-size: var(--step--1);
+    color: var(--ink-60);
+  }
+  .appears__chars a {
+    color: var(--ink-60);
+    text-decoration-color: var(--line-strong);
+  }
+  .appears__chars a:hover {
+    color: var(--ink);
   }
 
   .muted {

@@ -73,8 +73,12 @@
 
   /* --- Shadows (soft, aubergine-tinted, never harsh) -------------------- */
   --shadow-sm: 0 1px 2px rgba(23, 18, 42, 0.06);
-  --shadow: 0 2px 10px rgba(23, 18, 42, 0.08);
-  --shadow-lg: 0 8px 30px rgba(23, 18, 42, 0.12);
+  --shadow: 0 4px 16px rgba(23, 18, 42, 0.09);
+  --shadow-lg: 0 14px 40px rgba(23, 18, 42, 0.16);
+
+  /* Standard easing + duration for hover/interaction motion. */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.22s;
 
   /* --- Layout ----------------------------------------------------------- */
   --measure: 66ch;        /* comfortable reading width for body copy        */
@@ -295,6 +299,65 @@ img {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Interaction polish — a single, consistent motion language for every card.
+
+   Applied globally (not per-component) so the whole site lifts and its imagery
+   eases in the same way. Cards raise a touch and deepen their shadow on hover;
+   their media zooms gently. Respects prefers-reduced-motion via the base reset.
+   -------------------------------------------------------------------------- */
+.showcard,
+.card2,
+.hero {
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+  will-change: transform;
+}
+.showcard:hover,
+.card2:hover,
+.hero:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--line-strong);
+}
+
+/* Media wrappers clip so their image can zoom without spilling. */
+.showcard__media,
+.card2__media,
+.hero__media,
+.media {
+  overflow: hidden;
+}
+.showcard__media img,
+.card2__media img,
+.hero__media img,
+.media__img {
+  transition: transform 0.4s var(--ease);
+}
+.showcard:hover .showcard__media img,
+.card2:hover .card2__media img,
+.hero:hover .hero__media img,
+a:hover > .media .media__img {
+  transform: scale(1.045);
+}
+
+/* Reference/plain cards get a gentler lift when they are links. */
+a.card,
+.card--interactive {
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+a.card:hover,
+.card--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--line-strong);
 }
 
 /* Utility: visually hidden but available to screen readers. */

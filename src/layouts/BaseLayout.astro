@@ -49,6 +49,10 @@ const primaryNav = [
     <a href="#main" class="skip-link">Skip to content</a>
 
     <header class="site-header">
+      <!-- Brand ribbon: a thin gradient that blends the house pink into the
+           page's own accent (a show colour where one is set). -->
+      <div class="brandbar" aria-hidden="true"></div>
+
       <!-- Utility strip: reference-first tagline + quick links to the kinds -->
       <div class="utility">
         <div class="container utility__inner">
@@ -170,6 +174,17 @@ const primaryNav = [
     </footer>
 
     <style>
+      /* ---- Brand ribbon -------------------------------------------------- */
+      .brandbar {
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--live) 0%,
+          color-mix(in srgb, var(--live) 55%, var(--accent)) 45%,
+          var(--accent) 100%
+        );
+      }
+
       /* ---- Utility strip ------------------------------------------------- */
       .utility {
         background: #0f0b1c;
@@ -282,16 +297,25 @@ const primaryNav = [
         margin: 0;
         color: var(--ink-60);
         font-size: var(--step-0);
-        max-width: 40ch;
+        max-width: 38ch;
+      }
+      /* On wider screens, set the strap off from the wordmark with a hairline
+         divider — a small editorial cue that reads as a masthead, not a header. */
+      @media (min-width: 48rem) {
+        .masthead__strap {
+          padding-left: var(--space-5);
+          border-left: 1px solid var(--line-strong);
+        }
       }
 
       /* ---- Primary nav (sticky) ----------------------------------------- */
       .mainnav {
-        background: var(--ink);
+        background: linear-gradient(180deg, #201a38 0%, var(--ink) 100%);
         position: sticky;
         top: 0;
         z-index: 50;
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow);
+        border-bottom: 2px solid color-mix(in srgb, var(--accent) 60%, var(--ink));
       }
       .mainnav__inner {
         overflow-x: auto;

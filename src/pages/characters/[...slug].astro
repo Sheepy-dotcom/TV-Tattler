@@ -3,8 +3,9 @@ import { getCollection, getEntry, getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleGrid from '../../components/ArticleGrid.astro';
 import Sidebar from '../../components/Sidebar.astro';
+import Widget from '../../components/Widget.astro';
 import PortrayalTimeline from '../../components/PortrayalTimeline.astro';
-import { articlesForCharacter, timelineForCharacter } from '../../lib/relations';
+import { articlesForCharacter, timelineForCharacter, charactersForShow } from '../../lib/relations';
 import { statusLabel } from '../../lib/format';
 
 export async function getStaticPaths() {
@@ -27,6 +28,12 @@ const [family, timeline, articles, { Content }] = await Promise.all([
   articlesForCharacter(character.id),
   render(character),
 ]);
+
+// Other characters from the same show — the contextual sidebar for this page.
+const siblings = (await charactersForShow(data.show.id))
+  .filter((c) => c.id !== character.id)
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .slice(0, 10);
 ---
 
 <BaseLayout title={data.name} description={data.summary} accent={accent}>
@@ -97,7 +104,27 @@ const [family, timeline, articles, { Content }] = await Promise.all([
       />
     </section>
     </article>
-    <Sidebar />
+    <Sidebar>
+      {
+        show && siblings.length > 0 && (
+          <Widget title={`More from ${show.data.title}`}>
+            <ul class="siblings" style={`--accent: ${accent};`}>
+              {siblings.map((c) => (
+                <li>
+                  <a class="siblings__link" href={`/characters/${c.id}/`}>
+                    <span class="siblings__dot" aria-hidden="true" />
+                    {c.data.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a class="siblings__all" href={`/shows/${show.id}/`}>
+              All {show.data.title} characters →
+            </a>
+          </Widget>
+        )
+      }
+    </Sidebar>
   </div>
 </BaseLayout>
 
@@ -184,6 +211,46 @@ const [family, timeline, articles, { Content }] = await Promise.all([
   }
   .family__link:hover {
     box-shadow: var(--shadow-sm);
+  }
+
+  /* ---- "More from [show]" contextual sidebar widget -------------------- */
+  .siblings {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+  .siblings__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .siblings__link:hover {
+    background: var(--paper);
+  }
+  .siblings__dot {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 999px;
+    background: var(--accent);
+    flex: none;
+  }
+  .siblings__all {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    text-decoration: none;
+  }
+  .siblings__all:hover {
+    text-decoration: underline;
   }
 
   .muted {
