@@ -45,23 +45,24 @@ TMDB requires this credit, which the films page already shows:
 
 ## Curating the headlines
 
-`src/data/feeds/news-sources.json` drives the aggregator. It ships with **Google
-News RSS** searches — one per soap — because that endpoint reliably returns real
-headlines from many publishers, keyless, each linking back to its source:
+`src/data/feeds/news-sources.json` drives the aggregator. It ships with **publisher
+RSS feeds** (Metro, The Guardian, BBC) chosen to work from CI runners — Google News
+RSS is deliberately avoided because it returns `503` from datacentre/CI IPs:
 
 ```json
 {
   "feeds": [
-    { "name": "EastEnders", "soap": "eastenders",
-      "url": "https://news.google.com/rss/search?q=EastEnders%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" }
+    { "name": "Metro", "url": "https://metro.co.uk/entertainment/soaps/feed/", "soapSpecific": true },
+    { "name": "BBC Entertainment", "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml", "soapSpecific": false }
   ]
 }
 ```
 
-Each feed's `soap` slug tags its headlines (so they colour-code and link to the
-right show). You can tune the queries (e.g. `EastEnders%20spoilers`), add feeds for
-other topics, or drop in a publisher's own RSS URL instead — anything that returns
-RSS/Atom works, and the script skips any feed that fails.
+`soapSpecific: true` feeds are wholly about soaps, so every item is kept; on a
+general feed (`soapSpecific: false`) only stories that mention a soap are kept, and
+each headline is auto-tagged to the show it names so it colour-codes and links
+correctly. Add or swap feeds freely — any RSS/Atom URL works, and the script skips
+any feed that fails.
 
 The aggregator stores **only a headline, its publisher and a link** — never the
 article body — and every link points back to the source. That keeps it firmly on

@@ -81,36 +81,40 @@ async function main() {
   const items = [];
   const usedSources = [];
 
-  for (const feed of feeds) {
-    try {
-      const res = await fetch(feed.url, {
-        headers: { 'user-agent': 'TV-Tattler/1.0 (news aggregator)', accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml' },
-        signal: AbortSignal.timeout(20000),
-      });
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      const xml = await res.text();
-      const entries = parseEntries(xml).slice(0, PER_FEED);
-      for (const e of entries) {
-        const publisher = e.publisher || feed.name;
-        // Google News appends " - Publisher" to titles; trim it for a clean headline.
-        let title = e.title;
-        if (publisher && title.endsWith(` - ${publisher}`)) {
-          title = title.slice(0, -(publisher.length + 3)).trim();
-        }
-        items.push({
-          title,
-          url: e.url,
-          publishedAt: e.publishedAt,
-          source: publisher,
-          soap: feed.soap || tagOf(title),
+  // Fetch all feeds in parallel; one slow or blocked feed never holds up the rest.
+  await Promise.all(
+    feeds.map(async (feed) => {
+      try {
+        const res = await fetch(feed.url, {
+          headers: {
+            'user-agent': 'Mozilla/5.0 (compatible; TV-Tattler/1.0; +https://tv-tattler.pages.dev)',
+            accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+          },
+          signal: AbortSignal.timeout(15000),
         });
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        const xml = await res.text();
+        let kept = 0;
+        for (const e of parseEntries(xml)) {
+          const soap = tagOf(e.title);
+          // On a general feed, keep only stories that actually mention a soap.
+          if (feed.soapSpecific === false && !soap) continue;
+          const publisher = e.publisher || feed.name;
+          // Google News (if ever used) appends " - Publisher"; trim it.
+          let title = e.title;
+          if (e.publisher && title.endsWith(` - ${e.publisher}`)) {
+            title = title.slice(0, -(e.publisher.length + 3)).trim();
+          }
+          items.push({ title, url: e.url, publishedAt: e.publishedAt, source: publisher, soap });
+          if (++kept >= PER_FEED) break;
+        }
+        if (kept) usedSources.push(feed.name);
+        console.log(`headlines: ${feed.name} → ${kept}`);
+      } catch (e) {
+        console.warn(`headlines: ${feed.name} failed:`, e.message);
       }
-      if (entries.length) usedSources.push(feed.name);
-      console.log(`headlines: ${feed.name} → ${entries.length}`);
-    } catch (e) {
-      console.warn(`headlines: ${feed.name} failed:`, e.message);
-    }
-  }
+    }),
+  );
 
   if (items.length === 0) {
     console.log('headlines: nothing fetched — leaving file unchanged.');
