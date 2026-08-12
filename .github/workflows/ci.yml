@@ -1,0 +1,38 @@
+name: CI
+
+# Build gate: every pull request and every push to main must build cleanly and
+# pass astro check (TypeScript strict + content-collection validation). Because
+# the schema uses reference() throughout, a broken relation fails the build here
+# before it can reach main.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check & validate content
+        run: npm run check
+
+      - name: Build
+        run: npm run build
