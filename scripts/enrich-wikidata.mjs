@@ -259,39 +259,23 @@ async function wikipediaLeadImageSuggestion(ent) {
   return t ? commonsSuggestionForFile(t) : undefined;
 }
 
-/** Files in a person's Commons category (P373) that plausibly show them — used
-    to find a nicer portrait than a stiff or full-length P18. */
-async function personCategoryTitles(ent, name) {
-  const cat = ent?.claims?.P373?.[0]?.mainsnak?.datavalue?.value;
-  if (typeof cat !== 'string') return [];
-  const url =
-    `${COMMONS}?action=query&format=json&list=categorymembers&cmtype=file` +
-    `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=40`;
-  const data = await getJson(url);
-  const members = data?.query?.categorymembers ?? [];
-  const surn = tokens(name); // words of 4+ letters, e.g. ["michelle","collins"]
-  const skip = /logo|icon|signature|autograph|award|plaque|grave|poster|magazine|cover/i;
-  return members
-    .map((m) => m.title)
-    .filter(
-      (t) => typeof t === 'string' && !skip.test(t) && surn.some((w) => t.toLowerCase().includes(w)),
-    )
-    .slice(0, 12);
-}
-
 /**
- * The nicest available portrait of a person: score every candidate — the curated
- * P18, the Wikipedia lead, and same-name photos in their Commons category — by
- * how head-and-shoulders it looks, and take the best. This is how we quietly swap
- * a full-length red-carpet shot for a proper portrait when one exists.
+ * The nicest available portrait of a person, chosen only from images that are
+ * unambiguously theirs: Wikidata's own P18 and the lead image of their English
+ * Wikipedia article. Both are curated per-entity, so there's no risk of pulling a
+ * same-named stranger. We score the two by how head-and-shoulders they look and
+ * take the better one — enough to prefer a portrait over a full-length shot.
+ *
+ * (A person's Commons category is deliberately NOT used: categories like
+ * "Alison King" mix in different people who share the name, and a wrong-person
+ * photo is far worse than a slightly stiff-but-correct one.)
  */
-async function bestPersonImageSuggestion(ent, name) {
+async function bestPersonImageSuggestion(ent) {
   const prio = new Map(); // File:title -> source nudge (curated sources win ties)
   const p18 = ent?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
   if (typeof p18 === 'string') prio.set(`File:${p18}`, 3);
   const lead = await wikipediaLeadTitle(ent);
   if (lead) prio.set(lead, Math.max(prio.get(lead) ?? 0, 2));
-  for (const t of await personCategoryTitles(ent, name)) if (!prio.has(t)) prio.set(t, 0);
 
   let best;
   let bestScore = -Infinity;
@@ -402,7 +386,7 @@ async function enrichPerson(slug, fm) {
   if (!ent) return undefined;
   // Pick the nicest portrait across P18, the Wikipedia lead, and the person's
   // Commons category — a proper head-and-shoulders shot beats a full-length one.
-  const imageSuggestion = await bestPersonImageSuggestion(ent, fm.name);
+  const imageSuggestion = await bestPersonImageSuggestion(ent);
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `person-${slug}`);
   }

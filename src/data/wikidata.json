@@ -445,15 +445,7 @@
       "source": "wikidata",
       "qid": "Q3734145",
       "wikipedia": "https://en.wikipedia.org/wiki/Alison_King",
-      "dateOfBirth": "1973-03-03",
-      "imageSuggestion": {
-        "file": "File:Secretary Kerry Conducts an Interview With Alison King of NBC Boston in Cambridge, Massachusetts (31401574703).jpg",
-        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Secretary_Kerry_Conducts_an_Interview_With_Alison_King_of_NBC_Boston_in_Cambridge%2C_Massachusetts_%2831401574703%29.jpg/1280px-Secretary_Kerry_Conducts_an_Interview_With_Alison_King_of_NBC_Boston_in_Cambridge%2C_Massachusetts_%2831401574703%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Kerry_Conducts_an_Interview_With_Alison_King_of_NBC_Boston_in_Cambridge,_Massachusetts_(31401574703).jpg",
-        "credit": "U.S. Department of State from United States · Public domain · Wikimedia Commons",
-        "licence": "Public domain",
-        "imageLocal": "/images/wikidata/person-alison-king.jpg"
-      }
+      "dateOfBirth": "1973-03-03"
     },
     "diane-parish": {
       "source": "wikidata",
