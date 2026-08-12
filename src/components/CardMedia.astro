@@ -117,6 +117,10 @@ const base = accent ?? ink;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Portrait/full-body photos cropped into a landscape tile: align to the top
+       so the subject's head is always kept (full-body press shots put the face
+       right at the top edge). */
+    object-position: center top;
   }
 
   /* Category kicker over the media — the Digital-Spy-style coloured label. */

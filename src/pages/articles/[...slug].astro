@@ -264,8 +264,15 @@ const spoilerFor =
   }
   .article__figure img {
     width: 100%;
+    /* Fixed landscape hero so a portrait photo becomes a tidy head-and-shoulders
+       banner instead of a giant vertical image; the crop favours the top so
+       faces are kept. Landscape covers (the SVGs) just fill it. */
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center top;
     border-radius: var(--radius);
     border: 1px solid var(--line);
+    background: var(--paper);
   }
   .article__figure figcaption {
     color: var(--ink-40);
