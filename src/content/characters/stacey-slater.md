@@ -7,6 +7,7 @@ summary: >-
   EastEnders' most acclaimed characters since 2004.
 family:
   - jean-slater
+  - kat-slater
 portrayals:
   - person: lacey-turner
     from: 2004

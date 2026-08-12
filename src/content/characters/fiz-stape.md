@@ -7,6 +7,7 @@ summary: >-
   Weatherfield regular since 2001.
 family:
   - tyrone-dobbs
+  - chesney-brown
 portrayals:
   - person: jennie-mcalpine
     from: 2001

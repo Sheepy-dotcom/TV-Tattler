@@ -8,6 +8,7 @@ summary: >-
 family:
   - david-platt
   - audrey-roberts
+  - sarah-platt
 portrayals:
   - person: helen-worth
     from: 1974

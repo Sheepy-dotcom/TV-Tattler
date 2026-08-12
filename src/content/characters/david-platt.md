@@ -8,6 +8,7 @@ summary: >-
 family:
   - gail-platt
   - audrey-roberts
+  - sarah-platt
 portrayals:
   - person: jack-p-shepherd
     from: 2000

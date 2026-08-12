@@ -8,6 +8,7 @@ summary: >-
 family:
   - gail-platt
   - david-platt
+  - sarah-platt
 portrayals:
   - person: sue-nicholls
     from: 1979

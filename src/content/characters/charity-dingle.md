@@ -7,6 +7,7 @@ summary: >-
   most compelling characters since 2000.
 family:
   - cain-dingle
+  - vanessa-woodfield
 portrayals:
   - person: emma-atkins
     from: 2000
