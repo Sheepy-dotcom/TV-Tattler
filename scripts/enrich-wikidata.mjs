@@ -158,15 +158,13 @@ async function downloadImage(url, name) {
 }
 
 /**
- * The image an entity points at on Wikimedia Commons (Wikidata P18), together
- * with its author and licence, so we can suggest it WITH the credit already
- * filled in. Returns undefined if there is no image. This is a suggestion only —
- * nothing uses it without an explicit opt-in.
+ * Build a ready-to-use suggestion from a single Commons file title (e.g.
+ * "File:William Roache.jpg"): its 1024px thumbnail plus the author/licence
+ * credit. Returns undefined if the file is not on Commons — which is exactly
+ * the filter we want, since a non-free file lives locally on Wikipedia and
+ * never resolves here.
  */
-async function commonsImageSuggestion(ent) {
-  const file = ent?.claims?.P18?.[0]?.mainsnak?.datavalue?.value; // e.g. "William Roache.jpg"
-  if (typeof file !== 'string') return undefined;
-  const title = `File:${file}`;
+async function commonsSuggestionForFile(title) {
   const url =
     `${COMMONS}?action=query&format=json&prop=imageinfo&titles=${encodeURIComponent(title)}` +
     `&iiprop=url|extmetadata&iiurlwidth=1024`;
@@ -178,6 +176,8 @@ async function commonsImageSuggestion(ent) {
   const meta = info.extmetadata ?? {};
   const author = stripHtml(meta.Artist?.value);
   const licence = stripHtml(meta.LicenseShortName?.value);
+  // Skip anything not clearly free to reuse (fair-use / all-rights-reserved).
+  if (licence && /fair use|non-?free|all rights reserved/i.test(licence)) return undefined;
   const licenceUrl = meta.LicenseUrl?.value;
   // A ready-to-use credit line. Attribution is mandatory for CC-BY/BY-SA.
   const credit = [author, licence, 'Wikimedia Commons'].filter(Boolean).join(' · ');
@@ -189,6 +189,37 @@ async function commonsImageSuggestion(ent) {
     licence,
     licenceUrl,
   };
+}
+
+/**
+ * The image an entity points at on Wikimedia Commons (Wikidata P18), together
+ * with its author and licence, so we can suggest it WITH the credit already
+ * filled in. Returns undefined if there is no image. This is a suggestion only —
+ * nothing uses it without an explicit opt-in.
+ */
+async function commonsImageSuggestion(ent) {
+  const file = ent?.claims?.P18?.[0]?.mainsnak?.datavalue?.value; // e.g. "William Roache.jpg"
+  if (typeof file !== 'string') return undefined;
+  return commonsSuggestionForFile(`File:${file}`);
+}
+
+/**
+ * Fallback when Wikidata has no P18: the lead image of the entity's English
+ * Wikipedia article. Living-person leads on en.wp must be freely licensed, and
+ * resolving the file through Commons (above) drops anything non-free, so this is
+ * a safe, well-credited source for the actors Wikidata simply hasn't tagged.
+ */
+async function wikipediaLeadImageSuggestion(ent) {
+  const title = ent?.sitelinks?.enwiki?.title;
+  if (!title) return undefined;
+  const url =
+    'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages' +
+    `&piprop=name&titles=${encodeURIComponent(title)}`;
+  const data = await getJson(url);
+  const page = Object.values(data?.query?.pages ?? {})[0];
+  const name = page?.pageimage; // bare filename, no "File:" prefix
+  if (typeof name !== 'string') return undefined;
+  return commonsSuggestionForFile(`File:${name}`);
 }
 
 // Score a candidate: reject wrong-type entities (-1), otherwise reward an exact
@@ -247,7 +278,9 @@ async function enrichPerson(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
-  const imageSuggestion = await commonsImageSuggestion(ent);
+  // Prefer Wikidata's own P18; fall back to the (free) Wikipedia lead image.
+  const imageSuggestion =
+    (await commonsImageSuggestion(ent)) ?? (await wikipediaLeadImageSuggestion(ent));
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `person-${slug}`);
   }
@@ -269,7 +302,8 @@ async function enrichShow(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
-  const imageSuggestion = await commonsImageSuggestion(ent);
+  const imageSuggestion =
+    (await commonsImageSuggestion(ent)) ?? (await wikipediaLeadImageSuggestion(ent));
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `show-${slug}`);
   }
