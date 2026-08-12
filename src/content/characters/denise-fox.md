@@ -5,6 +5,8 @@ status: current
 summary: >-
   A pillar of Albert Square — resilient, warm and quick-witted — Denise has been
   central to Walford life since 2006.
+family:
+  - kim-fox
 portrayals:
   - person: diane-parish
     from: 2006

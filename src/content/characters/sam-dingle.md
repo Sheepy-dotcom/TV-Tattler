@@ -11,6 +11,7 @@ family:
   - charity-dingle
   - marlon-dingle
   - mandy-dingle
+  - lydia-dingle
 portrayals:
   - person: james-hooton
     from: 1995

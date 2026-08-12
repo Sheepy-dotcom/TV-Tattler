@@ -5,7 +5,8 @@ status: current
 summary: >-
   Streetcars boss and serial husband — one of Weatherfield's great comic-dramatic
   everymen, on the Street since 1989.
-family: []
+family:
+  - amy-barlow
 portrayals:
   - person: simon-gregson
     from: 1989
