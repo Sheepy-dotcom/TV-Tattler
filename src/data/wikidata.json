@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T14:16:02.924Z",
+  "generatedAt": "2026-08-12T14:20:07.716Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -670,6 +670,21 @@
         "licence": "CC BY-SA 2.0",
         "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
         "imageLocal": "/images/wikidata/person-perry-fenwick.jpg"
+      }
+    },
+    "daniel-brocklebank": {
+      "source": "wikidata",
+      "qid": "Q1160180",
+      "wikipedia": "https://en.wikipedia.org/wiki/Daniel_Brocklebank",
+      "dateOfBirth": "1979-12-21",
+      "imageSuggestion": {
+        "file": "File:Daniel Brocklebank at Manchester Pride 2017.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Daniel_Brocklebank_at_Manchester_Pride_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Daniel_Brocklebank_at_Manchester_Pride_2017.jpg",
+        "credit": "KeithJustKeith · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-daniel-brocklebank.jpg"
       }
     }
   },
