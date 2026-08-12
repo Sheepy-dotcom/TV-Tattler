@@ -7,6 +7,7 @@ summary: >-
   has been at the centre of Emmerdale's village life since 2002.
 family:
   - cain-dingle
+  - paddy-kirk
 portrayals:
   - person: lucy-pargeter
     from: 2002

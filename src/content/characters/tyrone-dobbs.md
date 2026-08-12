@@ -5,7 +5,8 @@ status: current
 summary: >-
   Softhearted mechanic and devoted family man — one of the Street's most likeable
   everymen since 1998.
-family: []
+family:
+  - fiz-stape
 portrayals:
   - person: alan-halsall
     from: 1998

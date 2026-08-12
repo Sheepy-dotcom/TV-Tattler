@@ -7,6 +7,7 @@ summary: >-
   drama than most. A Coronation Street fixture since 1974.
 family:
   - david-platt
+  - audrey-roberts
 portrayals:
   - person: helen-worth
     from: 1974

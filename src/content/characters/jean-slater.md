@@ -5,7 +5,8 @@ status: current
 summary: >-
   Warm, chaotic and fiercely loving — a much-praised EastEnders character and part
   of the Slater family since 2004.
-family: []
+family:
+  - stacey-slater
 portrayals:
   - person: gillian-wright
     from: 2004

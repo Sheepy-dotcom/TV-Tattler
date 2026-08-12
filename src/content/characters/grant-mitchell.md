@@ -8,6 +8,7 @@ summary: >-
   one of EastEnders' definitive hard men of the 1990s.
 family:
   - phil-mitchell
+  - sharon-watts
 portrayals:
   - person: ross-kemp
     from: 1990

@@ -7,6 +7,7 @@ summary: >-
   teen to family man, on screen since 2000.
 family:
   - gail-platt
+  - audrey-roberts
 portrayals:
   - person: jack-p-shepherd
     from: 2000
