@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T08:40:29.737Z",
+  "generatedAt": "2026-08-12T09:04:34.892Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -449,6 +449,54 @@
         "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
         "imageLocal": "/images/wikidata/person-sue-nicholls.jpg"
       }
+    },
+    "alison-king": {
+      "source": "wikidata",
+      "qid": "Q3734145",
+      "wikipedia": "https://en.wikipedia.org/wiki/Alison_King",
+      "dateOfBirth": "1973-03-03"
+    },
+    "diane-parish": {
+      "source": "wikidata",
+      "qid": "Q2215497",
+      "wikipedia": "https://en.wikipedia.org/wiki/Diane_Parish",
+      "dateOfBirth": "1969-11-01",
+      "imageSuggestion": {
+        "file": "File:Diane Parish 2023.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Diane_Parish_2023.jpg/1280px-Diane_Parish_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Diane_Parish_2023.jpg",
+        "credit": "Meena · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-diane-parish.jpg"
+      }
+    },
+    "lisa-riley": {
+      "source": "wikidata",
+      "qid": "Q6558365",
+      "wikipedia": "https://en.wikipedia.org/wiki/Lisa_Riley",
+      "dateOfBirth": "1976-06-13"
+    },
+    "stephanie-waring": {
+      "source": "wikidata",
+      "qid": "Q4476189",
+      "wikipedia": "https://en.wikipedia.org/wiki/Stephanie_Waring",
+      "dateOfBirth": "1978-10-26",
+      "imageSuggestion": {
+        "file": "File:Stephanie Waring.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Stephanie_Waring.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Stephanie_Waring.jpg",
+        "credit": "Pam · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-stephanie-waring.jpg"
+      }
+    },
+    "sue-cleaver": {
+      "source": "wikidata",
+      "qid": "Q15270247",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sue_Cleaver",
+      "dateOfBirth": "1963-09-02"
     }
   },
   "shows": {
@@ -456,7 +504,15 @@
       "source": "wikidata",
       "qid": "Q607514",
       "wikipedia": "https://en.wikipedia.org/wiki/EastEnders",
-      "episodes": 7446
+      "episodes": 7446,
+      "imageSuggestion": {
+        "file": "File:A London Mosaic.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/A_London_Mosaic.jpg/1280px-A_London_Mosaic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:A_London_Mosaic.jpg",
+        "credit": "NASA’s Earth Observatory · Public domain · Wikimedia Commons",
+        "licence": "Public domain",
+        "imageLocal": "/images/wikidata/show-eastenders.jpg"
+      }
     },
     "coronation-street": {
       "source": "wikidata",
@@ -477,7 +533,16 @@
       "source": "wikidata",
       "qid": "Q1247575",
       "wikipedia": "https://en.wikipedia.org/wiki/Emmerdale",
-      "episodes": 10624
+      "episodes": 10624,
+      "imageSuggestion": {
+        "file": "File:Set of Emmerdale, Cavendish Street, Leeds - geograph.org.uk - 4920125.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg/1280px-Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Set_of_Emmerdale,_Cavendish_Street,_Leeds_-_geograph.org.uk_-_4920125.jpg",
+        "credit": "Mark Stevenson · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/show-emmerdale.jpg"
+      }
     },
     "hollyoaks": {
       "source": "wikidata",
