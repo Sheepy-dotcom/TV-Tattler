@@ -191,8 +191,11 @@ const suggestion = pendingImageSuggestion(imageInput);
   }
   .person__portrait figcaption {
     color: var(--ink-40);
-    margin-top: var(--space-2);
-    font-size: var(--step--1);
+    margin-top: var(--space-1);
+    /* Tiny attribution — kept only where a licence requires it. */
+    font-size: 0.6rem;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
   }
   .person__portrait figcaption a {
     color: inherit;

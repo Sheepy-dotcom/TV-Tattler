@@ -80,6 +80,18 @@ export interface ResolvedImage {
   alt?: string;
   credit?: string;
   creditUrl?: string;
+  licence?: string;
+}
+
+/**
+ * Whether a licence legally requires us to show an attribution line. CC0 and
+ * public-domain images don't, so their credit is dropped; everything else
+ * (CC BY, CC BY-SA, …) does, and we keep it — just very small. An unknown
+ * licence is treated as "required", to stay on the safe side.
+ */
+export function attributionRequired(licence?: string): boolean {
+  if (!licence) return true;
+  return !/\b(cc0|public domain|pd|no restrictions)\b/i.test(licence.trim());
 }
 
 interface EntityImageInput {
@@ -97,13 +109,16 @@ export function resolveEntityImage(input: EntityImageInput): ResolvedImage | und
   // refresh, or when Wikidata has no P18 for the entity).
   const suggestion = input.facts?.imageSuggestion;
   if (input.useWikidataImage && suggestion) {
+    // Only carry the credit when the licence actually requires attribution.
+    const needsCredit = attributionRequired(suggestion.licence);
     return {
       // Prefer the committed, self-hosted copy; fall back to the external URL
       // if the download hasn't happened yet.
       src: suggestion.imageLocal ?? suggestion.thumbUrl,
       alt: input.imageAlt ?? input.name,
-      credit: suggestion.credit,
-      creditUrl: suggestion.descriptionUrl,
+      credit: needsCredit ? suggestion.credit : undefined,
+      creditUrl: needsCredit ? suggestion.descriptionUrl : undefined,
+      licence: suggestion.licence,
     };
   }
   if (input.image) {
@@ -120,10 +135,16 @@ export function resolveEntityImage(input: EntityImageInput): ResolvedImage | und
  */
 export function photoForArticle(personSlugs: string[]): ResolvedImage | undefined {
   for (const slug of personSlugs) {
-    const local = data.people?.[slug]?.imageSuggestion?.imageLocal;
     const s = data.people?.[slug]?.imageSuggestion;
+    const local = s?.imageLocal;
     if (local && s) {
-      return { src: local, credit: s.credit, creditUrl: s.descriptionUrl };
+      const needsCredit = attributionRequired(s.licence);
+      return {
+        src: local,
+        credit: needsCredit ? s.credit : undefined,
+        creditUrl: needsCredit ? s.descriptionUrl : undefined,
+        licence: s.licence,
+      };
     }
   }
   return undefined;
