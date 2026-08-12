@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { films, freshness } from '../../lib/feeds';
+
+const items = films.items ?? [];
+const updated = freshness(films.generatedAt);
+
+function releaseLabel(iso: string): string {
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+}
+function isOut(iso: string): boolean {
+  return new Date(iso + 'T00:00:00') <= new Date();
+}
+---
+
+<BaseLayout
+  title="Films — in cinemas & coming soon"
+  description="New and upcoming UK cinema releases, refreshed daily from The Movie Database."
+>
+  <header class="pagehead">
+    <p class="mono pagehead__kicker">TV &amp; Film</p>
+    <h1>In cinemas &amp; coming soon</h1>
+    <p class="pagehead__intro">
+      New and upcoming UK cinema releases — refreshed automatically every day.
+    </p>
+    {updated && <p class="mono pagehead__stamp">Updated {updated} · data from The Movie Database (TMDB)</p>}
+  </header>
+
+  {
+    items.length === 0 ? (
+      <div class="empty card">
+        <h2>The films feed is warming up</h2>
+        <p>
+          This page fills automatically from The Movie Database (TMDB). Once the daily
+          <code>refresh-feeds</code> workflow runs with a <code>TMDB_API_KEY</code> set, UK
+          cinema releases appear here — newest first.
+        </p>
+      </div>
+    ) : (
+      <ul class="films">
+        {items.map((film) => (
+          <li class="filmcard card">
+            <a class="filmcard__poster" href={film.tmdbUrl} rel="external noopener" aria-hidden="true" tabindex="-1">
+              {film.poster ? (
+                <img src={film.poster} alt="" loading="lazy" decoding="async" />
+              ) : (
+                <span class="filmcard__noposter">{film.title}</span>
+              )}
+              {film.certification && <span class="filmcard__cert mono">{film.certification}</span>}
+            </a>
+            <div class="filmcard__body">
+              <p class="filmcard__when mono">
+                <span class:list={['filmcard__badge', isOut(film.releaseDate) ? 'is-out' : 'is-soon']}>
+                  {isOut(film.releaseDate) ? 'In cinemas' : 'Coming soon'}
+                </span>
+                {releaseLabel(film.releaseDate)}
+              </p>
+              <h2 class="filmcard__title">
+                <a href={film.tmdbUrl} rel="external noopener">{film.title}</a>
+              </h2>
+              {film.genres.length > 0 && <p class="filmcard__genres mono">{film.genres.slice(0, 3).join(' · ')}</p>}
+              {film.overview && <p class="filmcard__overview">{film.overview}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <p class="tmdb-credit mono">
+    This product uses the TMDB API but is not endorsed or certified by TMDB.
+  </p>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 4px solid var(--ink);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  .pagehead__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .pagehead__intro {
+    color: var(--ink-80);
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    margin-bottom: var(--space-2);
+  }
+  .pagehead__stamp {
+    color: var(--ink-40);
+    margin: 0;
+  }
+
+  .empty {
+    padding: var(--space-6);
+    text-align: center;
+    max-width: 46rem;
+    margin-inline: auto;
+  }
+  .empty h2 {
+    font-size: var(--step-1);
+  }
+  .empty p {
+    color: var(--ink-60);
+    margin: 0 auto;
+    max-width: 40ch;
+  }
+  .empty code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .films {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+  .filmcard {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .filmcard__poster {
+    position: relative;
+    display: block;
+    aspect-ratio: 2 / 3;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .filmcard__poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .filmcard__noposter {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--space-4);
+    text-align: center;
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+  .filmcard__cert {
+    position: absolute;
+    left: var(--space-2);
+    top: var(--space-2);
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    padding: 0.2em 0.5em;
+    border-radius: var(--radius-sm);
+    font-size: var(--step--1);
+  }
+  .filmcard__body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    display: grid;
+    gap: var(--space-2);
+  }
+  .filmcard__when {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--ink-60);
+    margin: 0;
+  }
+  .filmcard__badge {
+    padding: 0.2em 0.5em;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+  .filmcard__badge.is-out {
+    background: color-mix(in srgb, var(--live) 14%, white);
+    color: color-mix(in srgb, var(--live) 80%, var(--ink));
+  }
+  .filmcard__badge.is-soon {
+    background: var(--paper);
+    color: var(--ink-60);
+    border: 1px solid var(--line-strong);
+  }
+  .filmcard__title {
+    font-size: var(--step-1);
+    margin: 0;
+  }
+  .filmcard__title a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .filmcard__title a:hover {
+    text-decoration: underline;
+  }
+  .filmcard__genres {
+    color: var(--ink-40);
+    margin: 0;
+  }
+  .filmcard__overview {
+    color: var(--ink-60);
+    font-size: var(--step--1);
+    line-height: 1.55;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tmdb-credit {
+    color: var(--ink-40);
+    margin-top: var(--space-7);
+    text-align: center;
+  }
+</style>

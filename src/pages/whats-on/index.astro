@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { episodes, freshness } from '../../lib/feeds';
+import { getShows } from '../../lib/relations';
+
+const shows = await getShows();
+const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
+const knownSlugs = new Set(shows.map((s) => s.id));
+
+const feedShows = (episodes.shows ?? []).filter((s) => s.episodes.length > 0);
+const total = feedShows.reduce((n, s) => n + s.episodes.length, 0);
+const updated = freshness(episodes.generatedAt);
+
+function dayLabel(iso: string): string {
+  const d = new Date(iso + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.round((d.getTime() - today.getTime()) / 86400000);
+  const rel = diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow' : null;
+  const date = d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  return rel ? `${rel} · ${date}` : date;
+}
+function time12(t: string | null): string | null {
+  if (!t) return null;
+  const [h, m] = t.split(':').map(Number);
+  const ampm = h >= 12 ? 'pm' : 'am';
+  const hr = h % 12 || 12;
+  return m ? `${hr}.${String(m).padStart(2, '0')}${ampm}` : `${hr}${ampm}`;
+}
+---
+
+<BaseLayout
+  title="What's on — this week's soap episodes"
+  description="Upcoming EastEnders, Coronation Street, Emmerdale and Hollyoaks episodes with air dates, refreshed daily."
+>
+  <header class="pagehead">
+    <p class="mono pagehead__kicker">Soaps</p>
+    <h1>What's on this week</h1>
+    <p class="pagehead__intro">
+      The next fortnight of soap episodes — air dates and official synopses,
+      refreshed automatically every day.
+    </p>
+    {updated && <p class="mono pagehead__stamp">Updated {updated} · air data from TVmaze</p>}
+  </header>
+
+  {
+    total === 0 ? (
+      <div class="empty card">
+        <h2>The schedule is warming up</h2>
+        <p>
+          This page fills automatically from TVmaze. Once the daily
+          <code>refresh-feeds</code> workflow runs, the next fortnight of EastEnders,
+          Coronation Street, Emmerdale and Hollyoaks episodes appears here.
+        </p>
+      </div>
+    ) : (
+      <div class="wo-grid">
+        {feedShows.map((show) => (
+          <section
+            class="wo-show card"
+            style={`--accent: ${accentOf.get(show.slug) ?? 'var(--ink)'};`}
+            aria-label={show.name}
+          >
+            <header class="wo-show__head">
+              <span class="wo-show__dot" aria-hidden="true" />
+              {knownSlugs.has(show.slug) ? (
+                <a class="wo-show__name" href={`/shows/${show.slug}/`}>{show.name}</a>
+              ) : (
+                <span class="wo-show__name">{show.name}</span>
+              )}
+              <span class="wo-show__count mono">{show.episodes.length} ep{show.episodes.length === 1 ? '' : 's'}</span>
+            </header>
+            <ol class="wo-eps">
+              {show.episodes.map((ep) => (
+                <li class="wo-ep">
+                  <p class="wo-ep__when mono">
+                    {dayLabel(ep.airdate)}
+                    {time12(ep.airtime) && <span class="wo-ep__time"> · {time12(ep.airtime)}</span>}
+                  </p>
+                  {ep.summary ? (
+                    <p class="wo-ep__summary">{ep.summary}</p>
+                  ) : (
+                    <p class="wo-ep__summary wo-ep__summary--muted">Synopsis to follow.</p>
+                  )}
+                  {ep.url && (
+                    <a class="wo-ep__link mono" href={ep.url} rel="external noopener">Details on TVmaze →</a>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 4px solid var(--ink);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  .pagehead__kicker { color: var(--ink-40); margin-bottom: var(--space-2); }
+  .pagehead__intro { color: var(--ink-80); max-width: var(--measure); font-size: var(--step-1); margin-bottom: var(--space-2); }
+  .pagehead__stamp { color: var(--ink-40); margin: 0; }
+
+  .empty { padding: var(--space-6); text-align: center; max-width: 46rem; margin-inline: auto; }
+  .empty h2 { font-size: var(--step-1); }
+  .empty p { color: var(--ink-60); margin: 0 auto; max-width: 44ch; }
+  .empty code { font-family: var(--font-mono); font-size: 0.9em; background: var(--paper); padding: 0.1em 0.35em; border-radius: var(--radius-sm); }
+
+  .wo-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 48rem) {
+    .wo-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .wo-show {
+    border-top: 4px solid var(--accent);
+    padding: var(--space-4) var(--space-5) var(--space-5);
+  }
+  .wo-show__head {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-3);
+    border-bottom: 1px solid var(--line);
+  }
+  .wo-show__dot {
+    width: 0.7em; height: 0.7em; border-radius: 999px; background: var(--accent); flex: none;
+  }
+  .wo-show__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .wo-show__name:hover { color: color-mix(in srgb, var(--accent) 72%, var(--ink)); }
+  .wo-show__count { margin-left: auto; color: var(--ink-40); }
+
+  .wo-eps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+  .wo-ep { display: grid; gap: 0.25em; }
+  .wo-ep__when { color: color-mix(in srgb, var(--accent) 72%, var(--ink)); margin: 0; }
+  .wo-ep__time { color: var(--ink-40); }
+  .wo-ep__summary { margin: 0; color: var(--ink-80); font-size: var(--step-0); }
+  .wo-ep__summary--muted { color: var(--ink-40); font-style: italic; }
+  .wo-ep__link { color: var(--ink-40); text-decoration: none; }
+  .wo-ep__link:hover { color: var(--ink); text-decoration: underline; }
+</style>

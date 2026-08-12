@@ -9,7 +9,11 @@
     "preview": "astro preview",
     "check": "astro check",
     "enrich": "node scripts/enrich-wikidata.mjs",
-    "new": "node scripts/new-article.mjs"
+    "new": "node scripts/new-article.mjs",
+    "feeds": "npm run feeds:films && npm run feeds:episodes && npm run feeds:news",
+    "feeds:films": "node scripts/fetch-films.mjs",
+    "feeds:episodes": "node scripts/fetch-episodes.mjs",
+    "feeds:news": "node scripts/fetch-news.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

@@ -21,12 +21,18 @@ function isActive(href: string): boolean {
   return currentPath.startsWith(href);
 }
 
+// Fresh-content pages lead the nav (the site's live purpose: spoilers, news and
+// new films), with the reference spine — Soaps, Shows, Cast — after. The other
+// sections stay discoverable from the footer.
 const primaryNav = [
   { href: '/', label: 'Home', accent: false },
-  ...SECTIONS.map((s) => ({ href: `/section/${s}/`, label: sectionLabel(s), accent: false })),
+  { href: '/whats-on/', label: "What's On", accent: false },
+  { href: '/kind/spoiler/', label: 'Spoilers', accent: true },
+  { href: '/headlines/', label: 'Headlines', accent: false },
+  { href: '/films/', label: 'Films', accent: false },
+  { href: '/section/soaps/', label: 'Soaps', accent: false },
   { href: '/shows/', label: 'Shows', accent: false },
   { href: '/people/', label: 'Cast', accent: false },
-  { href: '/kind/spoiler/', label: 'Spoilers', accent: true },
 ];
 ---
 
@@ -135,6 +141,9 @@ const primaryNav = [
         <nav class="site-footer__col" aria-label="Browse">
           <h2 class="site-footer__h">Browse</h2>
           <ul>
+            <li><a href="/whats-on/">What's on</a></li>
+            <li><a href="/films/">Films</a></li>
+            <li><a href="/headlines/">Headlines</a></li>
             <li><a href="/shows/">All shows</a></li>
             <li><a href="/people/">Cast</a></li>
             <li><a href="/kind/spoiler/">Spoilers</a></li>

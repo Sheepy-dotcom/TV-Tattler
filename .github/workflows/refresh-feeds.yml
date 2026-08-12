@@ -1,0 +1,63 @@
+name: Refresh live feeds
+
+# Keeps the auto-updating feeds current: new & upcoming UK films (TMDB), this
+# fortnight's soap episodes (TVmaze) and aggregated soap headlines (RSS). Writes
+# to src/data/feeds/*.json and commits any changes, which triggers the usual
+# Cloudflare Pages deploy.
+#
+# Films need a TMDB key. Add it as a repository secret named TMDB_API_KEY
+# (Settings → Secrets and variables → Actions). Without it, the films step
+# simply skips — episodes and headlines still update. Episodes/headlines need
+# no secrets.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-feeds
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch upcoming films (TMDB)
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TMDB_BEARER: ${{ secrets.TMDB_BEARER }}
+        run: npm run feeds:films
+
+      - name: Fetch this week's episodes (TVmaze)
+        run: npm run feeds:episodes
+
+      - name: Aggregate soap headlines (RSS)
+        run: npm run feeds:news
+
+      - name: Verify the site still builds
+        run: npm run build
+
+      - name: Commit refreshed feeds if they changed
+        run: |
+          git add src/data/feeds
+          if git diff --cached --quiet; then
+            echo "No feed changes."
+            exit 0
+          fi
+          git config user.name "tv-tattler-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git commit -m "chore(feeds): refresh films, episodes and headlines"
+          git push

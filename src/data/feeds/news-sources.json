@@ -1,0 +1,8 @@
+{
+  "note": "Curated RSS feeds for the /headlines/ aggregator. Edit freely — the fetch script skips any feed that fails, and only ever stores a headline, source and link (never the article body). Verify each URL resolves to a valid RSS/Atom feed.",
+  "feeds": [
+    { "name": "The Guardian — Soap operas", "url": "https://www.theguardian.com/tv-and-radio/soap-operas/rss" },
+    { "name": "Metro — Soaps", "url": "https://metro.co.uk/entertainment/soaps/feed/" },
+    { "name": "Digital Spy — Soaps", "url": "https://www.digitalspy.com/soaps/rss/" }
+  ]
+}
