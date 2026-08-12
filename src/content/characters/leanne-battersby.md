@@ -7,6 +7,7 @@ summary: >-
   centre of Weatherfield's biggest stories since 1997.
 family:
   - stella-price
+  - toyah-battersby
 portrayals:
   - person: jane-danson
     from: 1997

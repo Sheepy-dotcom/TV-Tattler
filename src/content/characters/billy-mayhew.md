@@ -5,6 +5,8 @@ status: current
 summary: >-
   Weatherfield's vicar — thoughtful, flawed and quietly devoted. Billy has been
   part of the Street since 2014.
+family:
+  - paul-foreman
 portrayals:
   - person: daniel-brocklebank
     from: 2014

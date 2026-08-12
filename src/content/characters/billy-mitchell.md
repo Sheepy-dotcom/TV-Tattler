@@ -9,6 +9,7 @@ family:
   - phil-mitchell
   - grant-mitchell
   - honey-mitchell
+  - jay-brown
 portrayals:
   - person: perry-fenwick
     from: 1998
