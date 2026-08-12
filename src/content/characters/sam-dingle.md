@@ -5,7 +5,12 @@ status: current
 summary: >-
   The gentlest of the Dingles — loyal, guileless and devoted to his family. Part of
   Emmerdale since 1995.
-family: []
+family:
+  - cain-dingle
+  - chas-dingle
+  - charity-dingle
+  - marlon-dingle
+  - mandy-dingle
 portrayals:
   - person: james-hooton
     from: 1995

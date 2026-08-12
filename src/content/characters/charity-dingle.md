@@ -8,6 +8,7 @@ summary: >-
 family:
   - cain-dingle
   - vanessa-woodfield
+  - sam-dingle
 portrayals:
   - person: emma-atkins
     from: 2000

@@ -8,6 +8,7 @@ summary: >-
 family:
   - marlon-dingle
   - paddy-kirk
+  - sam-dingle
 portrayals:
   - person: lisa-riley
     from: 1995

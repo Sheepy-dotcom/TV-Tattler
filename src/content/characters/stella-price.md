@@ -8,7 +8,8 @@ status: departed
 summary: >-
   Landlady of the Rovers Return in the early 2010s, who arrived in Weatherfield
   with a long-buried family secret.
-family: []
+family:
+  - leanne-battersby
 portrayals:
   - person: michelle-collins
     from: 2011

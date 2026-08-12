@@ -4,7 +4,8 @@ show: coronation-street
 status: current
 summary: >-
   The Street's steady, spanner-in-hand mechanic — a Weatherfield mainstay since 1983.
-family: []
+family:
+  - sally-metcalfe
 portrayals:
   - person: michael-le-vell
     from: 1983

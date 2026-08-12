@@ -5,7 +5,8 @@ status: current
 summary: >-
   Social-climbing, house-proud and endlessly resilient — Sally has been a
   Weatherfield mainstay since 1986.
-family: []
+family:
+  - kevin-webster
 portrayals:
   - person: sally-dynevor
     from: 1986

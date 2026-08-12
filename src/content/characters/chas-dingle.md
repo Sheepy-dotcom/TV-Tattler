@@ -8,6 +8,7 @@ summary: >-
 family:
   - cain-dingle
   - paddy-kirk
+  - sam-dingle
 portrayals:
   - person: lucy-pargeter
     from: 2002

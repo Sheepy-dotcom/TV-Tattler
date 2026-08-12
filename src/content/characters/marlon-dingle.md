@@ -7,6 +7,7 @@ summary: >-
   since 1996.
 family:
   - mandy-dingle
+  - sam-dingle
 portrayals:
   - person: mark-charnock
     from: 1996

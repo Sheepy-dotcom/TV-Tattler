@@ -5,6 +5,8 @@ status: current
 summary: >-
   From Battersby tearaway to businesswoman and mother — Leanne has been at the
   centre of Weatherfield's biggest stories since 1997.
+family:
+  - stella-price
 portrayals:
   - person: jane-danson
     from: 1997
