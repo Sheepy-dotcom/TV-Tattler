@@ -5,7 +5,8 @@ status: current
 summary: >-
   Walford's hard man and the linchpin of the Mitchell family — car-lot owner,
   Queen Vic landlord at various points, and a fixture of Albert Square since 1990.
-family: []
+family:
+  - grant-mitchell
 portrayals:
   - person: steve-mcfadden
     from: 1990
