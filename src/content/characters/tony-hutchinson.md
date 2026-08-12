@@ -7,6 +7,7 @@ summary: >-
   the very first episode in 1995, the last of the original cast still standing.
 family:
   - darren-osborne
+  - cindy-cunningham
 portrayals:
   - person: nick-pickard
     from: 1995

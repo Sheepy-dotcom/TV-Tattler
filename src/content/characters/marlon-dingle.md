@@ -5,7 +5,8 @@ status: current
 summary: >-
   Chef, family man and the warm comic heart of the Dingles — part of Emmerdale
   since 1996.
-family: []
+family:
+  - mandy-dingle
 portrayals:
   - person: mark-charnock
     from: 1996

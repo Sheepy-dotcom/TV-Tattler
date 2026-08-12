@@ -7,6 +7,7 @@ summary: >-
   most familiar faces since 1997.
 family:
   - chas-dingle
+  - mandy-dingle
 portrayals:
   - person: dominic-brunt
     from: 1997
