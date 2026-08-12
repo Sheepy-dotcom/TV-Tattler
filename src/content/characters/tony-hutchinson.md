@@ -5,7 +5,8 @@ status: current
 summary: >-
   Restaurateur, dad and eternal optimist — Tony has been part of Hollyoaks from
   the very first episode in 1995, the last of the original cast still standing.
-family: []
+family:
+  - darren-osborne
 portrayals:
   - person: nick-pickard
     from: 1995
