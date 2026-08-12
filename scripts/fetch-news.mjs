@@ -96,8 +96,9 @@ async function main() {
         const xml = await res.text();
         let kept = 0;
         for (const e of parseEntries(xml)) {
-          const soap = tagOf(e.title);
-          // On a general feed, keep only stories that actually mention a soap.
+          // A soap-specific feed tags every item to its show; a general feed
+          // tags by what the headline names, and keeps only soap stories.
+          const soap = feed.soap || tagOf(e.title);
           if (feed.soapSpecific === false && !soap) continue;
           const publisher = e.publisher || feed.name;
           // Google News (if ever used) appends " - Publisher"; trim it.
