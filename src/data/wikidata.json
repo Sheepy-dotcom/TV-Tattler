@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T08:29:43.674Z",
+  "generatedAt": "2026-08-12T08:40:29.737Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -346,6 +346,108 @@
         "licence": "CC BY 3.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
         "imageLocal": "/images/wikidata/person-tony-audenshaw.jpg"
+      }
+    },
+    "antony-cotton": {
+      "source": "wikidata",
+      "qid": "Q607980",
+      "wikipedia": "https://en.wikipedia.org/wiki/Antony_Cotton",
+      "dateOfBirth": "1975-08-05",
+      "imageSuggestion": {
+        "file": "File:Antony Cotton 2.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Antony_Cotton_2.jpg/1280px-Antony_Cotton_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Antony_Cotton_2.jpg",
+        "credit": "Man Alive! · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-antony-cotton.jpg"
+      }
+    },
+    "dominic-brunt": {
+      "source": "wikidata",
+      "qid": "Q5290479",
+      "wikipedia": "https://en.wikipedia.org/wiki/Dominic_Brunt",
+      "dateOfBirth": "1970-04-15"
+    },
+    "jennie-mcalpine": {
+      "source": "wikidata",
+      "qid": "Q5929187",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jennie_McAlpine",
+      "dateOfBirth": "1984-02-12"
+    },
+    "lacey-turner": {
+      "source": "wikidata",
+      "qid": "Q4353877",
+      "wikipedia": "https://en.wikipedia.org/wiki/Lacey_Turner",
+      "dateOfBirth": "1988-03-28",
+      "imageSuggestion": {
+        "file": "File:Lacey Turner 2010.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Lacey_Turner_2010.jpg/1280px-Lacey_Turner_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Lacey_Turner_2010.jpg",
+        "credit": "Ramon Chiratheep · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-lacey-turner.jpg"
+      }
+    },
+    "letitia-dean": {
+      "source": "wikidata",
+      "qid": "Q4355035",
+      "wikipedia": "https://en.wikipedia.org/wiki/Letitia_Dean",
+      "dateOfBirth": "1967-11-14",
+      "imageSuggestion": {
+        "file": "File:Letitia Dean.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Letitia_Dean.jpg/1280px-Letitia_Dean.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Letitia_Dean.jpg",
+        "credit": "Garry Knight · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-letitia-dean.jpg"
+      }
+    },
+    "natalie-j-robb": {
+      "source": "wikidata",
+      "qid": "Q1648149",
+      "wikipedia": "https://en.wikipedia.org/wiki/Natalie_J._Robb",
+      "dateOfBirth": "1974-12-03",
+      "imageSuggestion": {
+        "file": "File:Natalie J Robb at the ITV Studio in 2025 (cropped).jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Natalie_J_Robb_at_the_ITV_Studio_in_2025_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Natalie_J_Robb_at_the_ITV_Studio_in_2025_(cropped).jpg",
+        "credit": "Loki841990 · CC0 · Wikimedia Commons",
+        "licence": "CC0",
+        "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "imageLocal": "/images/wikidata/person-natalie-j-robb.jpg"
+      }
+    },
+    "scott-maslen": {
+      "source": "wikidata",
+      "qid": "Q2260957",
+      "wikipedia": "https://en.wikipedia.org/wiki/Scott_Maslen",
+      "dateOfBirth": "1971-06-25",
+      "imageSuggestion": {
+        "file": "File:Scott Maslen 2016.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Scott_Maslen_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Scott_Maslen_2016.jpg",
+        "credit": "AnemoneProjectors · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-scott-maslen.jpg"
+      }
+    },
+    "sue-nicholls": {
+      "source": "wikidata",
+      "qid": "Q7634224",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sue_Nicholls",
+      "dateOfBirth": "1943-11-23",
+      "imageSuggestion": {
+        "file": "File:Sue Nicholls.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Sue_Nicholls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Sue_Nicholls.jpg",
+        "credit": "Sean Jones - Website/Flickr · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-sue-nicholls.jpg"
       }
     }
   },
