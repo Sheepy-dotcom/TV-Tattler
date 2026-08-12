@@ -14,7 +14,7 @@
  * Needs outbound access to www.wikidata.org (available in CI / on Cloudflare;
  * a locked-down sandbox may block it, in which case the existing cache is kept).
  */
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -22,6 +22,10 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PEOPLE_DIR = path.join(ROOT, 'src/content/people');
 const SHOWS_DIR = path.join(ROOT, 'src/content/shows');
 const OUT = path.join(ROOT, 'src/data/wikidata.json');
+// Downloaded Commons images live here and are committed alongside the cache, so
+// the photo "comes with" the data (self-hosted, not a fragile external hotlink).
+const IMG_DIR = path.join(ROOT, 'public/images/wikidata');
+const IMG_WEB = '/images/wikidata';
 
 const UA =
   'TVTattler/0.1 (build-time enrichment; https://tvtattler.co.uk; editor@tvtattler.co.uk)';
@@ -125,6 +129,35 @@ const stripHtml = (s) =>
   typeof s === 'string' ? s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : undefined;
 
 /**
+ * Download a Commons thumbnail into public/images/wikidata/ so the photo is
+ * committed alongside the data — self-hosted, not a fragile external hotlink.
+ * Returns the site-root path (e.g. "/images/wikidata/person-william-roache.jpg")
+ * or undefined if the fetch fails (in which case callers keep the external URL).
+ */
+async function downloadImage(url, name) {
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const type = res.headers.get('content-type') ?? '';
+    const ext = type.includes('png')
+      ? 'png'
+      : type.includes('gif')
+        ? 'gif'
+        : type.includes('webp')
+          ? 'webp'
+          : 'jpg';
+    const buf = Buffer.from(await res.arrayBuffer());
+    await mkdir(IMG_DIR, { recursive: true });
+    const fileName = `${name}.${ext}`;
+    await writeFile(path.join(IMG_DIR, fileName), buf);
+    return `${IMG_WEB}/${fileName}`;
+  } catch (e) {
+    console.warn(`  image ✗ ${name}: ${e.message} (keeping external URL)`);
+    return undefined;
+  }
+}
+
+/**
  * The image an entity points at on Wikimedia Commons (Wikidata P18), together
  * with its author and licence, so we can suggest it WITH the credit already
  * filled in. Returns undefined if there is no image. This is a suggestion only —
@@ -201,7 +234,7 @@ async function resolveQid(name, acceptTypes, opts = {}) {
   return bestScore >= 0 ? best : undefined;
 }
 
-async function enrichPerson(fm) {
+async function enrichPerson(slug, fm) {
   let qid = fm.wikidata;
   let ent;
   if (qid) ent = await entity(qid);
@@ -214,16 +247,20 @@ async function enrichPerson(fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
+  const imageSuggestion = await commonsImageSuggestion(ent);
+  if (imageSuggestion?.thumbUrl) {
+    imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `person-${slug}`);
+  }
   return {
     source: 'wikidata',
     qid,
     wikipedia: enwiki(ent),
     dateOfBirth: isoDate(firstTime(ent, 'P569')),
-    imageSuggestion: await commonsImageSuggestion(ent),
+    imageSuggestion,
   };
 }
 
-async function enrichShow(fm) {
+async function enrichShow(slug, fm) {
   let qid = fm.wikidata;
   let ent;
   if (qid) ent = await entity(qid);
@@ -232,13 +269,17 @@ async function enrichShow(fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
+  const imageSuggestion = await commonsImageSuggestion(ent);
+  if (imageSuggestion?.thumbUrl) {
+    imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `show-${slug}`);
+  }
   return {
     source: 'wikidata',
     qid,
     wikipedia: enwiki(ent),
     inception: year(firstTime(ent, 'P571')),
     episodes: firstAmount(ent, 'P1113'),
-    imageSuggestion: await commonsImageSuggestion(ent),
+    imageSuggestion,
   };
 }
 
@@ -260,7 +301,7 @@ async function main() {
     const slug = file.replace(/\.md$/, '');
     const fm = await readFrontmatter(path.join(PEOPLE_DIR, file));
     try {
-      const facts = await enrichPerson(fm);
+      const facts = await enrichPerson(slug, fm);
       if (facts) {
         cache.people[slug] = facts;
         ok++;
@@ -280,7 +321,7 @@ async function main() {
     const slug = file.replace(/\.md$/, '');
     const fm = await readFrontmatter(path.join(SHOWS_DIR, file));
     try {
-      const facts = await enrichShow(fm);
+      const facts = await enrichShow(slug, fm);
       if (facts) {
         cache.shows[slug] = facts;
         ok++;

@@ -39,14 +39,14 @@ jobs:
       - name: Verify the site still builds
         run: npm run build
 
-      - name: Commit refreshed cache if it changed
+      - name: Commit refreshed cache and images if they changed
         run: |
-          if git diff --quiet -- src/data/wikidata.json; then
-            echo "No changes to the enrichment cache."
+          git add src/data/wikidata.json public/images/wikidata
+          if git diff --cached --quiet; then
+            echo "No changes to the enrichment cache or images."
             exit 0
           fi
           git config user.name "tv-tattler-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add src/data/wikidata.json
-          git commit -m "chore(data): refresh Wikidata enrichment cache"
+          git commit -m "chore(data): refresh Wikidata enrichment cache and images"
           git push

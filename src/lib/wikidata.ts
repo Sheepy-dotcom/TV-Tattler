@@ -16,7 +16,8 @@ import cache from '../data/wikidata.json';
     A suggestion only — never used without an explicit opt-in. */
 export interface ImageSuggestion {
   file: string;
-  thumbUrl: string;
+  thumbUrl: string; // external upload.wikimedia.org URL (fallback)
+  imageLocal?: string; // committed copy under /images/wikidata/ — preferred
   descriptionUrl?: string;
   credit: string; // "Author · CC BY-SA 4.0 · Wikimedia Commons"
   licence?: string;
@@ -97,7 +98,9 @@ export function resolveEntityImage(input: EntityImageInput): ResolvedImage | und
   const suggestion = input.facts?.imageSuggestion;
   if (input.useWikidataImage && suggestion) {
     return {
-      src: suggestion.thumbUrl,
+      // Prefer the committed, self-hosted copy; fall back to the external URL
+      // if the download hasn't happened yet.
+      src: suggestion.imageLocal ?? suggestion.thumbUrl,
       alt: input.imageAlt ?? input.name,
       credit: suggestion.credit,
       creditUrl: suggestion.descriptionUrl,
