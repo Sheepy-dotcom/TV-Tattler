@@ -12,6 +12,7 @@ import {
   readNext,
 } from '../../lib/relations';
 import { formatDate, isoDate, kindLabel, sectionLabel } from '../../lib/format';
+import { photoForArticle } from '../../lib/wikidata';
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -34,6 +35,14 @@ const [shows, characters, people] = await Promise.all([
 
 const accentMap = await getShowAccentMap();
 const accent = accentForArticle(article, accentMap);
+
+// Hero image: a real photo of a linked person where we have one (credit carried
+// through), otherwise the article's own image. Keeps headlines looking like news.
+const photo = photoForArticle(data.people.map((p) => p.id));
+const heroSrc = photo?.src ?? data.image;
+const heroAlt = photo ? data.title : (data.imageAlt ?? '');
+const heroCredit = photo?.credit ?? (data.image ? data.imageCredit : undefined);
+const heroCreditUrl = photo?.creditUrl;
 
 // "Read next", ranked by shared entities.
 const next = await readNext(article, 3);
@@ -78,10 +87,14 @@ const spoilerFor =
     </header>
 
     {
-      data.image && (
+      heroSrc && (
         <figure class="article__figure">
-          <img src={data.image} alt={data.imageAlt ?? ''} />
-          {data.imageCredit && <figcaption class="mono">{data.imageCredit}</figcaption>}
+          <img src={heroSrc} alt={heroAlt} />
+          {heroCredit && (
+            <figcaption class="mono">
+              {heroCreditUrl ? <a href={heroCreditUrl} rel="external">{heroCredit}</a> : heroCredit}
+            </figcaption>
+          )}
         </figure>
       )
     }
@@ -257,6 +270,9 @@ const spoilerFor =
   .article__figure figcaption {
     color: var(--ink-40);
     margin-top: var(--space-2);
+  }
+  .article__figure figcaption a {
+    color: inherit;
   }
 
   /* Body copy — serif, generous measure. */

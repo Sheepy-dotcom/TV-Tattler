@@ -113,6 +113,23 @@ export function resolveEntityImage(input: EntityImageInput): ResolvedImage | und
 }
 
 /**
+ * A headline photo for an article: the committed Commons portrait of the first
+ * linked person who has one, with its credit carried through. Lets article cards
+ * and heroes wear a real face instead of an accent poster — attribution shown on
+ * the article page. Returns undefined when none of the linked people have a photo.
+ */
+export function photoForArticle(personSlugs: string[]): ResolvedImage | undefined {
+  for (const slug of personSlugs) {
+    const local = data.people?.[slug]?.imageSuggestion?.imageLocal;
+    const s = data.people?.[slug]?.imageSuggestion;
+    if (local && s) {
+      return { src: local, credit: s.credit, creditUrl: s.descriptionUrl };
+    }
+  }
+  return undefined;
+}
+
+/**
  * A Commons image suggestion that exists but hasn't been approved yet — for a
  * dev-only review hint. Returns undefined in production, or when there's nothing
  * to suggest, or when an image is already in use.

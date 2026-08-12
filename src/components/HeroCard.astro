@@ -2,6 +2,7 @@
 import type { Article } from '../lib/relations';
 import CardMedia from './CardMedia.astro';
 import { formatDate, isoDate, kindLabel } from '../lib/format';
+import { photoForArticle } from '../lib/wikidata';
 
 interface Props {
   article: Article;
@@ -12,6 +13,12 @@ interface Props {
 const { article, accent, showTitle } = Astro.props;
 const { data } = article;
 const href = `/articles/${article.id}/`;
+
+// A real face for the lead headline where we have one, credit carried through.
+const photo = photoForArticle(data.people.map((p) => p.id));
+const heroImage = photo?.src ?? data.image;
+const heroAlt = photo ? data.title : data.imageAlt;
+const heroCredit = photo?.credit ?? (data.image ? data.imageCredit : undefined);
 ---
 
 <article class="hero" style={accent ? `--accent: ${accent};` : undefined}>
@@ -20,12 +27,12 @@ const href = `/articles/${article.id}/`;
       accent={accent}
       showTitle={showTitle}
       kind={data.kind}
-      image={data.image}
-      imageAlt={data.imageAlt}
+      image={heroImage}
+      imageAlt={heroAlt}
       ratio="16 / 9"
       large
     />
-    {data.image && data.imageCredit && <span class="hero__credit mono">{data.imageCredit}</span>}
+    {heroImage && heroCredit && <span class="hero__credit mono">{heroCredit}</span>}
   </a>
   <div class="hero__body">
     <div class="hero__meta">

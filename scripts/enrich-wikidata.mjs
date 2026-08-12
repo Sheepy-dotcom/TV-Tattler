@@ -164,15 +164,18 @@ async function downloadImage(url, name) {
  * the filter we want, since a non-free file lives locally on Wikipedia and
  * never resolves here.
  */
-async function commonsSuggestionForFile(title) {
+async function commonsSuggestionForFile(title, { minWidth = 0 } = {}) {
   const url =
     `${COMMONS}?action=query&format=json&prop=imageinfo&titles=${encodeURIComponent(title)}` +
-    `&iiprop=url|extmetadata&iiurlwidth=1024`;
+    `&iiprop=url|extmetadata|size|mime&iiurlwidth=1024`;
   const data = await getJson(url);
   const pages = data?.query?.pages ?? {};
   const page = Object.values(pages)[0];
   const info = page?.imageinfo?.[0];
   if (!info) return undefined;
+  // Only raster photos, above a minimum width (skips icons, crests, tiny files).
+  if (info.mime && !/^image\/(jpe?g|png|webp)$/.test(info.mime)) return undefined;
+  if (minWidth && typeof info.width === 'number' && info.width < minWidth) return undefined;
   const meta = info.extmetadata ?? {};
   const author = stripHtml(meta.Artist?.value);
   const licence = stripHtml(meta.LicenseShortName?.value);
@@ -220,6 +223,31 @@ async function wikipediaLeadImageSuggestion(ent) {
   const name = page?.pageimage; // bare filename, no "File:" prefix
   if (typeof name !== 'string') return undefined;
   return commonsSuggestionForFile(`File:${name}`);
+}
+
+/**
+ * Last-ditch image for a SHOW that Wikidata hasn't tagged (P18) and whose
+ * Wikipedia lead is a non-free title card: the first decent free photo in the
+ * show's Commons category (P373) — typically a set or filming-location shot.
+ * Logos, crests, maps and tiny files are filtered out; only a landscape-ish
+ * free raster of reasonable size is accepted.
+ */
+async function commonsCategoryImageSuggestion(ent) {
+  const cat = ent?.claims?.P373?.[0]?.mainsnak?.datavalue?.value; // e.g. "EastEnders"
+  if (typeof cat !== 'string') return undefined;
+  const url =
+    `${COMMONS}?action=query&format=json&list=categorymembers&cmtype=file` +
+    `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=30`;
+  const data = await getJson(url);
+  const members = data?.query?.categorymembers ?? [];
+  const skip = /logo|icon|crest|map|diagram|signature|title.?card|poster|dvd|cover|font/i;
+  for (const m of members) {
+    if (typeof m.title !== 'string' || skip.test(m.title)) continue;
+    await sleep(120);
+    const s = await commonsSuggestionForFile(m.title, { minWidth: 600 });
+    if (s) return s;
+  }
+  return undefined;
 }
 
 // Score a candidate: reject wrong-type entities (-1), otherwise reward an exact
@@ -302,8 +330,11 @@ async function enrichShow(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
+  // P18 → free Wikipedia lead → first decent photo in the show's Commons category.
   const imageSuggestion =
-    (await commonsImageSuggestion(ent)) ?? (await wikipediaLeadImageSuggestion(ent));
+    (await commonsImageSuggestion(ent)) ??
+    (await wikipediaLeadImageSuggestion(ent)) ??
+    (await commonsCategoryImageSuggestion(ent));
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `show-${slug}`);
   }

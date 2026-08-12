@@ -2,6 +2,7 @@
 import type { Article } from '../lib/relations';
 import CardMedia from './CardMedia.astro';
 import { formatDate, isoDate } from '../lib/format';
+import { photoForArticle } from '../lib/wikidata';
 
 interface Props {
   article: Article;
@@ -15,6 +16,12 @@ interface Props {
 const { article, accent, showTitle, variant = 'poster', showStandfirst = false } = Astro.props;
 const { data } = article;
 const href = `/articles/${article.id}/`;
+
+// Prefer a real photo of a linked person for the card image; fall back to the
+// article's own image (usually the show-accent cover). A genuine face makes the
+// headline pop — the credit rides along on the article page.
+const photo = photoForArticle(data.people.map((p) => p.id));
+const cardImage = photo?.src ?? data.image;
 ---
 
 <article class:list={['card2', `card2--${variant}`]} style={accent ? `--accent: ${accent};` : undefined}>
@@ -23,8 +30,8 @@ const href = `/articles/${article.id}/`;
       accent={accent}
       showTitle={showTitle}
       kind={data.kind}
-      image={variant === 'compact' ? undefined : data.image}
-      imageAlt={data.imageAlt}
+      image={variant === 'compact' ? (photo?.src ?? undefined) : cardImage}
+      imageAlt={photo ? data.title : data.imageAlt}
       ratio={variant === 'compact' ? '1 / 1' : '16 / 10'}
       compact={variant === 'compact'}
     />
