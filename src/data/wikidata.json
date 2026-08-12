@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T13:52:16.162Z",
+  "generatedAt": "2026-08-12T13:57:48.766Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -611,6 +611,33 @@
       "qid": "Q966803",
       "wikipedia": "https://en.wikipedia.org/wiki/Nicola_Wheeler",
       "dateOfBirth": "1974-04-04"
+    },
+    "isabel-hodgins": {
+      "source": "wikidata",
+      "qid": "Q5920756",
+      "wikipedia": "https://en.wikipedia.org/wiki/Isabel_Hodgins",
+      "dateOfBirth": "1993-11-23"
+    },
+    "rudolph-walker": {
+      "source": "wikidata",
+      "qid": "Q7377469",
+      "wikipedia": "https://en.wikipedia.org/wiki/Rudolph_Walker",
+      "dateOfBirth": "1939-09-28",
+      "imageSuggestion": {
+        "file": "File:Rudolph Walker 2025 a.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Rudolph_Walker_2025_a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Rudolph_Walker_2025_a.jpg",
+        "credit": "Meena · CC0 · Wikimedia Commons",
+        "licence": "CC0",
+        "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "imageLocal": "/images/wikidata/person-rudolph-walker.jpg"
+      }
+    },
+    "sair-khan": {
+      "source": "wikidata",
+      "qid": "Q18637840",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sair_Khan",
+      "dateOfBirth": "1988-02-11"
     }
   },
   "shows": {
