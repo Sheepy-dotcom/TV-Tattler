@@ -185,11 +185,12 @@ const primaryNav = [
     <style>
       /* ---- Brand ribbon -------------------------------------------------- */
       .brandbar {
-        height: 4px;
+        height: 5px;
         background: linear-gradient(
           90deg,
           var(--live) 0%,
-          color-mix(in srgb, var(--live) 55%, var(--accent)) 45%,
+          var(--pop) 50%,
+          color-mix(in srgb, var(--pop) 55%, var(--accent)) 78%,
           var(--accent) 100%
         );
       }
@@ -297,10 +298,11 @@ const primaryNav = [
         line-height: 1;
       }
       .wordmark__tv {
-        background: var(--live);
+        background: var(--grad-brand);
         color: #fff;
         padding: 0.1em 0.28em;
         border-radius: var(--radius-sm);
+        box-shadow: 0 4px 14px color-mix(in srgb, var(--live) 40%, transparent);
       }
       .masthead__strap {
         margin: 0;
