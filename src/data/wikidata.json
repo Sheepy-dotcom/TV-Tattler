@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T09:04:34.892Z",
+  "generatedAt": "2026-08-12T09:08:01.386Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -504,7 +504,16 @@
       "source": "wikidata",
       "qid": "Q607514",
       "wikipedia": "https://en.wikipedia.org/wiki/EastEnders",
-      "episodes": 7446
+      "episodes": 7446,
+      "imageSuggestion": {
+        "file": "File:EastEnders - Kat's affair poll results.png",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/EastEnders_-_Kat%27s_affair_poll_results.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:EastEnders_-_Kat%27s_affair_poll_results.png",
+        "credit": "AnemoneProjectors · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/show-eastenders.png"
+      }
     },
     "coronation-street": {
       "source": "wikidata",
