@@ -45,16 +45,27 @@ TMDB requires this credit, which the films page already shows:
 
 ## Curating the headlines
 
-Edit `src/data/feeds/news-sources.json` to choose which RSS feeds are aggregated:
+`src/data/feeds/news-sources.json` drives the aggregator. It ships with **Google
+News RSS** searches — one per soap — because that endpoint reliably returns real
+headlines from many publishers, keyless, each linking back to its source:
 
 ```json
-{ "feeds": [ { "name": "The Guardian — Soap operas", "url": "https://www.theguardian.com/tv-and-radio/soap-operas/rss" } ] }
+{
+  "feeds": [
+    { "name": "EastEnders", "soap": "eastenders",
+      "url": "https://news.google.com/rss/search?q=EastEnders%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" }
+  ]
+}
 ```
 
-The aggregator stores **only a headline, its source and a link** — never the article
-body — and every link points back to the publisher. That keeps it firmly on the
-right side of copyright. Verify each URL resolves to a real RSS/Atom feed; the
-script skips any feed that fails.
+Each feed's `soap` slug tags its headlines (so they colour-code and link to the
+right show). You can tune the queries (e.g. `EastEnders%20spoilers`), add feeds for
+other topics, or drop in a publisher's own RSS URL instead — anything that returns
+RSS/Atom works, and the script skips any feed that fails.
+
+The aggregator stores **only a headline, its publisher and a link** — never the
+article body — and every link points back to the source. That keeps it firmly on
+the right side of copyright.
 
 ## What you still write yourself
 

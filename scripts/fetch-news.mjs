@@ -60,7 +60,9 @@ function parseEntries(xml) {
       if (href) url = decode(href[1]);
     }
     const date = pick(b, 'pubDate') || pick(b, 'published') || pick(b, 'updated') || pick(b, 'dc:date');
-    if (title && url) out.push({ title, url, publishedAt: date ? new Date(date).toISOString() : null });
+    // Google News RSS carries the publisher in a <source> element.
+    const publisher = pick(b, 'source') || undefined;
+    if (title && url) out.push({ title, url, publishedAt: date ? new Date(date).toISOString() : null, publisher });
   }
   return out;
 }
@@ -88,7 +90,21 @@ async function main() {
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const xml = await res.text();
       const entries = parseEntries(xml).slice(0, PER_FEED);
-      for (const e of entries) items.push({ ...e, source: feed.name, soap: tagOf(e.title) });
+      for (const e of entries) {
+        const publisher = e.publisher || feed.name;
+        // Google News appends " - Publisher" to titles; trim it for a clean headline.
+        let title = e.title;
+        if (publisher && title.endsWith(` - ${publisher}`)) {
+          title = title.slice(0, -(publisher.length + 3)).trim();
+        }
+        items.push({
+          title,
+          url: e.url,
+          publishedAt: e.publishedAt,
+          source: publisher,
+          soap: feed.soap || tagOf(title),
+        });
+      }
       if (entries.length) usedSources.push(feed.name);
       console.log(`headlines: ${feed.name} → ${entries.length}`);
     } catch (e) {

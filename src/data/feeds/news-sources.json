@@ -1,8 +1,9 @@
 {
-  "note": "Curated RSS feeds for the /headlines/ aggregator. Edit freely — the fetch script skips any feed that fails, and only ever stores a headline, source and link (never the article body). Verify each URL resolves to a valid RSS/Atom feed.",
+  "note": "Feeds for the /headlines/ aggregator. These use Google News RSS search — a reliable, keyless endpoint that returns real headlines from many publishers for each query, each linking back to its source. Add or change queries freely; the fetch script skips any feed that fails and only ever stores a headline, publisher and link (never article bodies). Each feed's 'soap' slug tags its headlines.",
   "feeds": [
-    { "name": "The Guardian — Soap operas", "url": "https://www.theguardian.com/tv-and-radio/soap-operas/rss" },
-    { "name": "Metro — Soaps", "url": "https://metro.co.uk/entertainment/soaps/feed/" },
-    { "name": "Digital Spy — Soaps", "url": "https://www.digitalspy.com/soaps/rss/" }
+    { "name": "EastEnders", "soap": "eastenders", "url": "https://news.google.com/rss/search?q=EastEnders%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" },
+    { "name": "Coronation Street", "soap": "coronation-street", "url": "https://news.google.com/rss/search?q=%22Coronation%20Street%22%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" },
+    { "name": "Emmerdale", "soap": "emmerdale", "url": "https://news.google.com/rss/search?q=Emmerdale%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" },
+    { "name": "Hollyoaks", "soap": "hollyoaks", "url": "https://news.google.com/rss/search?q=Hollyoaks%20when%3A14d&hl=en-GB&gl=GB&ceid=GB:en" }
   ]
 }

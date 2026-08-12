@@ -8,10 +8,27 @@ import Sidebar from '../components/Sidebar.astro';
 import { getArticles, getShows, getShowLookup, posterForArticle } from '../lib/relations';
 import { SECTIONS } from '../content.config';
 import { sectionMeta } from '../lib/format';
+import { upcomingEpisodes, films } from '../lib/feeds';
 
 const articles = await getArticles();
 const shows = await getShows();
 const lookup = await getShowLookup();
+
+// Live feeds for the homepage: the next few soap episodes and new films. Both
+// come from the auto-refreshed data files and simply don't render when empty.
+const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
+const nextEpisodes = upcomingEpisodes().slice(0, 5);
+const newFilms = (films.items ?? []).slice(0, 6);
+
+function epDay(iso: string): string {
+  const d = new Date(iso + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.round((d.getTime() - today.getTime()) / 86400000);
+  if (diff === 0) return 'Today';
+  if (diff === 1) return 'Tomorrow';
+  return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+}
 
 // Float the flagged lead to the top; the rest keep newest-first order.
 const leadIndex = articles.findIndex((a) => a.data.lead);
@@ -65,6 +82,31 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
           )}
         </section>
 
+        {
+          nextEpisodes.length > 0 && (
+            <section class="whatson" aria-label="What's on this week">
+              <div class="whatson__head">
+                <h2 class="rail-title">On this week</h2>
+                <a class="whatson__all" href="/whats-on/">Full schedule →</a>
+              </div>
+              <ul class="whatson__list">
+                {nextEpisodes.map((ep) => (
+                  <li class="whatson__ep" style={`--accent: ${accentOf.get(ep.showSlug) ?? 'var(--ink)'};`}>
+                    <a class="whatson__link" href="/whats-on/">
+                      <span class="whatson__when mono">{epDay(ep.airdate)}</span>
+                      <span class="whatson__show">
+                        <span class="whatson__dot" aria-hidden="true" />
+                        {ep.showName}
+                      </span>
+                      <span class="whatson__syn">{ep.summary || 'Synopsis to follow.'}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
         <nav class="cats" aria-label="Browse by section">
           {
             SECTIONS.map((s) => {
@@ -78,6 +120,33 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
             })
           }
         </nav>
+
+        {
+          newFilms.length > 0 && (
+            <section class="filmrail" aria-label="New and upcoming films">
+              <div class="whatson__head">
+                <h2 class="rail-title">In cinemas &amp; coming soon</h2>
+                <a class="whatson__all" href="/films/">All films →</a>
+              </div>
+              <ul class="filmrail__track">
+                {newFilms.map((film) => (
+                  <li class="filmrail__item">
+                    <a href="/films/" class="filmrail__link">
+                      <span class="filmrail__poster">
+                        {film.poster ? (
+                          <img src={film.poster} alt="" loading="lazy" decoding="async" />
+                        ) : (
+                          <span class="filmrail__noposter">{film.title}</span>
+                        )}
+                      </span>
+                      <span class="filmrail__title">{film.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
 
         <ShowRail
           shows={shows}
@@ -144,6 +213,146 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
       gap: var(--space-7);
       align-items: start;
     }
+  }
+
+  /* ---- "On this week" strip -------------------------------------------- */
+  .whatson,
+  .filmrail {
+    margin-bottom: var(--space-7);
+  }
+  .whatson__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .whatson__all {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: color-mix(in srgb, var(--live) 80%, var(--ink));
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .whatson__all:hover {
+    text-decoration: underline;
+  }
+  .whatson__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .whatson__ep {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .whatson__ep:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+  .whatson__link {
+    display: grid;
+    grid-template-columns: 6.5rem 10rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding: var(--space-3) var(--space-4);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .whatson__when {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+  }
+  .whatson__show {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .whatson__dot {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 999px;
+    background: var(--accent);
+    flex: none;
+  }
+  .whatson__syn {
+    color: var(--ink-60);
+    font-size: var(--step--1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media (max-width: 44rem) {
+    .whatson__link {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+    .whatson__syn {
+      white-space: normal;
+    }
+  }
+
+  /* ---- Films rail (horizontal posters) --------------------------------- */
+  .filmrail__track {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 var(--space-2);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 9rem;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .filmrail__link {
+    text-decoration: none;
+    color: var(--ink);
+    display: grid;
+    gap: var(--space-2);
+  }
+  .filmrail__poster {
+    display: block;
+    aspect-ratio: 2 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--ink);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .filmrail__poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s var(--ease);
+  }
+  .filmrail__link:hover .filmrail__poster img {
+    transform: scale(1.05);
+  }
+  .filmrail__noposter {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--space-2);
+    text-align: center;
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step--1);
+  }
+  .filmrail__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step--1);
+    line-height: 1.25;
   }
 
   /* ---- Fun, colourful category buttons --------------------------------- */
