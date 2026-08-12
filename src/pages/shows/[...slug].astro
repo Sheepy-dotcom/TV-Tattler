@@ -16,6 +16,7 @@ import {
   resolveEntityImage,
   pendingImageSuggestion,
 } from '../../lib/wikidata';
+import { episodes as episodesFeed } from '../../lib/feeds';
 
 export async function getStaticPaths() {
   const shows = await getShows();
@@ -35,6 +36,19 @@ const [cast, articles, castChanges, { Content }] = await Promise.all([
 
 // General coverage excludes the cast-changes, which get their own subsection.
 const coverage = articles.filter((a) => a.data.kind !== 'cast-change');
+
+// This show's upcoming episodes, from the auto-refreshed feed (empty for shows
+// the feed doesn't cover, or between refreshes).
+const upcoming = (episodesFeed.shows.find((s) => s.slug === show.id)?.episodes ?? []).slice(0, 6);
+function epDay(iso: string): string {
+  const d = new Date(iso + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.round((d.getTime() - today.getTime()) / 86400000);
+  if (diff === 0) return 'Today';
+  if (diff === 1) return 'Tomorrow';
+  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+}
 
 const statusOrder = ['current', 'occasional', 'departed', 'deceased'];
 const sortedCast = [...cast].sort(
@@ -111,6 +125,25 @@ const suggestion = pendingImageSuggestion(imageInput);
     <div class="show__prose">
       <Content />
     </div>
+
+    {
+      upcoming.length > 0 && (
+        <section class="show__section" aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading" class="show__h2">Coming up</h2>
+          <ol class="upcoming">
+            {upcoming.map((ep) => (
+              <li class="upcoming__ep">
+                <p class="upcoming__when mono">{epDay(ep.airdate)}</p>
+                <p class="upcoming__syn">{ep.summary || 'Synopsis to follow.'}</p>
+              </li>
+            ))}
+          </ol>
+          <p class="upcoming__credit mono">
+            Air dates and synopses via TVmaze · <a href="/whats-on/">all soaps this week →</a>
+          </p>
+        </section>
+      )
+    }
 
     <section class="show__section" aria-labelledby="cast-heading">
       <h2 id="cast-heading" class="show__h2">Characters</h2>
@@ -264,6 +297,47 @@ const suggestion = pendingImageSuggestion(imageInput);
     padding-bottom: var(--space-2);
     border-bottom: 2px solid var(--line);
     margin-bottom: var(--space-4);
+  }
+
+  /* ---- Coming up (from the live episodes feed) ------------------------- */
+  .upcoming {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .upcoming__ep {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 40rem) {
+    .upcoming__ep {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+  .upcoming__when {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    margin: 0;
+  }
+  .upcoming__syn {
+    margin: 0;
+    color: var(--ink-80);
+  }
+  .upcoming__credit {
+    color: var(--ink-40);
+    margin: var(--space-3) 0 0;
+  }
+  .upcoming__credit a {
+    color: inherit;
   }
 
   /* ---- Cast list -------------------------------------------------------- */
