@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T13:57:48.766Z",
+  "generatedAt": "2026-08-12T14:16:02.924Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -638,6 +638,39 @@
       "qid": "Q18637840",
       "wikipedia": "https://en.wikipedia.org/wiki/Sair_Khan",
       "dateOfBirth": "1988-02-11"
+    },
+    "claire-king": {
+      "source": "wikidata",
+      "qid": "Q2975059",
+      "wikipedia": "https://en.wikipedia.org/wiki/Claire_King",
+      "dateOfBirth": "1953-01-10"
+    },
+    "jane-danson": {
+      "source": "wikidata",
+      "qid": "Q2297834",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jane_Danson",
+      "dateOfBirth": "1978-11-08"
+    },
+    "nadine-mulkerrin": {
+      "source": "wikidata",
+      "qid": "Q16235664",
+      "wikipedia": "https://en.wikipedia.org/wiki/Nadine_Mulkerrin",
+      "dateOfBirth": "1993-06-23"
+    },
+    "perry-fenwick": {
+      "source": "wikidata",
+      "qid": "Q7169779",
+      "wikipedia": "https://en.wikipedia.org/wiki/Perry_Fenwick",
+      "dateOfBirth": "1962-01-05",
+      "imageSuggestion": {
+        "file": "File:Perry Fenwick.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Perry_Fenwick.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Perry_Fenwick.jpg",
+        "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-perry-fenwick.jpg"
+      }
     }
   },
   "shows": {
