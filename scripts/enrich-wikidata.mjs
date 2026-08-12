@@ -194,7 +194,34 @@ async function commonsSuggestionForFile(title, { minWidth = 0, jpegOnly = false 
     credit,
     licence,
     licenceUrl,
+    width: info.width,
+    height: info.height,
   };
+}
+
+// A portrait score: reward a head-and-shoulders shape (a bit taller than wide),
+// penalise extreme full-length shots and anything landscape/group, and prefer a
+// decent resolution. Used to pick the nicest face photo when several exist.
+function portraitScore(s) {
+  if (!s || !s.width || !s.height) return 0;
+  const ratio = s.height / s.width; // >1 = portrait
+  let score = 0;
+  if (ratio >= 1.05 && ratio <= 1.5) score += 3; // classic headshot / bust
+  else if (ratio > 0.85 && ratio < 1.05) score += 1; // near-square, usually fine
+  else if (ratio > 1.5 && ratio <= 1.9) score += 0; // fairly tall (often full body)
+  else score -= 3; // very tall full-length, or landscape/group
+  if (s.width >= 500) score += 1;
+  if (s.width < 320) score -= 2;
+  return score;
+}
+
+// Drop the sizing fields we only used for scoring before the suggestion is cached.
+function trimSuggestion(s) {
+  if (s) {
+    delete s.width;
+    delete s.height;
+  }
+  return s;
 }
 
 /**
@@ -215,7 +242,7 @@ async function commonsImageSuggestion(ent) {
  * resolving the file through Commons (above) drops anything non-free, so this is
  * a safe, well-credited source for the actors Wikidata simply hasn't tagged.
  */
-async function wikipediaLeadImageSuggestion(ent) {
+async function wikipediaLeadTitle(ent) {
   const title = ent?.sitelinks?.enwiki?.title;
   if (!title) return undefined;
   const url =
@@ -224,8 +251,61 @@ async function wikipediaLeadImageSuggestion(ent) {
   const data = await getJson(url);
   const page = Object.values(data?.query?.pages ?? {})[0];
   const name = page?.pageimage; // bare filename, no "File:" prefix
-  if (typeof name !== 'string') return undefined;
-  return commonsSuggestionForFile(`File:${name}`);
+  return typeof name === 'string' ? `File:${name}` : undefined;
+}
+
+async function wikipediaLeadImageSuggestion(ent) {
+  const t = await wikipediaLeadTitle(ent);
+  return t ? commonsSuggestionForFile(t) : undefined;
+}
+
+/** Files in a person's Commons category (P373) that plausibly show them — used
+    to find a nicer portrait than a stiff or full-length P18. */
+async function personCategoryTitles(ent, name) {
+  const cat = ent?.claims?.P373?.[0]?.mainsnak?.datavalue?.value;
+  if (typeof cat !== 'string') return [];
+  const url =
+    `${COMMONS}?action=query&format=json&list=categorymembers&cmtype=file` +
+    `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=40`;
+  const data = await getJson(url);
+  const members = data?.query?.categorymembers ?? [];
+  const surn = tokens(name); // words of 4+ letters, e.g. ["michelle","collins"]
+  const skip = /logo|icon|signature|autograph|award|plaque|grave|poster|magazine|cover/i;
+  return members
+    .map((m) => m.title)
+    .filter(
+      (t) => typeof t === 'string' && !skip.test(t) && surn.some((w) => t.toLowerCase().includes(w)),
+    )
+    .slice(0, 12);
+}
+
+/**
+ * The nicest available portrait of a person: score every candidate — the curated
+ * P18, the Wikipedia lead, and same-name photos in their Commons category — by
+ * how head-and-shoulders it looks, and take the best. This is how we quietly swap
+ * a full-length red-carpet shot for a proper portrait when one exists.
+ */
+async function bestPersonImageSuggestion(ent, name) {
+  const prio = new Map(); // File:title -> source nudge (curated sources win ties)
+  const p18 = ent?.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
+  if (typeof p18 === 'string') prio.set(`File:${p18}`, 3);
+  const lead = await wikipediaLeadTitle(ent);
+  if (lead) prio.set(lead, Math.max(prio.get(lead) ?? 0, 2));
+  for (const t of await personCategoryTitles(ent, name)) if (!prio.has(t)) prio.set(t, 0);
+
+  let best;
+  let bestScore = -Infinity;
+  for (const [title, nudge] of prio) {
+    await sleep(120);
+    const s = await commonsSuggestionForFile(title, { minWidth: 300 });
+    if (!s) continue;
+    const score = portraitScore(s) + nudge * 0.5;
+    if (score > bestScore) {
+      bestScore = score;
+      best = s;
+    }
+  }
+  return trimSuggestion(best);
 }
 
 /**
@@ -320,9 +400,9 @@ async function enrichPerson(slug, fm) {
     if (r) ({ qid, ent } = r);
   }
   if (!ent) return undefined;
-  // Prefer Wikidata's own P18; fall back to the (free) Wikipedia lead image.
-  const imageSuggestion =
-    (await commonsImageSuggestion(ent)) ?? (await wikipediaLeadImageSuggestion(ent));
+  // Pick the nicest portrait across P18, the Wikipedia lead, and the person's
+  // Commons category — a proper head-and-shoulders shot beats a full-length one.
+  const imageSuggestion = await bestPersonImageSuggestion(ent, fm.name);
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `person-${slug}`);
   }
