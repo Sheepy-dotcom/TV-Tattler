@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T09:23:59.678Z",
+  "generatedAt": "2026-08-12T09:55:13.062Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -210,12 +210,12 @@
       "wikipedia": "https://en.wikipedia.org/wiki/June_Brown",
       "dateOfBirth": "1927-02-16",
       "imageSuggestion": {
-        "file": "File:June Brown.jpg",
-        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/June_Brown.jpg/1280px-June_Brown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:June_Brown.jpg",
-        "credit": "Garry Knight from London, England · CC BY-SA 2.0 · Wikimedia Commons",
-        "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "file": "File:June Brown (2009).jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/June_Brown_%282009%29.jpg/1280px-June_Brown_%282009%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:June_Brown_(2009).jpg",
+        "credit": "Joe Freeman · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
         "imageLocal": "/images/wikidata/person-june-brown.jpg"
       }
     },
@@ -488,6 +488,63 @@
       "qid": "Q15270247",
       "wikipedia": "https://en.wikipedia.org/wiki/Sue_Cleaver",
       "dateOfBirth": "1963-09-02"
+    },
+    "chris-chittell": {
+      "source": "wikidata",
+      "qid": "Q5106151",
+      "wikipedia": "https://en.wikipedia.org/wiki/Chris_Chittell",
+      "dateOfBirth": "1948-05-19"
+    },
+    "jessie-wallace": {
+      "source": "wikidata",
+      "qid": "Q5929775",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jessie_Wallace",
+      "dateOfBirth": "1971-09-25",
+      "imageSuggestion": {
+        "file": "File:Jessie Wallace at BAFTAs 2026 02.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jessie_Wallace_at_BAFTAs_2026_02.jpg/1280px-Jessie_Wallace_at_BAFTAs_2026_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jessie_Wallace_at_BAFTAs_2026_02.jpg",
+        "credit": "JaceMerlyn · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-jessie-wallace.jpg"
+      }
+    },
+    "michelle-hardwick": {
+      "source": "wikidata",
+      "qid": "Q6837067",
+      "wikipedia": "https://en.wikipedia.org/wiki/Michelle_Hardwick",
+      "dateOfBirth": "1976-02-26",
+      "imageSuggestion": {
+        "file": "File:Michelle Hardwick 2019.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Michelle_Hardwick_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Michelle_Hardwick_2019.jpg",
+        "credit": "DarkGlow · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-michelle-hardwick.jpg"
+      }
+    },
+    "sam-aston": {
+      "source": "wikidata",
+      "qid": "Q5561762",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sam_Aston",
+      "dateOfBirth": "1993-07-07"
+    },
+    "tina-obrien": {
+      "source": "wikidata",
+      "qid": "Q4340888",
+      "wikipedia": "https://en.wikipedia.org/wiki/Tina_O'Brien",
+      "dateOfBirth": "1983-08-07",
+      "imageSuggestion": {
+        "file": "File:Tina O'Brien.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Tina_O%27Brien.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Tina_O%27Brien.jpg",
+        "credit": "The Co-operative · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-tina-obrien.jpg"
+      }
     }
   },
   "shows": {
@@ -529,16 +586,7 @@
       "source": "wikidata",
       "qid": "Q1247575",
       "wikipedia": "https://en.wikipedia.org/wiki/Emmerdale",
-      "episodes": 10624,
-      "imageSuggestion": {
-        "file": "File:Set of Emmerdale, Cavendish Street, Leeds - geograph.org.uk - 4920125.jpg",
-        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Set_of_Emmerdale%2C_Cavendish_Street%2C_Leeds_-_geograph.org.uk_-_4920125.jpg",
-        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Set_of_Emmerdale,_Cavendish_Street,_Leeds_-_geograph.org.uk_-_4920125.jpg",
-        "credit": "Mark Stevenson · CC BY-SA 2.0 · Wikimedia Commons",
-        "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "imageLocal": "/images/wikidata/show-emmerdale.jpg"
-      }
+      "episodes": 10624
     },
     "hollyoaks": {
       "source": "wikidata",
