@@ -164,7 +164,7 @@ async function downloadImage(url, name) {
  * the filter we want, since a non-free file lives locally on Wikipedia and
  * never resolves here.
  */
-async function commonsSuggestionForFile(title, { minWidth = 0 } = {}) {
+async function commonsSuggestionForFile(title, { minWidth = 0, jpegOnly = false } = {}) {
   const url =
     `${COMMONS}?action=query&format=json&prop=imageinfo&titles=${encodeURIComponent(title)}` +
     `&iiprop=url|extmetadata|size|mime&iiurlwidth=1024`;
@@ -174,7 +174,10 @@ async function commonsSuggestionForFile(title, { minWidth = 0 } = {}) {
   const info = page?.imageinfo?.[0];
   if (!info) return undefined;
   // Only raster photos, above a minimum width (skips icons, crests, tiny files).
-  if (info.mime && !/^image\/(jpe?g|png|webp)$/.test(info.mime)) return undefined;
+  // jpegOnly narrows to actual photographs — infographics, charts, logos and
+  // screenshots are almost always PNG, so it filters them out wholesale.
+  const okMime = jpegOnly ? /^image\/jpe?g$/ : /^image\/(jpe?g|png|webp)$/;
+  if (info.mime && !okMime.test(info.mime)) return undefined;
   if (minWidth && typeof info.width === 'number' && info.width < minWidth) return undefined;
   const meta = info.extmetadata ?? {};
   const author = stripHtml(meta.Artist?.value);
@@ -240,7 +243,8 @@ async function commonsCategoryImageSuggestion(ent, showName) {
     `&cmtitle=${encodeURIComponent(`Category:${cat}`)}&cmlimit=30`;
   const data = await getJson(url);
   const members = data?.query?.categorymembers ?? [];
-  const skip = /logo|icon|crest|map|diagram|signature|title.?card|poster|dvd|cover|font/i;
+  const skip =
+    /logo|icon|crest|map|diagram|signature|title.?card|poster|dvd|cover|font|poll|result|chart|graph|screenshot|scan|award|infographic/i;
   // Only accept a file that actually names the show — the collapsed title
   // (e.g. "eastenders") or a distinctive word from it — so a category's stray
   // off-topic image (a generic city mosaic, say) is never chosen. If nothing
@@ -254,7 +258,7 @@ async function commonsCategoryImageSuggestion(ent, showName) {
   for (const m of members) {
     if (typeof m.title !== 'string' || skip.test(m.title) || !relevant(m.title)) continue;
     await sleep(120);
-    const s = await commonsSuggestionForFile(m.title, { minWidth: 600 });
+    const s = await commonsSuggestionForFile(m.title, { minWidth: 600, jpegOnly: true });
     if (s) return s;
   }
   return undefined;
