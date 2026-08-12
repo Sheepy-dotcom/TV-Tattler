@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T09:55:13.062Z",
+  "generatedAt": "2026-08-12T13:52:16.162Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -545,6 +545,72 @@
         "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
         "imageLocal": "/images/wikidata/person-tina-obrien.jpg"
       }
+    },
+    "alex-fletcher": {
+      "source": "wikidata",
+      "qid": "Q4720642",
+      "wikipedia": "https://en.wikipedia.org/wiki/Alex_Fletcher_(actress)",
+      "dateOfBirth": "1976-07-08",
+      "imageSuggestion": {
+        "file": "File:Alex Fletcher.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Alex_Fletcher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Alex_Fletcher.jpg",
+        "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-alex-fletcher.jpg"
+      }
+    },
+    "colson-smith": {
+      "source": "wikidata",
+      "qid": "Q111908877",
+      "wikipedia": "https://en.wikipedia.org/wiki/Colson_Smith",
+      "dateOfBirth": "1998-01-01",
+      "imageSuggestion": {
+        "file": "File:Colson_Smith.png",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Colson_Smith.png/1280px-Colson_Smith.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Colson_Smith.png",
+        "credit": "5 albert square · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-colson-smith.png"
+      }
+    },
+    "emma-barton": {
+      "source": "wikidata",
+      "qid": "Q5372729",
+      "wikipedia": "https://en.wikipedia.org/wiki/Emma_Barton",
+      "dateOfBirth": "1977-01-01",
+      "imageSuggestion": {
+        "file": "File:ThatXmasBFILFF191024 (95 of 119) (54100309436) (cropped).jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/ThatXmasBFILFF191024_%2895_of_119%29_%2854100309436%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:ThatXmasBFILFF191024_(95_of_119)_(54100309436)_(cropped).jpg",
+        "credit": "Raph_PH · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-emma-barton.jpg"
+      }
+    },
+    "kellie-bright": {
+      "source": "wikidata",
+      "qid": "Q6385792",
+      "wikipedia": "https://en.wikipedia.org/wiki/Kellie_Bright",
+      "dateOfBirth": "1976-07-01",
+      "imageSuggestion": {
+        "file": "File:Kellie Bright 2016.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Kellie_Bright_2016.jpg/1280px-Kellie_Bright_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Kellie_Bright_2016.jpg",
+        "credit": "AnemoneProjectors · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-kellie-bright.jpg"
+      }
+    },
+    "nicola-wheeler": {
+      "source": "wikidata",
+      "qid": "Q966803",
+      "wikipedia": "https://en.wikipedia.org/wiki/Nicola_Wheeler",
+      "dateOfBirth": "1974-04-04"
     }
   },
   "shows": {
