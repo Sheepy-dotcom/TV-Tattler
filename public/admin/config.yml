@@ -1,0 +1,125 @@
+# TV Tattler editing studio — configuration for a Git-based CMS.
+#
+# Works with Sveltia CMS (recommended, loaded in index.html) and, unchanged, with
+# Decap CMS. It edits the same markdown files the site is built from, committing
+# straight to the repo — so anything you publish here goes live on the next build.
+#
+# See docs/cms.md for the one-time GitHub sign-in setup.
+
+backend:
+  name: github
+  repo: Sheepy-dotcom/TV-Tattler
+  branch: main
+  # Sveltia CMS signs in with GitHub directly. See docs/cms.md for the OAuth app.
+
+# Images you upload in the editor land here and are referenced by absolute path.
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Show a live preview link and keep drafts out of the build via the `draft` flag.
+publish_mode: simple
+
+collections:
+  # ---- The daily job: write spoilers & news -------------------------------
+  - name: stories
+    label: Spoilers & news
+    label_singular: Story
+    description: >-
+      Your own spoiler and news write-ups. Facts and your words only — never paste
+      another outlet's article text. Link their piece under Sources instead.
+    folder: src/content/articles
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    sortable_fields: [publishedAt, title]
+    fields:
+      - { label: Headline, name: title, widget: string }
+      - { label: Standfirst (one-line summary), name: standfirst, widget: text }
+      - label: Kind
+        name: kind
+        widget: select
+        default: spoiler
+        options:
+          - { label: Spoiler, value: spoiler }
+          - { label: News, value: news }
+          - { label: Cast change, value: cast-change }
+          - { label: Feature, value: feature }
+          - { label: Review, value: review }
+          - { label: Guide, value: guide }
+      - label: Section
+        name: section
+        widget: select
+        default: soaps
+        options:
+          - { label: Soaps, value: soaps }
+          - { label: TV & Film, value: tv-and-film }
+          - { label: Celebrities, value: celebrities }
+          - { label: News, value: news }
+      - { label: Spoiler warning banner, name: spoiler, widget: boolean, default: true }
+      - { label: Eligible for homepage lead, name: lead, widget: boolean, default: false, required: false }
+      - { label: Published, name: publishedAt, widget: datetime }
+      - { label: Author, name: author, widget: string, default: Shaun Russett }
+      - label: Shows it's about
+        name: shows
+        widget: relation
+        required: false
+        multiple: true
+        collection: shows
+        search_fields: [title]
+        value_field: '{{slug}}'
+        display_fields: [title]
+      - label: Cast it's about
+        name: people
+        widget: relation
+        required: false
+        multiple: true
+        collection: people
+        search_fields: [name]
+        value_field: '{{slug}}'
+        display_fields: [name]
+      - label: Characters it's about
+        name: characters
+        widget: relation
+        required: false
+        multiple: true
+        collection: characters
+        search_fields: [name]
+        value_field: '{{slug}}'
+        display_fields: [name]
+      - label: Sources (cite, don't copy)
+        name: sources
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: URL, name: url, widget: string }
+          - { label: Publisher, name: publisher, widget: string, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Hero image, name: image, widget: image, required: false }
+      - { label: Image alt text, name: imageAlt, widget: string, required: false }
+      - { label: Image credit, name: imageCredit, widget: string, required: false }
+      - { label: Draft (hidden until unchecked), name: draft, widget: boolean, default: false, required: false }
+      - { label: Story, name: body, widget: markdown }
+
+  # ---- Reference collections (so the relation pickers above can search) ----
+  # create:false — manage the deep reference data in the repo; here they just
+  # power the "Shows / Cast / Characters it's about" pickers.
+  - name: shows
+    label: Shows
+    folder: src/content/shows
+    create: false
+    fields:
+      - { label: Title, name: title, widget: string }
+  - name: people
+    label: Cast
+    folder: src/content/people
+    create: false
+    fields:
+      - { label: Name, name: name, widget: string }
+  - name: characters
+    label: Characters
+    folder: src/content/characters
+    create: false
+    fields:
+      - { label: Name, name: name, widget: string }
