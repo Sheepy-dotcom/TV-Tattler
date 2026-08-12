@@ -504,15 +504,7 @@
       "source": "wikidata",
       "qid": "Q607514",
       "wikipedia": "https://en.wikipedia.org/wiki/EastEnders",
-      "episodes": 7446,
-      "imageSuggestion": {
-        "file": "File:A London Mosaic.jpg",
-        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/A_London_Mosaic.jpg/1280px-A_London_Mosaic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:A_London_Mosaic.jpg",
-        "credit": "NASA’s Earth Observatory · Public domain · Wikimedia Commons",
-        "licence": "Public domain",
-        "imageLocal": "/images/wikidata/show-eastenders.jpg"
-      }
+      "episodes": 7446
     },
     "coronation-street": {
       "source": "wikidata",

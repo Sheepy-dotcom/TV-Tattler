@@ -232,7 +232,7 @@ async function wikipediaLeadImageSuggestion(ent) {
  * Logos, crests, maps and tiny files are filtered out; only a landscape-ish
  * free raster of reasonable size is accepted.
  */
-async function commonsCategoryImageSuggestion(ent) {
+async function commonsCategoryImageSuggestion(ent, showName) {
   const cat = ent?.claims?.P373?.[0]?.mainsnak?.datavalue?.value; // e.g. "EastEnders"
   if (typeof cat !== 'string') return undefined;
   const url =
@@ -241,8 +241,18 @@ async function commonsCategoryImageSuggestion(ent) {
   const data = await getJson(url);
   const members = data?.query?.categorymembers ?? [];
   const skip = /logo|icon|crest|map|diagram|signature|title.?card|poster|dvd|cover|font/i;
+  // Only accept a file that actually names the show — the collapsed title
+  // (e.g. "eastenders") or a distinctive word from it — so a category's stray
+  // off-topic image (a generic city mosaic, say) is never chosen. If nothing
+  // matches, the caller keeps the show's own on-brand illustration.
+  const collapsed = (showName ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const words = tokens(showName).filter((w) => w.length >= 5);
+  const relevant = (title) => {
+    const t = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return (collapsed && t.includes(collapsed)) || words.some((w) => t.includes(w));
+  };
   for (const m of members) {
-    if (typeof m.title !== 'string' || skip.test(m.title)) continue;
+    if (typeof m.title !== 'string' || skip.test(m.title) || !relevant(m.title)) continue;
     await sleep(120);
     const s = await commonsSuggestionForFile(m.title, { minWidth: 600 });
     if (s) return s;
@@ -334,7 +344,7 @@ async function enrichShow(slug, fm) {
   const imageSuggestion =
     (await commonsImageSuggestion(ent)) ??
     (await wikipediaLeadImageSuggestion(ent)) ??
-    (await commonsCategoryImageSuggestion(ent));
+    (await commonsCategoryImageSuggestion(ent, fm.title));
   if (imageSuggestion?.thumbUrl) {
     imageSuggestion.imageLocal = await downloadImage(imageSuggestion.thumbUrl, `show-${slug}`);
   }
