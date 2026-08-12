@@ -8,6 +8,7 @@ summary: >-
 family:
   - grant-mitchell
   - sharon-watts
+  - billy-mitchell
 portrayals:
   - person: steve-mcfadden
     from: 1990

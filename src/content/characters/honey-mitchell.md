@@ -5,6 +5,8 @@ status: current
 summary: >-
   Warm, kind and endlessly patient — Honey has been part of Walford life since
   2005, weathering the ups and downs of the Square.
+family:
+  - billy-mitchell
 portrayals:
   - person: emma-barton
     from: 2005

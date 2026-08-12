@@ -9,6 +9,7 @@ summary: >-
 family:
   - phil-mitchell
   - sharon-watts
+  - billy-mitchell
 portrayals:
   - person: ross-kemp
     from: 1990
