@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T06:43:01.134Z",
+  "generatedAt": "2026-08-12T08:29:43.674Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -12,7 +12,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:William_Roache_Cropped.jpg",
         "credit": "Mikey · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-william-roache.jpg"
       }
     },
     "michelle-collins": {
@@ -26,7 +27,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Michelle_Collins_at_BAFTAs_2026_02.jpg",
         "credit": "JaceMerlyn · CC BY-SA 4.0 · Wikimedia Commons",
         "licence": "CC BY-SA 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-michelle-collins.jpg"
       }
     },
     "adam-woodyatt": {
@@ -40,7 +42,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Adam_Woodyatt.jpg",
         "credit": "Garry Knight · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-adam-woodyatt.jpg"
       }
     },
     "alan-halsall": {
@@ -54,7 +57,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Alan_Halsall.jpg",
         "credit": "The Co-operative · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-alan-halsall.jpg"
       }
     },
     "ashley-taylor-dawson": {
@@ -68,7 +72,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Ashley_Taylor_Dawson.jpg",
         "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-ashley-taylor-dawson.jpg"
       }
     },
     "barbara-knox": {
@@ -88,7 +93,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:David_Neilson.jpg",
         "credit": "KeithJustKeith · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-david-neilson.jpg"
       }
     },
     "emma-atkins": {
@@ -108,7 +114,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gillian_Taylforth_2022.jpg",
         "credit": "Meena · CC BY-SA 4.0 · Wikimedia Commons",
         "licence": "CC BY-SA 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-gillian-taylforth.jpg"
       }
     },
     "gillian-wright": {
@@ -122,7 +129,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gillian_Wright_2013.JPG",
         "credit": "AnemoneProjectors · CC BY-SA 3.0 · Wikimedia Commons",
         "licence": "CC BY-SA 3.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "imageLocal": "/images/wikidata/person-gillian-wright.jpg"
       }
     },
     "helen-worth": {
@@ -148,7 +156,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:James_Hooton_(7474051980).jpg",
         "credit": "vagueonthehow from Tadcaster, York, England · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-james-hooton.jpg"
       }
     },
     "jeff-hordley": {
@@ -162,7 +171,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jeff_Hordley_2018.JPG",
         "credit": "Paulae · CC BY-SA 3.0 · Wikimedia Commons",
         "licence": "CC BY-SA 3.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "imageLocal": "/images/wikidata/person-jeff-hordley.jpg"
       }
     },
     "jennifer-metcalfe": {
@@ -176,7 +186,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jennifer_Metcalfe.jpg",
         "credit": "Art - travel pics · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-jennifer-metcalfe.jpg"
       }
     },
     "jessica-fox": {
@@ -190,7 +201,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jessica_Fox_actress.jpg",
         "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-jessica-fox.jpg"
       }
     },
     "june-brown": {
@@ -204,7 +216,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:June_Brown_(2009).jpg",
         "credit": "Joe Freeman · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-june-brown.jpg"
       }
     },
     "kieron-richardson": {
@@ -218,7 +231,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Kieron_Richardson.jpg",
         "credit": "Ian Smith · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-kieron-richardson.jpg"
       }
     },
     "lucy-pargeter": {
@@ -238,7 +252,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Mark_Charnock_2019.jpg",
         "credit": "DarkGlow · CC BY-SA 4.0 · Wikimedia Commons",
         "licence": "CC BY-SA 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-mark-charnock.jpg"
       }
     },
     "michael-le-vell": {
@@ -258,7 +273,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Natalie_Cassidy_crop.jpg",
         "credit": "The Co-operative · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-natalie-cassidy.jpg"
       }
     },
     "nick-pickard": {
@@ -271,7 +287,8 @@
         "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nick_Pickard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Nick_Pickard.jpg",
         "credit": "Dino1357 · Public domain · Wikimedia Commons",
-        "licence": "Public domain"
+        "licence": "Public domain",
+        "imageLocal": "/images/wikidata/person-nick-pickard.jpg"
       }
     },
     "ross-kemp": {
@@ -285,7 +302,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Ross_Kemp.jpg",
         "credit": "Damien Everett from Southampton, UK · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-ross-kemp.jpg"
       }
     },
     "sally-dynevor": {
@@ -311,7 +329,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Steve_McFadden.jpg",
         "credit": "Pam · CC BY 2.0 · Wikimedia Commons",
         "licence": "CC BY 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-steve-mcfadden.jpg"
       }
     },
     "tony-audenshaw": {
@@ -325,7 +344,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Tonybobhope.JPG",
         "credit": "Schooleydoo · CC BY 3.0 · Wikimedia Commons",
         "licence": "CC BY 3.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/3.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "imageLocal": "/images/wikidata/person-tony-audenshaw.jpg"
       }
     }
   },
@@ -347,7 +367,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Manchester_,_Coronation_Street_-_geograph.org.uk_-_4204282.jpg",
         "credit": "Lewis Clarke · CC BY-SA 2.0 · Wikimedia Commons",
         "licence": "CC BY-SA 2.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/show-coronation-street.jpg"
       }
     },
     "emmerdale": {
@@ -367,7 +388,8 @@
         "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Hollyoaks_Filming_990916.jpg",
         "credit": "Eastpath · CC BY-SA 3.0 · Wikimedia Commons",
         "licence": "CC BY-SA 3.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "imageLocal": "/images/wikidata/show-hollyoaks.jpg"
       }
     }
   }
