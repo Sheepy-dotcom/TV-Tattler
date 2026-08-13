@@ -42,6 +42,11 @@ function decode(s) {
 
 const tagOf = (s) => SOAP_TAGS.find((t) => t.re.test(s))?.soap;
 
+// Skip low-signal items that clog a soap headline feed (the Guardian's soap
+// tags carry a lot of obituaries and corrections).
+const SKIP = /\b(obituary|obituaries|corrections and clarifications|letters?):|\bobituary\b/i;
+const isSkippable = (title) => SKIP.test(title);
+
 function pick(block, tag) {
   const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, 'i'));
   return m ? decode(m[1]) : '';
@@ -96,6 +101,7 @@ async function main() {
         const xml = await res.text();
         let kept = 0;
         for (const e of parseEntries(xml)) {
+          if (isSkippable(e.title)) continue;
           // A soap-specific feed tags every item to its show; a general feed
           // tags by what the headline names, and keeps only soap stories.
           const soap = feed.soap || tagOf(e.title);
