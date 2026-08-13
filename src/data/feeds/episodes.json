@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T21:33:33.844Z",
+  "generatedAt": "2026-08-13T01:23:39.825Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 128,
-          "name": "12/08/2026",
-          "airdate": "2026-08-12",
-          "airtime": "06:00",
-          "summary": "Chelsea's family rally together in her time of need. A truth comes to light about Joel's incident. And Eve faces a new challenge as a parent.",
-          "url": "https://www.tvmaze.com/episodes/3685651/eastenders-2026-08-12-12082026"
-        },
         {
           "season": 2026,
           "number": 129,
@@ -145,15 +136,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 96,
-          "name": "Wed 12 Aug 2026",
-          "airdate": "2026-08-12",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3665839/hollyoaks-32x96-wed-12-aug-2026"
-        },
         {
           "season": 32,
           "number": 97,
