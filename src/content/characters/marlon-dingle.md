@@ -8,6 +8,7 @@ summary: >-
 family:
   - mandy-dingle
   - sam-dingle
+  - rhona-goskirk
 portrayals:
   - person: mark-charnock
     from: 1996

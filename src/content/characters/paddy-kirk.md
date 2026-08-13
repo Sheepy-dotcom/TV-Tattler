@@ -8,6 +8,7 @@ summary: >-
 family:
   - chas-dingle
   - mandy-dingle
+  - rhona-goskirk
 portrayals:
   - person: dominic-brunt
     from: 1997
