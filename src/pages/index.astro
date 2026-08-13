@@ -6,7 +6,9 @@ import ArticleGrid from '../components/ArticleGrid.astro';
 import ShowRail from '../components/ShowRail.astro';
 import Sidebar from '../components/Sidebar.astro';
 import Widget from '../components/Widget.astro';
+import { getCollection } from 'astro:content';
 import { getArticles, getShows, getShowLookup, posterForArticle } from '../lib/relations';
+import { factsForPerson, resolveEntityImage } from '../lib/wikidata';
 import { SECTIONS } from '../content.config';
 import { sectionMeta } from '../lib/format';
 import { upcomingEpisodes, films, headlines } from '../lib/feeds';
@@ -14,6 +16,27 @@ import { upcomingEpisodes, films, headlines } from '../lib/feeds';
 const articles = await getArticles();
 const shows = await getShows();
 const lookup = await getShowLookup();
+
+// A rail of cast faces for the homepage — only people who actually have a photo,
+// so it's a wall of real faces rather than monograms.
+const people = await getCollection('people');
+const castAvatars = people
+  .map((person) => {
+    const facts = factsForPerson(person.id);
+    const hasPhoto = Boolean(person.data.image || facts?.imageSuggestion?.imageLocal);
+    const portrait = resolveEntityImage({
+      image: person.data.image,
+      imageAlt: person.data.imageAlt,
+      imageCredit: person.data.imageCredit,
+      useWikidataImage: person.data.useWikidataImage,
+      name: person.data.name,
+      facts,
+    });
+    return { person, hasPhoto, src: portrait?.src };
+  })
+  .filter((x) => x.hasPhoto && x.src)
+  .sort((a, b) => a.person.data.name.localeCompare(b.person.data.name))
+  .slice(0, 20);
 
 // Live feeds for the homepage: the next few soap episodes, new films and the
 // latest headlines. All come from the auto-refreshed data files and simply
@@ -158,6 +181,29 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
           href="/shows/"
           hrefLabel="All shows"
         />
+
+        {
+          castAvatars.length >= 8 && (
+            <section class="castrail" aria-label="The cast">
+              <div class="whatson__head">
+                <h2 class="rail-title">Meet the cast</h2>
+                <a class="whatson__all" href="/people/">All cast &rarr;</a>
+              </div>
+              <ul class="castrail__track">
+                {castAvatars.map(({ person, src }) => (
+                  <li class="castrail__item">
+                    <a class="castrail__link" href={`/people/${person.id}/`}>
+                      <span class="castrail__avatar">
+                        <img src={src} alt={person.data.name} loading="lazy" decoding="async" />
+                      </span>
+                      <span class="castrail__name">{person.data.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
 
         <div class="layout">
           <div class="layout__main">
@@ -456,6 +502,57 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
     font-weight: 600;
     font-size: var(--step--1);
     line-height: 1.25;
+  }
+
+  /* ---- Cast avatar rail ------------------------------------------------ */
+  .castrail {
+    margin-bottom: var(--space-7);
+  }
+  .castrail__track {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-2) 0 var(--space-3);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 5.5rem;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .castrail__link {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--ink);
+    text-align: center;
+  }
+  .castrail__avatar {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--paper);
+    border: 3px solid var(--card);
+    box-shadow: 0 0 0 1px var(--line-strong), var(--shadow-sm);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .castrail__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .castrail__link:hover .castrail__avatar {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 2px var(--live), var(--shadow);
+  }
+  .castrail__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step--1);
+    line-height: 1.2;
   }
 
   /* ---- Fun, colourful category buttons --------------------------------- */
