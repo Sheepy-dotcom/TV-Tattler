@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T19:14:57.392Z",
+  "generatedAt": "2026-08-13T20:41:22.120Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -883,6 +883,42 @@
       "qid": "Q8073292",
       "wikipedia": "https://en.wikipedia.org/wiki/Zo%C3%AB_Henry",
       "dateOfBirth": "1973-01-01"
+    },
+    "heather-peace": {
+      "source": "wikidata",
+      "qid": "Q3129096",
+      "wikipedia": "https://en.wikipedia.org/wiki/Heather_Peace",
+      "dateOfBirth": "1975-06-16",
+      "imageSuggestion": {
+        "file": "File:Heather_Peace_in_2012_(7352466528)_(cropped-J1).jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Heather_Peace_in_2012_%287352466528%29_%28cropped-J1%29.jpg/1280px-Heather_Peace_in_2012_%287352466528%29_%28cropped-J1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Heather_Peace_in_2012_(7352466528)_(cropped-J1).jpg",
+        "credit": "Catherine Singleton from Widnes, Great Britain · CC BY-SA 2.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "imageLocal": "/images/wikidata/person-heather-peace.jpg"
+      }
+    },
+    "jane-hazlegrove": {
+      "source": "wikidata",
+      "qid": "Q6152368",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jane_Hazlegrove",
+      "dateOfBirth": "1968-07-17"
+    },
+    "maureen-lipman": {
+      "source": "wikidata",
+      "qid": "Q3300246",
+      "wikipedia": "https://en.wikipedia.org/wiki/Maureen_Lipman",
+      "dateOfBirth": "1946-05-10",
+      "imageSuggestion": {
+        "file": "File:Maureen Lipman from GylesDamesPalladium050323 (66 of 74) (52728570090).jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Maureen_Lipman_from_GylesDamesPalladium050323_%2866_of_74%29_%2852728570090%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Maureen_Lipman_from_GylesDamesPalladium050323_(66_of_74)_(52728570090).jpg",
+        "credit": "Raph_PH · CC BY 2.0 · Wikimedia Commons",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "imageLocal": "/images/wikidata/person-maureen-lipman.jpg"
+      }
     }
   },
   "shows": {
