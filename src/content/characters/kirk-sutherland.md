@@ -5,6 +5,8 @@ status: current
 summary: >-
   Weatherfield's gentlest soul — guileless, kind and quietly hilarious. Kirk has
   been part of the cobbles since 2000.
+family:
+  - maria-connor
 portrayals:
   - person: andy-whyment
     from: 2000

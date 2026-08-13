@@ -5,6 +5,8 @@ status: current
 summary: >-
   Emmerdale's great villain — ruthless, glamorous and utterly ruthless in defence
   of the Tate empire. A village icon since 1989.
+family:
+  - will-taylor
 portrayals:
   - person: claire-king
     from: 1989
