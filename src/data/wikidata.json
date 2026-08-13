@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T00:44:26.986Z",
+  "generatedAt": "2026-08-13T00:47:20.398Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -814,6 +814,33 @@
         "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "imageLocal": "/images/wikidata/person-samia-longchambon.jpg"
       }
+    },
+    "ben-price": {
+      "source": "wikidata",
+      "qid": "Q4886309",
+      "wikipedia": "https://en.wikipedia.org/wiki/Ben_Price",
+      "dateOfBirth": "1972-01-01"
+    },
+    "clair-norris": {
+      "source": "wikidata",
+      "qid": "Q64503069",
+      "wikipedia": "https://en.wikipedia.org/wiki/Clair_Norris",
+      "dateOfBirth": "1997-12-30",
+      "imageSuggestion": {
+        "file": "File:Clair_Norris_2023.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Clair_Norris_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Clair_Norris_2023.jpg",
+        "credit": "Meena · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-clair-norris.jpg"
+      }
+    },
+    "sally-ann-matthews": {
+      "source": "wikidata",
+      "qid": "Q7405046",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sally_Ann_Matthews",
+      "dateOfBirth": "1970-09-19"
     }
   },
   "shows": {
