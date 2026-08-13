@@ -377,6 +377,24 @@ const primaryNav = [
         font-size: 0.9em;
       }
 
+      /* On phones, wrap the nav onto two centred lines instead of scrolling
+         sideways — every link stays reachable without a horizontal swipe. */
+      @media (max-width: 40rem) {
+        .mainnav__inner {
+          overflow-x: visible;
+        }
+        .mainnav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0;
+        }
+        .mainnav a {
+          padding: var(--space-3) var(--space-3);
+          font-size: var(--step--1);
+          border-bottom-width: 2px;
+        }
+      }
+
       /* ---- Main ---------------------------------------------------------- */
       .site-main {
         padding-block: var(--space-6) var(--space-8);
