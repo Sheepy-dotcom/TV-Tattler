@@ -59,19 +59,6 @@ const primaryNav = [
            page's own accent (a show colour where one is set). -->
       <div class="brandbar" aria-hidden="true"></div>
 
-      <!-- Utility strip: reference-first tagline + quick links to the kinds -->
-      <div class="utility">
-        <div class="container utility__inner">
-          <span class="utility__tag mono">Reference-first UK entertainment</span>
-          <nav class="utility__links mono" aria-label="Quick links">
-            <a href="/kind/spoiler/">Spoilers</a>
-            <a href="/kind/cast-change/">Cast changes</a>
-            <a href="/kind/guide/">Guides</a>
-            <a href="/about/">About</a>
-          </nav>
-        </div>
-      </div>
-
       <!-- Masthead: the wordmark on a light band -->
       <div class="masthead">
         <div class="container masthead__inner">
@@ -193,32 +180,6 @@ const primaryNav = [
           color-mix(in srgb, var(--pop) 55%, var(--accent)) 78%,
           var(--accent) 100%
         );
-      }
-
-      /* ---- Utility strip ------------------------------------------------- */
-      .utility {
-        background: #0f0b1c;
-        color: var(--ink-40);
-      }
-      .utility__inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-2) var(--space-4);
-        padding-block: var(--space-2);
-        font-size: var(--step--1);
-      }
-      .utility__links {
-        display: flex;
-        gap: var(--space-4);
-      }
-      .utility__links a {
-        color: var(--ink-40);
-        text-decoration: none;
-      }
-      .utility__links a:hover {
-        color: #fff;
       }
 
       /* ---- Masthead ------------------------------------------------------ */
