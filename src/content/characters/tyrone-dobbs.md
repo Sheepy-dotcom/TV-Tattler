@@ -7,6 +7,7 @@ summary: >-
   everymen since 1998.
 family:
   - fiz-stape
+  - evelyn-plummer
 portrayals:
   - person: alan-halsall
     from: 1998

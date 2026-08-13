@@ -5,6 +5,8 @@ status: current
 summary: >-
   Steely, calculating and fiercely protective of her own — Suki has been the
   matriarch of Walford's Panesar family since 2020.
+family:
+  - eve-unwin
 portrayals:
   - person: balvinder-sopal
     from: 2020

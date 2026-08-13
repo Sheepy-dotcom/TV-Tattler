@@ -7,6 +7,7 @@ summary: >-
   Street's most moving stories since 2018.
 family:
   - billy-mayhew
+  - bernie-winter
 portrayals:
   - person: peter-ash
     from: 2018
