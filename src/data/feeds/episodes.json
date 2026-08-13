@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T07:18:03.422Z",
+  "generatedAt": "2026-08-13T12:56:07.450Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -52,6 +52,42 @@
           "airtime": "06:00",
           "summary": "Priya takes advice from an unlikely source. It's the day of Penny's shop opening, but things don't go to plan. Lily and Joel support one another.",
           "url": "https://www.tvmaze.com/episodes/3696020/eastenders-2026-08-20-20082026"
+        },
+        {
+          "season": 2026,
+          "number": 134,
+          "name": "24/08/2026",
+          "airdate": "2026-08-24",
+          "airtime": "06:00",
+          "summary": "The Fox-Truemans continue their efforts to find a stem cell match for Denise. Priya and Jean join forces in a bid to uncover the truth.",
+          "url": "https://www.tvmaze.com/episodes/3697768/eastenders-2026-08-24-24082026"
+        },
+        {
+          "season": 2026,
+          "number": 135,
+          "name": "25/08/2026",
+          "airdate": "2026-08-25",
+          "airtime": "06:00",
+          "summary": "Eve and Suki receive a devastating update. A breakthrough offers Denise's family fresh hope. Penny feels overwhelmed by those around her.",
+          "url": "https://www.tvmaze.com/episodes/3697769/eastenders-2026-08-25-25082026"
+        },
+        {
+          "season": 2026,
+          "number": 136,
+          "name": "26/08/2026",
+          "airdate": "2026-08-26",
+          "airtime": "06:00",
+          "summary": "Alfie throws Kat a surprise, and Kim is furious with Jack when she learns what's happened.",
+          "url": "https://www.tvmaze.com/episodes/3697770/eastenders-2026-08-26-26082026"
+        },
+        {
+          "season": 2026,
+          "number": 137,
+          "name": "27/08/2026",
+          "airdate": "2026-08-27",
+          "airtime": "06:00",
+          "summary": "Alfie's surprise soon turns to chaos. Suki is fuming and takes matters into her own hands. Priya and Ravi consider what the future might hold.",
+          "url": "https://www.tvmaze.com/episodes/3697771/eastenders-2026-08-27-27082026"
         }
       ]
     },
