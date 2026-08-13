@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T06:47:40.316Z",
+  "generatedAt": "2026-08-13T19:14:57.392Z",
   "people": {
     "william-roache": {
       "source": "wikidata",
@@ -534,7 +534,7 @@
     "tina-obrien": {
       "source": "wikidata",
       "qid": "Q4340888",
-      "wikipedia": "https://en.wikipedia.org/wiki/Tina_O'Brien",
+      "wikipedia": "https://en.wikipedia.org/wiki/Tina_O%27Brien",
       "dateOfBirth": "1983-08-07",
       "imageSuggestion": {
         "file": "File:Tina O'Brien.jpg",
@@ -841,6 +841,48 @@
       "qid": "Q7405046",
       "wikipedia": "https://en.wikipedia.org/wiki/Sally_Ann_Matthews",
       "dateOfBirth": "1970-09-19"
+    },
+    "balvinder-sopal": {
+      "source": "wikidata",
+      "qid": "Q80373820",
+      "wikipedia": "https://en.wikipedia.org/wiki/Balvinder_Sopal",
+      "dateOfBirth": "1978-12-04",
+      "imageSuggestion": {
+        "file": "File:Balvinder Sopal.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Balvinder_Sopal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Balvinder_Sopal.jpg",
+        "credit": "DarkGlow · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-balvinder-sopal.jpg"
+      }
+    },
+    "charlotte-jordan": {
+      "source": "wikidata",
+      "qid": "Q102872603",
+      "wikipedia": "https://en.wikipedia.org/wiki/Charlotte_Jordan",
+      "dateOfBirth": "1995-06-01",
+      "imageSuggestion": {
+        "file": "File:Charlotte Jordan 2022.jpg",
+        "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Charlotte_Jordan_2022.jpg/1280px-Charlotte_Jordan_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Charlotte_Jordan_2022.jpg",
+        "credit": "Meena · CC BY-SA 4.0 · Wikimedia Commons",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "imageLocal": "/images/wikidata/person-charlotte-jordan.jpg"
+      }
+    },
+    "jamie-lomas": {
+      "source": "wikidata",
+      "qid": "Q6147135",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jamie_Lomas",
+      "dateOfBirth": "1980-04-21"
+    },
+    "zoe-henry": {
+      "source": "wikidata",
+      "qid": "Q8073292",
+      "wikipedia": "https://en.wikipedia.org/wiki/Zo%C3%AB_Henry",
+      "dateOfBirth": "1973-01-01"
     }
   },
   "shows": {
