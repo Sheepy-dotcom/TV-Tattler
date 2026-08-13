@@ -9,6 +9,7 @@ family:
   - gail-platt
   - david-platt
   - audrey-roberts
+  - nick-tilsley
 portrayals:
   - person: tina-obrien
     from: 1999

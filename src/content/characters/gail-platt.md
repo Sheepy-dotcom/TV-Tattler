@@ -9,6 +9,7 @@ family:
   - david-platt
   - audrey-roberts
   - sarah-platt
+  - nick-tilsley
 portrayals:
   - person: helen-worth
     from: 1974

@@ -9,6 +9,7 @@ family:
   - gail-platt
   - audrey-roberts
   - sarah-platt
+  - nick-tilsley
 portrayals:
   - person: jack-p-shepherd
     from: 2000

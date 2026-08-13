@@ -5,7 +5,8 @@ status: current
 summary: >-
   Kabin proprietor and one of Weatherfield's great survivors — warm, sharp and
   unshockable. A Coronation Street regular since 1972.
-family: []
+family:
+  - jenny-connor
 portrayals:
   - person: barbara-knox
     from: 1972
