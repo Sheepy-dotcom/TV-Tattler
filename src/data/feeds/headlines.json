@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T07:15:45.634Z",
+  "generatedAt": "2026-08-14T12:51:57.074Z",
   "sources": [
     "The Guardian",
     "The Guardian",
@@ -7,6 +7,13 @@
     "The Guardian"
   ],
   "items": [
+    {
+      "title": "‘We get 200 tourists a day’: when your house becomes a TV star",
+      "url": "https://www.theguardian.com/tv-and-radio/2026/aug/14/famous-tv-show-homes-real-residents-ted-lasso-sopranos",
+      "publishedAt": "2026-08-14T12:00:26.000Z",
+      "source": "The Guardian",
+      "soap": "emmerdale"
+    },
     {
       "title": "Brenda Fricker, Oscar winner for My Left Foot, dies aged 81",
       "url": "https://www.theguardian.com/film/2026/jul/17/brenda-fricker-oscar-winner-for-my-left-foot-dies",
@@ -89,7 +96,7 @@
       "url": "https://www.theguardian.com/lifeandstyle/2025/apr/12/jill-halfpenny-actor-looks-back",
       "publishedAt": "2025-04-12T11:00:45.000Z",
       "source": "The Guardian",
-      "soap": "coronation-street"
+      "soap": "eastenders"
     },
     {
       "title": "Adam, Scott and Ryan Thomas look back: ‘We were known as the Corrie Boys. We lived like rock stars’",
@@ -172,13 +179,6 @@
       "title": "Who are Britain’s longest-serving soap stars?",
       "url": "https://www.theguardian.com/culture/2022/aug/08/following-june-spencers-retirement-who-are-britains-longest-serving-soap-stars",
       "publishedAt": "2022-08-08T17:11:47.000Z",
-      "source": "The Guardian",
-      "soap": "emmerdale"
-    },
-    {
-      "title": "‘I’ve had 10 affairs – I wasn’t that sort of woman when I arrived on Corrie!’ Britain’s longest serving soap stars tell all",
-      "url": "https://www.theguardian.com/tv-and-radio/2022/jun/22/ive-had-10-affairs-i-wasnt-that-sort-of-woman-when-i-arrived-on-corrie-britains-longest-serving-soap-stars-tell-all",
-      "publishedAt": "2022-06-22T05:00:22.000Z",
       "source": "The Guardian",
       "soap": "emmerdale"
     },
