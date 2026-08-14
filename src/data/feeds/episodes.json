@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T18:54:59.992Z",
+  "generatedAt": "2026-08-14T01:23:03.900Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 129,
-          "name": "13/08/2026",
-          "airdate": "2026-08-13",
-          "airtime": "06:00",
-          "summary": "Amy confides in an unlikely source, Nicola and Eve bond over their shared experiences, and Ian finds himself in a worrying situation.",
-          "url": "https://www.tvmaze.com/episodes/3685652/eastenders-2026-08-13-13082026"
-        },
         {
           "season": 2026,
           "number": 130,
@@ -102,15 +93,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 148,
-          "name": "Thursday 13th August",
-          "airdate": "2026-08-13",
-          "airtime": "07:00",
-          "summary": "Kev is thrilled, while Billy is in a determined mood and Dylan admits to April that he has been struggling.",
-          "url": "https://www.tvmaze.com/episodes/3688869/emmerdale-55x148-thursday-13th-august"
-        },
         {
           "season": 55,
           "number": 149,
