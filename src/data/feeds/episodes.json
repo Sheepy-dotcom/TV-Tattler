@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T18:44:34.030Z",
+  "generatedAt": "2026-08-15T00:53:55.803Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -93,15 +93,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 149,
-          "name": "Friday 14th August",
-          "airdate": "2026-08-14",
-          "airtime": "07:00",
-          "summary": "Ruby is thwarted, Lewis surprises Kev with an announcement and Dylan is grateful when Bear urges him to reach out to a counsellor.",
-          "url": "https://www.tvmaze.com/episodes/3688870/emmerdale-55x149-friday-14th-august"
-        },
         {
           "season": 55,
           "number": 150,
