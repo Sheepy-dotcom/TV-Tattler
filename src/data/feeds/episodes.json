@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T18:19:16.461Z",
+  "generatedAt": "2026-08-17T00:54:14.017Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -198,6 +198,15 @@
           "airtime": "07:00",
           "summary": "",
           "url": "https://www.tvmaze.com/episodes/3665845/hollyoaks-32x102-wed-26-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 103,
+          "name": "Mon 31 Aug 2026",
+          "airdate": "2026-08-31",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665846/hollyoaks-32x103-mon-31-aug-2026"
         }
       ]
     }
