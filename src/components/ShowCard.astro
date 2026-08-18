@@ -1,0 +1,123 @@
+---
+import type { Show } from '../lib/relations';
+import { charactersForShow } from '../lib/relations';
+import { yearRange } from '../lib/format';
+import { factsForShow, resolveEntityImage } from '../lib/wikidata';
+
+interface Props {
+  show: Show;
+}
+
+const { show } = Astro.props;
+const { data } = show;
+const count = (await charactersForShow(show.id)).length;
+const ended = Boolean(data.endYear);
+
+// Prefer a real (credited) Commons image when opted in; fall back to the
+// self-hosted illustration.
+const img = resolveEntityImage({
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.title,
+  facts: factsForShow(show.id),
+});
+---
+
+<a class="showcard" href={`/shows/${show.id}/`} style={`--accent: ${data.accent};`}>
+  <div class="showcard__media">
+    {
+      img ? (
+        <img src={img.src} alt={img.alt ?? data.title} loading="lazy" />
+      ) : (
+        <span class="showcard__poster">{data.title}</span>
+      )
+    }
+    <span class="showcard__badge mono">
+      {count} character{count === 1 ? '' : 's'}
+    </span>
+  </div>
+  <div class="showcard__body">
+    <span class="showcard__title">{data.title}</span>
+    <span class="showcard__meta mono">
+      {data.broadcaster} · {yearRange(data.startYear, data.endYear)}
+      {!ended && <span class="showcard__live"> · on air</span>}
+    </span>
+  </div>
+</a>
+
+<style>
+  .showcard {
+    --accent: var(--ink);
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+  }
+  .showcard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .showcard__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--accent);
+  }
+  .showcard__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .showcard__poster {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-2);
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 85%, white), var(--accent));
+  }
+  .showcard__badge {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    background: rgba(11, 8, 22, 0.72);
+    color: #fff;
+    padding: 0.3em 0.6em;
+    border-radius: 999px;
+    font-size: var(--step--1);
+  }
+
+  .showcard__body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    border-top: 4px solid var(--accent);
+  }
+  .showcard__title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.1;
+  }
+  .showcard__meta {
+    display: block;
+    margin-top: var(--space-1);
+    color: var(--ink-60);
+  }
+  .showcard__live {
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+</style>

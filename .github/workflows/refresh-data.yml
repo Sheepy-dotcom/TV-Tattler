@@ -1,0 +1,52 @@
+name: Refresh Wikidata facts
+
+# Keeps the build-time enrichment cache (src/data/wikidata.json) current by
+# re-running the Wikidata fetch on a schedule and committing any changes.
+# Pushing the updated cache triggers the usual Cloudflare Pages deploy.
+#
+# Runs on the default branch. Requires no secrets — it commits with the
+# built-in GITHUB_TOKEN. (If you would rather not commit generated data, swap
+# the commit step for a call to a Cloudflare Pages deploy hook instead.)
+
+on:
+  schedule:
+    - cron: '17 5 * * *' # daily, 05:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch latest facts from Wikidata
+        run: npm run enrich
+
+      - name: Verify the site still builds
+        run: npm run build
+
+      - name: Commit refreshed cache and images if they changed
+        run: |
+          git add src/data/wikidata.json public/images/wikidata
+          if git diff --cached --quiet; then
+            echo "No changes to the enrichment cache or images."
+            exit 0
+          fi
+          git config user.name "tv-tattler-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git commit -m "chore(data): refresh Wikidata enrichment cache and images"
+          git push

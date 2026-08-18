@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Celebrities — spotlight and star">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffa94d"/>
+      <stop offset="0.55" stop-color="#e8590c"/>
+      <stop offset="1" stop-color="#a63a02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <!-- spotlight beams -->
+  <path d="M120 0 L360 0 L720 900 L120 900 Z" fill="#ffffff" fill-opacity="0.1"/>
+  <path d="M1480 0 L1240 0 L880 900 L1480 900 Z" fill="#ffffff" fill-opacity="0.1"/>
+  <!-- big star -->
+  <g transform="translate(800,430)">
+    <path d="M0 -200 L58 -62 L206 -62 L88 28 L132 168 L0 84 L-132 168 L-88 28 L-206 -62 L-58 -62 Z" fill="#fff3bf"/>
+    <path d="M0 -140 L40 -44 L144 -44 L62 20 L92 118 L0 60 L-92 118 L-62 20 L-144 -44 L-40 -44 Z" fill="#ffd43b"/>
+  </g>
+  <!-- sparkles -->
+  <g fill="#ffffff" fill-opacity="0.85">
+    <path d="M320 240 l10 30 l30 10 l-30 10 l-10 30 l-10 -30 l-30 -10 l30 -10 z"/>
+    <path d="M1240 300 l8 24 l24 8 l-24 8 l-8 24 l-8 -24 l-24 -8 l24 -8 z"/>
+    <path d="M1180 640 l7 20 l20 7 l-20 7 l-7 20 l-7 -20 l-20 -7 l20 -7 z"/>
+    <path d="M420 660 l7 20 l20 7 l-20 7 l-7 20 l-7 -20 l-20 -7 l20 -7 z"/>
+  </g>
+  <!-- red carpet -->
+  <path d="M600 900 L1000 900 L1180 760 L420 760 Z" fill="#7a1220"/>
+  <path d="M660 900 L940 900 L1080 780 L520 780 Z" fill="#a01a2c"/>
+  <text x="72" y="150" font-family="'DM Mono',monospace" font-size="30" letter-spacing="8" fill="#ffffff" fill-opacity="0.9">STARS &amp; ROLES</text>
+</svg>

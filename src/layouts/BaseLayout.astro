@@ -1,0 +1,451 @@
+---
+import '../styles/global.css';
+import { SECTIONS } from '../content.config';
+import { sectionLabel } from '../lib/format';
+import { getShows } from '../lib/relations';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Optional accent to theme the page (e.g. a show's colour). */
+  accent?: string;
+}
+
+const { title, description, accent } = Astro.props;
+const fullTitle = title === 'TV Tattler' ? title : `${title} — TV Tattler`;
+const currentPath = Astro.url.pathname;
+const shows = await getShows();
+
+// Canonical URL for this page, resolved against the configured site
+// (https://tvtattler.com). Powers <link rel="canonical"> and og:url.
+const canonical = Astro.site ? new URL(currentPath, Astro.site).href : undefined;
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+
+// Fresh-content pages lead the nav (the site's live purpose: spoilers, news and
+// new films), with the reference spine — Soaps, Shows, Cast — after. The other
+// sections stay discoverable from the footer.
+const primaryNav = [
+  { href: '/', label: 'Home', accent: false },
+  { href: '/whats-on/', label: "What's On", accent: false },
+  { href: '/kind/spoiler/', label: 'Spoilers', accent: true },
+  { href: '/headlines/', label: 'Headlines', accent: false },
+  { href: '/films/', label: 'Films', accent: false },
+  { href: '/section/soaps/', label: 'Soaps', accent: false },
+  { href: '/shows/', label: 'Shows', accent: false },
+  { href: '/people/', label: 'Cast', accent: false },
+];
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={fullTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TV Tattler" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#17122A" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="TV Tattler" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body style={accent ? `--accent: ${accent};` : undefined}>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <!-- Brand ribbon: a thin gradient that blends the house pink into the
+           page's own accent (a show colour where one is set). -->
+      <div class="brandbar" aria-hidden="true"></div>
+
+      <!-- Masthead: the wordmark on a light band -->
+      <div class="masthead">
+        <div class="container masthead__inner">
+          <a href="/" class="wordmark" aria-label="TV Tattler home">
+            <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
+          </a>
+          <p class="masthead__strap">Soap spoilers, telly news &amp; what&rsquo;s on.</p>
+          <form class="masthead__search" role="search" action="/search/" method="get">
+            <label class="sr-only" for="masthead-q">Search TV Tattler</label>
+            <input id="masthead-q" name="q" type="search" placeholder="Search shows, characters…" autocomplete="off" />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Primary navigation: sticky bar -->
+      <nav class="mainnav" aria-label="Primary">
+        <div class="container mainnav__inner">
+          <ul>
+            {
+              primaryNav.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={{ 'nav-spoiler': item.accent }}
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                  >
+                    {item.accent && <span class="nav-spoiler__dot" aria-hidden="true">⚠</span>}
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="container site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="wordmark wordmark--footer">
+            <span class="wordmark__tv">TV</span><span class="wordmark__tattler">Tattler</span>
+          </p>
+          <p class="site-footer__about">
+            A soaps-first UK entertainment site built on evergreen reference depth:
+            complete, accurate pages for every show, character and actor — kept up to date.
+          </p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Sections">
+          <h2 class="site-footer__h">Sections</h2>
+          <ul>
+            {SECTIONS.map((s) => <li><a href={`/section/${s}/`}>{sectionLabel(s)}</a></li>)}
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-label="Browse">
+          <h2 class="site-footer__h">Browse</h2>
+          <ul>
+            <li><a href="/whats-on/">What's on</a></li>
+            <li><a href="/films/">Films</a></li>
+            <li><a href="/headlines/">Headlines</a></li>
+            <li><a href="/shows/">All shows</a></li>
+            <li><a href="/people/">Cast</a></li>
+            <li><a href="/kind/spoiler/">Spoilers</a></li>
+            <li><a href="/kind/cast-change/">Cast changes</a></li>
+            <li><a href="/kind/guide/">Guides</a></li>
+            <li><a href="/kind/feature/">Features</a></li>
+            <li><a href="/search/">Search</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/rss.xml">RSS feed</a></li>
+          </ul>
+        </nav>
+
+        {
+          shows.length > 0 && (
+            <nav class="site-footer__col" aria-label="Shows">
+              <h2 class="site-footer__h">Shows</h2>
+              <ul>
+                {shows.map((show) => (
+                  <li>
+                    <a href={`/shows/${show.id}/`}>
+                      <span class="dot" style={`--accent: ${show.data.accent};`} aria-hidden="true" />
+                      {show.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+      </div>
+      <div class="site-footer__base">
+        <div class="container site-footer__base-inner mono">
+          <span>© {new Date().getFullYear()} TV Tattler</span>
+          <span>Reference depth for UK soaps, telly &amp; celebrity.</span>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      /* ---- Brand ribbon -------------------------------------------------- */
+      .brandbar {
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--live) 0%,
+          var(--pop) 50%,
+          color-mix(in srgb, var(--pop) 55%, var(--accent)) 78%,
+          var(--accent) 100%
+        );
+      }
+
+      /* ---- Masthead ------------------------------------------------------ */
+      .masthead {
+        background: var(--card);
+        border-bottom: 1px solid var(--line);
+      }
+      .masthead__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-3) var(--space-5);
+        padding-block: var(--space-4);
+      }
+      .masthead__strap {
+        align-self: baseline;
+      }
+
+      /* Search box in the masthead — a GET form so it works without JS
+         (the /search/ page filters live once loaded). */
+      .masthead__search {
+        margin-left: auto;
+        display: flex;
+        align-items: stretch;
+        border: 2px solid var(--line-strong);
+        border-radius: 999px;
+        overflow: hidden;
+        background: var(--card);
+      }
+      .masthead__search:focus-within {
+        border-color: var(--live);
+      }
+      .masthead__search input {
+        border: none;
+        background: transparent;
+        padding: var(--space-2) var(--space-3);
+        font-family: var(--font-body);
+        font-size: var(--step-0);
+        color: var(--ink);
+        min-width: 12rem;
+      }
+      .masthead__search input:focus {
+        outline: none;
+      }
+      .masthead__search button {
+        border: none;
+        background: var(--ink);
+        color: #fff;
+        padding-inline: var(--space-3);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      .masthead__search button:hover {
+        background: var(--live);
+      }
+      @media (max-width: 30rem) {
+        .masthead__search {
+          margin-left: 0;
+          width: 100%;
+        }
+        .masthead__search input {
+          flex: 1;
+          min-width: 0;
+        }
+      }
+      .wordmark {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: var(--step-3);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        color: var(--ink);
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.28em;
+        line-height: 1;
+      }
+      .wordmark__tv {
+        background: var(--grad-brand);
+        color: #fff;
+        padding: 0.1em 0.28em;
+        border-radius: var(--radius-sm);
+        box-shadow: 0 4px 14px color-mix(in srgb, var(--live) 40%, transparent);
+      }
+      .masthead__strap {
+        margin: 0;
+        color: var(--ink-60);
+        font-size: var(--step-0);
+        max-width: 38ch;
+      }
+      /* On wider screens, set the strap off from the wordmark with a hairline
+         divider — a small editorial cue that reads as a masthead, not a header. */
+      @media (min-width: 48rem) {
+        .masthead__strap {
+          padding-left: var(--space-5);
+          border-left: 1px solid var(--line-strong);
+        }
+      }
+
+      /* ---- Primary nav (sticky) ----------------------------------------- */
+      .mainnav {
+        background: linear-gradient(180deg, #201a38 0%, var(--ink) 100%);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: var(--shadow);
+        border-bottom: 2px solid color-mix(in srgb, var(--accent) 60%, var(--ink));
+      }
+      .mainnav__inner {
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .mainnav__inner::-webkit-scrollbar {
+        display: none;
+      }
+      .mainnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: var(--space-1);
+      }
+      .mainnav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
+        white-space: nowrap;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: var(--step-0);
+        color: var(--paper);
+        text-decoration: none;
+        padding: var(--space-3) var(--space-4);
+        border-bottom: 3px solid transparent;
+      }
+      .mainnav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .mainnav a[aria-current='page'] {
+        border-bottom-color: var(--live);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      /* The Spoilers link stands out in amber. */
+      .mainnav a.nav-spoiler {
+        color: var(--spoiler);
+        font-weight: 700;
+      }
+      .mainnav a.nav-spoiler:hover {
+        background: color-mix(in srgb, var(--spoiler) 22%, transparent);
+      }
+      .mainnav a.nav-spoiler[aria-current='page'] {
+        border-bottom-color: var(--spoiler);
+      }
+      .nav-spoiler__dot {
+        font-size: 0.9em;
+      }
+
+      /* On phones, wrap the nav onto two centred lines instead of scrolling
+         sideways — every link stays reachable without a horizontal swipe. */
+      @media (max-width: 40rem) {
+        .mainnav__inner {
+          overflow-x: visible;
+        }
+        .mainnav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0;
+        }
+        .mainnav a {
+          padding: var(--space-3) var(--space-3);
+          font-size: var(--step--1);
+          border-bottom-width: 2px;
+        }
+      }
+
+      /* ---- Main ---------------------------------------------------------- */
+      .site-main {
+        padding-block: var(--space-6) var(--space-8);
+        min-height: 60vh;
+      }
+
+      /* ---- Footer -------------------------------------------------------- */
+      .site-footer {
+        background: var(--ink);
+        color: var(--paper);
+        margin-top: var(--space-8);
+      }
+      .site-footer__grid {
+        display: grid;
+        gap: var(--space-6);
+        padding-block: var(--space-7);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 40rem) {
+        .site-footer__grid {
+          grid-template-columns: 1.5fr 1fr 1fr;
+        }
+      }
+      @media (min-width: 60rem) {
+        .site-footer__grid {
+          grid-template-columns: 2fr 1fr 1fr 1.2fr;
+        }
+      }
+      .site-footer__about {
+        color: var(--ink-40);
+        max-width: 42ch;
+        margin: var(--space-3) 0 0;
+        font-size: var(--step-0);
+      }
+      .wordmark--footer {
+        margin: 0;
+        color: var(--paper);
+      }
+      .site-footer__h {
+        font-family: var(--font-mono);
+        font-size: var(--step--1);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-40);
+        margin: 0 0 var(--space-3);
+      }
+      .site-footer__col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: var(--space-2);
+      }
+      .site-footer__col a {
+        color: var(--paper);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+      }
+      .site-footer__col a:hover {
+        text-decoration: underline;
+      }
+      .dot {
+        width: 0.6em;
+        height: 0.6em;
+        border-radius: 999px;
+        background: var(--accent);
+        flex: none;
+      }
+      .site-footer__base {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .site-footer__base-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-2);
+        padding-block: var(--space-4);
+        color: var(--ink-40);
+        font-size: var(--step--1);
+      }
+    </style>
+  </body>
+</html>

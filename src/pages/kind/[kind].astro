@@ -1,0 +1,178 @@
+---
+// A kind listing gathers one type of piece across every section — so
+// "cast changes" and "spoilers" get their own page without becoming rival
+// sections that compete in search. (An addition to the core routes list.)
+//
+// The spoiler kind gets a bespoke, amber-themed hub: it's a signature part of a
+// soaps site, so it stands out and pulls in everything flagged as a spoiler.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { KINDS } from '../../content.config';
+import { articlesOfKind, articlesForSpoilers } from '../../lib/relations';
+import { kindLabel } from '../../lib/format';
+
+export async function getStaticPaths() {
+  return KINDS.map((kind) => ({ params: { kind } }));
+}
+
+const { kind } = Astro.params;
+const isSpoilers = kind === 'spoiler';
+const label = kindLabel(kind);
+const articles = isSpoilers
+  ? await articlesForSpoilers()
+  : await articlesOfKind(kind as (typeof KINDS)[number]);
+
+const blurb: Record<string, string> = {
+  'cast-change': 'Recasts, arrivals and departures across UK soaps and drama.',
+  spoiler: 'What is coming up — mind how you go.',
+  guide: 'Explainers and reference guides.',
+  feature: 'Longer reads.',
+  review: 'Our verdicts.',
+  news: 'The latest updates.',
+};
+
+const description = isSpoilers
+  ? 'Every spoiler in one place — upcoming and past story details, clearly flagged.'
+  : (blurb[kind] ?? `${label} on TV Tattler.`);
+---
+
+<BaseLayout title={isSpoilers ? 'Spoilers' : label} description={description}>
+  {
+    isSpoilers ? (
+      <>
+        <header class="spoiler-hero">
+          <div class="spoiler-hero__badge mono">
+            <span aria-hidden="true">⚠</span> Spoilers
+          </div>
+          <h1 class="spoiler-hero__title">Spoilers</h1>
+          <p class="spoiler-hero__lede">
+            Everything with story details you might not have seen yet — upcoming and past,
+            all clearly flagged. Read on only if you don't mind knowing.
+          </p>
+          <p class="spoiler-hero__note mono">Mind how you go.</p>
+        </header>
+
+        <div class="layout">
+          <div class="layout__main">
+            <ArticleGrid
+              articles={articles}
+              withHero
+              columns={2}
+              showStandfirst
+              emptyMessage="No spoilers published yet. Flag an article with spoiler: true, or file one under kind: spoiler, and it will appear here."
+            />
+          </div>
+          <Sidebar />
+        </div>
+      </>
+    ) : (
+      <>
+        <header class="kind-head">
+          <p class="mono kind-head__kicker">Every {label.toLowerCase()}</p>
+          <h1>{label}</h1>
+          <p class="kind-head__blurb">{blurb[kind]}</p>
+        </header>
+
+        <div class="layout">
+          <div class="layout__main">
+            <ArticleGrid
+              articles={articles}
+              withHero
+              columns={2}
+              emptyMessage={`No ${label.toLowerCase()} articles yet. Set kind: ${kind} in an article's frontmatter to list it here.`}
+            />
+          </div>
+          <Sidebar />
+        </div>
+      </>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .kind-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 4px solid var(--ink);
+  }
+  .kind-head__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .kind-head__blurb {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  /* ---- Spoilers hub: bold amber banner ---------------------------------- */
+  .spoiler-hero {
+    background:
+      linear-gradient(180deg, var(--spoiler) 0%, color-mix(in srgb, var(--spoiler) 82%, white) 100%);
+    border: 1px solid var(--spoiler-edge);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    color: #3f3205;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Warning-tape stripe down the left edge. */
+  .spoiler-hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: repeating-linear-gradient(
+      45deg,
+      #3f3205,
+      #3f3205 8px,
+      var(--spoiler) 8px,
+      var(--spoiler) 16px
+    );
+  }
+  .spoiler-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: #3f3205;
+    color: var(--spoiler);
+    padding: 0.4em 0.7em;
+    border-radius: 999px;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+  .spoiler-hero__title {
+    font-size: var(--step-4);
+    margin: 0 0 var(--space-3);
+    color: #2a2103;
+  }
+  .spoiler-hero__lede {
+    font-size: var(--step-1);
+    max-width: 52ch;
+    margin: 0 0 var(--space-2);
+    color: #4a3a06;
+  }
+  .spoiler-hero__note {
+    margin: 0;
+    color: #6b5410;
+    font-weight: 500;
+  }
+
+  .layout {
+    display: grid;
+    gap: var(--space-6);
+  }
+  @media (min-width: 60rem) {
+    .layout {
+      grid-template-columns: 1fr 20rem;
+      gap: var(--space-7);
+      align-items: start;
+    }
+  }
+</style>

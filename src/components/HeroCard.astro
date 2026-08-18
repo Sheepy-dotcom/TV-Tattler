@@ -1,0 +1,181 @@
+---
+import type { Article } from '../lib/relations';
+import CardMedia from './CardMedia.astro';
+import { formatDate, isoDate, kindLabel } from '../lib/format';
+import { photoForArticle } from '../lib/wikidata';
+
+interface Props {
+  article: Article;
+  accent?: string;
+  showTitle?: string;
+}
+
+const { article, accent, showTitle } = Astro.props;
+const { data } = article;
+const href = `/articles/${article.id}/`;
+
+// A real face for the lead headline where we have one, credit carried through.
+const photo = photoForArticle(data.people.map((p) => p.id));
+const heroImage = photo?.src ?? data.image;
+const heroAlt = photo ? data.title : data.imageAlt;
+const heroCredit = photo?.credit ?? (data.image ? data.imageCredit : undefined);
+---
+
+<article class="hero" style={accent ? `--accent: ${accent};` : undefined}>
+  <a class="hero__media" href={href} tabindex="-1" aria-hidden="true">
+    <CardMedia
+      accent={accent}
+      showTitle={showTitle}
+      kind={data.kind}
+      image={heroImage}
+      imageAlt={heroAlt}
+      ratio="16 / 9"
+      large
+    />
+    {heroImage && heroCredit && <span class="hero__credit mono">{heroCredit}</span>}
+  </a>
+  <div class="hero__body">
+    <div class="hero__meta">
+      <span class="hero__kicker">{kindLabel(data.kind)}</span>
+      {showTitle && <span class="hero__show">{showTitle}</span>}
+      {data.spoiler && data.kind !== 'spoiler' && <span class="hero__flag">Spoiler</span>}
+    </div>
+    <h2 class="hero__title">
+      <a href={href}>{data.title}</a>
+    </h2>
+    <p class="hero__standfirst">{data.standfirst}</p>
+    <time class="hero__date mono" datetime={isoDate(data.publishedAt)}>
+      {formatDate(data.publishedAt)}
+    </time>
+  </div>
+</article>
+
+<style>
+  .hero {
+    --accent: var(--ink);
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .hero:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  /* Thick accent band down the left edge for brand continuity. */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--accent);
+    z-index: 3;
+  }
+
+  /* Media sits on top; the headline lives below it on the card — never over
+     the image. */
+  .hero__media {
+    display: block;
+    position: relative;
+  }
+  .hero__media :global(.media) {
+    border-radius: 0;
+  }
+  .hero__credit {
+    position: absolute;
+    right: var(--space-2);
+    bottom: var(--space-2);
+    z-index: 2;
+    background: rgba(11, 8, 22, 0.6);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.15em 0.4em;
+    border-radius: var(--radius-sm);
+    /* Tiny attribution — kept only where a licence requires it. */
+    font-size: 0.55rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero__body {
+    padding: var(--space-5);
+  }
+  @media (min-width: 48rem) {
+    .hero__body {
+      padding: var(--space-6);
+    }
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  .hero__kicker {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 0.35em 0.6em;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: #fff;
+  }
+  .hero__show {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+  }
+  .hero__flag {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25em 0.6em;
+    border-radius: 999px;
+    background: var(--spoiler);
+    color: #4a3a06;
+  }
+
+  .hero__title {
+    font-size: var(--step-4);
+    line-height: 1.05;
+    margin: 0 0 var(--space-3);
+    text-wrap: balance;
+  }
+  .hero__title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* Stretched link — whole card clickable, headline stays the target. */
+  .hero__title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .hero__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.1em;
+  }
+
+  .hero__standfirst {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: 52ch;
+    margin: 0 0 var(--space-3);
+  }
+  .hero__date {
+    color: var(--ink-40);
+  }
+</style>

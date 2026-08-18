@@ -1,0 +1,97 @@
+---
+import StoryCard from './StoryCard.astro';
+import HeroCard from './HeroCard.astro';
+import { getShowLookup, posterForArticle, type Article } from '../lib/relations';
+
+interface Props {
+  articles: Article[];
+  /** Give the first article a full-width hero above the grid. */
+  withHero?: boolean;
+  /** Grid density on desktop. */
+  columns?: 2 | 3;
+  /** Show standfirsts on the grid cards. */
+  showStandfirst?: boolean;
+  emptyMessage?: string;
+}
+
+const {
+  articles,
+  withHero = false,
+  columns = 3,
+  showStandfirst = false,
+  emptyMessage,
+} = Astro.props;
+
+const lookup = await getShowLookup();
+const hero = withHero ? articles[0] : undefined;
+const rest = withHero ? articles.slice(1) : articles;
+---
+
+{
+  articles.length === 0 ? (
+    <div class="empty">
+      <h2>Nothing here yet</h2>
+      <p>{emptyMessage ?? 'When articles are published they will appear here, newest first.'}</p>
+    </div>
+  ) : (
+    <div class="feed">
+      {hero && (() => {
+        const p = posterForArticle(hero, lookup);
+        return <HeroCard article={hero} accent={p.accent} showTitle={p.showTitle} />;
+      })()}
+      {rest.length > 0 && (
+        <div class:list={['grid', `grid--${columns}`]}>
+          {rest.map((article) => {
+            const p = posterForArticle(article, lookup);
+            return (
+              <StoryCard
+                article={article}
+                accent={p.accent}
+                showTitle={p.showTitle}
+                showStandfirst={showStandfirst}
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+<style>
+  .feed {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 34rem) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 60rem) {
+    .grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .empty {
+    padding: var(--space-7) var(--space-5);
+    text-align: center;
+    background: var(--card);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-lg);
+  }
+  .empty h2 {
+    margin-bottom: var(--space-2);
+  }
+  .empty p {
+    color: var(--ink-60);
+    max-width: 46ch;
+    margin-inline: auto;
+  }
+</style>

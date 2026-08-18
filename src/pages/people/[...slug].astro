@@ -1,0 +1,441 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import Widget from '../../components/Widget.astro';
+import { groupedRolesForPerson, articlesForPerson } from '../../lib/relations';
+import { formatDate, yearRange } from '../../lib/format';
+import {
+  factsForPerson,
+  wikidataUrl,
+  resolveEntityImage,
+  pendingImageSuggestion,
+} from '../../lib/wikidata';
+
+export async function getStaticPaths() {
+  const people = await getCollection('people');
+  return people.map((person) => ({
+    params: { slug: person.id },
+    props: { person },
+  }));
+}
+
+const { person } = Astro.props;
+const { data } = person;
+
+const [roles, articles, { Content }] = await Promise.all([
+  groupedRolesForPerson(person.id),
+  articlesForPerson(person.id),
+  render(person),
+]);
+
+// Shows this person appears in — the contextual sidebar for a cast page. Group
+// their roles by show so each show lists once, with the character(s) played.
+const appearsIn: { show: (typeof roles)[number]['show']; characters: (typeof roles)[number]['character'][] }[] = [];
+const showSeen = new Map<string, (typeof appearsIn)[number]>();
+for (const role of roles) {
+  let entry = showSeen.get(role.show.id);
+  if (!entry) {
+    entry = { show: role.show, characters: [] };
+    showSeen.set(role.show.id, entry);
+    appearsIn.push(entry);
+  }
+  entry.characters.push(role.character);
+}
+
+// Build-time enrichment: Wikidata (CC0) fills the birth date if the frontmatter
+// omits it, and supplies external reference links. Falls back cleanly when the
+// cache has no entry for this person.
+const facts = factsForPerson(person.id);
+const born = data.born ?? (facts?.dateOfBirth ? new Date(facts.dateOfBirth) : undefined);
+const wdUrl = wikidataUrl(facts?.qid);
+const hasLinks = Boolean(facts?.wikipedia || wdUrl);
+
+const imageInput = {
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.name,
+  facts,
+};
+const portrait = resolveEntityImage(imageInput);
+const suggestion = pendingImageSuggestion(imageInput);
+---
+
+<BaseLayout title={data.name} description={data.summary}>
+  <div class="layout">
+    <article class="person layout__main">
+    {
+      suggestion && (
+        <aside class="img-suggestion">
+          <strong>Image suggestion (Wikidata → Commons):</strong> {suggestion.credit}. Set
+          <code>useWikidataImage: true</code> to use it (credit is added automatically), or
+          drop your own into <code>image:</code>. This note only shows in dev.
+        </aside>
+      )
+    }
+    <header class:list={['person__header', { 'person__header--portrait': portrait }]}>
+      {
+        portrait && (
+          <figure class="person__portrait">
+            <img src={portrait.src} alt={portrait.alt ?? data.name} loading="lazy" />
+            {portrait.credit && (
+              <figcaption class="mono">
+                {portrait.creditUrl ? <a href={portrait.creditUrl} rel="external">{portrait.credit}</a> : portrait.credit}
+              </figcaption>
+            )}
+          </figure>
+        )
+      }
+      <div class="person__headtext">
+      <p class="mono person__kicker">Person</p>
+      <h1>{data.name}</h1>
+      <p class="person__known">{data.knownFor}</p>
+      {
+        born && (
+          <p class="person__born mono">
+            Born <time datetime={born.toISOString().slice(0, 10)}>{formatDate(born)}</time>
+          </p>
+        )
+      }
+      <p class="person__summary">{data.summary}</p>
+      </div>
+    </header>
+
+    <div class="person__prose">
+      <Content />
+    </div>
+
+    <section class="person__section" aria-labelledby="roles-heading">
+      <h2 id="roles-heading" class="person__h2">Roles</h2>
+      <p class="person__note mono">Derived from every character's portrayal record.</p>
+      {
+        roles.length === 0 ? (
+          <p class="muted">
+            No roles yet. Add this person to a character's <code>portrayals</code> and the
+            role appears here automatically — no filmography to maintain by hand.
+          </p>
+        ) : (
+          <ul class="roles">
+            {roles.map((role) => (
+              <li class="role" style={`--accent: ${role.show.data.accent};`}>
+                <span class="role__bar" aria-hidden="true" />
+                <span class="role__body">
+                  <a class="role__character" href={`/characters/${role.character.id}/`}>
+                    {role.character.data.name}
+                  </a>
+                  <a class="role__show" href={`/shows/${role.show.id}/`}>
+                    {role.show.data.title}
+                  </a>
+                  <span class="role__years mono">
+                    {role.stints.map((s) => yearRange(s.from, s.to)).join(', ')}
+                    {role.ongoing && <span class="role__ongoing"> · current</span>}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="person__section" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="person__h2">Coverage</h2>
+      <ArticleGrid
+        articles={articles}
+        columns={2}
+        emptyMessage={`No articles reference ${data.name} yet. Add ${person.id} to an article's people: list.`}
+      />
+    </section>
+
+    {
+      hasLinks && (
+        <section class="person__section refbox" aria-labelledby="links-heading">
+          <h2 id="links-heading" class="person__h2">External links</h2>
+          <ul class="reflist">
+            {facts?.wikipedia && (
+              <li><a href={facts.wikipedia} rel="external">Wikipedia</a></li>
+            )}
+            {wdUrl && <li><a href={wdUrl} rel="external">Wikidata</a></li>}
+          </ul>
+          <p class="refcredit mono">
+            Selected facts checked against Wikidata (CC0). Links open external sites.
+          </p>
+        </section>
+      )
+    }
+    </article>
+    <Sidebar>
+      {
+        appearsIn.length > 0 && (
+          <Widget title="Appears in">
+            <ul class="appears">
+              {appearsIn.map(({ show, characters }) => (
+                <li class="appears__row" style={`--accent: ${show.data.accent};`}>
+                  <a class="appears__show" href={`/shows/${show.id}/`}>
+                    <span class="appears__dot" aria-hidden="true" />
+                    {show.data.title}
+                  </a>
+                  <span class="appears__chars">
+                    {characters.map((c, i) => (
+                      <>
+                        {i > 0 && ', '}
+                        <a href={`/characters/${c.id}/`}>{c.data.name}</a>
+                      </>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Widget>
+        )
+      }
+    </Sidebar>
+  </div>
+</BaseLayout>
+
+<style>
+  .person {
+    max-width: 52rem;
+  }
+
+  .person__header {
+    border-bottom: 4px solid var(--ink);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  /* Portrait beside the header text on wider screens, stacked on mobile. */
+  .person__header--portrait {
+    display: grid;
+    gap: var(--space-4);
+  }
+  @media (min-width: 34rem) {
+    .person__header--portrait {
+      grid-template-columns: 14rem 1fr;
+      gap: var(--space-5);
+      align-items: end;
+    }
+  }
+  .person__portrait {
+    margin: 0;
+  }
+  .person__portrait img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+  }
+  .person__portrait figcaption {
+    color: var(--ink-40);
+    margin-top: var(--space-1);
+    /* Tiny attribution — kept only where a licence requires it. */
+    font-size: 0.6rem;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+  }
+  .person__portrait figcaption a {
+    color: inherit;
+  }
+
+  /* Dev-only review hint for an unapproved Commons image suggestion. */
+  .img-suggestion {
+    background: #fff7e6;
+    border: 1px dashed var(--spoiler-edge);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    color: #4a3a06;
+    font-size: var(--step--1);
+  }
+  .img-suggestion code {
+    font-family: var(--font-mono);
+    background: #fff;
+    padding: 0.05em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+  .person__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .person__known {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    margin-bottom: var(--space-2);
+  }
+  .person__born {
+    color: var(--ink-60);
+    margin-bottom: var(--space-3);
+  }
+  .person__summary {
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  .person__prose {
+    max-width: var(--measure);
+    margin-bottom: var(--space-6);
+  }
+  .person__prose:empty {
+    display: none;
+  }
+
+  .person__section {
+    margin-top: var(--space-6);
+  }
+  .person__h2 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-1);
+  }
+  .person__note {
+    color: var(--ink-40);
+    margin-bottom: var(--space-4);
+  }
+
+  /* External reference links (from the Wikidata enrichment). */
+  .reflist {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .reflist a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .reflist a:hover {
+    border-color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+  .refcredit {
+    color: var(--ink-40);
+    margin: 0;
+  }
+
+  /* ---- Roles (derived filmography) ------------------------------------- */
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .role {
+    display: grid;
+    grid-template-columns: 6px 1fr;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .role__bar {
+    background: var(--accent);
+  }
+  .role__body {
+    padding: var(--space-3) var(--space-4);
+    display: grid;
+    gap: var(--space-1);
+  }
+  .role__character {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    text-decoration: none;
+    color: var(--ink);
+    width: fit-content;
+  }
+  .role__character:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+  .role__show {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    text-decoration: none;
+    font-size: var(--step-0);
+    width: fit-content;
+  }
+  .role__show:hover {
+    text-decoration: underline;
+  }
+  .role__years {
+    color: var(--ink-60);
+    margin-top: var(--space-1);
+  }
+  .role__ongoing {
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  /* ---- "Appears in" contextual sidebar widget -------------------------- */
+  .appears {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .appears__row {
+    display: grid;
+    gap: 0.15em;
+  }
+  .appears__show {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .appears__show:hover {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+  }
+  .appears__dot {
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 999px;
+    background: var(--accent);
+    flex: none;
+  }
+  .appears__chars {
+    padding-left: 1.15em;
+    font-size: var(--step--1);
+    color: var(--ink-60);
+  }
+  .appears__chars a {
+    color: var(--ink-60);
+    text-decoration-color: var(--line-strong);
+  }
+  .appears__chars a:hover {
+    color: var(--ink);
+  }
+
+  .muted {
+    color: var(--ink-60);
+    max-width: var(--measure);
+  }
+  .muted code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

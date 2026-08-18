@@ -29,6 +29,28 @@ const hexColour = z
 // A sensible year range so a fat-fingered `1066` or `20255` is caught early.
 const year = z.number().int().min(1922).max(2100);
 
+// A Wikidata QID (e.g. Q1362) used to pin an entity to its Wikidata record, so
+// the build-time enrichment fetches facts for the right subject. Optional —
+// the enrichment can also resolve by name.
+const qid = z
+  .string()
+  .regex(/^Q\d+$/, 'wikidata must be a QID like Q1362')
+  .optional();
+
+// Image fields shared by people and shows. A self-hosted `image` always wins;
+// `useWikidataImage: true` opts in to the Commons image the enrichment
+// suggested (with its licence credit) — nothing is used without this opt-in.
+const entityImageFields = {
+  image: z.string().optional(),
+  imageAlt: z.string().optional(),
+  imageCredit: z.string().optional(),
+  useWikidataImage: z.boolean().default(false),
+  // Pin a specific Wikimedia Commons file (e.g. "File:Foo.jpg") for the
+  // enrichment to use as the image, ahead of P18/lead/category resolution.
+  // Use this when auto-resolution is unreliable for an entity.
+  commonsImage: z.string().optional(),
+};
+
 const shows = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/shows' }),
   schema: z.object({
@@ -40,6 +62,8 @@ const shows = defineCollection({
     endYear: year.optional(),
     airs: z.string().optional(), // e.g. "Mon, Wed, Fri" — human-readable schedule
     summary: z.string(),
+    wikidata: qid,
+    ...entityImageFields,
   }),
 });
 
@@ -50,6 +74,8 @@ const people = defineCollection({
     born: z.coerce.date().optional(),
     knownFor: z.string(), // one-line hook, e.g. "Cindy Beale in EastEnders"
     summary: z.string(),
+    wikidata: qid,
+    ...entityImageFields,
   }),
 });
 
@@ -84,6 +110,27 @@ const articles = defineCollection({
     standfirst: z.string(), // deck / summary line; also the meta description source
     section: z.enum(SECTIONS),
     kind: z.enum(KINDS),
+    // Optional hero image. When absent, cards fall back to a bold accent
+    // "poster" in the show's colour — so the site looks complete before any
+    // photography exists, and real images drop straight in later.
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    // Required credit line for a press/licensed image, e.g. "© BBC". Only use
+    // images you are licensed for (press images are editorial-use, credited,
+    // unaltered) — this renders the mandatory attribution.
+    imageCredit: z.string().optional(),
+    // Official sources this article draws facts from — e.g. a BBC Media Centre
+    // or ITV Press Centre release. We cite and link them; we never republish
+    // their text. Facts are extracted; the prose here is our own.
+    sources: z
+      .array(
+        z.object({
+          title: z.string(),
+          url: z.string().url(),
+          publisher: z.string().optional(), // e.g. "BBC Media Centre"
+        }),
+      )
+      .default([]),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     author: z.string(),

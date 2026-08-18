@@ -1,0 +1,433 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleGrid from '../../components/ArticleGrid.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import {
+  getShows,
+  castForShow,
+  articlesForShow,
+  castChangesForShow,
+} from '../../lib/relations';
+import { yearRange, statusLabel } from '../../lib/format';
+import {
+  factsForShow,
+  wikidataUrl,
+  resolveEntityImage,
+  pendingImageSuggestion,
+} from '../../lib/wikidata';
+import { episodes as episodesFeed } from '../../lib/feeds';
+
+export async function getStaticPaths() {
+  const shows = await getShows();
+  return shows.map((show) => ({ params: { slug: show.id }, props: { show } }));
+}
+
+const { show } = Astro.props;
+const { data } = show;
+const accent = data.accent;
+
+const [cast, articles, castChanges, { Content }] = await Promise.all([
+  castForShow(show.id),
+  articlesForShow(show.id),
+  castChangesForShow(show.id),
+  render(show),
+]);
+
+// General coverage excludes the cast-changes, which get their own subsection.
+const coverage = articles.filter((a) => a.data.kind !== 'cast-change');
+
+// This show's upcoming episodes, from the auto-refreshed feed (empty for shows
+// the feed doesn't cover, or between refreshes).
+const upcoming = (episodesFeed.shows.find((s) => s.slug === show.id)?.episodes ?? []).slice(0, 6);
+function epDay(iso: string): string {
+  const d = new Date(iso + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.round((d.getTime() - today.getTime()) / 86400000);
+  if (diff === 0) return 'Today';
+  if (diff === 1) return 'Tomorrow';
+  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+const statusOrder = ['current', 'occasional', 'departed', 'deceased'];
+const sortedCast = [...cast].sort(
+  (a, b) =>
+    statusOrder.indexOf(a.character.data.status) -
+    statusOrder.indexOf(b.character.data.status),
+);
+
+// Build-time enrichment (Wikidata, CC0): external links + a live episode tally
+// the scheduled refresh keeps current.
+const facts = factsForShow(show.id);
+const wdUrl = wikidataUrl(facts?.qid);
+const hasLinks = Boolean(facts?.wikipedia || wdUrl);
+
+const imageInput = {
+  image: data.image,
+  imageAlt: data.imageAlt,
+  imageCredit: data.imageCredit,
+  useWikidataImage: data.useWikidataImage,
+  name: data.title,
+  facts,
+};
+const cover = resolveEntityImage(imageInput);
+const suggestion = pendingImageSuggestion(imageInput);
+---
+
+<BaseLayout title={data.title} description={data.summary} accent={accent}>
+  <div class="layout">
+    <article class="show layout__main">
+    {
+      suggestion && (
+        <aside class="img-suggestion">
+          <strong>Image suggestion (Wikidata → Commons):</strong> {suggestion.credit}. Set
+          <code>useWikidataImage: true</code> to use it (credit added automatically), or drop
+          your own into <code>image:</code>. Dev-only note.
+        </aside>
+      )
+    }
+    {
+      cover && (
+        <figure class="show__cover">
+          <img src={cover.src} alt={cover.alt ?? data.title} />
+          {cover.credit && (
+            <figcaption class="mono">
+              {cover.creditUrl ? <a href={cover.creditUrl} rel="external">{cover.credit}</a> : cover.credit}
+            </figcaption>
+          )}
+        </figure>
+      )
+    }
+    <header class="show__header">
+      <p class="mono show__kicker">Show</p>
+      <h1>{data.title}</h1>
+      <p class="show__meta mono">
+        {data.broadcaster}
+        <span aria-hidden="true"> · </span>
+        {yearRange(data.startYear, data.endYear)}
+        {data.airs && (
+          <>
+            <span aria-hidden="true"> · </span>
+            {data.airs}
+          </>
+        )}
+        {facts?.episodes && (
+          <>
+            <span aria-hidden="true"> · </span>
+            {facts.episodes.toLocaleString('en-GB')} episodes
+          </>
+        )}
+      </p>
+      <p class="show__summary">{data.summary}</p>
+    </header>
+
+    <div class="show__prose">
+      <Content />
+    </div>
+
+    {
+      upcoming.length > 0 && (
+        <section class="show__section" aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading" class="show__h2">Coming up</h2>
+          <ol class="upcoming">
+            {upcoming.map((ep) => (
+              <li class="upcoming__ep">
+                <p class="upcoming__when mono">{epDay(ep.airdate)}</p>
+                <p class="upcoming__syn">{ep.summary || 'Synopsis to follow.'}</p>
+              </li>
+            ))}
+          </ol>
+          <p class="upcoming__credit mono">
+            Air dates and synopses via TVmaze · <a href="/whats-on/">all soaps this week →</a>
+          </p>
+        </section>
+      )
+    }
+
+    <section class="show__section" aria-labelledby="cast-heading">
+      <h2 id="cast-heading" class="show__h2">Characters</h2>
+      {
+        sortedCast.length === 0 ? (
+          <p class="muted">
+            No characters logged yet. Add a file to <code>src/content/characters/</code>
+            with <code>show: {show.id}</code> to build the cast list.
+          </p>
+        ) : (
+          <ul class="cast">
+            {sortedCast.map((entry) => (
+              <li>
+                <a class="cast__row" href={`/characters/${entry.character.id}/`}>
+                  <span class="cast__main">
+                    <span class="cast__name">{entry.character.data.name}</span>
+                    {entry.actors.length > 0 && (
+                      <span class="cast__actor mono">
+                        {entry.actors.join(', ')}
+                        {entry.from && <> · {yearRange(entry.from, entry.to)}</>}
+                      </span>
+                    )}
+                  </span>
+                  <span class:list={['cast__status', 'mono', `is-${entry.character.data.status}`]}>
+                    {statusLabel(entry.character.data.status)}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="show__section" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="show__h2">Coverage</h2>
+      <ArticleGrid
+        articles={coverage}
+        columns={3}
+        emptyMessage={`No articles reference ${data.title} yet. Add ${show.id} to an article's shows: list to wire it up.`}
+      />
+    </section>
+
+    <section class="show__section" aria-labelledby="castchange-heading">
+      <h2 id="castchange-heading" class="show__h2">Cast changes</h2>
+      {
+        castChanges.length === 0 ? (
+          <p class="muted">
+            No cast changes logged. Publish an article with <code>kind: cast-change</code>
+            that references {data.title} and it will collect here.
+          </p>
+        ) : (
+          <ArticleGrid articles={castChanges} columns={3} />
+        )
+      }
+    </section>
+
+    {
+      hasLinks && (
+        <section class="show__section" aria-labelledby="links-heading">
+          <h2 id="links-heading" class="show__h2">External links</h2>
+          <ul class="reflist">
+            {facts?.wikipedia && (
+              <li><a href={facts.wikipedia} rel="external">Wikipedia</a></li>
+            )}
+            {wdUrl && <li><a href={wdUrl} rel="external">Wikidata</a></li>}
+          </ul>
+          <p class="refcredit mono">
+            Episode tally and selected facts via Wikidata (CC0), refreshed at build.
+          </p>
+        </section>
+      )
+    }
+    </article>
+    <Sidebar />
+  </div>
+</BaseLayout>
+
+<style>
+  .show__cover {
+    margin: 0 0 var(--space-5);
+  }
+  .show__cover img {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .show__cover figcaption {
+    color: var(--ink-40);
+    margin-top: var(--space-1);
+    /* Tiny attribution — kept only where a licence requires it. */
+    font-size: 0.6rem;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+  }
+  .show__cover figcaption a {
+    color: inherit;
+  }
+
+  .img-suggestion {
+    background: #fff7e6;
+    border: 1px dashed var(--spoiler-edge);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    color: #4a3a06;
+    font-size: var(--step--1);
+  }
+  .img-suggestion code {
+    font-family: var(--font-mono);
+    background: #fff;
+    padding: 0.05em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .show__header {
+    border-bottom: 5px solid var(--accent);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .show__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .show__meta {
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+    margin-bottom: var(--space-3);
+  }
+  .show__summary {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+    max-width: var(--measure);
+  }
+
+  .show__prose {
+    max-width: var(--measure);
+    margin-bottom: var(--space-6);
+  }
+  .show__prose:empty {
+    display: none;
+  }
+
+  .show__section {
+    margin-top: var(--space-7);
+  }
+  .show__h2 {
+    font-size: var(--step-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--line);
+    margin-bottom: var(--space-4);
+  }
+
+  /* ---- Coming up (from the live episodes feed) ------------------------- */
+  .upcoming {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .upcoming__ep {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 40rem) {
+    .upcoming__ep {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+  .upcoming__when {
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    margin: 0;
+  }
+  .upcoming__syn {
+    margin: 0;
+    color: var(--ink-80);
+  }
+  .upcoming__credit {
+    color: var(--ink-40);
+    margin: var(--space-3) 0 0;
+  }
+  .upcoming__credit a {
+    color: inherit;
+  }
+
+  /* ---- Cast list -------------------------------------------------------- */
+  .cast {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .cast__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .cast__row:hover {
+    transform: translateX(2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .cast__main {
+    display: grid;
+    gap: 0.15em;
+    min-width: 0;
+  }
+  .cast__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+  }
+  .cast__actor {
+    color: var(--ink-60);
+  }
+  .cast__status {
+    color: var(--ink-60);
+    flex: none;
+    align-self: center;
+  }
+  .cast__status.is-deceased {
+    color: var(--ink-40);
+  }
+  .cast__status.is-current {
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+  }
+
+  .reflist {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .reflist a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .reflist a:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  .refcredit {
+    color: var(--ink-40);
+    margin: 0;
+  }
+
+  .muted {
+    color: var(--ink-60);
+    max-width: var(--measure);
+  }
+  .muted code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--paper);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

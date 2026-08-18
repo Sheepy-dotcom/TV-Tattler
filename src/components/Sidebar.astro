@@ -1,0 +1,153 @@
+---
+import Widget from './Widget.astro';
+import { KINDS } from '../content.config';
+import { getShows, getArticles, charactersForShow } from '../lib/relations';
+import { kindLabel, yearRange } from '../lib/format';
+
+// Data for the sidebar widgets — this is what makes it feel like a real site:
+// standing navigation into the archive, alongside the article feed.
+const shows = await getShows();
+const articles = await getArticles();
+
+const showRows = await Promise.all(
+  shows.map(async (show) => ({
+    show,
+    count: (await charactersForShow(show.id)).length,
+  })),
+);
+
+// Kinds that actually have articles, with counts.
+const kindCounts = KINDS.map((kind) => ({
+  kind,
+  count: articles.filter((a) => a.data.kind === kind).length,
+})).filter((k) => k.count > 0);
+
+// When a page supplies its own contextual widget, lead with that and drop the
+// article-type index (it's global navigation, out of place on a reference page).
+const hasContext = Astro.slots.has('default');
+---
+
+<aside class="sidebar" aria-label="Browse the archive">
+  <!-- Page-specific widgets (e.g. "Appears in" on a person page) render first,
+       so the rail leads with what's relevant to the page you're on. -->
+  <slot />
+
+  <Widget title="Browse shows">
+    <ul class="shows">
+      {
+        showRows.map(({ show, count }) => (
+          <li>
+            <a href={`/shows/${show.id}/`} style={`--accent: ${show.data.accent};`}>
+              <span class="shows__dot" aria-hidden="true" />
+              <span class="shows__name">{show.data.title}</span>
+              <span class="shows__meta mono">
+                {yearRange(show.data.startYear, show.data.endYear)} · {count}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Widget>
+
+  {
+    !hasContext && kindCounts.length > 0 && (
+      <Widget title="By type">
+        <ul class="kinds">
+          {kindCounts.map(({ kind, count }) => (
+            <li>
+              <a href={`/kind/${kind}/`}>
+                <span>{kindLabel(kind)}</span>
+                <span class="kinds__count mono">{count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Widget>
+    )
+  }
+
+  <Widget title="The archive">
+    <p class="note">
+      Articles keep things fresh, but the reference pages are the product — complete,
+      maintained records for every show, character and actor.
+    </p>
+    <a class="note__link" href="/shows/">Start with the shows →</a>
+  </Widget>
+</aside>
+
+<style>
+  .sidebar {
+    display: grid;
+    gap: var(--space-4);
+    align-content: start;
+  }
+
+  .shows,
+  .kinds {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+  .shows a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 0.5em;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .shows a:hover {
+    background: var(--paper);
+  }
+  .shows__dot {
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 999px;
+    background: var(--accent);
+    align-self: center;
+  }
+  .shows__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .shows__meta {
+    grid-column: 2;
+    color: var(--ink-40);
+  }
+
+  .kinds a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .kinds a:hover {
+    background: var(--paper);
+  }
+  .kinds__count {
+    color: var(--ink-40);
+  }
+
+  .note {
+    margin: 0 0 var(--space-3);
+    color: var(--ink-80);
+    font-size: var(--step-0);
+  }
+  .note__link {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: color-mix(in srgb, var(--live) 80%, var(--ink));
+    text-decoration: none;
+  }
+  .note__link:hover {
+    text-decoration: underline;
+  }
+</style>

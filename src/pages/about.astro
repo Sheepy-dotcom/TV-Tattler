@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="What TV Tattler is, how it is put together, and the reference-first approach behind it."
+>
+  <article class="page">
+    <header class="page__header">
+      <p class="mono page__kicker">About</p>
+      <h1>Reference first, news second</h1>
+      <p class="page__standfirst">
+        TV Tattler is a soaps-first UK entertainment site built on evergreen reference
+        depth — complete, accurate, well-maintained pages for every show, character and
+        actor.
+      </p>
+    </header>
+
+    <div class="page__body">
+      <h2>What this is</h2>
+      <p>
+        One person writes here, a few times a week, so this site does not try to win at
+        breaking news. Instead it does the thing the traffic-chasing newsrooms never keep
+        up to date: it maintains the archive. Every show, every character, every actor gets
+        a proper page — and those pages are the actual product. Articles keep things fresh;
+        the reference pages are what people come back to.
+      </p>
+
+      <h2>How it is organised</h2>
+      <p>
+        Every article lives in exactly one section — <a href="/section/soaps/">Soaps</a>,
+        <a href="/section/tv-and-film/">TV &amp; Film</a>,
+        <a href="/section/celebrities/">Celebrities</a> or
+        <a href="/section/news/">News</a> — so sections never compete with each other in
+        search. Cross-cutting types of piece, like spoilers, cast changes and guides, get
+        their own listings without becoming rival sections.
+      </p>
+      <p>
+        Articles never link to each other. They point at entities — shows, characters and
+        people — and all the cross-linking you see falls out of that automatically. An
+        actor's roles are read straight from the portrayal records on the characters they
+        have played, so nothing is maintained twice.
+      </p>
+
+      <h2>Accuracy</h2>
+      <p>
+        Reference pages are only worth keeping if they are right. Where a fact is uncertain
+        it is checked before it goes in, and corrections are welcome. If you spot something
+        wrong or out of date, please say so.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        <!-- Placeholder address — replace with your real contact before launch. -->
+        Corrections, tips and questions: <a href="mailto:editor@tvtattler.com">editor@tvtattler.com</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+  .page__header {
+    border-bottom: 4px solid var(--live);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  .page__kicker {
+    color: var(--ink-40);
+    margin-bottom: var(--space-2);
+  }
+  .page__standfirst {
+    font-size: var(--step-1);
+    color: var(--ink-80);
+  }
+  .page__body :global(h2) {
+    font-size: var(--step-1);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+  .page__body p {
+    max-width: var(--measure);
+  }
+  .page__body a {
+    text-decoration-color: var(--live);
+    text-decoration-thickness: 2px;
+  }
+</style>

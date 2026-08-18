@@ -1,0 +1,233 @@
+{
+  "generatedAt": "2026-08-18T18:28:58.207Z",
+  "source": "TVmaze",
+  "windowDays": 14,
+  "shows": [
+    {
+      "slug": "eastenders",
+      "name": "EastEnders",
+      "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
+      "episodes": [
+        {
+          "season": 2026,
+          "number": 131,
+          "name": "18/08/2026",
+          "airdate": "2026-08-18",
+          "airtime": "06:00",
+          "summary": "Ravi turns to Zack for advice, Max gets up to his old tricks, and Penny is reluctant to accept Vinny's support.",
+          "url": "https://www.tvmaze.com/episodes/3696018/eastenders-2026-08-18-18082026"
+        },
+        {
+          "season": 2026,
+          "number": 132,
+          "name": "19/08/2026",
+          "airdate": "2026-08-19",
+          "airtime": "06:00",
+          "summary": "It's the day of Cindy and Kim's hen dos, Ross steps up for Joel, and Kat supports Kim when her day doesn't go to plan.",
+          "url": "https://www.tvmaze.com/episodes/3696019/eastenders-2026-08-19-19082026"
+        },
+        {
+          "season": 2026,
+          "number": 133,
+          "name": "20/08/2026",
+          "airdate": "2026-08-20",
+          "airtime": "06:00",
+          "summary": "Priya takes advice from an unlikely source. It's the day of Penny's shop opening, but things don't go to plan. Lily and Joel support one another.",
+          "url": "https://www.tvmaze.com/episodes/3696020/eastenders-2026-08-20-20082026"
+        },
+        {
+          "season": 2026,
+          "number": 134,
+          "name": "24/08/2026",
+          "airdate": "2026-08-24",
+          "airtime": "06:00",
+          "summary": "The Fox-Truemans continue their efforts to find a stem cell match for Denise. Priya and Jean join forces in a bid to uncover the truth.",
+          "url": "https://www.tvmaze.com/episodes/3697768/eastenders-2026-08-24-24082026"
+        },
+        {
+          "season": 2026,
+          "number": 135,
+          "name": "25/08/2026",
+          "airdate": "2026-08-25",
+          "airtime": "06:00",
+          "summary": "Eve and Suki receive a devastating update. A breakthrough offers Denise's family fresh hope. Penny feels overwhelmed by those around her.",
+          "url": "https://www.tvmaze.com/episodes/3697769/eastenders-2026-08-25-25082026"
+        },
+        {
+          "season": 2026,
+          "number": 136,
+          "name": "26/08/2026",
+          "airdate": "2026-08-26",
+          "airtime": "06:00",
+          "summary": "Alfie throws Kat a surprise, and Kim is furious with Jack when she learns what's happened.",
+          "url": "https://www.tvmaze.com/episodes/3697770/eastenders-2026-08-26-26082026"
+        },
+        {
+          "season": 2026,
+          "number": 137,
+          "name": "27/08/2026",
+          "airdate": "2026-08-27",
+          "airtime": "06:00",
+          "summary": "Alfie's surprise soon turns to chaos. Suki is fuming and takes matters into her own hands. Priya and Ravi consider what the future might hold.",
+          "url": "https://www.tvmaze.com/episodes/3697771/eastenders-2026-08-27-27082026"
+        }
+      ]
+    },
+    {
+      "slug": "coronation-street",
+      "name": "Coronation Street",
+      "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
+      "episodes": [
+        {
+          "season": 67,
+          "number": 151,
+          "name": "Tuesday 18th August 2023",
+          "airdate": "2026-08-18",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3702501/coronation-street-67x151-tuesday-18th-august-2023"
+        },
+        {
+          "season": 67,
+          "number": 152,
+          "name": "Wednesday 19th August 2026",
+          "airdate": "2026-08-19",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3702502/coronation-street-67x152-wednesday-19th-august-2026"
+        },
+        {
+          "season": 67,
+          "number": 153,
+          "name": "Thursday 20th August 2026",
+          "airdate": "2026-08-20",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3702503/coronation-street-67x153-thursday-20th-august-2026"
+        },
+        {
+          "season": 67,
+          "number": 154,
+          "name": "Friday 21st August 2026",
+          "airdate": "2026-08-21",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3702504/coronation-street-67x154-friday-21st-august-2026"
+        }
+      ]
+    },
+    {
+      "slug": "emmerdale",
+      "name": "Emmerdale",
+      "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
+      "episodes": [
+        {
+          "season": 55,
+          "number": 151,
+          "name": "Tuesday 18th August",
+          "airdate": "2026-08-18",
+          "airtime": "07:00",
+          "summary": "Joe has a surprise for everyone regarding his stag night, while Billy is terrified at what Dawn might be capable of as paranoia grips them both.",
+          "url": "https://www.tvmaze.com/episodes/3694390/emmerdale-55x151-tuesday-18th-august"
+        },
+        {
+          "season": 55,
+          "number": 152,
+          "name": "Wednesday 19th August",
+          "airdate": "2026-08-19",
+          "airtime": "07:00",
+          "summary": "Kev makes a confession that leaves Billy stunned and later he smashes Caleb's laptop, destroying any evidence of his crimes.",
+          "url": "https://www.tvmaze.com/episodes/3694391/emmerdale-55x152-wednesday-19th-august"
+        },
+        {
+          "season": 55,
+          "number": 153,
+          "name": "Thursday 20th August",
+          "airdate": "2026-08-20",
+          "airtime": "07:00",
+          "summary": "Billy is furious, while Kev warns Caleb and Ruby that he will expose them if he faces prison, but Caleb is determined to ruin Joe's big day.",
+          "url": "https://www.tvmaze.com/episodes/3694392/emmerdale-55x153-thursday-20th-august"
+        },
+        {
+          "season": 55,
+          "number": 154,
+          "name": "Friday 21st August",
+          "airdate": "2026-08-21",
+          "airtime": "07:00",
+          "summary": "Jimmy sells his haulage business as he is struggling with financial pressures, but Nicola is delighted when he agrees to a vow renewal.",
+          "url": "https://www.tvmaze.com/episodes/3695079/emmerdale-55x154-friday-21st-august"
+        }
+      ]
+    },
+    {
+      "slug": "hollyoaks",
+      "name": "Hollyoaks",
+      "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
+      "episodes": [
+        {
+          "season": 32,
+          "number": 98,
+          "name": "Tue 18 Aug 2026",
+          "airdate": "2026-08-18",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665841/hollyoaks-32x98-tue-18-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 99,
+          "name": "Wed 19 Aug 2026",
+          "airdate": "2026-08-19",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665842/hollyoaks-32x99-wed-19-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 100,
+          "name": "Mon 24 Aug 2026",
+          "airdate": "2026-08-24",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665843/hollyoaks-32x100-mon-24-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 101,
+          "name": "Tue 25 Aug 2026",
+          "airdate": "2026-08-25",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665844/hollyoaks-32x101-tue-25-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 102,
+          "name": "Wed 26 Aug 2026",
+          "airdate": "2026-08-26",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665845/hollyoaks-32x102-wed-26-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 103,
+          "name": "Mon 31 Aug 2026",
+          "airdate": "2026-08-31",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665846/hollyoaks-32x103-mon-31-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 104,
+          "name": "Tue 1 Sep 2026",
+          "airdate": "2026-09-01",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665847/hollyoaks-32x104-tue-1-sep-2026"
+        }
+      ]
+    }
+  ]
+}
