@@ -1,0 +1,20 @@
+{
+  // Cloudflare config for TV Tattler.
+  //
+  // The site is a fully static Astro build: `npm run build` emits everything
+  // into ./dist. This file tells `wrangler deploy` to upload that folder as
+  // static assets (no server-side Worker code), which is exactly what a
+  // Cloudflare "Workers Build" project needs to serve the site.
+  //
+  // If you ever move this to a Cloudflare *Pages* project instead, this file is
+  // harmless — Pages just runs the build command and publishes ./dist.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tv-tattler",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve /path from /path/index.html and show 404.html on misses.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

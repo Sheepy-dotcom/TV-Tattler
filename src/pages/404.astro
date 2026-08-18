@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page has left the Square. Head back to the latest soap spoilers, telly news and what's on."
+>
+  <article class="page notfound">
+    <header class="page__header">
+      <p class="mono page__kicker">Error 404</p>
+      <h1>That page has left the Square</h1>
+      <p class="page__standfirst">
+        We couldn&rsquo;t find what you were after &mdash; it may have been renamed,
+        moved, or written out of the show.
+      </p>
+    </header>
+
+    <div class="page__body">
+      <p>Try one of these instead:</p>
+      <ul class="notfound__links">
+        <li><a href="/">Home</a> &mdash; the latest across all four soaps</li>
+        <li><a href="/spoilers/">Spoilers</a> &mdash; what&rsquo;s coming up</li>
+        <li><a href="/headlines/">Headlines</a> &mdash; today&rsquo;s soap news</li>
+        <li><a href="/whats-on/">What&rsquo;s on</a> &mdash; upcoming episodes</li>
+        <li><a href="/soaps/">Soaps</a> &middot; <a href="/cast/">Cast</a> &middot; <a href="/shows/">Shows</a></li>
+      </ul>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .notfound__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .notfound__links li {
+    padding: 0.15rem 0;
+  }
+</style>
