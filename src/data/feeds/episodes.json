@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T18:29:35.743Z",
+  "generatedAt": "2026-08-18T00:53:08.306Z",
   "source": "TVmaze",
   "windowDays": 14,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 130,
-          "name": "17/08/2026",
-          "airdate": "2026-08-17",
-          "airtime": "06:00",
-          "summary": "A situation escalates for Nicola and George, Avani attempts to play matchmaker, and Amy worries about recent events.",
-          "url": "https://www.tvmaze.com/episodes/3696017/eastenders-2026-08-17-17082026"
-        },
         {
           "season": 2026,
           "number": 131,
@@ -95,15 +86,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 150,
-          "name": "Monday 17th August",
-          "airdate": "2026-08-17",
-          "airtime": "07:00",
-          "summary": "Sarah is feeling conflicted about leaving her husband in the dark, while Charity maintains her false confession and Ruby orchestrates the theft of Jimmy's shipment.",
-          "url": "https://www.tvmaze.com/episodes/3694389/emmerdale-55x150-monday-17th-august"
-        },
-        {
-          "season": 55,
           "number": 151,
           "name": "Tuesday 18th August",
           "airdate": "2026-08-18",
@@ -145,15 +127,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 97,
-          "name": "Mon 17 Aug 2026",
-          "airdate": "2026-08-17",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3665840/hollyoaks-32x97-mon-17-aug-2026"
-        },
         {
           "season": 32,
           "number": 98,
@@ -207,6 +180,15 @@
           "airtime": "07:00",
           "summary": "",
           "url": "https://www.tvmaze.com/episodes/3665846/hollyoaks-32x103-mon-31-aug-2026"
+        },
+        {
+          "season": 32,
+          "number": 104,
+          "name": "Tue 1 Sep 2026",
+          "airdate": "2026-09-01",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3665847/hollyoaks-32x104-tue-1-sep-2026"
         }
       ]
     }
