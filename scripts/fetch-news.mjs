@@ -92,7 +92,7 @@ async function main() {
       try {
         const res = await fetch(feed.url, {
           headers: {
-            'user-agent': 'Mozilla/5.0 (compatible; TV-Tattler/1.0; +https://tv-tattler.pages.dev)',
+            'user-agent': 'Mozilla/5.0 (compatible; TV-Tattler/1.0; +https://tvtattler.com)',
             accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
           },
           signal: AbortSignal.timeout(15000),

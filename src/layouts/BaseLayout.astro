@@ -16,6 +16,10 @@ const fullTitle = title === 'TV Tattler' ? title : `${title} — TV Tattler`;
 const currentPath = Astro.url.pathname;
 const shows = await getShows();
 
+// Canonical URL for this page, resolved against the configured site
+// (https://tvtattler.com). Powers <link rel="canonical"> and og:url.
+const canonical = Astro.site ? new URL(currentPath, Astro.site).href : undefined;
+
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
   return currentPath.startsWith(href);
@@ -43,9 +47,13 @@ const primaryNav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
+    {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TV Tattler" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#17122A" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="TV Tattler" href="/rss.xml" />

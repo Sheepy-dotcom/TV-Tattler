@@ -29,7 +29,7 @@ const IMG_DIR = path.join(ROOT, 'public/images/wikidata');
 const IMG_WEB = '/images/wikidata';
 
 const UA =
-  'TVTattler/0.1 (build-time enrichment; https://tvtattler.co.uk; editor@tvtattler.co.uk)';
+  'TVTattler/0.1 (build-time enrichment; https://tvtattler.com; editor@tvtattler.com)';
 const API = 'https://www.wikidata.org/w/api.php';
 const COMMONS = 'https://commons.wikimedia.org/w/api.php';
 

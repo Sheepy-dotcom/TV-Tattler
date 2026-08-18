@@ -36,7 +36,7 @@ async function get(url) {
   const res = await fetch(url, {
     headers: {
       accept: 'application/json',
-      'user-agent': 'TV-Tattler/1.0 (+https://tv-tattler.pages.dev)',
+      'user-agent': 'TV-Tattler/1.0 (+https://tvtattler.com)',
       ...(bearer ? { authorization: `Bearer ${bearer}` } : {}),
     },
     signal: AbortSignal.timeout(20000),

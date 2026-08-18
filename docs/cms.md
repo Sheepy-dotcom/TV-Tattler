@@ -22,7 +22,7 @@ auth helper. The maintainers of Sveltia provide one you deploy in a couple of cl
 **1. Create a GitHub OAuth app**
 GitHub → Settings → Developer settings → **OAuth Apps** → **New OAuth App**.
 - Application name: `TV Tattler Studio`
-- Homepage URL: your live site, e.g. `https://tv-tattler.pages.dev`
+- Homepage URL: your live site, e.g. `https://tvtattler.com`
 - Authorization callback URL: `https://<your-auth-worker>.workers.dev/callback`
   (you'll get this URL in step 2 — you can edit it right after)
 - Save, then note the **Client ID** and generate a **Client secret**.

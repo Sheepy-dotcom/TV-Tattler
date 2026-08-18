@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
     title: 'TV Tattler',
     description:
       'A soaps-first UK entertainment site: complete, accurate reference pages for every show, character and actor.',
-    site: context.site ?? 'https://tvtattler.co.uk',
+    site: context.site ?? 'https://tvtattler.com',
     items: articles.map((article) => ({
       title: article.data.title,
       description: article.data.standfirst,
