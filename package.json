@@ -12,7 +12,8 @@
     "new": "node scripts/new-article.mjs",
     "feeds": "npm run feeds:films && npm run feeds:episodes",
     "feeds:films": "node scripts/fetch-films.mjs",
-    "feeds:episodes": "node scripts/fetch-episodes.mjs"
+    "feeds:episodes": "node scripts/fetch-episodes.mjs",
+    "og": "node scripts/make-og.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
