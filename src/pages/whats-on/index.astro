@@ -40,7 +40,7 @@ function time12(t: string | null): string | null {
       The next fortnight of soap episodes — air dates and official synopses,
       refreshed automatically every day.
     </p>
-    {updated && <p class="mono pagehead__stamp">Updated {updated} · air data from TVmaze</p>}
+    {updated && <p class="mono pagehead__stamp">Updated {updated}</p>}
   </header>
 
   {
@@ -48,7 +48,7 @@ function time12(t: string | null): string | null {
       <div class="empty card">
         <h2>The schedule is warming up</h2>
         <p>
-          This page fills automatically from TVmaze. Once the daily
+          This page fills automatically. Once the daily
           <code>refresh-feeds</code> workflow runs, the next fortnight of EastEnders,
           Coronation Street, Emmerdale and Hollyoaks episodes appears here.
         </p>
@@ -81,9 +81,6 @@ function time12(t: string | null): string | null {
                     <p class="wo-ep__summary">{ep.summary}</p>
                   ) : (
                     <p class="wo-ep__summary wo-ep__summary--muted">Synopsis to follow.</p>
-                  )}
-                  {ep.url && (
-                    <a class="wo-ep__link mono" href={ep.url} rel="external noopener">Details on TVmaze →</a>
                   )}
                 </li>
               ))}
@@ -149,6 +146,4 @@ function time12(t: string | null): string | null {
   .wo-ep__time { color: var(--ink-40); }
   .wo-ep__summary { margin: 0; color: var(--ink-80); font-size: var(--step-0); }
   .wo-ep__summary--muted { color: var(--ink-40); font-style: italic; }
-  .wo-ep__link { color: var(--ink-40); text-decoration: none; }
-  .wo-ep__link:hover { color: var(--ink); text-decoration: underline; }
 </style>
