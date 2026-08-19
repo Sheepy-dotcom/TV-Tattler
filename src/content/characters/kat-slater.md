@@ -7,6 +7,7 @@ summary: >-
   most iconic characters across several stints since 2000.
 family:
   - stacey-slater
+  - alfie-moon
 portrayals:
   - person: jessie-wallace
     from: 2000

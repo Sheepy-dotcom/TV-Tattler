@@ -5,6 +5,8 @@ status: current
 summary: >-
   Landlady of the Queen Victoria and the heart of the Carter family — Linda has
   been central to Albert Square since 2013.
+family:
+  - mick-carter
 portrayals:
   - person: kellie-bright
     from: 2013

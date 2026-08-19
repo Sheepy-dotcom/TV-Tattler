@@ -5,6 +5,8 @@ status: current
 summary: >-
   Former police officer and Branning-family stalwart, entangled with the
   Mitchells and Slaters. A Walford regular since 2007.
+family:
+  - max-branning
 portrayals:
   - person: scott-maslen
     from: 2007
