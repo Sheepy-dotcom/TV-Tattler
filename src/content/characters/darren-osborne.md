@@ -8,6 +8,7 @@ summary: >-
 family:
   - tony-hutchinson
   - nancy-osborne
+  - jack-osborne
 portrayals:
   - person: ashley-taylor-dawson
     from: 2001

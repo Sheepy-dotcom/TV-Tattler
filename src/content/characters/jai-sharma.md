@@ -5,6 +5,8 @@ status: current
 summary: >-
   The Sharma family's sharp-suited businessman — ambitious, flawed and a village
   fixture since 2009.
+family:
+  - priya-sharma
 portrayals:
   - person: chris-bisson
     from: 2009

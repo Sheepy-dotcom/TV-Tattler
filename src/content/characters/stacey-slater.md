@@ -8,6 +8,7 @@ summary: >-
 family:
   - jean-slater
   - kat-slater
+  - martin-fowler
 portrayals:
   - person: lacey-turner
     from: 2004

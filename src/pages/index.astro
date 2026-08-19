@@ -4,6 +4,7 @@ import HeroCard from '../components/HeroCard.astro';
 import StoryCard from '../components/StoryCard.astro';
 import ArticleGrid from '../components/ArticleGrid.astro';
 import ShowRail from '../components/ShowRail.astro';
+import { quizzes } from '../data/quizzes';
 import Sidebar from '../components/Sidebar.astro';
 import { getCollection } from 'astro:content';
 import { getArticles, getShows, getShowLookup, posterForArticle } from '../lib/relations';
@@ -42,6 +43,8 @@ const castAvatars = people
 const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
 const nextEpisodes = upcomingEpisodes().slice(0, 5);
 const newFilms = (films.items ?? []).slice(0, 6);
+// A few quizzes to tempt readers in — the most shareable thing on the site.
+const featuredQuizzes = quizzes.slice(0, 4);
 
 function epDay(iso: string): string {
   const d = new Date(iso + 'T00:00:00');
@@ -200,6 +203,24 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
             </section>
           )
         }
+
+        <section class="quizband" aria-label="Soap quizzes">
+          <div class="whatson__head">
+            <h2 class="rail-title">Take a quiz</h2>
+            <a class="whatson__all" href="/quizzes/">All quizzes &rarr;</a>
+          </div>
+          <ul class="quizband__track">
+            {featuredQuizzes.map((quiz) => (
+              <li class="quizband__item">
+                <a class="quizband__link" href={`/quizzes/${quiz.slug}/`} style={`--accent: ${quiz.accent};`}>
+                  <span class="quizband__emoji" aria-hidden="true">{quiz.emoji}</span>
+                  <span class="quizband__title">{quiz.title}</span>
+                  <span class="quizband__cta mono">Play &rarr;</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div class="layout">
           <div class="layout__main">
@@ -474,6 +495,56 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
     font-weight: 600;
     font-size: var(--step--1);
     line-height: 1.2;
+  }
+
+  /* ---- Take-a-quiz promo band ------------------------------------------ */
+  .quizband {
+    margin-top: var(--space-6);
+  }
+  .quizband__track {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 46rem) {
+    .quizband__track {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .quizband__link {
+    display: grid;
+    gap: 0.35rem;
+    height: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .quizband__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  }
+  .quizband__emoji {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .quizband__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+    line-height: 1.15;
+  }
+  .quizband__cta {
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--accent);
   }
 
   /* ---- Fun, colourful category buttons --------------------------------- */

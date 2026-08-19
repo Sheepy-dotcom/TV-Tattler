@@ -440,6 +440,124 @@ export const quizzes: Quiz[] = [
       { min: 0, title: 'Fresher 📚', blurb: 'New to the village — welcome! Lots to discover.' },
     ],
   },
+  {
+    kind: 'personality',
+    slug: 'which-soap-should-you-watch',
+    title: 'Which soap should you watch tonight?',
+    standfirst:
+      'Can’t decide what to put on? Answer six quick questions and we’ll match you to your perfect soap.',
+    emoji: '📺',
+    accent: '#00c2c7',
+    results: [
+      { key: 'ee', title: 'Watch EastEnders 🍺', blurb: 'You love big, gutsy drama, fierce families and a proper Walford ding-dong. Head for the Queen Vic.' },
+      { key: 'corrie', title: 'Watch Coronation Street 🧱', blurb: 'You want warmth, wit and characters you’ve known for years. The Rovers is calling.' },
+      { key: 'emmerdale', title: 'Watch Emmerdale 🚜', blurb: 'You’re here for sweeping storylines, big stunts and the Dingles. Get down to the Dales.' },
+      { key: 'hollyoaks', title: 'Watch Hollyoaks 🎓', blurb: 'You like it fast, bold and boundary-pushing with a younger cast. Chester’s the place.' },
+    ],
+    questions: [
+      {
+        q: 'Pick a vibe for tonight:',
+        options: [
+          { text: 'Gritty and dramatic.', scores: { ee: 2 } },
+          { text: 'Warm and funny.', scores: { corrie: 2 } },
+          { text: 'Epic and sweeping.', scores: { emmerdale: 2 } },
+          { text: 'Bold and edgy.', scores: { hollyoaks: 2 } },
+        ],
+      },
+      {
+        q: 'Your ideal setting:',
+        options: [
+          { text: 'A buzzing London square.', scores: { ee: 2 } },
+          { text: 'A cosy northern street.', scores: { corrie: 2 } },
+          { text: 'Rolling countryside.', scores: { emmerdale: 2 } },
+          { text: 'A lively college village.', scores: { hollyoaks: 2 } },
+        ],
+      },
+      {
+        q: 'What hooks you into a show?',
+        options: [
+          { text: 'Explosive family feuds.', scores: { ee: 2 } },
+          { text: 'Characters like old friends.', scores: { corrie: 2 } },
+          { text: 'Big, ambitious stunts.', scores: { emmerdale: 2 } },
+          { text: 'Issues nobody else touches.', scores: { hollyoaks: 2 } },
+        ],
+      },
+      {
+        q: 'Choose a pub:',
+        options: [
+          { text: 'The Queen Vic.', scores: { ee: 2 } },
+          { text: 'The Rovers Return.', scores: { corrie: 2 } },
+          { text: 'The Woolpack.', scores: { emmerdale: 2 } },
+          { text: 'The Dog in the Pond.', scores: { hollyoaks: 2 } },
+        ],
+      },
+      {
+        q: 'How do you like your cliffhangers?',
+        options: [
+          { text: 'Doof-doof, every time.', scores: { ee: 2 } },
+          { text: 'A gentle "ooh, what next".', scores: { corrie: 2 } },
+          { text: 'Edge-of-the-seat spectacle.', scores: { emmerdale: 2 } },
+          { text: 'Shocking and unpredictable.', scores: { hollyoaks: 2 } },
+        ],
+      },
+      {
+        q: 'Pick a family to spend the evening with:',
+        options: [
+          { text: 'The Mitchells.', scores: { ee: 2 } },
+          { text: 'The Barlows.', scores: { corrie: 2 } },
+          { text: 'The Dingles.', scores: { emmerdale: 2 } },
+          { text: 'The McQueens.', scores: { hollyoaks: 2 } },
+        ],
+      },
+    ],
+  },
+  {
+    kind: 'trivia',
+    slug: 'soap-pubs-and-places',
+    title: 'The soap pubs & places quiz',
+    standfirst:
+      'Every soap has its watering hole and its stomping ground. Can you match them all? Six questions.',
+    emoji: '🍻',
+    accent: '#f5a623',
+    questions: [
+      {
+        q: 'The Queen Victoria pub belongs to which soap?',
+        options: ['Coronation Street', 'EastEnders', 'Emmerdale', 'Hollyoaks'],
+        answer: 1,
+      },
+      {
+        q: 'In which soap would you find The Woolpack?',
+        options: ['Emmerdale', 'EastEnders', 'Hollyoaks', 'Coronation Street'],
+        answer: 0,
+      },
+      {
+        q: 'The Rovers Return is a fixture of which street?',
+        options: ['Albert Square', 'Coronation Street', 'Hollyoaks', 'The Dales'],
+        answer: 1,
+      },
+      {
+        q: 'Weatherfield is the fictional home of which soap?',
+        options: ['EastEnders', 'Emmerdale', 'Coronation Street', 'Hollyoaks'],
+        answer: 2,
+      },
+      {
+        q: 'Albert Square sits in which fictional London borough?',
+        options: ['Walford', 'Weatherfield', 'Beckindale', 'Chester'],
+        answer: 0,
+      },
+      {
+        q: 'The Dog in the Pond is a pub in which soap?',
+        options: ['Emmerdale', 'Coronation Street', 'Hollyoaks', 'EastEnders'],
+        answer: 2,
+      },
+    ],
+    bands: [
+      { min: 6, title: 'Landlord of the year 👑', blurb: 'You know every bar and back street. Pull yourself a pint — you’ve earned it.' },
+      { min: 4, title: 'Regular local 🍻', blurb: 'You rarely get lost between the soaps. Nice work.' },
+      { min: 2, title: 'Bit turned around 🗺️', blurb: 'A few wrong turns — but you found your way. Have another go?' },
+      { min: 0, title: 'Lost tourist 🧭', blurb: 'No idea where you are — all part of the fun. Explore the shows!' },
+    ],
+  },
 ];
 
 export const getQuiz = (slug: string) => quizzes.find((q) => q.slug === slug);
