@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { episodes, freshness } from '../../lib/feeds';
-import { getShows } from '../../lib/relations';
+import { getShows, articlesForShow } from '../../lib/relations';
 
 const shows = await getShows();
 const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
@@ -14,6 +14,16 @@ const feedShows = (episodes.shows ?? [])
   .filter((s) => s.episodes.length > 0);
 const total = feedShows.reduce((n, s) => n + s.episodes.length, 0);
 const updated = freshness(episodes.generatedAt);
+
+// The latest on-site spoiler write-up for each show, so the schedule can point
+// readers at our own preview (this is where TVmaze leaves a synopsis gap for
+// Corrie & Hollyoaks — fill it with a "This week in …" post from /admin/).
+const latestSpoiler = new Map<string, { slug: string; title: string }>();
+for (const s of feedShows) {
+  if (!knownSlugs.has(s.slug)) continue;
+  const post = (await articlesForShow(s.slug)).find((a) => a.data.kind === 'spoiler');
+  if (post) latestSpoiler.set(s.slug, { slug: post.id, title: post.data.title });
+}
 
 function dayLabel(iso: string): string {
   const d = new Date(iso + 'T00:00:00');
@@ -74,6 +84,15 @@ function time12(t: string | null): string | null {
               )}
               <span class="wo-show__count mono">{show.episodes.length} ep{show.episodes.length === 1 ? '' : 's'}</span>
             </header>
+            {
+              latestSpoiler.has(show.slug) && (
+                <a class="wo-show__spoiler" href={`/articles/${latestSpoiler.get(show.slug)!.slug}/`}>
+                  <span class="wo-show__spoiler-tag" aria-hidden="true">⚠</span>
+                  This week&rsquo;s {show.name} spoilers
+                  <span aria-hidden="true"> →</span>
+                </a>
+              )
+            }
             <ol class="wo-eps">
               {show.episodes.map((ep) => (
                 <li class="wo-ep">
@@ -139,6 +158,25 @@ function time12(t: string | null): string | null {
   }
   .wo-show__name:hover { color: color-mix(in srgb, var(--accent) 72%, var(--ink)); }
   .wo-show__count { margin-left: auto; color: var(--ink-40); }
+
+  /* Link to our own written spoilers for this show — fills the synopsis gap
+     and keeps readers on-site. */
+  .wo-show__spoiler {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    margin-bottom: var(--space-3);
+    padding: 0.4em 0.7em;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: color-mix(in srgb, var(--accent) 72%, var(--ink));
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step--1);
+    text-decoration: none;
+  }
+  .wo-show__spoiler:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+  .wo-show__spoiler-tag { font-size: 0.85em; }
 
   .wo-eps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
   .wo-ep { display: grid; gap: 0.25em; }
