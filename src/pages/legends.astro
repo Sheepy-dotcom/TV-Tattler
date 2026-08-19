@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { rolesForPerson } from '../lib/relations';
+import { factsForPerson, resolveEntityImage } from '../lib/wikidata';
+
+const CURRENT = new Date().getFullYear();
+const people = await getCollection('people');
+
+// For each actor with a photo, find their signature role (the character they've
+// played longest, folding multiple stints together) and how many years that
+// spans. All from the portrayal records — nothing invented.
+const entries = [];
+for (const person of people) {
+  const facts = factsForPerson(person.id);
+  const portrait = resolveEntityImage({
+    image: person.data.image,
+    imageAlt: person.data.imageAlt,
+    imageCredit: person.data.imageCredit,
+    useWikidataImage: person.data.useWikidataImage,
+    name: person.data.name,
+    facts,
+  });
+  if (!portrait?.src) continue;
+
+  const roles = await rolesForPerson(person.id);
+  if (!roles.length) continue;
+
+  const byChar = new Map();
+  for (const r of roles) {
+    const cur = byChar.get(r.character.id) ?? {
+      character: r.character,
+      show: r.show,
+      first: r.from,
+      last: r.to ?? CURRENT,
+      ongoing: false,
+    };
+    cur.first = Math.min(cur.first, r.from);
+    cur.last = Math.max(cur.last, r.to ?? CURRENT);
+    cur.ongoing = cur.ongoing || r.ongoing;
+    byChar.set(r.character.id, cur);
+  }
+
+  let best = null;
+  for (const c of byChar.values()) {
+    const span = (c.ongoing ? CURRENT : c.last) - c.first;
+    if (!best || span > best.span) best = { ...c, span };
+  }
+  if (best && best.span >= 1) {
+    entries.push({ person, src: portrait.src, credit: portrait.credit, ...best });
+  }
+}
+
+entries.sort((a, b) => b.span - a.span);
+const legends = entries.slice(0, 36);
+---
+
+<BaseLayout
+  title="Soap legends — the longest-serving stars"
+  description="The actors who've spent the most years in their signature soap roles — ranked, from decades of Walford, Weatherfield, the Dales and Chester."
+>
+  <div class="page">
+    <header class="page__header">
+      <p class="mono page__kicker">Hall of fame</p>
+      <h1>Soap legends</h1>
+      <p class="page__standfirst">
+        The stars who've given the most years to their signature roles — the faces
+        that have anchored the soaps across the decades. Ranked by time in the part.
+      </p>
+    </header>
+
+    {
+      legends.length > 0 ? (
+        <ol class="legends">
+          {legends.map((l, i) => (
+            <li class="legend" style={`--accent: ${l.show.data.accent};`}>
+              <a class="legend__link" href={`/people/${l.person.id}/`}>
+                <span class="legend__rank mono">{i + 1}</span>
+                <span class="legend__avatar">
+                  <img src={l.src} alt={l.person.data.name} loading="lazy" decoding="async" />
+                </span>
+                <span class="legend__body">
+                  <span class="legend__years">
+                    {l.span}<span class="legend__years-label"> yr{l.span === 1 ? '' : 's'}{l.ongoing ? '+' : ''}</span>
+                  </span>
+                  <span class="legend__name">{l.person.data.name}</span>
+                  <span class="legend__role">
+                    as {l.character.data.name}
+                    <span class="legend__show" aria-hidden="true"> · {l.show.data.title}</span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p>The hall of fame fills in once the cast pages carry photos.</p>
+      )
+    }
+
+    <AdSlot variant="leaderboard" label="Advertisement" />
+    <NewsletterSignup variant="panel" />
+  </div>
+</BaseLayout>
+
+<style>
+  .legends {
+    list-style: none;
+    margin: var(--space-5) 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 34rem) {
+    .legends { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 60rem) {
+    .legends { grid-template-columns: repeat(3, 1fr); }
+  }
+  .legend__link {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    background: var(--card);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .legend__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  }
+  .legend__rank {
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--ink-40);
+    min-width: 1.4em;
+    text-align: center;
+  }
+  .legend__avatar {
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--paper);
+    flex: none;
+    border: 2px solid var(--accent);
+  }
+  .legend__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .legend__body {
+    display: grid;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+  .legend__years {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-1);
+    color: var(--accent);
+    line-height: 1;
+  }
+  .legend__years-label {
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+  .legend__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-0);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .legend__role {
+    font-size: var(--step--1);
+    color: var(--ink-60);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
