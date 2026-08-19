@@ -256,6 +256,190 @@ export const quizzes: Quiz[] = [
       },
     ],
   },
+  {
+    kind: 'trivia',
+    slug: 'the-eastenders-quiz',
+    title: 'The EastEnders quiz',
+    standfirst: 'From the Queen Vic to Albert Square — how well do you know Walford? Six questions, no spoilers.',
+    emoji: '🍺',
+    accent: '#5c2d91',
+    questions: [
+      {
+        q: 'Which pub is the beating heart of EastEnders?',
+        options: ['The Rovers Return', 'The Woolpack', 'The Queen Victoria', 'The Dog in the Pond'],
+        answer: 2,
+      },
+      {
+        q: 'EastEnders is set in which fictional London borough?',
+        options: ['Weatherfield', 'Walford', 'Chester', 'Beckindale'],
+        answer: 1,
+      },
+      {
+        q: 'Which family is Walford’s fearsome first family, headed by Phil?',
+        options: ['The Slaters', 'The Beales', 'The Mitchells', 'The Carters'],
+        answer: 2,
+      },
+      {
+        q: 'Which actor has played hard man Phil Mitchell since 1990?',
+        options: ['Steve McFadden', 'Ross Kemp', 'Danny Dyer', 'Adam Woodyatt'],
+        answer: 0,
+      },
+      {
+        q: 'The residents of EastEnders live around which famous square?',
+        options: ['Albert Square', 'Weatherfield', 'Trafalgar Square', 'The Dales'],
+        answer: 0,
+      },
+      {
+        q: 'Long-running character Ian Beale belongs to which family?',
+        options: ['The Brannings', 'The Beales', 'The Slaters', 'The Mitchells'],
+        answer: 1,
+      },
+    ],
+    bands: [
+      { min: 6, title: 'Top of the Vic 👑', blurb: 'A true Walford local — nothing gets past you on the Square.' },
+      { min: 4, title: 'Regular punter 🍺', blurb: 'You know your Beales from your Brannings. Solid.' },
+      { min: 2, title: 'Occasional visitor 🚕', blurb: 'You pop in now and then — time for a proper catch-up.' },
+      { min: 0, title: 'New in Walford 🧳', blurb: 'Fresh off the market. Have a wander round the Square!' },
+    ],
+  },
+  {
+    kind: 'trivia',
+    slug: 'the-coronation-street-quiz',
+    title: 'The Coronation Street quiz',
+    standfirst: 'Sixty-plus years on the cobbles — how well do you know Weatherfield? Six questions to find out.',
+    emoji: '🧱',
+    accent: '#d81f2a',
+    questions: [
+      {
+        q: 'Which pub do Weatherfield locals call their own?',
+        options: ['The Queen Victoria', 'The Rovers Return', 'The Woolpack', 'The Bistro'],
+        answer: 1,
+      },
+      {
+        q: 'Coronation Street is set in which fictional area of Greater Manchester?',
+        options: ['Walford', 'Weatherfield', 'Beckindale', 'Chester'],
+        answer: 1,
+      },
+      {
+        q: 'Which character has appeared since the very first episode in 1960?',
+        options: ['Steve McDonald', 'Ken Barlow', 'Roy Cropper', 'Kevin Webster'],
+        answer: 1,
+      },
+      {
+        q: 'Which actor has played Ken Barlow since day one?',
+        options: ['William Roache', 'David Neilson', 'Michael Le Vell', 'Simon Gregson'],
+        answer: 0,
+      },
+      {
+        q: 'The Street’s founding dynasty is which family?',
+        options: ['The Platts', 'The Barlows', 'The Dingles', 'The Connors'],
+        answer: 1,
+      },
+      {
+        q: 'Gail — of endless-marriages fame — belongs to which family?',
+        options: ['The Platts', 'The Websters', 'The Barlows', 'The Baldwins'],
+        answer: 0,
+      },
+    ],
+    bands: [
+      { min: 6, title: 'Cobbles royalty 👑', blurb: 'You could run the Rovers single-handed. Faultless.' },
+      { min: 4, title: 'Weatherfield regular ☕', blurb: 'A dependable fan — you rarely miss a Barlow bust-up.' },
+      { min: 2, title: 'Bit rusty 🧱', blurb: 'You know the basics. A Corrie boxset weekend beckons.' },
+      { min: 0, title: 'Just moved in 📦', blurb: 'Welcome to the Street! Plenty to catch up on.' },
+    ],
+  },
+  {
+    kind: 'trivia',
+    slug: 'the-emmerdale-quiz',
+    title: 'The Emmerdale quiz',
+    standfirst: 'Down in the Dales with the Dingles and the Tates — how well do you know the village? Six questions.',
+    emoji: '🚜',
+    accent: '#00934b',
+    questions: [
+      {
+        q: 'Which pub serves the village of Emmerdale?',
+        options: ['The Rovers Return', 'The Woolpack', 'The Queen Victoria', 'Home Farm'],
+        answer: 1,
+      },
+      {
+        q: 'Emmerdale’s biggest, most chaotic family is the…',
+        options: ['Tates', 'Sugdens', 'Dingles', 'Kings'],
+        answer: 2,
+      },
+      {
+        q: 'The show was originally broadcast under which title?',
+        options: ['Emmerdale Farm', 'The Dales', 'Beckindale', 'Home Farm'],
+        answer: 0,
+      },
+      {
+        q: 'Which brooding Dingle mechanic is played by Jeff Hordley?',
+        options: ['Marlon Dingle', 'Sam Dingle', 'Cain Dingle', 'Paddy Kirk'],
+        answer: 2,
+      },
+      {
+        q: 'Which scheming family is long associated with Home Farm?',
+        options: ['The Tates', 'The Dingles', 'The Sugdens', 'The Bartons'],
+        answer: 0,
+      },
+      {
+        q: 'Emmerdale is set in which part of England?',
+        options: ['The Lake District', 'The Yorkshire Dales', 'The Cotswolds', 'The Peak District'],
+        answer: 1,
+      },
+    ],
+    bands: [
+      { min: 6, title: 'Dingle by heart 👑', blurb: 'You know every family feud in the village. Superb.' },
+      { min: 4, title: 'Village regular 🐑', blurb: 'A steady hand at the Woolpack bar. Well done.' },
+      { min: 2, title: 'Passing through 🚜', blurb: 'You catch the odd episode — worth a proper visit.' },
+      { min: 0, title: 'City slicker 🏙️', blurb: 'New to the Dales! Pull up a stool and settle in.' },
+    ],
+  },
+  {
+    kind: 'trivia',
+    slug: 'the-hollyoaks-quiz',
+    title: 'The Hollyoaks quiz',
+    standfirst: 'Chester’s liveliest village and its most dramatic family — how well do you know Hollyoaks? Six questions.',
+    emoji: '🎓',
+    accent: '#e6007e',
+    questions: [
+      {
+        q: 'Hollyoaks is set in a fictional suburb near which city?',
+        options: ['Manchester', 'Liverpool', 'Chester', 'Leeds'],
+        answer: 2,
+      },
+      {
+        q: 'Which big, brash family is central to Hollyoaks?',
+        options: ['The Osbornes', 'The McQueens', 'The Nightingales', 'The Lomaxes'],
+        answer: 1,
+      },
+      {
+        q: 'In which decade did Hollyoaks first air?',
+        options: ['1980s', '1990s', '2000s', '1970s'],
+        answer: 1,
+      },
+      {
+        q: 'Which channel is the home of Hollyoaks?',
+        options: ['BBC One', 'ITV', 'Channel 4', 'Channel 5'],
+        answer: 2,
+      },
+      {
+        q: 'Bold and brassy Mercedes belongs to which family?',
+        options: ['The McQueens', 'The Osbornes', 'The Blakes', 'The Nightingales'],
+        answer: 0,
+      },
+      {
+        q: 'Which of these soaps is best known for its younger, student-focused cast?',
+        options: ['Coronation Street', 'Emmerdale', 'Hollyoaks', 'EastEnders'],
+        answer: 2,
+      },
+    ],
+    bands: [
+      { min: 6, title: 'Village legend 👑', blurb: 'You know every McQueen and every scandal. Flawless.' },
+      { min: 4, title: 'Regular viewer 🎬', blurb: 'A proper fan — you keep up with the drama.' },
+      { min: 2, title: 'Dropping in 🎓', blurb: 'You catch the odd episode. Time for a binge?' },
+      { min: 0, title: 'Fresher 📚', blurb: 'New to the village — welcome! Lots to discover.' },
+    ],
+  },
 ];
 
 export const getQuiz = (slug: string) => quizzes.find((q) => q.slug === slug);
