@@ -7,7 +7,11 @@ const shows = await getShows();
 const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
 const knownSlugs = new Set(shows.map((s) => s.id));
 
-const feedShows = (episodes.shows ?? []).filter((s) => s.episodes.length > 0);
+// Show today onwards only, so a preserved-but-now-past episode never lingers.
+const todayIso = new Date().toISOString().slice(0, 10);
+const feedShows = (episodes.shows ?? [])
+  .map((s) => ({ ...s, episodes: s.episodes.filter((e) => e.airdate >= todayIso) }))
+  .filter((s) => s.episodes.length > 0);
 const total = feedShows.reduce((n, s) => n + s.episodes.length, 0);
 const updated = freshness(episodes.generatedAt);
 
@@ -77,11 +81,7 @@ function time12(t: string | null): string | null {
                     {dayLabel(ep.airdate)}
                     {time12(ep.airtime) && <span class="wo-ep__time"> · {time12(ep.airtime)}</span>}
                   </p>
-                  {ep.summary ? (
-                    <p class="wo-ep__summary">{ep.summary}</p>
-                  ) : (
-                    <p class="wo-ep__summary wo-ep__summary--muted">Synopsis to follow.</p>
-                  )}
+                  {ep.summary && <p class="wo-ep__summary">{ep.summary}</p>}
                 </li>
               ))}
             </ol>
@@ -145,5 +145,4 @@ function time12(t: string | null): string | null {
   .wo-ep__when { color: color-mix(in srgb, var(--accent) 72%, var(--ink)); margin: 0; }
   .wo-ep__time { color: var(--ink-40); }
   .wo-ep__summary { margin: 0; color: var(--ink-80); font-size: var(--step-0); }
-  .wo-ep__summary--muted { color: var(--ink-40); font-style: italic; }
 </style>

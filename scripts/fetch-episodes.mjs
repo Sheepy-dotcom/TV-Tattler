@@ -14,7 +14,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data', 'feeds', 'episodes.json');
-const WINDOW_DAYS = 14;
+// A wider window catches more of Coronation Street / Hollyoaks, whose upcoming
+// episodes TVmaze often lists only a little way ahead.
+const WINDOW_DAYS = 21;
 
 // Our show slug → TVmaze search term. Slugs match src/content/shows.
 const SOAPS = [
@@ -50,6 +52,17 @@ async function main() {
   end.setDate(end.getDate() + WINDOW_DAYS);
   const endDay = isoDay(end);
 
+  // Read yesterday's data up front so a show whose upcoming episodes TVmaze
+  // hasn't listed yet this run keeps its previously-known future episodes,
+  // instead of vanishing from the page.
+  let prevData = { shows: [] };
+  try {
+    prevData = JSON.parse(await readFile(OUT, 'utf8'));
+  } catch {
+    /* first run */
+  }
+  const prevBySlug = new Map((prevData.shows ?? []).map((s) => [s.slug, s]));
+
   const shows = [];
   for (const soap of SOAPS) {
     try {
@@ -71,13 +84,23 @@ async function main() {
           summary: stripHtml(e.summary).slice(0, 400),
           url: e.url || null,
         }));
+      // If TVmaze lists nothing ahead for this show yet, fall back to any
+      // still-in-future episodes we already had, so the show doesn't disappear.
+      let episodesOut = upcoming;
+      if (episodesOut.length === 0) {
+        const kept = (prevBySlug.get(soap.slug)?.episodes ?? []).filter((e) => e.airdate >= today);
+        if (kept.length) {
+          episodesOut = kept;
+          console.log(`episodes: ${soap.slug} → 0 new, kept ${kept.length} from last run`);
+        }
+      }
       shows.push({
         slug: soap.slug,
         name: show.name,
         tvmazeUrl: show.url || null,
-        episodes: upcoming,
+        episodes: episodesOut,
       });
-      console.log(`episodes: ${soap.slug} → ${upcoming.length} in next ${WINDOW_DAYS}d`);
+      console.log(`episodes: ${soap.slug} → ${episodesOut.length} in next ${WINDOW_DAYS}d`);
     } catch (e) {
       console.warn(`episodes: ${soap.slug} failed:`, e.message);
     }
