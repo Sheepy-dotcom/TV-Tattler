@@ -142,8 +142,11 @@ const legends = entries.slice(0, 36);
     font-size: var(--step-1);
     font-weight: 700;
     color: var(--ink-40);
-    min-width: 1.4em;
+    /* Fixed width (not min-width) so 1–9 and 10+ take the same space and every
+       avatar lines up in the same column across cards. */
+    width: 1.7em;
     text-align: center;
+    flex: none;
   }
   .legend__avatar {
     width: 3.4rem;
