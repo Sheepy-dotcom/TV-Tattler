@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { SECTIONS } from '../content.config';
 import { sectionLabel } from '../lib/format';
 import { getShows } from '../lib/relations';
-import { site, adsEnabled } from '../config/site';
+import { site, adsEnabled, mailchimpConnected } from '../config/site';
 import ConsentBanner from '../components/ConsentBanner.astro';
 
 interface Props {
@@ -61,6 +61,20 @@ const primaryNav = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="TV Tattler" href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {
+      mailchimpConnected && (
+        <script is:inline define:vars={{ mcjsSrc: site.mailchimp.connectedJs }}>
+          {/* Mailchimp Connected Site — loads pop-up / embedded forms & analytics */}
+          !(function (c, h, i, m, p) {
+            (m = c.createElement(h)),
+              (p = c.getElementsByTagName(h)[0]),
+              (m.async = 1),
+              (m.src = i),
+              p.parentNode.insertBefore(m, p);
+          })(document, 'script', mcjsSrc);
+        </script>
+      )
+    }
     {
       adsEnabled && (
         <>
