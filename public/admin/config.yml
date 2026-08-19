@@ -10,7 +10,9 @@ backend:
   name: github
   repo: Sheepy-dotcom/TV-Tattler
   branch: main
-  # Sveltia CMS signs in with GitHub directly. See docs/cms.md for the OAuth app.
+  # GitHub sign-in goes through our Sveltia auth helper (a Cloudflare Worker).
+  # See docs/cms.md for the one-time OAuth-app setup.
+  base_url: https://sveltia-cms-auth.shaunrussett.workers.dev
 
 # Images you upload in the editor land here and are referenced by absolute path.
 media_folder: public/images/uploads
