@@ -28,10 +28,17 @@ export const site = {
   // --- Newsletter (Mailchimp) ---
   mailchimp: {
     // Embedded-form POST endpoint — powers the inline forms in the sidebar,
-    // articles and quiz pages. Get it from Audience → Signup forms →
-    // Embedded forms (the form's `action` URL + the hidden bot-guard field).
-    action: (env.PUBLIC_MAILCHIMP_ACTION ?? '').trim(),
-    hiddenField: (env.PUBLIC_MAILCHIMP_HIDDEN ?? '').trim(),
+    // articles and quiz pages. These are public values from the Mailchimp
+    // embedded-form code (Audience → Signup forms → Embedded forms): the form's
+    // `action` URL and the hidden bot-guard field name. Safe to commit; override
+    // via PUBLIC_MAILCHIMP_ACTION / PUBLIC_MAILCHIMP_HIDDEN if the account changes.
+    action: (
+      env.PUBLIC_MAILCHIMP_ACTION ??
+      'https://tvtattler.us12.list-manage.com/subscribe/post?u=0b9a98e19004883bc4b202ddf&id=c2e618396a&f_id=00c154e1f0'
+    ).trim(),
+    hiddenField: (
+      env.PUBLIC_MAILCHIMP_HIDDEN ?? 'b_0b9a98e19004883bc4b202ddf_c2e618396a'
+    ).trim(),
     // Mailchimp "Connected Site" script — enables Mailchimp-hosted pop-up and
     // embedded forms you design in Mailchimp's UI, plus audience analytics.
     // This is a public, per-account client script (safe to commit). Override
