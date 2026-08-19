@@ -44,9 +44,6 @@ jobs:
       - name: Fetch this week's episodes (TVmaze)
         run: npm run feeds:episodes
 
-      - name: Aggregate soap headlines (RSS)
-        run: npm run feeds:news
-
       - name: Verify the site still builds
         run: npm run build
 
