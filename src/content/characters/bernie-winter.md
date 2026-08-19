@@ -7,6 +7,7 @@ summary: >-
   of the cobbles since 2019.
 family:
   - paul-foreman
+  - gemma-winter
 portrayals:
   - person: jane-hazlegrove
     from: 2019

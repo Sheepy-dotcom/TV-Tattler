@@ -8,6 +8,7 @@ summary: >-
 family:
   - billy-mayhew
   - bernie-winter
+  - gemma-winter
 portrayals:
   - person: peter-ash
     from: 2018

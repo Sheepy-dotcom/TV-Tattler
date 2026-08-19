@@ -7,6 +7,7 @@ summary: >-
   fixture since 2003.
 family:
   - fiz-stape
+  - gemma-winter
 portrayals:
   - person: sam-aston
     from: 2003

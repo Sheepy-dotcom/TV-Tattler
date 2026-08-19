@@ -7,6 +7,7 @@ summary: >-
   — from 2017 to his shock death at Christmas 2023.
 family:
   - bernadette-taylor
+  - karen-taylor
 portrayals:
   - person: danny-walters
     from: 2017

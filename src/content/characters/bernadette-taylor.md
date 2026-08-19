@@ -7,6 +7,7 @@ summary: >-
   2017.
 family:
   - keanu-taylor
+  - karen-taylor
 portrayals:
   - person: clair-norris
     from: 2017

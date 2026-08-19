@@ -7,6 +7,7 @@ summary: >-
   tested young women — a fixture from 2008 until 2024.
 family:
   - bianca-jackson
+  - zack-hudson
 portrayals:
   - person: shona-mcgarty
     from: 2008

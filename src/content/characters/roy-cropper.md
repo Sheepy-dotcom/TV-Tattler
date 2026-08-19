@@ -5,7 +5,8 @@ status: current
 summary: >-
   The gentle, string-bag-carrying café owner whose quiet decency has made him a
   Weatherfield favourite since 1995.
-family: []
+family:
+  - nina-lucas
 portrayals:
   - person: david-neilson
     from: 1995

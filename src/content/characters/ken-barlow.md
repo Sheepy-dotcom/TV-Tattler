@@ -9,6 +9,7 @@ family:
   - peter-barlow
   - daniel-osbourne
   - tracy-barlow
+  - adam-barlow
 portrayals:
   - person: william-roache
     from: 1960
