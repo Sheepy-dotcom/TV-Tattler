@@ -11,9 +11,12 @@ interface Props {
   description?: string;
   /** Optional accent to theme the page (e.g. a show's colour). */
   accent?: string;
+  /** Optional social-share image path (absolute path from site root). Defaults
+   *  to the branded 1200x630 card so every shared link previews cleanly. */
+  image?: string;
 }
 
-const { title, description, accent } = Astro.props;
+const { title, description, accent, image } = Astro.props;
 const fullTitle = title === 'TV Tattler' ? title : `${title} — TV Tattler`;
 const currentPath = Astro.url.pathname;
 const shows = await getShows();
@@ -21,6 +24,11 @@ const shows = await getShows();
 // Canonical URL for this page, resolved against the configured site
 // (https://tvtattler.com). Powers <link rel="canonical"> and og:url.
 const canonical = Astro.site ? new URL(currentPath, Astro.site).href : undefined;
+
+// Social-share image, resolved to an absolute URL (og:image requires one).
+const ogImage = Astro.site
+  ? new URL(image ?? '/images/og-default.jpg', Astro.site).href
+  : undefined;
 
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
@@ -55,6 +63,17 @@ const primaryNav = [
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="TV Tattler" />
     {canonical && <meta property="og:url" content={canonical} />}
+    {
+      ogImage && (
+        <>
+          <meta property="og:image" content={ogImage} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content="TV Tattler — soap spoilers, telly news & what's on" />
+          <meta name="twitter:image" content={ogImage} />
+        </>
+      )
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#17122A" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
