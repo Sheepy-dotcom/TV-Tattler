@@ -3,6 +3,8 @@ import '../styles/global.css';
 import { SECTIONS } from '../content.config';
 import { sectionLabel } from '../lib/format';
 import { getShows } from '../lib/relations';
+import { site, adsEnabled } from '../config/site';
+import ConsentBanner from '../components/ConsentBanner.astro';
 
 interface Props {
   title: string;
@@ -37,6 +39,7 @@ const primaryNav = [
   { href: '/section/soaps/', label: 'Soaps', accent: false },
   { href: '/shows/', label: 'Shows', accent: false },
   { href: '/people/', label: 'Cast', accent: false },
+  { href: '/quizzes/', label: 'Quizzes', accent: false },
 ];
 ---
 
@@ -58,6 +61,41 @@ const primaryNav = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="TV Tattler" href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {
+      adsEnabled && (
+        <>
+          {/* Google Consent Mode v2 — deny by default until the visitor chooses
+              (see ConsentBanner). Complements any certified CMP you enable. */}
+          <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500,
+            });
+            try {
+              if (localStorage.getItem('ttl-consent') === 'granted') {
+                gtag('consent', 'update', {
+                  ad_storage: 'granted',
+                  ad_user_data: 'granted',
+                  ad_personalization: 'granted',
+                  analytics_storage: 'granted',
+                });
+              }
+            } catch (e) {}
+          </script>
+          <script
+            is:inline
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}`}
+            crossorigin="anonymous"
+          />
+        </>
+      )
+    }
   </head>
   <body style={accent ? `--accent: ${accent};` : undefined}>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -145,6 +183,8 @@ const primaryNav = [
             <li><a href="/kind/cast-change/">Cast changes</a></li>
             <li><a href="/kind/guide/">Guides</a></li>
             <li><a href="/kind/feature/">Features</a></li>
+            <li><a href="/quizzes/">Quizzes</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
             <li><a href="/search/">Search</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/rss.xml">RSS feed</a></li>
@@ -172,10 +212,18 @@ const primaryNav = [
       <div class="site-footer__base">
         <div class="container site-footer__base-inner mono">
           <span>© {new Date().getFullYear()} TV Tattler</span>
-          <span>Reference depth for UK soaps, telly &amp; celebrity.</span>
+          <span class="site-footer__legal">
+            <a href="/newsletter/">Newsletter</a>
+            <span aria-hidden="true"> · </span>
+            <a href="/privacy/">Privacy</a>
+            <span aria-hidden="true"> · </span>
+            <a href="/about/">About</a>
+          </span>
         </div>
       </div>
     </footer>
+
+    <ConsentBanner />
 
     <style>
       /* ---- Brand ribbon -------------------------------------------------- */

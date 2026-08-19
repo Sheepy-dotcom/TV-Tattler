@@ -1,0 +1,86 @@
+---
+import { site, adsEnabled } from '../config/site';
+
+interface Props {
+  /** AdSense ad-unit slot id (data-ad-slot) from your AdSense dashboard. */
+  slot?: string;
+  /** Visual size hint, controls the reserved box. */
+  variant?: 'leaderboard' | 'rectangle' | 'in-article';
+  /** Accessible label / placeholder caption. */
+  label?: string;
+}
+
+const { slot, variant = 'rectangle', label = 'Advertisement' } = Astro.props;
+
+// Only render a live ad when the account is configured AND this placement has a
+// slot id. Otherwise we show a labelled placeholder so the layout is complete
+// and you can see where money will sit before AdSense is switched on.
+const live = adsEnabled && !!slot;
+---
+
+<aside class:list={['adslot', `adslot--${variant}`]} aria-label={label}>
+  <span class="adslot__tag mono">{label}</span>
+  {
+    live ? (
+      <Fragment>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client={site.adsenseClient}
+          data-ad-slot={slot}
+          data-ad-format={variant === 'in-article' ? 'fluid' : 'auto'}
+          data-ad-layout={variant === 'in-article' ? 'in-article' : undefined}
+          data-full-width-responsive="true"
+        />
+        <script is:inline>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </Fragment>
+    ) : (
+      <div class="adslot__ph" aria-hidden="true">
+        <span>Ad space</span>
+      </div>
+    )
+  }
+</aside>
+
+<style>
+  .adslot {
+    display: grid;
+    gap: 0.25rem;
+    justify-items: center;
+    margin: var(--space-5) 0;
+  }
+  .adslot__tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+  }
+  .adslot ins {
+    width: 100%;
+  }
+  /* Placeholder — a subtle dashed box that reserves the slot's space. */
+  .adslot__ph {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    color: var(--ink-40);
+    font: 600 0.7rem/1 var(--font-mono, monospace);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .adslot--leaderboard .adslot__ph {
+    min-height: 90px;
+  }
+  .adslot--rectangle .adslot__ph {
+    min-height: 250px;
+    max-width: 336px;
+  }
+  .adslot--in-article .adslot__ph {
+    min-height: 120px;
+  }
+</style>

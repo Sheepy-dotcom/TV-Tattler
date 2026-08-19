@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { quizzes } from '../../data/quizzes';
+
+export function getStaticPaths() {
+  return quizzes.map((quiz) => ({ params: { slug: quiz.slug }, props: { quiz } }));
+}
+
+const { quiz } = Astro.props;
+const shareUrl = Astro.site ? new URL(`/quizzes/${quiz.slug}/`, Astro.site).href : '';
+const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+---
+
+<BaseLayout title={quiz.title} description={quiz.standfirst} accent={quiz.accent}>
+  <div class="page page--quiz">
+    <nav class="crumbs mono" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/quizzes/">Quizzes</a>
+    </nav>
+
+    <header class="page__header">
+      <p class="mono page__kicker">{quiz.kind === 'trivia' ? 'Trivia' : 'Personality quiz'}</p>
+      <h1><span aria-hidden="true">{quiz.emoji}</span> {quiz.title}</h1>
+      <p class="page__standfirst">{quiz.standfirst}</p>
+    </header>
+
+    <div id="quiz" class="quiz" data-quiz={JSON.stringify(quiz)} data-fb={fbShare} data-share={shareUrl}>
+      <noscript>
+        <p>This quiz needs JavaScript. Meanwhile, why not <a href="/quizzes/">browse the others</a>?</p>
+      </noscript>
+    </div>
+
+    <AdSlot variant="leaderboard" label="Advertisement" />
+    <NewsletterSignup
+      variant="panel"
+      heading="Liked that? Get more"
+      blurb="New quizzes, spoilers and soap news every week — free to your inbox."
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .page--quiz {
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+  .crumbs {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    margin-bottom: var(--space-4);
+  }
+  .crumbs a {
+    color: var(--ink-60);
+    text-decoration: none;
+  }
+  .crumbs a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .quiz {
+    margin: var(--space-5) 0;
+  }
+  .quiz__progress {
+    font: 600 0.7rem/1 var(--font-mono, monospace);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin-bottom: var(--space-3);
+  }
+  .quiz__bar {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--paper);
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+  }
+  .quiz__bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent, var(--live));
+    transition: width 0.25s ease;
+  }
+  .quiz__q {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin: 0 0 var(--space-4);
+  }
+  .quiz__options {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .quiz__opt {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.1s ease, background 0.1s ease, transform 0.1s ease;
+  }
+  .quiz__opt:hover {
+    border-color: var(--accent, var(--live));
+    transform: translateY(-1px);
+  }
+  .quiz__opt.is-correct {
+    border-color: #1a9e5c;
+    background: #e7f7ee;
+  }
+  .quiz__opt.is-wrong {
+    border-color: var(--live);
+    background: #fdeaf0;
+  }
+  .quiz__opt:disabled {
+    cursor: default;
+  }
+
+  /* Result card */
+  .quiz__result {
+    text-align: center;
+    padding: var(--space-6) var(--space-5);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    border-top: 6px solid var(--accent, var(--live));
+    background: var(--card);
+  }
+  .quiz__result-kicker {
+    font: 600 0.7rem/1 var(--font-mono, monospace);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+  }
+  .quiz__result-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    margin: var(--space-3) 0;
+    line-height: 1.1;
+  }
+  .quiz__result-blurb {
+    color: var(--ink-80);
+    max-width: 40ch;
+    margin: 0 auto var(--space-4);
+  }
+  .quiz__score {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-4);
+    color: var(--accent, var(--live));
+  }
+  .quiz__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-top: var(--space-4);
+  }
+  .quiz__btn {
+    border: 0;
+    cursor: pointer;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font: 700 0.85rem/1 var(--font-display, sans-serif);
+    text-decoration: none;
+    background: var(--ink);
+    color: #fff;
+  }
+  .quiz__btn--fb {
+    background: #1877f2;
+  }
+  .quiz__btn--ghost {
+    background: transparent;
+    color: var(--ink);
+    box-shadow: inset 0 0 0 2px var(--line-strong);
+  }
+  .quiz__btn:hover {
+    filter: brightness(1.06);
+  }
+</style>
+
+<script>
+  type Trivia = {
+    kind: 'trivia';
+    questions: { q: string; options: string[]; answer: number }[];
+    bands: { min: number; title: string; blurb: string }[];
+    accent: string;
+  };
+  type Personality = {
+    kind: 'personality';
+    questions: { q: string; options: { text: string; scores: Record<string, number> }[] }[];
+    results: { key: string; title: string; blurb: string }[];
+    accent: string;
+  };
+  type Quiz = Trivia | Personality;
+
+  const root = document.getElementById('quiz');
+  if (root) {
+    const quiz = JSON.parse(root.dataset.quiz || '{}') as Quiz;
+    const fbShare = root.dataset.fb || '';
+    const shareUrl = root.dataset.share || '';
+    let index = 0;
+    let score = 0;
+    const buckets: Record<string, number> = {};
+
+    const el = (tag: string, cls?: string, text?: string) => {
+      const n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    };
+
+    function renderQuestion() {
+      root!.innerHTML = '';
+      const total = quiz.questions.length;
+      const q = quiz.questions[index];
+
+      const prog = el('p', 'quiz__progress', `Question ${index + 1} of ${total}`);
+      const bar = el('div', 'quiz__bar');
+      const fill = el('span');
+      fill.style.width = `${(index / total) * 100}%`;
+      bar.appendChild(fill);
+
+      const question = el('h2', 'quiz__q', q.q);
+      const opts = el('div', 'quiz__options');
+
+      q.options.forEach((opt: any, i: number) => {
+        const btn = el('button', 'quiz__opt', quiz.kind === 'trivia' ? opt : opt.text) as HTMLButtonElement;
+        btn.type = 'button';
+        btn.addEventListener('click', () => choose(i, btn, opts));
+        opts.appendChild(btn);
+      });
+
+      root!.append(prog, bar, question, opts);
+      root!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function choose(i: number, btn: HTMLButtonElement, opts: HTMLElement) {
+      const q: any = quiz.questions[index];
+      Array.from(opts.children).forEach((c) => ((c as HTMLButtonElement).disabled = true));
+
+      if (quiz.kind === 'trivia') {
+        const correct = q.answer;
+        if (i === correct) {
+          score++;
+          btn.classList.add('is-correct');
+        } else {
+          btn.classList.add('is-wrong');
+          (opts.children[correct] as HTMLElement).classList.add('is-correct');
+        }
+      } else {
+        const scores = q.options[i].scores as Record<string, number>;
+        for (const k in scores) buckets[k] = (buckets[k] || 0) + scores[k];
+        btn.classList.add('is-correct');
+      }
+
+      const delay = quiz.kind === 'trivia' ? 750 : 300;
+      setTimeout(() => {
+        index++;
+        if (index < quiz.questions.length) renderQuestion();
+        else renderResult();
+      }, delay);
+    }
+
+    function renderResult() {
+      root!.innerHTML = '';
+      const card = el('div', 'quiz__result');
+
+      let title = '';
+      let blurb = '';
+      let scoreLine: HTMLElement | null = null;
+
+      if (quiz.kind === 'trivia') {
+        const band = [...quiz.bands].sort((a, b) => b.min - a.min).find((b) => score >= b.min)!;
+        title = band.title;
+        blurb = band.blurb;
+        scoreLine = el('p', 'quiz__score', `${score} / ${quiz.questions.length}`);
+      } else {
+        let bestKey = quiz.results[0].key;
+        let best = -1;
+        for (const r of quiz.results) {
+          const v = buckets[r.key] || 0;
+          if (v > best) {
+            best = v;
+            bestKey = r.key;
+          }
+        }
+        const result = quiz.results.find((r) => r.key === bestKey)!;
+        title = result.title;
+        blurb = result.blurb;
+      }
+
+      card.appendChild(el('p', 'quiz__result-kicker', 'Your result'));
+      if (scoreLine) card.appendChild(scoreLine);
+      card.appendChild(el('h2', 'quiz__result-title', title));
+      card.appendChild(el('p', 'quiz__result-blurb', blurb));
+
+      const actions = el('div', 'quiz__actions');
+      const fb = el('a', 'quiz__btn quiz__btn--fb', 'Share on Facebook') as HTMLAnchorElement;
+      fb.href = fbShare;
+      fb.target = '_blank';
+      fb.rel = 'noopener';
+      actions.appendChild(fb);
+
+      const copy = el('button', 'quiz__btn quiz__btn--ghost', 'Copy link') as HTMLButtonElement;
+      copy.type = 'button';
+      copy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          copy.textContent = 'Link copied!';
+          setTimeout(() => (copy.textContent = 'Copy link'), 1800);
+        } catch {
+          copy.textContent = shareUrl;
+        }
+      });
+      actions.appendChild(copy);
+
+      const again = el('button', 'quiz__btn quiz__btn--ghost', 'Play again') as HTMLButtonElement;
+      again.type = 'button';
+      again.addEventListener('click', () => {
+        index = 0;
+        score = 0;
+        for (const k in buckets) delete buckets[k];
+        renderQuestion();
+      });
+      actions.appendChild(again);
+
+      const more = el('a', 'quiz__btn', 'More quizzes →') as HTMLAnchorElement;
+      more.href = '/quizzes/';
+      actions.appendChild(more);
+
+      card.appendChild(actions);
+      root!.appendChild(card);
+      root!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (quiz.questions && quiz.questions.length) renderQuestion();
+  }
+</script>

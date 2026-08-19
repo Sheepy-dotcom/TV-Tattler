@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { quizzes } from '../../data/quizzes';
+---
+
+<BaseLayout
+  title="Soap quizzes"
+  description="Fun, free soap quizzes — test your knowledge or find out which soap family you belong to. No spoilers, just a laugh."
+>
+  <div class="page">
+    <header class="page__header">
+      <p class="mono page__kicker">Quizzes</p>
+      <h1>Soap quizzes</h1>
+      <p class="page__standfirst">
+        Test your knowledge, find your soap family, meet your icon match. Free, fast
+        and made for sharing — no spoilers, just fun.
+      </p>
+    </header>
+
+    <ul class="quizgrid">
+      {
+        quizzes.map((quiz) => (
+          <li class="quizgrid__item">
+            <a class="qcard" href={`/quizzes/${quiz.slug}/`} style={`--accent: ${quiz.accent};`}>
+              <span class="qcard__emoji" aria-hidden="true">{quiz.emoji}</span>
+              <span class="qcard__kind mono">{quiz.kind === 'trivia' ? 'Trivia' : 'Personality'}</span>
+              <span class="qcard__title">{quiz.title}</span>
+              <span class="qcard__desc">{quiz.standfirst}</span>
+              <span class="qcard__cta mono">Start quiz →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <AdSlot variant="leaderboard" label="Advertisement" />
+    <NewsletterSignup variant="panel" />
+  </div>
+</BaseLayout>
+
+<style>
+  .quizgrid {
+    list-style: none;
+    margin: var(--space-5) 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 34rem) {
+    .quizgrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .qcard {
+    display: grid;
+    gap: 0.4rem;
+    height: 100%;
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--accent);
+    background: var(--card);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .qcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  .qcard__emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .qcard__kind {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .qcard__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.15;
+  }
+  .qcard__desc {
+    color: var(--ink-80);
+    font-size: var(--step-0);
+  }
+  .qcard__cta {
+    margin-top: 0.3rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+</style>
