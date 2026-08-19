@@ -1,0 +1,114 @@
+---
+// A lightweight cookie-consent banner wired to Google Consent Mode v2.
+//
+// Renders only when ads are configured. Consent defaults to "denied" (set in the
+// layout head), so no personalised-ad cookies are set until the visitor agrees.
+// "Accept" grants; "Reject" keeps non-personalised ads (allowed under consent
+// mode). The choice is remembered in localStorage.
+//
+// NOTE ON COMPLIANCE: for fully-compliant personalised ads to UK/EEA visitors,
+// Google requires a *certified* Consent Management Platform. The simplest route
+// is to switch on Google's own "Privacy & messaging → GDPR message" inside your
+// AdSense account (it's certified and shows automatically). This banner is a
+// clean, working baseline and sets Consent Mode correctly; see docs/monetization.md.
+import { adsEnabled } from '../config/site';
+---
+
+{
+  adsEnabled && (
+    <div id="consent" class="consent" role="dialog" aria-label="Cookie consent" hidden>
+      <p class="consent__text">
+        We use cookies to run ads that keep TV Tattler free. Accept to allow
+        personalised ads, or reject for non-personalised ones. See our{' '}
+        <a href="/privacy/">privacy&nbsp;policy</a>.
+      </p>
+      <div class="consent__actions">
+        <button type="button" class="consent__btn consent__btn--ghost" data-consent="deny">
+          Reject
+        </button>
+        <button type="button" class="consent__btn" data-consent="grant">
+          Accept
+        </button>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var KEY = 'ttl-consent';
+        var el = document.getElementById('consent');
+        if (!el) return;
+        function gtag() { window.dataLayer = window.dataLayer || []; window.dataLayer.push(arguments); }
+        var stored = null;
+        try { stored = localStorage.getItem(KEY); } catch (e) {}
+        if (!stored) el.hidden = false;
+        el.addEventListener('click', function (e) {
+          var t = e.target;
+          if (!(t instanceof HTMLElement)) return;
+          var choice = t.getAttribute('data-consent');
+          if (!choice) return;
+          var granted = choice === 'grant';
+          gtag('consent', 'update', {
+            ad_storage: granted ? 'granted' : 'denied',
+            ad_user_data: granted ? 'granted' : 'denied',
+            ad_personalization: granted ? 'granted' : 'denied',
+            analytics_storage: granted ? 'granted' : 'denied',
+          });
+          try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+          el.hidden = true;
+        });
+      })();
+    </script>
+  )
+}
+
+<style>
+  .consent {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    width: min(38rem, calc(100vw - 2rem));
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    padding: 1rem 1.15rem;
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  }
+  .consent__text {
+    margin: 0;
+    flex: 1 1 16rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+  .consent__text a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .consent__actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+  .consent__btn {
+    border: 0;
+    cursor: pointer;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font: 700 0.8rem/1 var(--font-display, sans-serif);
+    background: var(--live);
+    color: #fff;
+  }
+  .consent__btn--ghost {
+    background: transparent;
+    color: #fff;
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.5);
+  }
+  .consent__btn:hover {
+    filter: brightness(1.08);
+  }
+</style>

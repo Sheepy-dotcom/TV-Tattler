@@ -5,7 +5,11 @@ status: current
 summary: >-
   The one constant of Weatherfield — schoolteacher, columnist and the show's moral
   centre — on screen continuously since the very first episode in 1960.
-family: []
+family:
+  - peter-barlow
+  - daniel-osbourne
+  - tracy-barlow
+  - adam-barlow
 portrayals:
   - person: william-roache
     from: 1960

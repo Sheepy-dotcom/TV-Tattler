@@ -1,0 +1,138 @@
+---
+import { site, newsletterEnabled } from '../config/site';
+
+interface Props {
+  /** 'inline' = compact (sidebar / end of article); 'panel' = full-width hero. */
+  variant?: 'inline' | 'panel';
+  heading?: string;
+  blurb?: string;
+}
+
+const {
+  variant = 'inline',
+  heading = 'Get the soap lowdown',
+  blurb = 'Spoilers, cast news and what’s on — the week’s best, straight to your inbox. Free, no spam.',
+} = Astro.props;
+---
+
+<section class:list={['news-cta', `news-cta--${variant}`]} aria-label="Newsletter sign-up">
+  <div class="news-cta__body">
+    <p class="news-cta__kicker mono">Newsletter</p>
+    <h2 class="news-cta__h">{heading}</h2>
+    <p class="news-cta__blurb">{blurb}</p>
+  </div>
+
+  {
+    newsletterEnabled ? (
+      <form
+        class="news-cta__form"
+        action={site.mailchimp.action}
+        method="post"
+        target="_blank"
+        novalidate
+      >
+        <label class="sr-only" for={`nl-email-${variant}`}>Email address</label>
+        <input
+          id={`nl-email-${variant}`}
+          type="email"
+          name="EMAIL"
+          required
+          placeholder="you@email.com"
+          autocomplete="email"
+        />
+        {/* Mailchimp bot-guard honeypot — must stay off-screen, not display:none. */}
+        <div aria-hidden="true" style="position:absolute;left:-5000px;">
+          <input type="text" name={site.mailchimp.hiddenField} tabindex="-1" value="" />
+        </div>
+        <button type="submit">Subscribe</button>
+      </form>
+    ) : (
+      <form class="news-cta__form" aria-disabled="true">
+        <label class="sr-only" for={`nl-email-${variant}`}>Email address</label>
+        <input id={`nl-email-${variant}`} type="email" placeholder="you@email.com" disabled />
+        <button type="button" disabled>Subscribe</button>
+        <p class="news-cta__soon mono">Sign-up opening soon</p>
+      </form>
+    )
+  }
+</section>
+
+<style>
+  .news-cta {
+    background: var(--grad-brand, linear-gradient(120deg, var(--live), var(--pop)));
+    color: #fff;
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    display: grid;
+    gap: var(--space-4);
+  }
+  .news-cta--panel {
+    padding: var(--space-6) var(--space-5);
+    text-align: center;
+    justify-items: center;
+  }
+  .news-cta__kicker {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin: 0 0 0.35rem;
+  }
+  .news-cta__h {
+    font-family: var(--font-display, sans-serif);
+    font-size: var(--step-2);
+    margin: 0 0 0.4rem;
+    line-height: 1.1;
+  }
+  .news-cta__blurb {
+    margin: 0;
+    font-size: var(--step-0);
+    opacity: 0.95;
+    max-width: 42ch;
+  }
+  .news-cta--panel .news-cta__blurb {
+    margin-inline: auto;
+  }
+  .news-cta__form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 30rem;
+  }
+  .news-cta--panel .news-cta__form {
+    justify-content: center;
+  }
+  .news-cta__form input[type='email'] {
+    flex: 1 1 12rem;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .news-cta__form button {
+    border: 0;
+    cursor: pointer;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font: 700 0.9rem/1 var(--font-display, sans-serif);
+    background: var(--ink);
+    color: #fff;
+  }
+  .news-cta__form button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  .news-cta__form button:not(:disabled):hover {
+    filter: brightness(1.1);
+  }
+  .news-cta__soon {
+    flex-basis: 100%;
+    margin: 0.25rem 0 0;
+    font-size: 0.65rem;
+    opacity: 0.85;
+  }
+</style>

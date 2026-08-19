@@ -6,6 +6,7 @@ summary: >-
   The bold, brassy heart of the McQueen family — a Hollyoaks fixture since 2006.
 family:
   - cleo-mcqueen
+  - john-paul-mcqueen
 portrayals:
   - person: jennifer-metcalfe
     from: 2006

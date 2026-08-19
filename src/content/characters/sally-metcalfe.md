@@ -7,6 +7,7 @@ summary: >-
   Weatherfield mainstay since 1986.
 family:
   - kevin-webster
+  - tim-metcalfe
 portrayals:
   - person: sally-dynevor
     from: 1986

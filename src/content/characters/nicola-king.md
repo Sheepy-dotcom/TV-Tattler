@@ -5,6 +5,8 @@ status: current
 summary: >-
   Sharp, ambitious and rarely lost for words — Nicola has been one of Emmerdale's
   most quotable characters since 2001.
+family:
+  - jimmy-king
 portrayals:
   - person: nicola-wheeler
     from: 2001

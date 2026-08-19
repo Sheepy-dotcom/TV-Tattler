@@ -9,6 +9,8 @@ family:
   - cain-dingle
   - paddy-kirk
   - sam-dingle
+  - aaron-dingle
+  - belle-dingle
 portrayals:
   - person: lucy-pargeter
     from: 2002

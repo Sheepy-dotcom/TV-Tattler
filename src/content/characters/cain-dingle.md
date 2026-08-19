@@ -10,6 +10,8 @@ family:
   - charity-dingle
   - moira-dingle
   - sam-dingle
+  - aaron-dingle
+  - belle-dingle
 portrayals:
   # Jeff Hordley took a break in the late 2000s; modelled here as one ongoing
   # stint. Flag: refine the exact break years if you want two rows.

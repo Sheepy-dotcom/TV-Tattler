@@ -7,6 +7,7 @@ summary: >-
   everymen, on the Street since 1989.
 family:
   - amy-barlow
+  - tracy-barlow
 portrayals:
   - person: simon-gregson
     from: 1989

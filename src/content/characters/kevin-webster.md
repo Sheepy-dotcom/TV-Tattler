@@ -6,6 +6,7 @@ summary: >-
   The Street's steady, spanner-in-hand mechanic — a Weatherfield mainstay since 1983.
 family:
   - sally-metcalfe
+  - abi-webster
 portrayals:
   - person: michael-le-vell
     from: 1983

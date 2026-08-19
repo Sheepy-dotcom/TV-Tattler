@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+---
+
+<BaseLayout
+  title="Newsletter"
+  description="Join the TV Tattler newsletter for weekly soap spoilers, cast news and what's on — free, straight to your inbox."
+>
+  <article class="page page--narrow">
+    <header class="page__header">
+      <p class="mono page__kicker">Newsletter</p>
+      <h1>The week in soaps, straight to your inbox</h1>
+      <p class="page__standfirst">
+        One email a week with the spoilers, cast news and what’s-on you actually
+        want — hand-picked, no clickbait, no spam. Free forever.
+      </p>
+    </header>
+
+    <NewsletterSignup
+      variant="panel"
+      heading="Join the list"
+      blurb="Spoilers, soap news and film releases — the week's best, once a week."
+    />
+
+    <div class="page__body">
+      <h2>What you’ll get</h2>
+      <ul>
+        <li><strong>The week’s spoilers</strong> across EastEnders, Corrie, Emmerdale and Hollyoaks.</li>
+        <li><strong>Cast news</strong> — who’s joining, who’s leaving, who’s back.</li>
+        <li><strong>What’s on</strong> — the episodes and new film releases worth your time.</li>
+      </ul>
+      <p>
+        Prefer to read on the site? The <a href="/kind/spoiler/">spoilers hub</a> and
+        <a href="/headlines/">headlines</a> update all week. The newsletter is just the
+        best of it, gathered up so you don’t miss anything.
+      </p>
+      <p class="mono page__note">
+        We store your email only to send you this newsletter. Unsubscribe any time.
+        See our <a href="/privacy/">privacy policy</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page--narrow {
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+  .page__note {
+    color: var(--ink-40);
+    font-size: 0.75rem;
+    margin-top: var(--space-4);
+  }
+</style>

@@ -5,6 +5,9 @@ status: current
 summary: >-
   Warm, sharp and loyal — Bernadette has been part of Walford's younger set since
   2017.
+family:
+  - keanu-taylor
+  - karen-taylor
 portrayals:
   - person: clair-norris
     from: 2017

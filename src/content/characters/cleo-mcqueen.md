@@ -7,6 +7,7 @@ summary: >-
   from drama. A Hollyoaks regular since 2015.
 family:
   - mercedes-mcqueen
+  - john-paul-mcqueen
 portrayals:
   - person: nadine-mulkerrin
     from: 2015

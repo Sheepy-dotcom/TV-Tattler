@@ -7,6 +7,7 @@ summary: >-
   of the Street's sharp young leads. On screen since 2004.
 family:
   - steve-mcdonald
+  - tracy-barlow
 portrayals:
   - person: elle-mulvaney
     from: 2010

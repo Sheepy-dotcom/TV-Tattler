@@ -3,6 +3,8 @@ import { getEntries, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StoryCard from '../../components/StoryCard.astro';
 import Sidebar from '../../components/Sidebar.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import {
   getArticles,
   getShowAccentMap,
@@ -114,6 +116,10 @@ const spoilerFor =
     <div class="article__body">
       <Content />
     </div>
+
+    <AdSlot variant="in-article" label="Advertisement" />
+
+    <NewsletterSignup variant="panel" />
 
     {
       (shows.length > 0 || characters.length > 0 || people.length > 0) && (

@@ -5,6 +5,8 @@ status: current
 summary: >-
   Divisive, unpredictable and never dull — Stuart has been a fixture of Albert
   Square since 2018.
+family:
+  - callum-highway
 portrayals:
   - person: ricky-champ
     from: 2018
