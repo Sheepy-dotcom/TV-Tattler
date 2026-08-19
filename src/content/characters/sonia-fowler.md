@@ -5,7 +5,8 @@ status: current
 summary: >-
   Walford born and bred — nurse, mum and one of the Square's most enduring
   presences since 1993.
-family: []
+family:
+  - martin-fowler
 portrayals:
   - person: natalie-cassidy
     from: 1993

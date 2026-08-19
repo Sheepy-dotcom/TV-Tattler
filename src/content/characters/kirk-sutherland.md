@@ -7,6 +7,7 @@ summary: >-
   been part of the cobbles since 2000.
 family:
   - maria-connor
+  - beth-tinker
 portrayals:
   - person: andy-whyment
     from: 2000

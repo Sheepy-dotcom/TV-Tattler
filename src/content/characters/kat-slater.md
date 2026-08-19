@@ -8,6 +8,7 @@ summary: >-
 family:
   - stacey-slater
   - alfie-moon
+  - freddie-slater
 portrayals:
   - person: jessie-wallace
     from: 2000
