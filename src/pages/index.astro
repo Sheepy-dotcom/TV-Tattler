@@ -5,13 +5,12 @@ import StoryCard from '../components/StoryCard.astro';
 import ArticleGrid from '../components/ArticleGrid.astro';
 import ShowRail from '../components/ShowRail.astro';
 import Sidebar from '../components/Sidebar.astro';
-import Widget from '../components/Widget.astro';
 import { getCollection } from 'astro:content';
 import { getArticles, getShows, getShowLookup, posterForArticle } from '../lib/relations';
 import { factsForPerson, resolveEntityImage } from '../lib/wikidata';
 import { SECTIONS } from '../content.config';
 import { sectionMeta } from '../lib/format';
-import { upcomingEpisodes, films, headlines } from '../lib/feeds';
+import { upcomingEpisodes, films } from '../lib/feeds';
 
 const articles = await getArticles();
 const shows = await getShows();
@@ -38,14 +37,11 @@ const castAvatars = people
   .sort((a, b) => a.person.data.name.localeCompare(b.person.data.name))
   .slice(0, 20);
 
-// Live feeds for the homepage: the next few soap episodes, new films and the
-// latest headlines. All come from the auto-refreshed data files and simply
-// don't render when empty.
+// Live feeds for the homepage: the next few soap episodes and new films. All
+// come from the auto-refreshed data files and simply don't render when empty.
 const accentOf = new Map(shows.map((s) => [s.id, s.data.accent]));
-const showById = new Map(shows.map((s) => [s.id, s]));
 const nextEpisodes = upcomingEpisodes().slice(0, 5);
 const newFilms = (films.items ?? []).slice(0, 6);
-const topHeadlines = (headlines.items ?? []).slice(0, 6);
 
 function epDay(iso: string): string {
   const d = new Date(iso + 'T00:00:00');
@@ -210,31 +206,7 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
             <h2 class="rail-title rail-title--major">Latest stories</h2>
             <ArticleGrid articles={latest} columns={2} />
           </div>
-          <Sidebar>
-            {
-              topHeadlines.length > 0 && (
-                <Widget title="Latest headlines">
-                  <ul class="hl">
-                    {topHeadlines.map((h) => {
-                      const show = h.soap ? showById.get(h.soap) : undefined;
-                      return (
-                        <li class="hl__item" style={show ? `--accent: ${show.data.accent};` : undefined}>
-                          <a class="hl__link" href={h.url} rel="external noopener nofollow">
-                            {h.title}
-                          </a>
-                          <span class="hl__meta mono">
-                            {show && <span class="hl__dot" aria-hidden="true" />}
-                            {h.source}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <a class="hl__all" href="/headlines/">All headlines →</a>
-                </Widget>
-              )
-            }
-          </Sidebar>
+          <Sidebar />
         </div>
       </>
     )
@@ -396,57 +368,6 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
   }
   @media (prefers-reduced-motion: reduce) {
     .livedot { animation: none; }
-  }
-
-  /* ---- Latest-headlines sidebar widget --------------------------------- */
-  .hl {
-    list-style: none;
-    margin: 0 0 var(--space-3);
-    padding: 0;
-    display: grid;
-    gap: var(--space-3);
-  }
-  .hl__item {
-    display: grid;
-    gap: 0.2em;
-    padding-left: var(--space-3);
-    border-left: 3px solid var(--accent, var(--line-strong));
-  }
-  .hl__link {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step-0);
-    line-height: 1.25;
-    color: var(--ink);
-    text-decoration: none;
-    text-wrap: balance;
-  }
-  .hl__link:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-color: var(--accent, var(--live));
-  }
-  .hl__meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
-    color: var(--ink-40);
-  }
-  .hl__dot {
-    width: 0.55em;
-    height: 0.55em;
-    border-radius: 999px;
-    background: var(--accent);
-  }
-  .hl__all {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step--1);
-    color: color-mix(in srgb, var(--live) 80%, var(--ink));
-    text-decoration: none;
-  }
-  .hl__all:hover {
-    text-decoration: underline;
   }
 
   /* ---- Films rail (horizontal posters) --------------------------------- */

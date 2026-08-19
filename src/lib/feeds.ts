@@ -1,11 +1,10 @@
 // Typed access to the generated, auto-refreshed feed data. These JSON files are
-// written by the scripts in /scripts (fetch-films / fetch-episodes / fetch-news)
-// and refreshed daily by .github/workflows/refresh-feeds.yml. Pages read them
+// written by the scripts in /scripts (fetch-films / fetch-episodes) and
+// refreshed daily by .github/workflows/refresh-feeds.yml. Pages read them
 // through here so a missing/empty feed degrades to a clean empty state.
 
 import filmsData from '../data/feeds/films.json';
 import episodesData from '../data/feeds/episodes.json';
-import headlinesData from '../data/feeds/headlines.json';
 
 export interface Film {
   tmdbId: number;
@@ -35,14 +34,6 @@ export interface EpisodeShow {
   episodes: Episode[];
 }
 
-export interface Headline {
-  title: string;
-  url: string;
-  source: string;
-  publishedAt: string | null;
-  soap?: string;
-}
-
 interface FilmsFeed {
   generatedAt: string | null;
   source: string;
@@ -55,15 +46,8 @@ interface EpisodesFeed {
   windowDays?: number;
   shows: EpisodeShow[];
 }
-interface HeadlinesFeed {
-  generatedAt: string | null;
-  sources: string[];
-  items: Headline[];
-}
-
 export const films = filmsData as FilmsFeed;
 export const episodes = episodesData as EpisodesFeed;
-export const headlines = headlinesData as HeadlinesFeed;
 
 /** All upcoming episodes flattened and sorted by air date (for a combined view). */
 export function upcomingEpisodes(): (Episode & { showSlug: string; showName: string })[] {
