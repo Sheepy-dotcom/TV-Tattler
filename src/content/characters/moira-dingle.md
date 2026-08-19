@@ -7,6 +7,7 @@ summary: >-
   whose stormy marriage to Cain has driven the show since 2009.
 family:
   - cain-dingle
+  - mackenzie-boyd
 portrayals:
   - person: natalie-j-robb
     from: 2009

@@ -5,6 +5,8 @@ status: current
 summary: >-
   Dangerous, charismatic and impossible to pin down — Warren has been one of
   Hollyoaks' great villains across multiple stints since 2006.
+family:
+  - sienna-blake
 portrayals:
   - person: jamie-lomas
     from: 2006

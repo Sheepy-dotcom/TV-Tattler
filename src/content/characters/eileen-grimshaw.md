@@ -5,6 +5,8 @@ status: current
 summary: >-
   Weatherfield's straight-talking survivor — cab-office stalwart and mother hen,
   on the Street since 2000.
+family:
+  - todd-grimshaw
 portrayals:
   - person: sue-cleaver
     from: 2000
