@@ -41,14 +41,14 @@ function isOut(iso: string): boolean {
       <ul class="films">
         {items.map((film) => (
           <li class="filmcard card">
-            <a class="filmcard__poster" href={film.tmdbUrl} rel="external noopener" aria-hidden="true" tabindex="-1">
+            <div class="filmcard__poster">
               {film.poster ? (
                 <img src={film.poster} alt="" loading="lazy" decoding="async" />
               ) : (
                 <span class="filmcard__noposter">{film.title}</span>
               )}
               {film.certification && <span class="filmcard__cert mono">{film.certification}</span>}
-            </a>
+            </div>
             <div class="filmcard__body">
               <p class="filmcard__when mono">
                 <span class:list={['filmcard__badge', isOut(film.releaseDate) ? 'is-out' : 'is-soon']}>
@@ -56,9 +56,7 @@ function isOut(iso: string): boolean {
                 </span>
                 {releaseLabel(film.releaseDate)}
               </p>
-              <h2 class="filmcard__title">
-                <a href={film.tmdbUrl} rel="external noopener">{film.title}</a>
-              </h2>
+              <h2 class="filmcard__title">{film.title}</h2>
               {film.genres.length > 0 && <p class="filmcard__genres mono">{film.genres.slice(0, 3).join(' · ')}</p>}
               {film.overview && <p class="filmcard__overview">{film.overview}</p>}
             </div>
