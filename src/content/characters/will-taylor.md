@@ -7,6 +7,7 @@ summary: >-
   been part of Emmerdale since 2019.
 family:
   - kim-tate
+  - dawn-taylor
 portrayals:
   - person: dean-andrews
     from: 2019

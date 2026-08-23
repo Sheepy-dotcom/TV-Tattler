@@ -7,6 +7,7 @@ summary: >-
   matriarch of Walford's Panesar family since 2020.
 family:
   - eve-unwin
+  - vinny-panesar
 portrayals:
   - person: balvinder-sopal
     from: 2020

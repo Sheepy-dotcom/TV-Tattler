@@ -8,6 +8,7 @@ summary: >-
 family:
   - chas-dingle
   - cain-dingle
+  - liv-flaherty
 portrayals:
   - person: danny-miller
     from: 2008

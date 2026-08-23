@@ -7,6 +7,7 @@ summary: >-
 family:
   - cleo-mcqueen
   - john-paul-mcqueen
+  - goldie-mcqueen
 portrayals:
   - person: jennifer-metcalfe
     from: 2006
