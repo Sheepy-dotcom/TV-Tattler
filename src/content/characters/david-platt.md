@@ -10,6 +10,7 @@ family:
   - audrey-roberts
   - sarah-platt
   - nick-tilsley
+  - shona-platt
 portrayals:
   - person: jack-p-shepherd
     from: 2000

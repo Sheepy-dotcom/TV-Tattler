@@ -7,6 +7,7 @@ summary: >-
   central to Walford life since 2006.
 family:
   - kim-fox
+  - chelsea-fox
 portrayals:
   - person: diane-parish
     from: 2006

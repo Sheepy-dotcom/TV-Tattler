@@ -8,6 +8,7 @@ summary: >-
 family:
   - mercedes-mcqueen
   - john-paul-mcqueen
+  - goldie-mcqueen
 portrayals:
   - person: nadine-mulkerrin
     from: 2015
