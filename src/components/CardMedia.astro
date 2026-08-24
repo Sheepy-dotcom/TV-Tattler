@@ -27,10 +27,13 @@ const {
 } = Astro.props;
 const ink = '#17122A';
 const base = accent ?? ink;
+// Real photos (portraits) are shown whole (contain) on a branded panel so faces
+// are never cropped; the designed landscape SVG covers still fill the tile (cover).
+const isPhoto = !!image && /\.(jpe?g|png|webp)$/i.test(image);
 ---
 
 <div
-  class:list={['media', { 'media--large': large, 'media--compact': compact, 'media--photo': !!image }]}
+  class:list={['media', { 'media--large': large, 'media--compact': compact, 'media--photo': !!image, 'media--fit': isPhoto }]}
   style={`--media-accent: ${base}; aspect-ratio: ${ratio};`}
 >
   {
@@ -117,10 +120,25 @@ const base = accent ?? ink;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Head-and-shoulders portraits cropped into a wide landscape tile: pull the
-       crop DOWN from the top so the face (not just the hair/forehead) sits in
-       frame. "top" cut faces off; ~35% keeps eyes-to-chin visible. */
-    object-position: center 35%;
+    object-position: center;
+  }
+
+  /* Photo tiles: show the WHOLE portrait (no crop, so faces are never cut) on a
+     branded gradient panel. The designed landscape SVG covers keep object-fit:
+     cover above and fill the tile edge-to-edge. */
+  .media--fit {
+    background:
+      radial-gradient(120% 140% at 85% 15%, rgba(255, 255, 255, 0.18), transparent 60%),
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--media-accent) 82%, white) 0%,
+        var(--media-accent) 48%,
+        color-mix(in srgb, var(--media-accent) 60%, black) 100%
+      );
+  }
+  .media--fit .media__img {
+    object-fit: contain;
+    object-position: center;
   }
 
   /* Category kicker over the media — the Digital-Spy-style coloured label. */

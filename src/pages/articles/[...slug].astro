@@ -90,7 +90,7 @@ const spoilerFor =
 
     {
       heroSrc && (
-        <figure class="article__figure">
+        <figure class:list={['article__figure', { 'article__figure--photo': !!photo }]}>
           <img src={heroSrc} alt={heroAlt} />
           {heroCredit && (
             <figcaption class="mono">
@@ -270,15 +270,26 @@ const spoilerFor =
   }
   .article__figure img {
     width: 100%;
-    /* Fixed landscape hero so a portrait photo becomes a tidy head-and-shoulders
-       banner instead of a giant vertical image. Pull the crop down from the top
-       so the face sits in frame (not just the hair). Landscape covers just fill it. */
+    /* Designed landscape SVG covers fill the banner. */
     aspect-ratio: 3 / 2;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center;
     border-radius: var(--radius);
     border: 1px solid var(--line);
     background: var(--paper);
+  }
+  /* Real portrait photos: show the WHOLE image (no crop, faces never cut) on a
+     branded panel in the page accent, filling the letterbox. */
+  .article__figure--photo img {
+    object-fit: contain;
+    background:
+      radial-gradient(120% 140% at 85% 15%, rgba(255, 255, 255, 0.16), transparent 60%),
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--accent, var(--ink)) 80%, white) 0%,
+        var(--accent, var(--ink)) 48%,
+        color-mix(in srgb, var(--accent, var(--ink)) 58%, black) 100%
+      );
   }
   .article__figure figcaption {
     color: var(--ink-40);
