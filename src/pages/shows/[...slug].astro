@@ -230,6 +230,8 @@ const suggestion = pendingImageSuggestion(imageInput);
     width: 100%;
     aspect-ratio: 16 / 7;
     object-fit: cover;
+    /* Wide banner crop of a portrait: pull down so faces aren't sliced at the top. */
+    object-position: center 35%;
     border-radius: var(--radius-lg);
     border: 1px solid var(--line);
     background: var(--paper);

@@ -484,7 +484,8 @@ const leadPoster = lead ? posterForArticle(lead, lookup) : undefined;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    /* Keep the face in the circle, not the top of the head. */
+    object-position: center 20%;
   }
   .castrail__link:hover .castrail__avatar {
     transform: translateY(-3px);
