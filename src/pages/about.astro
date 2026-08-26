@@ -9,51 +9,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <article class="page">
     <header class="page__header">
       <p class="mono page__kicker">About</p>
-      <h1>Reference first, news second</h1>
+      <h1>About TV Tattler</h1>
       <p class="page__standfirst">
-        TV Tattler is a soaps-first UK entertainment site built on evergreen reference
-        depth — complete, accurate, well-maintained pages for every show, character and
-        actor.
+        TV Tattler is an independent UK entertainment site covering the nation&rsquo;s
+        favourite soaps — EastEnders, Coronation Street, Emmerdale and Hollyoaks — plus
+        the wider world of telly and film. We pair a well-maintained reference archive with
+        original spoilers, features and what&rsquo;s-on guides.
       </p>
     </header>
 
     <div class="page__body">
-      <h2>What this is</h2>
+      <h2>What we do</h2>
       <p>
-        One person writes here, a few times a week, so this site does not try to win at
-        breaking news. Instead it does the thing the traffic-chasing newsrooms never keep
-        up to date: it maintains the archive. Every show, every character, every actor gets
-        a proper page — and those pages are the actual product. Articles keep things fresh;
-        the reference pages are what people come back to.
+        We do two things. First, we keep a genuine <strong>reference archive</strong> — a
+        proper, maintained page for every show, character and actor, complete with portrayal
+        timelines and family connections. Second, we publish <strong>original writing</strong>:
+        weekly spoilers, cast news, character guides and features, written in our own words.
+        The archive is what people come back to; the articles keep it fresh.
       </p>
 
-      <h2>How it is organised</h2>
+      <h2>Who runs it</h2>
       <p>
-        Every article lives in exactly one section — <a href="/section/soaps/">Soaps</a>,
-        <a href="/section/tv-and-film/">TV &amp; Film</a>,
-        <a href="/section/celebrities/">Celebrities</a> or
-        <a href="/section/news/">News</a> — so sections never compete with each other in
-        search. Cross-cutting types of piece, like spoilers, cast changes and guides, get
-        their own listings without becoming rival sections.
-      </p>
-      <p>
-        Articles never link to each other. They point at entities — shows, characters and
-        people — and all the cross-linking you see falls out of that automatically. An
-        actor's roles are read straight from the portrayal records on the characters they
-        have played, so nothing is maintained twice.
+        TV Tattler is an independent publication, written and maintained by
+        <strong>Shaun Russett</strong> with a small editorial team. It is not affiliated with
+        the BBC, ITV, Channel 4, or any broadcaster or production company. Show, character and
+        cast names are used for reference and commentary only.
       </p>
 
-      <h2>Accuracy</h2>
+      <h2>Our editorial standards</h2>
+      <ul class="standards">
+        <li><strong>Facts first.</strong> Reference pages are only worth keeping if they are right, so we check what we publish and flag anything uncertain rather than guess.</li>
+        <li><strong>Our own words.</strong> We write our articles ourselves. When we cover a spoiler or story another outlet has reported, we credit and link to them under Sources &mdash; we never copy their text.</li>
+        <li><strong>Spoilers are signposted.</strong> Spoiler articles carry a clear warning so you can choose whether to read on.</li>
+        <li><strong>Editorial reviewing.</strong> Pages are compiled from public reference data and reviewed by our editors before they go live.</li>
+      </ul>
+
+      <h2>Corrections &amp; feedback</h2>
       <p>
-        Reference pages are only worth keeping if they are right. Where a fact is uncertain
-        it is checked before it goes in, and corrections are welcome. If you spot something
-        wrong or out of date, please say so.
+        We want the archive to be accurate. If you spot something wrong, out of date, or
+        missing, please tell us at
+        <a href="mailto:editor@tvtattler.com">editor@tvtattler.com</a> and we&rsquo;ll review
+        and fix it promptly. Tips and suggestions are welcome too.
+      </p>
+
+      <h2>Advertising</h2>
+      <p>
+        TV Tattler is free to read and supported by advertising, which lets us keep it that
+        way. Ads are clearly separated from our editorial content and never influence what we
+        write. For how advertising cookies work and the choices you have, see our
+        <a href="/privacy/">privacy &amp; cookies policy</a>.
       </p>
 
       <h2>Where our information comes from</h2>
       <p>
-        Our reference facts are our own, checked and written up here. Some open data
-        helps keep the automatic pages fresh, and we credit it as those sources ask:
+        Our facts and articles are our own, checked and written up here. Some open data helps
+        keep the automatic pages fresh, and we credit it as those sources ask:
       </p>
       <ul class="credits">
         <li>
@@ -74,8 +84,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <h2>Contact</h2>
       <p>
-        <!-- Placeholder address — replace with your real contact before launch. -->
-        Corrections, tips and questions: <a href="mailto:editor@tvtattler.com">editor@tvtattler.com</a>.
+        Corrections, tips, advertising and general enquiries:
+        <a href="mailto:editor@tvtattler.com">editor@tvtattler.com</a>. You can also read our
+        <a href="/privacy/">privacy &amp; cookies policy</a>.
       </p>
     </div>
   </article>
@@ -110,5 +121,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page__body a {
     text-decoration-color: var(--live);
     text-decoration-thickness: 2px;
+  }
+  .page__body :global(ul.standards),
+  .page__body :global(ul.credits) {
+    max-width: var(--measure);
+    padding-left: 1.1rem;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .page__body :global(ul.standards li),
+  .page__body :global(ul.credits li) {
+    color: var(--ink-80);
   }
 </style>
