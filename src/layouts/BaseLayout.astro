@@ -14,9 +14,11 @@ interface Props {
   /** Optional social-share image path (absolute path from site root). Defaults
    *  to the branded 1200x630 card so every shared link previews cleanly. */
   image?: string;
+  /** Keep this page out of search indexes (thin utility pages like search). */
+  noindex?: boolean;
 }
 
-const { title, description, accent, image } = Astro.props;
+const { title, description, accent, image, noindex } = Astro.props;
 const fullTitle = title === 'TV Tattler' ? title : `${title} — TV Tattler`;
 const currentPath = Astro.url.pathname;
 const shows = await getShows();
@@ -57,6 +59,7 @@ const primaryNav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />
     {description && <meta property="og:description" content={description} />}
