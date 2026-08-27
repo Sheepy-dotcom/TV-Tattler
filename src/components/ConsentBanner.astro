@@ -3,7 +3,7 @@
 //
 // Renders only when ads are configured. Consent defaults to "denied" (set in the
 // layout head), so no personalised-ad cookies are set until the visitor agrees.
-// "Accept" grants; "Reject" keeps non-personalised ads (allowed under consent
+// "Accept all" grants; "Reject" keeps non-personalised ads (allowed under consent
 // mode). The choice is remembered in localStorage.
 //
 // NOTE ON COMPLIANCE: for fully-compliant personalised ads to UK/EEA visitors,
@@ -16,48 +16,60 @@ import { adsEnabled } from '../config/site';
 
 {
   adsEnabled && (
-    <div id="consent" class="consent" role="dialog" aria-label="Cookie consent" hidden>
-      <p class="consent__text">
-        We use cookies to run ads that keep TV Tattler free. Accept to allow
-        personalised ads, or reject for non-personalised ones. See our{' '}
-        <a href="/privacy/">privacy&nbsp;policy</a>.
-      </p>
-      <div class="consent__actions">
-        <button type="button" class="consent__btn consent__btn--ghost" data-consent="deny">
-          Reject
-        </button>
-        <button type="button" class="consent__btn" data-consent="grant">
-          Accept
-        </button>
+    <Fragment>
+      <div id="consent" class="consent" role="dialog" aria-label="Cookie consent" hidden>
+        <p class="consent__text">
+          <strong>We value your privacy.</strong> TV&nbsp;Tattler uses cookies to show ads,
+          which keep the site free to read. Choose <em>Accept all</em> for personalised ads,
+          or <em>Reject</em> to see non-personalised ones instead. You can change your choice
+          any time &mdash; see our <a href="/privacy/">Privacy&nbsp;&amp;&nbsp;Cookies policy</a>.
+        </p>
+        <div class="consent__actions">
+          <button type="button" class="consent__btn consent__btn--ghost" data-consent="deny">
+            Reject
+          </button>
+          <button type="button" class="consent__btn" data-consent="grant">
+            Accept all
+          </button>
+        </div>
       </div>
-    </div>
 
-    <script is:inline>
-      (function () {
-        var KEY = 'ttl-consent';
-        var el = document.getElementById('consent');
-        if (!el) return;
-        function gtag() { window.dataLayer = window.dataLayer || []; window.dataLayer.push(arguments); }
-        var stored = null;
-        try { stored = localStorage.getItem(KEY); } catch (e) {}
-        if (!stored) el.hidden = false;
-        el.addEventListener('click', function (e) {
-          var t = e.target;
-          if (!(t instanceof HTMLElement)) return;
-          var choice = t.getAttribute('data-consent');
-          if (!choice) return;
-          var granted = choice === 'grant';
-          gtag('consent', 'update', {
-            ad_storage: granted ? 'granted' : 'denied',
-            ad_user_data: granted ? 'granted' : 'denied',
-            ad_personalization: granted ? 'granted' : 'denied',
-            analytics_storage: granted ? 'granted' : 'denied',
-          });
-          try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
-          el.hidden = true;
-        });
-      })();
-    </script>
+      <script is:inline>
+        (function () {
+          var KEY = 'ttl-consent';
+          function gtag() { window.dataLayer = window.dataLayer || []; window.dataLayer.push(arguments); }
+          function init() {
+            var el = document.getElementById('consent');
+            if (!el) return;
+            var stored = null;
+            try { stored = localStorage.getItem(KEY); } catch (e) {}
+            if (!stored) el.hidden = false;
+            var btns = el.querySelectorAll('[data-consent]');
+            for (var i = 0; i < btns.length; i++) {
+              btns[i].addEventListener('click', function () {
+                var granted = this.getAttribute('data-consent') === 'grant';
+                var state = granted ? 'granted' : 'denied';
+                try {
+                  gtag('consent', 'update', {
+                    ad_storage: state,
+                    ad_user_data: state,
+                    ad_personalization: state,
+                    analytics_storage: state,
+                  });
+                } catch (e) {}
+                try { localStorage.setItem(KEY, state); } catch (e) {}
+                el.hidden = true;
+              });
+            }
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+          } else {
+            init();
+          }
+        })();
+      </script>
+    </Fragment>
   )
 }
 
@@ -67,8 +79,8 @@ import { adsEnabled } from '../config/site';
     left: 50%;
     bottom: 1rem;
     transform: translateX(-50%);
-    width: min(38rem, calc(100vw - 2rem));
-    z-index: 1000;
+    width: min(40rem, calc(100vw - 2rem));
+    z-index: 2147483647;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -81,9 +93,9 @@ import { adsEnabled } from '../config/site';
   }
   .consent__text {
     margin: 0;
-    flex: 1 1 16rem;
+    flex: 1 1 18rem;
     font-size: 0.85rem;
-    line-height: 1.45;
+    line-height: 1.5;
   }
   .consent__text a {
     color: #fff;
@@ -97,11 +109,12 @@ import { adsEnabled } from '../config/site';
   .consent__btn {
     border: 0;
     cursor: pointer;
-    padding: 0.55rem 1.1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 999px;
-    font: 700 0.8rem/1 var(--font-display, sans-serif);
+    font: 700 0.85rem/1 var(--font-display, sans-serif);
     background: var(--live);
     color: #fff;
+    white-space: nowrap;
   }
   .consent__btn--ghost {
     background: transparent;
