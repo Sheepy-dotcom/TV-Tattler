@@ -70,10 +70,7 @@ const siblings = (await charactersForShow(data.show.id))
         timeline.bands.length > 0 ? (
           <PortrayalTimeline timeline={timeline} accent={accent} />
         ) : (
-          <p class="muted">
-            No portrayals recorded yet. Add a <code>portrayals</code> entry — one row
-            per stint — to draw the timeline.
-          </p>
+          <p class="muted">Casting details for {data.name} are being added.</p>
         )
       }
     </section>
@@ -95,14 +92,14 @@ const siblings = (await charactersForShow(data.show.id))
       )
     }
 
-    <section class="character__section" aria-labelledby="coverage-heading">
-      <h2 id="coverage-heading" class="character__h2">Coverage</h2>
-      <ArticleGrid
-        articles={articles}
-        columns={2}
-        emptyMessage={`No articles reference ${data.name} yet. Add ${character.id} to an article's characters: list.`}
-      />
-    </section>
+    {
+      articles.length > 0 && (
+        <section class="character__section" aria-labelledby="coverage-heading">
+          <h2 id="coverage-heading" class="character__h2">Coverage</h2>
+          <ArticleGrid articles={articles} columns={2} />
+        </section>
+      )
+    }
     </article>
     <Sidebar>
       {

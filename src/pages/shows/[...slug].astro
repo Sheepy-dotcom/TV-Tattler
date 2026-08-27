@@ -149,10 +149,7 @@ const suggestion = pendingImageSuggestion(imageInput);
       <h2 id="cast-heading" class="show__h2">Characters</h2>
       {
         sortedCast.length === 0 ? (
-          <p class="muted">
-            No characters logged yet. Add a file to <code>src/content/characters/</code>
-            with <code>show: {show.id}</code> to build the cast list.
-          </p>
+          <p class="muted">Cast details for {data.title} are being added.</p>
         ) : (
           <ul class="cast">
             {sortedCast.map((entry) => (
@@ -178,28 +175,23 @@ const suggestion = pendingImageSuggestion(imageInput);
       }
     </section>
 
-    <section class="show__section" aria-labelledby="coverage-heading">
-      <h2 id="coverage-heading" class="show__h2">Coverage</h2>
-      <ArticleGrid
-        articles={coverage}
-        columns={3}
-        emptyMessage={`No articles reference ${data.title} yet. Add ${show.id} to an article's shows: list to wire it up.`}
-      />
-    </section>
+    {
+      coverage.length > 0 && (
+        <section class="show__section" aria-labelledby="coverage-heading">
+          <h2 id="coverage-heading" class="show__h2">Coverage</h2>
+          <ArticleGrid articles={coverage} columns={3} />
+        </section>
+      )
+    }
 
-    <section class="show__section" aria-labelledby="castchange-heading">
-      <h2 id="castchange-heading" class="show__h2">Cast changes</h2>
-      {
-        castChanges.length === 0 ? (
-          <p class="muted">
-            No cast changes logged. Publish an article with <code>kind: cast-change</code>
-            that references {data.title} and it will collect here.
-          </p>
-        ) : (
+    {
+      castChanges.length > 0 && (
+        <section class="show__section" aria-labelledby="castchange-heading">
+          <h2 id="castchange-heading" class="show__h2">Cast changes</h2>
           <ArticleGrid articles={castChanges} columns={3} />
-        )
-      }
-    </section>
+        </section>
+      )
+    }
 
     {
       hasLinks && (
