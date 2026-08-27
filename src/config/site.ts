@@ -22,8 +22,9 @@ export const site = {
   name: 'TV Tattler',
 
   // --- Advertising (Google AdSense) ---
-  // The publisher ID. Empty string = ads not configured yet → placeholders show.
-  adsenseClient: (env.PUBLIC_ADSENSE_CLIENT ?? '').trim(),
+  // The publisher ID (public — it ships in every page). This loads the AdSense
+  // script Google needs to verify and serve ads; override via PUBLIC_ADSENSE_CLIENT.
+  adsenseClient: (env.PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-6530729317099475').trim(),
 
   // --- Newsletter (Mailchimp) ---
   mailchimp: {
