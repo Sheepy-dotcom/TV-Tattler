@@ -91,7 +91,10 @@ const spoilerFor =
     {
       heroSrc && (
         <figure class:list={['article__figure', { 'article__figure--photo': !!photo }]}>
-          <img src={heroSrc} alt={heroAlt} />
+          <div class="article__figure-frame">
+            {photo && <img class="article__figure-bg" src={heroSrc} alt="" aria-hidden="true" />}
+            <img class="article__figure-img" src={heroSrc} alt={heroAlt} />
+          </div>
           {heroCredit && (
             <figcaption class="mono">
               {heroCreditUrl ? <a href={heroCreditUrl} rel="external">{heroCredit}</a> : heroCredit}
@@ -268,28 +271,40 @@ const spoilerFor =
   .article__figure {
     margin: 0 0 var(--space-5);
   }
-  .article__figure img {
+  .article__figure-frame {
+    position: relative;
     width: 100%;
-    /* Designed landscape SVG covers fill the banner. */
     aspect-ratio: 3 / 2;
-    object-fit: cover;
-    object-position: center;
+    overflow: hidden;
     border-radius: var(--radius);
     border: 1px solid var(--line);
     background: var(--paper);
   }
-  /* Real portrait photos: show the WHOLE image (no crop, faces never cut) on a
-     branded panel in the page accent, filling the letterbox. */
-  .article__figure--photo img {
+  .article__figure-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* Designed landscape SVG covers fill the banner. */
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+  }
+  /* Real portrait photos: show the WHOLE image (no crop, faces never cut), with a
+     blurred copy of the same image filling the banner behind it. */
+  .article__figure--photo .article__figure-img {
     object-fit: contain;
-    background:
-      radial-gradient(120% 140% at 85% 15%, rgba(255, 255, 255, 0.16), transparent 60%),
-      linear-gradient(
-        150deg,
-        color-mix(in srgb, var(--accent, var(--ink)) 80%, white) 0%,
-        var(--accent, var(--ink)) 48%,
-        color-mix(in srgb, var(--accent, var(--ink)) 58%, black) 100%
-      );
+  }
+  .article__figure-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.15);
+    filter: blur(24px) saturate(1.15) brightness(0.82);
+    z-index: 0;
   }
   .article__figure figcaption {
     color: var(--ink-40);
