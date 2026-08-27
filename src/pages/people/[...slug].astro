@@ -110,13 +110,9 @@ const suggestion = pendingImageSuggestion(imageInput);
 
     <section class="person__section" aria-labelledby="roles-heading">
       <h2 id="roles-heading" class="person__h2">Roles</h2>
-      <p class="person__note mono">Derived from every character's portrayal record.</p>
       {
         roles.length === 0 ? (
-          <p class="muted">
-            No roles yet. Add this person to a character's <code>portrayals</code> and the
-            role appears here automatically — no filmography to maintain by hand.
-          </p>
+          <p class="muted">Role details for {data.name} are being added.</p>
         ) : (
           <ul class="roles">
             {roles.map((role) => (
@@ -141,14 +137,14 @@ const suggestion = pendingImageSuggestion(imageInput);
       }
     </section>
 
-    <section class="person__section" aria-labelledby="coverage-heading">
-      <h2 id="coverage-heading" class="person__h2">Coverage</h2>
-      <ArticleGrid
-        articles={articles}
-        columns={2}
-        emptyMessage={`No articles reference ${data.name} yet. Add ${person.id} to an article's people: list.`}
-      />
-    </section>
+    {
+      articles.length > 0 && (
+        <section class="person__section" aria-labelledby="coverage-heading">
+          <h2 id="coverage-heading" class="person__h2">Coverage</h2>
+          <ArticleGrid articles={articles} columns={2} />
+        </section>
+      )
+    }
 
     {
       hasLinks && (
