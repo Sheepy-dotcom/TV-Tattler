@@ -4,7 +4,6 @@ import { SECTIONS } from '../content.config';
 import { sectionLabel } from '../lib/format';
 import { getShows } from '../lib/relations';
 import { site, adsEnabled, mailchimpConnected } from '../config/site';
-import ConsentBanner from '../components/ConsentBanner.astro';
 
 interface Props {
   title: string;
@@ -102,8 +101,9 @@ const primaryNav = [
           {/* AdSense site-verification meta tag — the most reliable way for the
               AdSense crawler to confirm ownership. */}
           <meta name="google-adsense-account" content={site.adsenseClient} />
-          {/* Google Consent Mode v2 — deny by default until the visitor chooses
-              (see ConsentBanner). Complements any certified CMP you enable. */}
+          {/* Google Consent Mode v2 — deny by default until the visitor chooses.
+              Google's certified CMP (enabled in AdSense) shows the consent message
+              and updates these signals on the visitor's choice. */}
           <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
@@ -260,8 +260,6 @@ const primaryNav = [
         </div>
       </div>
     </footer>
-
-    <ConsentBanner />
 
     <style>
       /* ---- Brand ribbon -------------------------------------------------- */
