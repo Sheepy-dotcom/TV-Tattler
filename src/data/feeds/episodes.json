@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T21:35:29.639Z",
+  "generatedAt": "2026-08-28T08:32:00.917Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 137,
-          "name": "27/08/2026",
-          "airdate": "2026-08-27",
-          "airtime": "06:00",
-          "summary": "Alfie's surprise soon turns to chaos. Suki is fuming and takes matters into her own hands. Priya and Ravi consider what the future might hold.",
-          "url": "https://www.tvmaze.com/episodes/3697771/eastenders-2026-08-27-27082026"
-        },
         {
           "season": 2026,
           "number": 138,
@@ -102,15 +93,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 157,
-          "name": "Thursday 27th August",
-          "airdate": "2026-08-27",
-          "airtime": "07:00",
-          "summary": "A wave of shock and horror passes through the village, while Graham continues trying to free himself.",
-          "url": "https://www.tvmaze.com/episodes/3706821/emmerdale-55x157-thursday-27th-august"
-        },
         {
           "season": 55,
           "number": 158,
