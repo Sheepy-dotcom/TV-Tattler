@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T20:23:12.854Z",
+  "generatedAt": "2026-08-31T02:57:56.160Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -93,15 +93,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 159,
-          "name": "Sunday 30th August",
-          "airdate": "2026-08-30",
-          "airtime": "07:00",
-          "summary": "DS Ramsden is suspicious, while Gabby is overwhelmed and Caleb and Ruby are left rattled.",
-          "url": "https://www.tvmaze.com/episodes/3706823/emmerdale-55x159-sunday-30th-august"
-        },
         {
           "season": 55,
           "number": 160,
