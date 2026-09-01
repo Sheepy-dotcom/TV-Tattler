@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T22:17:03.840Z",
+  "generatedAt": "2026-09-01T03:05:07.970Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 138,
-          "name": "31/08/2026",
-          "airdate": "2026-08-31",
-          "airtime": "06:00",
-          "summary": "Nicola gets a shock when the Hawkinses arrive in Walford. Wedding fever sweeps Walford ahead of Cindy and Kim's big days. And Priya wrestles with her guilt.",
-          "url": "https://www.tvmaze.com/episodes/3716731/eastenders-2026-08-31-31082026"
-        },
         {
           "season": 2026,
           "number": 139,
@@ -95,15 +86,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 160,
-          "name": "Monday 31st August",
-          "airdate": "2026-08-31",
-          "airtime": "07:00",
-          "summary": "Serena is taken aback, while DS Ramsden announces her plan and Gabby is unable to cope.",
-          "url": "https://www.tvmaze.com/episodes/3706824/emmerdale-55x160-monday-31st-august"
-        },
-        {
-          "season": 55,
           "number": 161,
           "name": "Tuesday 1st September",
           "airdate": "2026-09-01",
@@ -145,15 +127,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 103,
-          "name": "Mon 31 Aug 2026",
-          "airdate": "2026-08-31",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3665846/hollyoaks-32x103-mon-31-aug-2026"
-        },
         {
           "season": 32,
           "number": 104,
