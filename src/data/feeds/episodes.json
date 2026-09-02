@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T20:23:41.262Z",
+  "generatedAt": "2026-09-02T02:25:38.313Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 139,
-          "name": "01/09/2026",
-          "airdate": "2026-09-01",
-          "airtime": "06:00",
-          "summary": "The Hawkinses make their presence known in Albert Square. Ravi pushes Priya for information about what happened whilst he was away.",
-          "url": "https://www.tvmaze.com/episodes/3716732/eastenders-2026-09-01-01092026"
-        },
         {
           "season": 2026,
           "number": 140,
@@ -86,15 +77,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 161,
-          "name": "Tuesday 1st September",
-          "airdate": "2026-09-01",
-          "airtime": "07:00",
-          "summary": "DS Ramsden is relishing her job, while a flashback reveals more and Nicola has a breakthrough.",
-          "url": "https://www.tvmaze.com/episodes/3706825/emmerdale-55x161-tuesday-1st-september"
-        },
-        {
-          "season": 55,
           "number": 162,
           "name": "Wednesday 2nd September",
           "airdate": "2026-09-02",
@@ -127,15 +109,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 104,
-          "name": "Tue 1 Sep 2026",
-          "airdate": "2026-09-01",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3665847/hollyoaks-32x104-tue-1-sep-2026"
-        },
         {
           "season": 32,
           "number": 105,
