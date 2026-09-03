@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T02:32:04.309Z",
+  "generatedAt": "2026-09-03T10:32:19.141Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -52,6 +52,42 @@
           "airtime": "06:00",
           "summary": "Emotions remain at an all-time-high in Walford. Alfie encourages Kat to make amends with Zoe.",
           "url": "https://www.tvmaze.com/episodes/3716738/eastenders-2026-09-10-10092026"
+        },
+        {
+          "season": 2026,
+          "number": 146,
+          "name": "14/09/2026",
+          "airdate": "2026-09-14",
+          "airtime": "06:00",
+          "summary": "Kat is devastated by what she discovers.",
+          "url": "https://www.tvmaze.com/episodes/3724662/eastenders-2026-09-14-14092026"
+        },
+        {
+          "season": 2026,
+          "number": 147,
+          "name": "15/09/2026",
+          "airdate": "2026-09-15",
+          "airtime": "06:00",
+          "summary": "Kat tries to make sense of a situation. The events of last week's weddings continue to affect those involved.",
+          "url": "https://www.tvmaze.com/episodes/3724664/eastenders-2026-09-15-15092026"
+        },
+        {
+          "season": 2026,
+          "number": 148,
+          "name": "16/09/2026",
+          "airdate": "2026-09-16",
+          "airtime": "06:00",
+          "summary": "Vinny's 30th birthday party is derailed. Patrick asks Oscar for a favour.",
+          "url": "https://www.tvmaze.com/episodes/3724665/eastenders-2026-09-16-16092026"
+        },
+        {
+          "season": 2026,
+          "number": 149,
+          "name": "17/09/2026",
+          "airdate": "2026-09-17",
+          "airtime": "06:00",
+          "summary": "Kat makes a discovery. Oscar is torn between his head and his heart. And the Brannings and the Panesars come together for Penny and Vinny.",
+          "url": "https://www.tvmaze.com/episodes/3724666/eastenders-2026-09-17-17092026"
         }
       ]
     },
