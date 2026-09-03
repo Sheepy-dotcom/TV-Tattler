@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T20:23:43.287Z",
+  "generatedAt": "2026-09-03T02:32:04.309Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 140,
-          "name": "02/09/2026",
-          "airdate": "2026-09-02",
-          "airtime": "06:00",
-          "summary": "Nicola has a change of heart and offers an olive branch. Ravi's suspicions make him determined to find the truth. A power cut threatens Linda's event at the community centre.",
-          "url": "https://www.tvmaze.com/episodes/3716733/eastenders-2026-09-02-02092026"
-        },
         {
           "season": 2026,
           "number": 141,
@@ -77,15 +68,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 162,
-          "name": "Wednesday 2nd September",
-          "airdate": "2026-09-02",
-          "airtime": "07:00",
-          "summary": "An arrival shocks the villagers, while something is weighing heavily on Gabby's mind and Vinny tells Kev his plan.",
-          "url": "https://www.tvmaze.com/episodes/3706826/emmerdale-55x162-wednesday-2nd-september"
-        },
-        {
-          "season": 55,
           "number": 163,
           "name": "Thursday 3rd September",
           "airdate": "2026-09-03",
@@ -109,15 +91,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 105,
-          "name": "Wed 2 Sep 2026",
-          "airdate": "2026-09-02",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3665849/hollyoaks-32x105-wed-2-sep-2026"
-        },
         {
           "season": 32,
           "number": 106,
