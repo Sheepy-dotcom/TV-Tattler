@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T20:23:25.381Z",
+  "generatedAt": "2026-09-04T02:30:29.148Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 141,
-          "name": "03/09/2026",
-          "airdate": "2026-09-03",
-          "airtime": "06:00",
-          "summary": "The men of Walford gather in Harry's Barn for Max and Howie's stag party. Linda is forced to decide between her head and her heart. And Max attempts to talk his way out of a situation, but will it be enough?",
-          "url": "https://www.tvmaze.com/episodes/3716734/eastenders-2026-09-03-03092026"
-        },
         {
           "season": 2026,
           "number": 142,
@@ -95,22 +86,32 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 67,
+          "number": 164,
+          "name": "Fri 4th Sept",
+          "airdate": "2026-09-04",
+          "airtime": "07:00",
+          "summary": "Shona leaves Harper unattended in the car, Jodie invites Kit to Number 8 for a rematch, Lauren drags a reluctant Betsy to the bistro, and the Websters plan Debbie's birthday party.",
+          "url": "https://www.tvmaze.com/episodes/3725312/coronation-street-67x164-fri-4th-sept"
+        },
+        {
+          "season": 67,
+          "number": 165,
+          "name": "Mon 7th Sept",
+          "airdate": "2026-09-07",
+          "airtime": "07:00",
+          "summary": "Kit regrets a night of passion, but a devastating diagnosis soon gives him more important matters to fret about, and Debbie pays tribute to Ronnie during her birthday celebrations.",
+          "url": "https://www.tvmaze.com/episodes/3725313/coronation-street-67x165-mon-7th-sept"
+        }
+      ]
     },
     {
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 163,
-          "name": "Thursday 3rd September",
-          "airdate": "2026-09-03",
-          "airtime": "07:00",
-          "summary": "Bear talks to Sarah, while Nicola is mortified and Kim is concerned.",
-          "url": "https://www.tvmaze.com/episodes/3709631/emmerdale-55x163-thursday-3rd-september"
-        },
         {
           "season": 55,
           "number": 164,
