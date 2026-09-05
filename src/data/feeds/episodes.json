@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T20:08:58.070Z",
+  "generatedAt": "2026-09-05T02:29:04.656Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -89,15 +89,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 164,
-          "name": "Fri 4th Sept",
-          "airdate": "2026-09-04",
-          "airtime": "07:00",
-          "summary": "Shona leaves Harper unattended in the car, Jodie invites Kit to Number 8 for a rematch, Lauren drags a reluctant Betsy to the bistro, and the Websters plan Debbie's birthday party.",
-          "url": "https://www.tvmaze.com/episodes/3725312/coronation-street-67x164-fri-4th-sept"
-        },
-        {
-          "season": 67,
           "number": 165,
           "name": "Mon 7th Sept",
           "airdate": "2026-09-07",
@@ -111,17 +102,7 @@
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": [
-        {
-          "season": 55,
-          "number": 164,
-          "name": "Friday 4th September",
-          "airdate": "2026-09-04",
-          "airtime": "07:00",
-          "summary": "Sarah is left wracked with guilt, while Serena is alarmed and Vinny is scared to think Kev might have overheard him.",
-          "url": "https://www.tvmaze.com/episodes/3709632/emmerdale-55x164-friday-4th-september"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "hollyoaks",
