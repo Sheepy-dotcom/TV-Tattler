@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T20:59:49.125Z",
+  "generatedAt": "2026-09-08T02:34:56.873Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 142,
-          "name": "07/09/2026",
-          "airdate": "2026-09-07",
-          "airtime": "06:00",
-          "summary": "It's the day of Cindy and Max's, and Kim and Howie's weddings. Zoe encourages Tommy to open up.",
-          "url": "https://www.tvmaze.com/episodes/3716735/eastenders-2026-09-07-07092026"
-        },
         {
           "season": 2026,
           "number": 143,
@@ -89,12 +80,30 @@
       "episodes": [
         {
           "season": 67,
-          "number": 165,
-          "name": "Mon 7th Sept",
-          "airdate": "2026-09-07",
+          "number": 166,
+          "name": "Wed 9th Sept",
+          "airdate": "2026-09-09",
           "airtime": "07:00",
-          "summary": "Kit regrets a night of passion, but a devastating diagnosis soon gives him more important matters to fret about, and Debbie pays tribute to Ronnie during her birthday celebrations.",
-          "url": "https://www.tvmaze.com/episodes/3725313/coronation-street-67x165-mon-7th-sept"
+          "summary": "Kit's rejection incites Jodie to sneak into his empty flat, Sally alerts Carla to an opportunity for Betsy, and Lucy shocks Tim by refusing to attend her mum's funeral.",
+          "url": "https://www.tvmaze.com/episodes/3745297/coronation-street-67x166-wed-9th-sept"
+        },
+        {
+          "season": 67,
+          "number": 167,
+          "name": "Thu 10th Sept",
+          "airdate": "2026-09-10",
+          "airtime": "07:00",
+          "summary": "Bethany questions Jodie's motive for visiting Sarah, Lucy explains her change of heart, Todd urges Kit to share his worries with his family, and Carla helps Betsy with her application.",
+          "url": "https://www.tvmaze.com/episodes/3745298/coronation-street-67x167-thu-10th-sept"
+        },
+        {
+          "season": 67,
+          "number": 168,
+          "name": "Fri 11th Sept",
+          "airdate": "2026-09-11",
+          "airtime": "07:00",
+          "summary": "Shona is taken aback by the arrival of her father in search of reconciliation, Lucy's antics create stress for Sally, and Betsy panics upon experiencing familiar symptoms.",
+          "url": "https://www.tvmaze.com/episodes/3745299/coronation-street-67x168-fri-11th-sept"
         }
       ]
     },
@@ -102,22 +111,41 @@
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 55,
+          "number": 166,
+          "name": "Wed 9th Sept",
+          "airdate": "2026-09-09",
+          "airtime": "07:00",
+          "summary": "Charity fears she has run out of options, while Robert feigns a truce and Nicola has financial anxiety.",
+          "url": "https://www.tvmaze.com/episodes/3745301/emmerdale-55x166-wed-9th-sept"
+        },
+        {
+          "season": 55,
+          "number": 167,
+          "name": "Thu 10th Sept",
+          "airdate": "2026-09-10",
+          "airtime": "07:00",
+          "summary": "Charity assigns a specific task to Mack, while Nicola's search uncovers deeper financial ruin and Joe makes a decision about his son's future.",
+          "url": "https://www.tvmaze.com/episodes/3745302/emmerdale-55x167-thu-10th-sept"
+        },
+        {
+          "season": 55,
+          "number": 168,
+          "name": "Fri 11th Sept",
+          "airdate": "2026-09-11",
+          "airtime": "07:00",
+          "summary": "Charity shocks Cain, while Nicola continues to struggle and Joe wrestles with grief.",
+          "url": "https://www.tvmaze.com/episodes/3745303/emmerdale-55x168-fri-11th-sept"
+        }
+      ]
     },
     {
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 106,
-          "name": "Mon 7 Sep 2026",
-          "airdate": "2026-09-07",
-          "airtime": "07:00",
-          "summary": "News about a resident's disappearance spreads through the village as friends and family desperately seek answers. Elsewhere, a father is troubled.",
-          "url": "https://www.tvmaze.com/episodes/3665850/hollyoaks-32x106-mon-7-sep-2026"
-        },
         {
           "season": 32,
           "number": 107,
