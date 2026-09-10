@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T02:37:51.360Z",
+  "generatedAt": "2026-09-10T10:23:57.440Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -52,6 +52,42 @@
           "airtime": "06:00",
           "summary": "Kat makes a discovery. Oscar is torn between his head and his heart. And the Brannings and the Panesars come together for Penny and Vinny.",
           "url": "https://www.tvmaze.com/episodes/3724666/eastenders-2026-09-17-17092026"
+        },
+        {
+          "season": 2026,
+          "number": 150,
+          "name": "21/09/2026",
+          "airdate": "2026-09-21",
+          "airtime": "06:00",
+          "summary": "There's an unexpected homecoming on Albert Square. Priya's world comes crashing down. Kat sparks concern from those around her.",
+          "url": "https://www.tvmaze.com/episodes/3754607/eastenders-2026-09-21-21092026"
+        },
+        {
+          "season": 2026,
+          "number": 151,
+          "name": "22/09/2026",
+          "airdate": "2026-09-22",
+          "airtime": "06:00",
+          "summary": "Cindy vows revenge. Eve attempts to reunite the Panesars.",
+          "url": "https://www.tvmaze.com/episodes/3754608/eastenders-2026-09-22-22092026"
+        },
+        {
+          "season": 2026,
+          "number": 152,
+          "name": "23/09/2026",
+          "airdate": "2026-09-23",
+          "airtime": "06:00",
+          "summary": "Lauren's day takes an unexpected turn. Cindy makes yet another enemy on the Square. A row breaks out during Harvey's birthday celebrations.",
+          "url": "https://www.tvmaze.com/episodes/3754609/eastenders-2026-09-23-23092026"
+        },
+        {
+          "season": 2026,
+          "number": 153,
+          "name": "24/09/2026",
+          "airdate": "2026-09-24",
+          "airtime": "06:00",
+          "summary": "Lauren faces an impossible choice. Jack struggles to keep his frustrations under control. Ned searches for a solution to the Hawkins family's financial troubles.",
+          "url": "https://www.tvmaze.com/episodes/3754610/eastenders-2026-09-24-24092026"
         }
       ]
     },
