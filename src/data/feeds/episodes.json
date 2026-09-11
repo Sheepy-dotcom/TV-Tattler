@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T20:19:14.370Z",
+  "generatedAt": "2026-09-11T02:31:24.070Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 145,
-          "name": "10/09/2026",
-          "airdate": "2026-09-10",
-          "airtime": "06:00",
-          "summary": "Emotions remain at an all-time-high in Walford. Alfie encourages Kat to make amends with Zoe.",
-          "url": "https://www.tvmaze.com/episodes/3716738/eastenders-2026-09-10-10092026"
-        },
         {
           "season": 2026,
           "number": 146,
@@ -98,15 +89,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 167,
-          "name": "Thu 10th Sept",
-          "airdate": "2026-09-10",
-          "airtime": "07:00",
-          "summary": "Bethany questions Jodie's motive for visiting Sarah, Lucy explains her change of heart, Todd urges Kit to share his worries with his family, and Carla helps Betsy with her application.",
-          "url": "https://www.tvmaze.com/episodes/3745298/coronation-street-67x167-thu-10th-sept"
-        },
-        {
-          "season": 67,
           "number": 168,
           "name": "Fri 11th Sept",
           "airdate": "2026-09-11",
@@ -123,15 +105,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 167,
-          "name": "Thu 10th Sept",
-          "airdate": "2026-09-10",
-          "airtime": "07:00",
-          "summary": "Charity assigns a specific task to Mack, while Nicola's search uncovers deeper financial ruin and Joe makes a decision about his son's future.",
-          "url": "https://www.tvmaze.com/episodes/3745302/emmerdale-55x167-thu-10th-sept"
-        },
-        {
-          "season": 55,
           "number": 168,
           "name": "Fri 11th Sept",
           "airdate": "2026-09-11",
@@ -145,7 +118,35 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 32,
+          "number": 109,
+          "name": "Mon 14 Sep 2026",
+          "airdate": "2026-09-14",
+          "airtime": "07:00",
+          "summary": "Jonah takes his manipulation to the next level when he enforces a lockdown, and the police are handed evidence on Ste's disappearance",
+          "url": "https://www.tvmaze.com/episodes/3757386/hollyoaks-32x109-mon-14-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 110,
+          "name": "Tue 15 Sep 2026",
+          "airdate": "2026-09-15",
+          "airtime": "07:00",
+          "summary": "A comment from Cindy makes Dee Dee suspicious as she begins to put the pieces together. Meanwhile, a pregnancy test is discovered at the McQueens'",
+          "url": "https://www.tvmaze.com/episodes/3757387/hollyoaks-32x110-tue-15-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 111,
+          "name": "Wed 16 Sep 2026",
+          "airdate": "2026-09-16",
+          "airtime": "07:00",
+          "summary": "Theresa is blown away by her daughter's singing talents, and a revealed secret tears a family apart",
+          "url": "https://www.tvmaze.com/episodes/3757388/hollyoaks-32x111-wed-16-sep-2026"
+        }
+      ]
     }
   ]
 }
