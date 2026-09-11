@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T10:25:44.572Z",
+  "generatedAt": "2026-09-11T15:42:22.408Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -106,11 +106,47 @@
         {
           "season": 55,
           "number": 168,
-          "name": "Fri 11th Sept",
+          "name": "Friday 11th September",
           "airdate": "2026-09-11",
           "airtime": "07:00",
           "summary": "Charity shocks Cain, while Nicola continues to struggle and Joe wrestles with grief.",
-          "url": "https://www.tvmaze.com/episodes/3745303/emmerdale-55x168-fri-11th-sept"
+          "url": "https://www.tvmaze.com/episodes/3745303/emmerdale-55x168-friday-11th-september"
+        },
+        {
+          "season": 55,
+          "number": 169,
+          "name": "Monday 14th September",
+          "airdate": "2026-09-14",
+          "airtime": "07:00",
+          "summary": "Charity's prison ordeal intensifies after a lockdown leads to a cell search. Chas demands a family meeting, where she and Mackenzie pressure Sarah to change her statement - leading to a clash with Cain, who is in full support of his granddaughter.",
+          "url": "https://www.tvmaze.com/episodes/3758170/emmerdale-55x169-monday-14th-september"
+        },
+        {
+          "season": 55,
+          "number": 170,
+          "name": "Tuesday 15th September",
+          "airdate": "2026-09-15",
+          "airtime": "07:00",
+          "summary": "Sadie manipulates Nicola, but is visibly shaken when she spots Cain, while Joe insists on a private funeral.",
+          "url": "https://www.tvmaze.com/episodes/3758171/emmerdale-55x170-tuesday-15th-september"
+        },
+        {
+          "season": 55,
+          "number": 171,
+          "name": "Thursday 17th September",
+          "airdate": "2026-09-17",
+          "airtime": "07:00",
+          "summary": "Charles attempts to comfort a grieving Nicola, while Billy confronts Joe about the private funeral plans and Kev makes his opinion known.",
+          "url": "https://www.tvmaze.com/episodes/3758172/emmerdale-55x171-thursday-17th-september"
+        },
+        {
+          "season": 55,
+          "number": 172,
+          "name": "Friday 18th September",
+          "airdate": "2026-09-18",
+          "airtime": "07:00",
+          "summary": "Sadie drops a bombshell and has a hostile run-in with Kim, while Lewis is upset by an answer.",
+          "url": "https://www.tvmaze.com/episodes/3758173/emmerdale-55x172-friday-18th-september"
         }
       ]
     },
