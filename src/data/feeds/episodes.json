@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T20:19:27.342Z",
+  "generatedAt": "2026-09-12T02:40:06.664Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -86,32 +86,13 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": [
-        {
-          "season": 67,
-          "number": 168,
-          "name": "Fri 11th Sept",
-          "airdate": "2026-09-11",
-          "airtime": "07:00",
-          "summary": "Shona is taken aback by the arrival of her father in search of reconciliation, Lucy's antics create stress for Sally, and Betsy panics upon experiencing familiar symptoms.",
-          "url": "https://www.tvmaze.com/episodes/3745299/coronation-street-67x168-fri-11th-sept"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 168,
-          "name": "Friday 11th September",
-          "airdate": "2026-09-11",
-          "airtime": "07:00",
-          "summary": "Charity shocks Cain, while Nicola continues to struggle and Joe wrestles with grief.",
-          "url": "https://www.tvmaze.com/episodes/3745303/emmerdale-55x168-friday-11th-september"
-        },
         {
           "season": 55,
           "number": 169,
