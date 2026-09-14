@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T11:29:38.238Z",
+  "generatedAt": "2026-09-14T17:25:49.541Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -93,8 +93,35 @@
           "name": "Mon 14th Sep",
           "airdate": "2026-09-14",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Shona's downfall proves to be a piece of cake for Jodie, Bethany interrupts Kit with a woman in the flat, Ross weaves a tale to impress Tyrone, and Summer draws attention from a lad in the cafe.",
           "url": "https://www.tvmaze.com/episodes/3763124/coronation-street-67x169-mon-14th-sep"
+        },
+        {
+          "season": 67,
+          "number": 170,
+          "name": "Tue 15th Sep",
+          "airdate": "2026-09-15",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3763143/coronation-street-67x170-tue-15th-sep"
+        },
+        {
+          "season": 67,
+          "number": 171,
+          "name": "Thu 17th Sep",
+          "airdate": "2026-09-17",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3763144/coronation-street-67x171-thu-17th-sep"
+        },
+        {
+          "season": 67,
+          "number": 172,
+          "name": "Fri 18th Sep",
+          "airdate": "2026-09-18",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3763145/coronation-street-67x172-fri-18th-sep"
         }
       ]
     },
