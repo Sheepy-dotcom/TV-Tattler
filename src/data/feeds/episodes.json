@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T02:54:09.374Z",
+  "generatedAt": "2026-09-14T11:29:38.238Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -86,7 +86,17 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 67,
+          "number": 169,
+          "name": "Mon 14th Sep",
+          "airdate": "2026-09-14",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3763124/coronation-street-67x169-mon-14th-sep"
+        }
+      ]
     },
     {
       "slug": "emmerdale",
