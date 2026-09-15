@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T21:17:59.324Z",
+  "generatedAt": "2026-09-15T02:56:32.292Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 146,
-          "name": "14/09/2026",
-          "airdate": "2026-09-14",
-          "airtime": "06:00",
-          "summary": "Kat is devastated by what she discovers.",
-          "url": "https://www.tvmaze.com/episodes/3724662/eastenders-2026-09-14-14092026"
-        },
         {
           "season": 2026,
           "number": 147,
@@ -89,15 +80,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 169,
-          "name": "Mon 14th Sep",
-          "airdate": "2026-09-14",
-          "airtime": "07:00",
-          "summary": "Shona's downfall proves to be a piece of cake for Jodie, Bethany interrupts Kit with a woman in the flat, Ross weaves a tale to impress Tyrone, and Summer draws attention from a lad in the cafe.",
-          "url": "https://www.tvmaze.com/episodes/3763124/coronation-street-67x169-mon-14th-sep"
-        },
-        {
-          "season": 67,
           "number": 170,
           "name": "Tue 15th Sep",
           "airdate": "2026-09-15",
@@ -132,15 +114,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 169,
-          "name": "Monday 14th September",
-          "airdate": "2026-09-14",
-          "airtime": "07:00",
-          "summary": "Charity's prison ordeal intensifies after a lockdown leads to a cell search. Chas demands a family meeting, where she and Mackenzie pressure Sarah to change her statement - leading to a clash with Cain, who is in full support of his granddaughter.",
-          "url": "https://www.tvmaze.com/episodes/3758170/emmerdale-55x169-monday-14th-september"
-        },
-        {
-          "season": 55,
           "number": 170,
           "name": "Tuesday 15th September",
           "airdate": "2026-09-15",
@@ -173,15 +146,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 109,
-          "name": "Mon 14 Sep 2026",
-          "airdate": "2026-09-14",
-          "airtime": "07:00",
-          "summary": "Jonah takes his manipulation to the next level when he enforces a lockdown, and the police are handed evidence on Ste's disappearance",
-          "url": "https://www.tvmaze.com/episodes/3757386/hollyoaks-32x109-mon-14-sep-2026"
-        },
         {
           "season": 32,
           "number": 110,
