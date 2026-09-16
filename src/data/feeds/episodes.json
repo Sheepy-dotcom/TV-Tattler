@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T20:45:22.246Z",
+  "generatedAt": "2026-09-16T02:52:21.889Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 147,
-          "name": "15/09/2026",
-          "airdate": "2026-09-15",
-          "airtime": "06:00",
-          "summary": "Kat tries to make sense of a situation. The events of last week's weddings continue to affect those involved.",
-          "url": "https://www.tvmaze.com/episodes/3724664/eastenders-2026-09-15-15092026"
-        },
         {
           "season": 2026,
           "number": 148,
@@ -80,15 +71,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 170,
-          "name": "Tue 15th Sep",
-          "airdate": "2026-09-15",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3763143/coronation-street-67x170-tue-15th-sep"
-        },
-        {
-          "season": 67,
           "number": 171,
           "name": "Thu 17th Sep",
           "airdate": "2026-09-17",
@@ -114,15 +96,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 170,
-          "name": "Tuesday 15th September",
-          "airdate": "2026-09-15",
-          "airtime": "07:00",
-          "summary": "Sadie manipulates Nicola, but is visibly shaken when she spots Cain, while Joe insists on a private funeral.",
-          "url": "https://www.tvmaze.com/episodes/3758171/emmerdale-55x170-tuesday-15th-september"
-        },
-        {
-          "season": 55,
           "number": 171,
           "name": "Thursday 17th September",
           "airdate": "2026-09-17",
@@ -146,15 +119,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 110,
-          "name": "Tue 15 Sep 2026",
-          "airdate": "2026-09-15",
-          "airtime": "07:00",
-          "summary": "A comment from Cindy makes Dee Dee suspicious as she begins to put the pieces together. Meanwhile, a pregnancy test is discovered at the McQueens'",
-          "url": "https://www.tvmaze.com/episodes/3757387/hollyoaks-32x110-tue-15-sep-2026"
-        },
         {
           "season": 32,
           "number": 111,
