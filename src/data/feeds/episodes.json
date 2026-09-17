@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T20:45:22.360Z",
+  "generatedAt": "2026-09-17T02:56:17.769Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 148,
-          "name": "16/09/2026",
-          "airdate": "2026-09-16",
-          "airtime": "06:00",
-          "summary": "Vinny's 30th birthday party is derailed. Patrick asks Oscar for a favour.",
-          "url": "https://www.tvmaze.com/episodes/3724665/eastenders-2026-09-16-16092026"
-        },
         {
           "season": 2026,
           "number": 149,
@@ -121,12 +112,30 @@
       "episodes": [
         {
           "season": 32,
-          "number": 111,
-          "name": "Wed 16 Sep 2026",
-          "airdate": "2026-09-16",
+          "number": 112,
+          "name": "Mon 21 Sep 2026",
+          "airdate": "2026-09-21",
           "airtime": "07:00",
-          "summary": "Theresa is blown away by her daughter's singing talents, and a revealed secret tears a family apart",
-          "url": "https://www.tvmaze.com/episodes/3757388/hollyoaks-32x111-wed-16-sep-2026"
+          "summary": "Dodger has a big decision on his hands, James makes a confession to Leah, and there is an intruder on the houseboat",
+          "url": "https://www.tvmaze.com/episodes/3765889/hollyoaks-32x112-mon-21-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 113,
+          "name": "Tue 22 Sep 2026",
+          "airdate": "2026-09-22",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3765890/hollyoaks-32x113-tue-22-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 114,
+          "name": "Wed 23 Sep 2026",
+          "airdate": "2026-09-23",
+          "airtime": "07:00",
+          "summary": "James is driven mad with confusion, Jenson enlists Imran's help, and a resident is determined to do the right thing",
+          "url": "https://www.tvmaze.com/episodes/3765893/hollyoaks-32x114-wed-23-sep-2026"
         }
       ]
     }
