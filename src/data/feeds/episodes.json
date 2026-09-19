@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T10:08:13.325Z",
+  "generatedAt": "2026-09-19T15:11:05.501Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -56,7 +56,89 @@
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 55,
+          "number": 173,
+          "name": "Monday 21st September",
+          "airdate": "2026-09-21",
+          "airtime": "07:00",
+          "summary": "It is the day of Dawn's funeral, there is a horrifying situation for someone and Vinny makes a tearful confession.",
+          "url": "https://www.tvmaze.com/episodes/3768073/emmerdale-55x173-monday-21st-september"
+        },
+        {
+          "season": 55,
+          "number": 174,
+          "name": "Tuesday 22nd September",
+          "airdate": "2026-09-22",
+          "airtime": "07:00",
+          "summary": "Joe taunts Caleb about what he has done, while Vinny heads to Home Farm with news and Joe is looking menacing.",
+          "url": "https://www.tvmaze.com/episodes/3768074/emmerdale-55x174-tuesday-22nd-september"
+        },
+        {
+          "season": 55,
+          "number": 175,
+          "name": "Wednesday 23rd September",
+          "airdate": "2026-09-23",
+          "airtime": "07:00",
+          "summary": "Nicola makes a public admission, Caleb is determined to seek revenge on Joe and Kim visits Joe's baby in hospital.",
+          "url": "https://www.tvmaze.com/episodes/3768075/emmerdale-55x175-wednesday-23rd-september"
+        },
+        {
+          "season": 55,
+          "number": 176,
+          "name": "Thursday 24th September",
+          "airdate": "2026-09-24",
+          "airtime": "07:00",
+          "summary": "Lewis stresses over his future with Vinny, while Kev is worried about Nicola, but he keeps his secret, fearing the reaction",
+          "url": "https://www.tvmaze.com/episodes/3768076/emmerdale-55x176-thursday-24th-september"
+        },
+        {
+          "season": 55,
+          "number": 177,
+          "name": "Friday 25th September",
+          "airdate": "2026-09-25",
+          "airtime": "07:00",
+          "summary": "Carl makes a plan to honour his father, while voice messages are found on Jimmy's laptop.",
+          "url": "https://www.tvmaze.com/episodes/3768077/emmerdale-55x177-friday-25th-september"
+        },
+        {
+          "season": 55,
+          "number": 178,
+          "name": "Monday 28th September",
+          "airdate": "2026-09-28",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3768078/emmerdale-55x178-monday-28th-september"
+        },
+        {
+          "season": 55,
+          "number": 179,
+          "name": "Wednesday 30th September",
+          "airdate": "2026-09-30",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3768079/emmerdale-55x179-wednesday-30th-september"
+        },
+        {
+          "season": 55,
+          "number": 180,
+          "name": "Thursday 1st October",
+          "airdate": "2026-10-01",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3768080/emmerdale-55x180-thursday-1st-october"
+        },
+        {
+          "season": 55,
+          "number": 181,
+          "name": "Friday 2nd October",
+          "airdate": "2026-10-02",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3768081/emmerdale-55x181-friday-2nd-october"
+        }
+      ]
     },
     {
       "slug": "hollyoaks",
