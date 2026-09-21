@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T02:50:58.709Z",
+  "generatedAt": "2026-09-21T11:43:37.107Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -50,7 +50,89 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 67,
+          "number": 173,
+          "name": "Mon 21st Sep",
+          "airdate": "2026-09-21",
+          "airtime": "07:00",
+          "summary": "Bernie's relentless optimism grates on Kit, Carl offers his services to Steve, Glenda hosts a pub quiz for Debbie, and Maggie disapproves of Susie's online presence.",
+          "url": "https://www.tvmaze.com/episodes/3769094/coronation-street-67x173-mon-21st-sep"
+        },
+        {
+          "season": 67,
+          "number": 174,
+          "name": "Tue 22nd Sep",
+          "airdate": "2026-09-22",
+          "airtime": "07:00",
+          "summary": "Sally voices concerns after Lucy's violent outburst, Lisa steps in when Kit loses his temper at work, George offers Christina a promotion, and Glenda lays into Maggie for her act of sabotage.",
+          "url": "https://www.tvmaze.com/episodes/3769095/coronation-street-67x174-tue-22nd-sep"
+        },
+        {
+          "season": 67,
+          "number": 175,
+          "name": "Wed 23rd Sep",
+          "airdate": "2026-09-23",
+          "airtime": "07:00",
+          "summary": "Christina's first day in her new role provides a shock to the system, Carl's latest conquest upsets Debbie, Lucy apologises to Sally, and Susie secures an audition for a musical.",
+          "url": "https://www.tvmaze.com/episodes/3769096/coronation-street-67x175-wed-23rd-sep"
+        },
+        {
+          "season": 67,
+          "number": 176,
+          "name": "Thu 24th Sep",
+          "airdate": "2026-09-24",
+          "airtime": "07:00",
+          "summary": "Glenda walks out when ailing Eva becomes too demanding, George listens to Christina without judgement, Ronnie asks Carl to move out, and Sam gets desperate to retrieve his phone.",
+          "url": "https://www.tvmaze.com/episodes/3769097/coronation-street-67x176-thu-24th-sep"
+        },
+        {
+          "season": 67,
+          "number": 177,
+          "name": "Fri 25th Sep",
+          "airdate": "2026-09-25",
+          "airtime": "07:00",
+          "summary": "Debbie discovers Eva unconscious, but instantly forgets to raise the alarm, Ronnie takes a tipsy Lucy home, and George assures Christina of his unwavering support.",
+          "url": "https://www.tvmaze.com/episodes/3769098/coronation-street-67x177-fri-25th-sep"
+        },
+        {
+          "season": 67,
+          "number": 178,
+          "name": "Mon 28th Sep",
+          "airdate": "2026-09-28",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3769099/coronation-street-67x178-mon-28th-sep"
+        },
+        {
+          "season": 67,
+          "number": 179,
+          "name": "Wed 30th Sep",
+          "airdate": "2026-09-30",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3769100/coronation-street-67x179-wed-30th-sep"
+        },
+        {
+          "season": 67,
+          "number": 180,
+          "name": "Thu 1st Oct",
+          "airdate": "2026-10-01",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3769101/coronation-street-67x180-thu-1st-oct"
+        },
+        {
+          "season": 67,
+          "number": 181,
+          "name": "Fri 2nd Oct",
+          "airdate": "2026-10-02",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3769105/coronation-street-67x181-fri-2nd-oct"
+        }
+      ]
     },
     {
       "slug": "emmerdale",
