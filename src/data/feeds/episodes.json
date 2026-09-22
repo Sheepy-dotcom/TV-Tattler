@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T21:34:03.193Z",
+  "generatedAt": "2026-09-22T02:51:40.250Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 150,
-          "name": "21/09/2026",
-          "airdate": "2026-09-21",
-          "airtime": "06:00",
-          "summary": "There's an unexpected homecoming on Albert Square. Priya's world comes crashing down. Kat sparks concern from those around her.",
-          "url": "https://www.tvmaze.com/episodes/3754607/eastenders-2026-09-21-21092026"
-        },
         {
           "season": 2026,
           "number": 151,
@@ -51,15 +42,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 173,
-          "name": "Mon 21st Sep",
-          "airdate": "2026-09-21",
-          "airtime": "07:00",
-          "summary": "Bernie's relentless optimism grates on Kit, Carl offers his services to Steve, Glenda hosts a pub quiz for Debbie, and Maggie disapproves of Susie's online presence.",
-          "url": "https://www.tvmaze.com/episodes/3769094/coronation-street-67x173-mon-21st-sep"
-        },
         {
           "season": 67,
           "number": 174,
@@ -141,15 +123,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 173,
-          "name": "Monday 21st September",
-          "airdate": "2026-09-21",
-          "airtime": "07:00",
-          "summary": "It is the day of Dawn's funeral, there is a horrifying situation for someone and Vinny makes a tearful confession.",
-          "url": "https://www.tvmaze.com/episodes/3768073/emmerdale-55x173-monday-21st-september"
-        },
-        {
-          "season": 55,
           "number": 174,
           "name": "Tuesday 22nd September",
           "airdate": "2026-09-22",
@@ -227,15 +200,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 112,
-          "name": "Mon 21 Sep 2026",
-          "airdate": "2026-09-21",
-          "airtime": "07:00",
-          "summary": "Dodger has a big decision on his hands, James makes a confession to Leah, and there is an intruder on the houseboat",
-          "url": "https://www.tvmaze.com/episodes/3765889/hollyoaks-32x112-mon-21-sep-2026"
-        },
         {
           "season": 32,
           "number": 113,
