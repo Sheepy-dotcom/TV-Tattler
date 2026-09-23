@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T20:45:23.609Z",
+  "generatedAt": "2026-09-23T02:52:02.450Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 151,
-          "name": "22/09/2026",
-          "airdate": "2026-09-22",
-          "airtime": "06:00",
-          "summary": "Cindy vows revenge. Eve attempts to reunite the Panesars.",
-          "url": "https://www.tvmaze.com/episodes/3754608/eastenders-2026-09-22-22092026"
-        },
         {
           "season": 2026,
           "number": 152,
@@ -42,15 +33,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 174,
-          "name": "Tue 22nd Sep",
-          "airdate": "2026-09-22",
-          "airtime": "07:00",
-          "summary": "Sally voices concerns after Lucy's violent outburst, Lisa steps in when Kit loses his temper at work, George offers Christina a promotion, and Glenda lays into Maggie for her act of sabotage.",
-          "url": "https://www.tvmaze.com/episodes/3769095/coronation-street-67x174-tue-22nd-sep"
-        },
         {
           "season": 67,
           "number": 175,
@@ -123,15 +105,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 174,
-          "name": "Tuesday 22nd September",
-          "airdate": "2026-09-22",
-          "airtime": "07:00",
-          "summary": "Joe taunts Caleb about what he has done, while Vinny heads to Home Farm with news and Joe is looking menacing.",
-          "url": "https://www.tvmaze.com/episodes/3768074/emmerdale-55x174-tuesday-22nd-september"
-        },
-        {
-          "season": 55,
           "number": 175,
           "name": "Wednesday 23rd September",
           "airdate": "2026-09-23",
@@ -200,15 +173,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 113,
-          "name": "Tue 22 Sep 2026",
-          "airdate": "2026-09-22",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3765890/hollyoaks-32x113-tue-22-sep-2026"
-        },
         {
           "season": 32,
           "number": 114,
