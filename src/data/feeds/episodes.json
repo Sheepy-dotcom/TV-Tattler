@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T16:18:50.758Z",
+  "generatedAt": "2026-09-24T21:01:54.574Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -16,6 +16,78 @@
           "airtime": "06:00",
           "summary": "Lauren faces an impossible choice. Jack struggles to keep his frustrations under control. Ned searches for a solution to the Hawkins family's financial troubles.",
           "url": "https://www.tvmaze.com/episodes/3754610/eastenders-2026-09-24-24092026"
+        },
+        {
+          "season": 2026,
+          "number": 154,
+          "name": "28/09/2026",
+          "airdate": "2026-09-28",
+          "airtime": "06:00",
+          "summary": "Suki starts digging for answers. Denise's treatment continues to take its toll. Nicola faces another financial setback.",
+          "url": "https://www.tvmaze.com/episodes/3771166/eastenders-2026-09-28-28092026"
+        },
+        {
+          "season": 2026,
+          "number": 155,
+          "name": "29/09/2026",
+          "airdate": "2026-09-29",
+          "airtime": "06:00",
+          "summary": "Amy lashes out at those closest to her. Nugget celebrates his 18th birthday at Harry's Barn. Ned remains determined to solve the Hawkins' financial problems. Eve tries to curb Suki's meddling.",
+          "url": "https://www.tvmaze.com/episodes/3771167/eastenders-2026-09-29-29092026"
+        },
+        {
+          "season": 2026,
+          "number": 156,
+          "name": "30/09/2026",
+          "airdate": "2026-09-30",
+          "airtime": "06:00",
+          "summary": "The Hawkins rally together to help Nicola. Tensions between Jack and Amy push her closer to Craig. Suki finds herself outmanoeuvred.",
+          "url": "https://www.tvmaze.com/episodes/3771168/eastenders-2026-09-30-30092026"
+        },
+        {
+          "season": 2026,
+          "number": 157,
+          "name": "01/10/2026",
+          "airdate": "2026-10-01",
+          "airtime": "06:00",
+          "summary": "A secret threatens to be exposed. Nicola grows desperate as her options run out. Despite Eve's efforts to keep the peace, tensions flare within the Panesar family.",
+          "url": "https://www.tvmaze.com/episodes/3771169/eastenders-2026-10-01-01102026"
+        },
+        {
+          "season": 2026,
+          "number": 158,
+          "name": "05/10/2026",
+          "airdate": "2026-10-05",
+          "airtime": "06:00",
+          "summary": "Nicola continues to struggle with Ned. Linda receives a shock. Harvey tries to support Kathy.",
+          "url": "https://www.tvmaze.com/episodes/3771170/eastenders-2026-10-05-05102026"
+        },
+        {
+          "season": 2026,
+          "number": 159,
+          "name": "06/10/2026",
+          "airdate": "2026-10-06",
+          "airtime": "06:00",
+          "summary": "Linda tells her family about Max. Ned tries to goad Nicola. Alfie wants to get through to Kat.",
+          "url": "https://www.tvmaze.com/episodes/3771171/eastenders-2026-10-06-06102026"
+        },
+        {
+          "season": 2026,
+          "number": 160,
+          "name": "07/10/2026",
+          "airdate": "2026-10-07",
+          "airtime": "06:00",
+          "summary": "Linda worries, as she fears her family are not being honest with her. Ian returns to Walford. Nicola tries to support Ryder.",
+          "url": "https://www.tvmaze.com/episodes/3771172/eastenders-2026-10-07-07102026"
+        },
+        {
+          "season": 2026,
+          "number": 161,
+          "name": "08/10/2026",
+          "airdate": "2026-10-08",
+          "airtime": "06:00",
+          "summary": "Nicola and Ryder continue to bond. Ned helps Ian open up.",
+          "url": "https://www.tvmaze.com/episodes/3771174/eastenders-2026-10-08-08102026"
         }
       ]
     },
