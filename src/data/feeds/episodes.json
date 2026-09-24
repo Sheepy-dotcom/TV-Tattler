@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T20:57:44.816Z",
+  "generatedAt": "2026-09-24T02:42:15.848Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 152,
-          "name": "23/09/2026",
-          "airdate": "2026-09-23",
-          "airtime": "06:00",
-          "summary": "Lauren's day takes an unexpected turn. Cindy makes yet another enemy on the Square. A row breaks out during Harvey's birthday celebrations.",
-          "url": "https://www.tvmaze.com/episodes/3754609/eastenders-2026-09-23-23092026"
-        },
         {
           "season": 2026,
           "number": 153,
@@ -33,15 +24,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 175,
-          "name": "Wed 23rd Sep",
-          "airdate": "2026-09-23",
-          "airtime": "07:00",
-          "summary": "Christina's first day in her new role provides a shock to the system, Carl's latest conquest upsets Debbie, Lucy apologises to Sally, and Susie secures an audition for a musical.",
-          "url": "https://www.tvmaze.com/episodes/3769096/coronation-street-67x175-wed-23rd-sep"
-        },
         {
           "season": 67,
           "number": 176,
@@ -105,15 +87,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 175,
-          "name": "Wednesday 23rd September",
-          "airdate": "2026-09-23",
-          "airtime": "07:00",
-          "summary": "Nicola makes a public admission, Caleb is determined to seek revenge on Joe and Kim visits Joe's baby in hospital.",
-          "url": "https://www.tvmaze.com/episodes/3768075/emmerdale-55x175-wednesday-23rd-september"
-        },
-        {
-          "season": 55,
           "number": 176,
           "name": "Thursday 24th September",
           "airdate": "2026-09-24",
@@ -172,17 +145,7 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": [
-        {
-          "season": 32,
-          "number": 114,
-          "name": "Wed 23 Sep 2026",
-          "airdate": "2026-09-23",
-          "airtime": "07:00",
-          "summary": "James is driven mad with confusion, Jenson enlists Imran's help, and a resident is determined to do the right thing",
-          "url": "https://www.tvmaze.com/episodes/3765893/hollyoaks-32x114-wed-23-sep-2026"
-        }
-      ]
+      "episodes": []
     }
   ]
 }
