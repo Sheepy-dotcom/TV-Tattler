@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T21:01:54.574Z",
+  "generatedAt": "2026-09-25T02:58:49.153Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 153,
-          "name": "24/09/2026",
-          "airdate": "2026-09-24",
-          "airtime": "06:00",
-          "summary": "Lauren faces an impossible choice. Jack struggles to keep his frustrations under control. Ned searches for a solution to the Hawkins family's financial troubles.",
-          "url": "https://www.tvmaze.com/episodes/3754610/eastenders-2026-09-24-24092026"
-        },
         {
           "season": 2026,
           "number": 154,
@@ -98,15 +89,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 176,
-          "name": "Thu 24th Sep",
-          "airdate": "2026-09-24",
-          "airtime": "07:00",
-          "summary": "Glenda walks out when ailing Eva becomes too demanding, George listens to Christina without judgement, Ronnie asks Carl to move out, and Sam gets desperate to retrieve his phone.",
-          "url": "https://www.tvmaze.com/episodes/3769097/coronation-street-67x176-thu-24th-sep"
-        },
-        {
-          "season": 67,
           "number": 177,
           "name": "Fri 25th Sep",
           "airdate": "2026-09-25",
@@ -157,15 +139,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 176,
-          "name": "Thursday 24th September",
-          "airdate": "2026-09-24",
-          "airtime": "07:00",
-          "summary": "Lewis stresses over his future with Vinny, while Kev is worried about Nicola, but he keeps his secret, fearing the reaction",
-          "url": "https://www.tvmaze.com/episodes/3768076/emmerdale-55x176-thursday-24th-september"
-        },
         {
           "season": 55,
           "number": 177,
