@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T02:58:49.153Z",
+  "generatedAt": "2026-09-25T10:57:35.666Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -190,7 +190,35 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 32,
+          "number": 115,
+          "name": "Mon 28 Sep 2026",
+          "airdate": "2026-09-28",
+          "airtime": "07:00",
+          "summary": "Beth is desperate to make things better between her and Maddox, Gemma receives threatening messages, and a jealous resident is confronted after meddling in a relationship",
+          "url": "https://www.tvmaze.com/episodes/3771309/hollyoaks-32x115-mon-28-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 116,
+          "name": "Tue 29 Sep 2026",
+          "airdate": "2026-09-29",
+          "airtime": "07:00",
+          "summary": "There are tears, squabbles and shocks during Hollyoaks High parents' evening, Warren is furious with Mercedes, and a resident is encouraged to confront their problems",
+          "url": "https://www.tvmaze.com/episodes/3771310/hollyoaks-32x116-tue-29-sep-2026"
+        },
+        {
+          "season": 32,
+          "number": 117,
+          "name": "Wed 30 Sep 2026",
+          "airdate": "2026-09-30",
+          "airtime": "07:00",
+          "summary": "Ant worries that Kathleen-Angel doesn't see a future with him, Sienna makes a disturbing discovery, and a resident receives an ultimatum",
+          "url": "https://www.tvmaze.com/episodes/3771311/hollyoaks-32x117-wed-30-sep-2026"
+        }
+      ]
     }
   ]
 }
