@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T20:58:58.138Z",
+  "generatedAt": "2026-09-26T03:02:16.106Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -89,15 +89,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 177,
-          "name": "Fri 25th Sep",
-          "airdate": "2026-09-25",
-          "airtime": "07:00",
-          "summary": "Debbie discovers Eva unconscious, but instantly forgets to raise the alarm, Ronnie takes a tipsy Lucy home, and George assures Christina of his unwavering support.",
-          "url": "https://www.tvmaze.com/episodes/3769098/coronation-street-67x177-fri-25th-sep"
-        },
-        {
-          "season": 67,
           "number": 178,
           "name": "Mon 28th Sep",
           "airdate": "2026-09-28",
@@ -139,15 +130,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 177,
-          "name": "Friday 25th September",
-          "airdate": "2026-09-25",
-          "airtime": "07:00",
-          "summary": "Carl makes a plan to honour his father, while voice messages are found on Jimmy's laptop.",
-          "url": "https://www.tvmaze.com/episodes/3768077/emmerdale-55x177-friday-25th-september"
-        },
         {
           "season": 55,
           "number": 178,
