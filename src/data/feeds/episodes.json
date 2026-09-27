@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T03:07:49.356Z",
+  "generatedAt": "2026-09-27T11:11:47.100Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -93,7 +93,7 @@
           "name": "Mon 28th Sep",
           "airdate": "2026-09-28",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Carl falls under suspicion for stealing from the pub, Tim shares his suspicions of Richie with Lisa, Betsy returns to work, and Jodie effortlessly steps into Shona's domestic role.",
           "url": "https://www.tvmaze.com/episodes/3769099/coronation-street-67x178-mon-28th-sep"
         },
         {
@@ -102,7 +102,7 @@
           "name": "Wed 30th Sep",
           "airdate": "2026-09-30",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "The police question Carl about the attack on Eva, Jodie fakes being stood up to gain David's sympathy, Tim grounds Lucy for her behaviour, and Betsy struggles with her machine at Underworld.",
           "url": "https://www.tvmaze.com/episodes/3769100/coronation-street-67x179-wed-30th-sep"
         },
         {
@@ -111,7 +111,7 @@
           "name": "Thu 1st Oct",
           "airdate": "2026-10-01",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "The truth emerges when Eva's assailant comes clean, Sam's crypto confession stuns Nick, Jodie targets Doug via his medication, and Christina takes Todd into her confidence.",
           "url": "https://www.tvmaze.com/episodes/3769101/coronation-street-67x180-thu-1st-oct"
         },
         {
@@ -120,8 +120,44 @@
           "name": "Fri 2nd Oct",
           "airdate": "2026-10-02",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Sally and Lucy are puzzled by Christina's manner, Idris shows an interest in Nick's money woes, Shona wilts under Lily's criticism, and Jodie revels in exploiting Doug's paranoia.",
           "url": "https://www.tvmaze.com/episodes/3769105/coronation-street-67x181-fri-2nd-oct"
+        },
+        {
+          "season": 67,
+          "number": 182,
+          "name": "Mon 5th Oct",
+          "airdate": "2026-10-05",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772729/coronation-street-67x182-mon-5th-oct"
+        },
+        {
+          "season": 67,
+          "number": 183,
+          "name": "Wed 7th Oct",
+          "airdate": "2026-10-07",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772730/coronation-street-67x183-wed-7th-oct"
+        },
+        {
+          "season": 67,
+          "number": 184,
+          "name": "Thu 8th Oct",
+          "airdate": "2026-10-08",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772731/coronation-street-67x184-thu-8th-oct"
+        },
+        {
+          "season": 67,
+          "number": 185,
+          "name": "Fri 9th Oct",
+          "airdate": "2026-10-09",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772732/coronation-street-67x185-fri-9th-oct"
         }
       ]
     },
@@ -136,7 +172,7 @@
           "name": "Monday 28th September",
           "airdate": "2026-09-28",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Sadie and Robert are unable to find Jimmy's cash, while Kim is excited and Gabby is feeling unwell.",
           "url": "https://www.tvmaze.com/episodes/3768078/emmerdale-55x178-monday-28th-september"
         },
         {
@@ -145,7 +181,7 @@
           "name": "Wednesday 30th September",
           "airdate": "2026-09-30",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Graham tries to reverse a decision, while Sadie has to cover her tracks and Vinny is offered some advice.",
           "url": "https://www.tvmaze.com/episodes/3768079/emmerdale-55x179-wednesday-30th-september"
         },
         {
@@ -154,7 +190,7 @@
           "name": "Thursday 1st October",
           "airdate": "2026-10-01",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Kim is given a goodbye, while Thea has a wobble and Manpreet wants help.",
           "url": "https://www.tvmaze.com/episodes/3768080/emmerdale-55x180-thursday-1st-october"
         },
         {
@@ -163,8 +199,44 @@
           "name": "Friday 2nd October",
           "airdate": "2026-10-02",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Charity's trial date has been set, while Manpreet realises the situation, and there is sadness at Home Farm.",
           "url": "https://www.tvmaze.com/episodes/3768081/emmerdale-55x181-friday-2nd-october"
+        },
+        {
+          "season": 55,
+          "number": 182,
+          "name": "Monday 5th October",
+          "airdate": "2026-10-05",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772725/emmerdale-55x182-monday-5th-october"
+        },
+        {
+          "season": 55,
+          "number": 183,
+          "name": "Wednesday 7th October",
+          "airdate": "2026-10-07",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772726/emmerdale-55x183-wednesday-7th-october"
+        },
+        {
+          "season": 55,
+          "number": 184,
+          "name": "Thursday 8th October",
+          "airdate": "2026-10-08",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772727/emmerdale-55x184-thursday-8th-october"
+        },
+        {
+          "season": 55,
+          "number": 185,
+          "name": "Friday 9th October",
+          "airdate": "2026-10-09",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3772728/emmerdale-55x185-friday-9th-october"
         }
       ]
     },
