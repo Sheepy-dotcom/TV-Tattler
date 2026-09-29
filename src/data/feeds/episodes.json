@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T22:51:23.577Z",
+  "generatedAt": "2026-09-29T03:43:53.530Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 154,
-          "name": "28/09/2026",
-          "airdate": "2026-09-28",
-          "airtime": "06:00",
-          "summary": "Suki starts digging for answers. Denise's treatment continues to take its toll. Nicola faces another financial setback.",
-          "url": "https://www.tvmaze.com/episodes/3771166/eastenders-2026-09-28-28092026"
-        },
         {
           "season": 2026,
           "number": 155,
@@ -89,15 +80,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 178,
-          "name": "Mon 28th Sep",
-          "airdate": "2026-09-28",
-          "airtime": "07:00",
-          "summary": "Carl falls under suspicion for stealing from the pub, Tim shares his suspicions of Richie with Lisa, Betsy returns to work, and Jodie effortlessly steps into Shona's domestic role.",
-          "url": "https://www.tvmaze.com/episodes/3769099/coronation-street-67x178-mon-28th-sep"
-        },
-        {
-          "season": 67,
           "number": 179,
           "name": "Wed 30th Sep",
           "airdate": "2026-09-30",
@@ -168,15 +150,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 178,
-          "name": "Monday 28th September",
-          "airdate": "2026-09-28",
-          "airtime": "07:00",
-          "summary": "Sadie and Robert are unable to find Jimmy's cash, while Kim is excited and Gabby is feeling unwell.",
-          "url": "https://www.tvmaze.com/episodes/3768078/emmerdale-55x178-monday-28th-september"
-        },
-        {
-          "season": 55,
           "number": 179,
           "name": "Wednesday 30th September",
           "airdate": "2026-09-30",
@@ -245,15 +218,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 115,
-          "name": "Mon 28 Sep 2026",
-          "airdate": "2026-09-28",
-          "airtime": "07:00",
-          "summary": "Beth is desperate to make things better between her and Maddox, Gemma receives threatening messages, and a jealous resident is confronted after meddling in a relationship",
-          "url": "https://www.tvmaze.com/episodes/3771309/hollyoaks-32x115-mon-28-sep-2026"
-        },
         {
           "season": 32,
           "number": 116,
