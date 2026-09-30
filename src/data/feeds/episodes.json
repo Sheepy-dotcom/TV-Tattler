@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T21:45:38.528Z",
+  "generatedAt": "2026-09-30T03:31:56.112Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 155,
-          "name": "29/09/2026",
-          "airdate": "2026-09-29",
-          "airtime": "06:00",
-          "summary": "Amy lashes out at those closest to her. Nugget celebrates his 18th birthday at Harry's Barn. Ned remains determined to solve the Hawkins' financial problems. Eve tries to curb Suki's meddling.",
-          "url": "https://www.tvmaze.com/episodes/3771167/eastenders-2026-09-29-29092026"
-        },
         {
           "season": 2026,
           "number": 156,
@@ -218,15 +209,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 116,
-          "name": "Tue 29 Sep 2026",
-          "airdate": "2026-09-29",
-          "airtime": "07:00",
-          "summary": "There are tears, squabbles and shocks during Hollyoaks High parents' evening, Warren is furious with Mercedes, and a resident is encouraged to confront their problems",
-          "url": "https://www.tvmaze.com/episodes/3771310/hollyoaks-32x116-tue-29-sep-2026"
-        },
         {
           "season": 32,
           "number": 117,
