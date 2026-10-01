@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T21:45:55.075Z",
+  "generatedAt": "2026-10-01T03:36:59.279Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 156,
-          "name": "30/09/2026",
-          "airdate": "2026-09-30",
-          "airtime": "06:00",
-          "summary": "The Hawkins rally together to help Nicola. Tensions between Jack and Amy push her closer to Craig. Suki finds herself outmanoeuvred.",
-          "url": "https://www.tvmaze.com/episodes/3771168/eastenders-2026-09-30-30092026"
-        },
         {
           "season": 2026,
           "number": 157,
@@ -69,15 +60,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 179,
-          "name": "Wed 30th Sep",
-          "airdate": "2026-09-30",
-          "airtime": "07:00",
-          "summary": "The police question Carl about the attack on Eva, Jodie fakes being stood up to gain David's sympathy, Tim grounds Lucy for her behaviour, and Betsy struggles with her machine at Underworld.",
-          "url": "https://www.tvmaze.com/episodes/3769100/coronation-street-67x179-wed-30th-sep"
-        },
         {
           "season": 67,
           "number": 180,
@@ -141,15 +123,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 179,
-          "name": "Wednesday 30th September",
-          "airdate": "2026-09-30",
-          "airtime": "07:00",
-          "summary": "Graham tries to reverse a decision, while Sadie has to cover her tracks and Vinny is offered some advice.",
-          "url": "https://www.tvmaze.com/episodes/3768079/emmerdale-55x179-wednesday-30th-september"
-        },
-        {
-          "season": 55,
           "number": 180,
           "name": "Thursday 1st October",
           "airdate": "2026-10-01",
@@ -208,17 +181,7 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": [
-        {
-          "season": 32,
-          "number": 117,
-          "name": "Wed 30 Sep 2026",
-          "airdate": "2026-09-30",
-          "airtime": "07:00",
-          "summary": "Ant worries that Kathleen-Angel doesn't see a future with him, Sienna makes a disturbing discovery, and a resident receives an ultimatum",
-          "url": "https://www.tvmaze.com/episodes/3771311/hollyoaks-32x117-wed-30-sep-2026"
-        }
-      ]
+      "episodes": []
     }
   ]
 }
