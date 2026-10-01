@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T12:14:31.868Z",
+  "generatedAt": "2026-10-01T22:13:50.519Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -181,7 +181,35 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 32,
+          "number": 118,
+          "name": "Mon 5 Oct 2026",
+          "airdate": "2026-10-05",
+          "airtime": "07:00",
+          "summary": "James fears that he's being framed, Frankie jumps into action when Leah is found unconscious, and a resident's secret is revealed",
+          "url": "https://www.tvmaze.com/episodes/3778604/hollyoaks-32x118-mon-5-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 119,
+          "name": "Tue 6 Oct 2026",
+          "airdate": "2026-10-06",
+          "airtime": "07:00",
+          "summary": "Dodger has concerns about Gemma's involvement in Ste's disappearance, Lucas flees the village, and a resident admits their true feelings",
+          "url": "https://www.tvmaze.com/episodes/3778616/hollyoaks-32x119-tue-6-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 120,
+          "name": "Wed 7 Oct 2026",
+          "airdate": "2026-10-07",
+          "airtime": "07:00",
+          "summary": "Imran refuses to leave Leah's bedside in the hospital, a chase ensues with Donny and Dodger hot on a resident's tail, and someone is left feeling burnt",
+          "url": "https://www.tvmaze.com/episodes/3778618/hollyoaks-32x120-wed-7-oct-2026"
+        }
+      ]
     }
   ]
 }
