@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T22:13:50.519Z",
+  "generatedAt": "2026-10-02T03:36:56.896Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 157,
-          "name": "01/10/2026",
-          "airdate": "2026-10-01",
-          "airtime": "06:00",
-          "summary": "A secret threatens to be exposed. Nicola grows desperate as her options run out. Despite Eve's efforts to keep the peace, tensions flare within the Panesar family.",
-          "url": "https://www.tvmaze.com/episodes/3771169/eastenders-2026-10-01-01102026"
-        },
         {
           "season": 2026,
           "number": 158,
@@ -60,15 +51,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 180,
-          "name": "Thu 1st Oct",
-          "airdate": "2026-10-01",
-          "airtime": "07:00",
-          "summary": "The truth emerges when Eva's assailant comes clean, Sam's crypto confession stuns Nick, Jodie targets Doug via his medication, and Christina takes Todd into her confidence.",
-          "url": "https://www.tvmaze.com/episodes/3769101/coronation-street-67x180-thu-1st-oct"
-        },
         {
           "season": 67,
           "number": 181,
@@ -121,15 +103,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 180,
-          "name": "Thursday 1st October",
-          "airdate": "2026-10-01",
-          "airtime": "07:00",
-          "summary": "Kim is given a goodbye, while Thea has a wobble and Manpreet wants help.",
-          "url": "https://www.tvmaze.com/episodes/3768080/emmerdale-55x180-thursday-1st-october"
-        },
         {
           "season": 55,
           "number": 181,
