@@ -51,6 +51,19 @@ export const site = {
   },
 } as const;
 
-export const adsEnabled = site.adsenseClient.startsWith('ca-pub-');
-export const newsletterEnabled = site.mailchimp.action.startsWith('http');
-export const mailchimpConnected = site.mailchimp.connectedJs.startsWith('http');
+// -----------------------------------------------------------------------------
+// "Closed" switch — when true, every page renders a single branded "site is
+// closed" notice instead of the real site (no nav, no content, no ad or
+// newsletter scripts, and noindex so search engines drop it). This is fully
+// reversible: flip the default below to 'false' (or set the Cloudflare variable
+// PUBLIC_SITE_CLOSED=false) and redeploy to bring the whole site straight back.
+//
+// Note: while the site is closed, AdSense review will not pass (the reviewer
+// sees the closed notice), so reopen it before/while AdSense is reviewing.
+// -----------------------------------------------------------------------------
+export const siteClosed = (env.PUBLIC_SITE_CLOSED ?? 'true').toString().trim().toLowerCase() !== 'false';
+
+// When the site is closed we never load ad/newsletter code, regardless of config.
+export const adsEnabled = !siteClosed && site.adsenseClient.startsWith('ca-pub-');
+export const newsletterEnabled = !siteClosed && site.mailchimp.action.startsWith('http');
+export const mailchimpConnected = !siteClosed && site.mailchimp.connectedJs.startsWith('http');
