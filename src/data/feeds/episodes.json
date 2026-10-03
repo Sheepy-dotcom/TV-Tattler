@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T21:42:22.918Z",
+  "generatedAt": "2026-10-03T03:21:04.379Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -53,15 +53,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 181,
-          "name": "Fri 2nd Oct",
-          "airdate": "2026-10-02",
-          "airtime": "07:00",
-          "summary": "Sally and Lucy are puzzled by Christina's manner, Idris shows an interest in Nick's money woes, Shona wilts under Lily's criticism, and Jodie revels in exploiting Doug's paranoia.",
-          "url": "https://www.tvmaze.com/episodes/3769105/coronation-street-67x181-fri-2nd-oct"
-        },
-        {
-          "season": 67,
           "number": 182,
           "name": "Mon 5th Oct",
           "airdate": "2026-10-05",
@@ -103,15 +94,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 181,
-          "name": "Friday 2nd October",
-          "airdate": "2026-10-02",
-          "airtime": "07:00",
-          "summary": "Charity's trial date has been set, while Manpreet realises the situation, and there is sadness at Home Farm.",
-          "url": "https://www.tvmaze.com/episodes/3768081/emmerdale-55x181-friday-2nd-october"
-        },
         {
           "season": 55,
           "number": 182,
