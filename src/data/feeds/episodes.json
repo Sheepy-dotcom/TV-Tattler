@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T13:19:15.911Z",
+  "generatedAt": "2026-10-05T23:35:31.747Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -57,7 +57,7 @@
           "name": "Mon 5th Oct",
           "airdate": "2026-10-05",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Jodie paints Doug as a danger to the family to get rid of him, Christina disregards Sally's advice concerning Lucy, and Summer learns that Marco has been involved in a car accident.",
           "url": "https://www.tvmaze.com/episodes/3772729/coronation-street-67x182-mon-5th-oct"
         },
         {
@@ -129,6 +129,51 @@
           "airtime": "07:00",
           "summary": "Robert wants to make a confession, the funeral takes place and a discovery is made.",
           "url": "https://www.tvmaze.com/episodes/3772728/emmerdale-55x185-friday-9th-october"
+        },
+        {
+          "season": 55,
+          "number": 186,
+          "name": "Monday 12th October",
+          "airdate": "2026-10-12",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3782307/emmerdale-55x186-monday-12th-october"
+        },
+        {
+          "season": 55,
+          "number": 187,
+          "name": "Tuesday 13th October",
+          "airdate": "2026-10-13",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3782308/emmerdale-55x187-tuesday-13th-october"
+        },
+        {
+          "season": 55,
+          "number": 188,
+          "name": "Wednesday 14th October",
+          "airdate": "2026-10-14",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3782309/emmerdale-55x188-wednesday-14th-october"
+        },
+        {
+          "season": 55,
+          "number": 189,
+          "name": "Thursday 15th October",
+          "airdate": "2026-10-15",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3782310/emmerdale-55x189-thursday-15th-october"
+        },
+        {
+          "season": 55,
+          "number": 190,
+          "name": "Friday 16th October",
+          "airdate": "2026-10-16",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3782311/emmerdale-55x190-friday-16th-october"
         }
       ]
     },
@@ -143,7 +188,7 @@
           "name": "Mon 5 Oct 2026",
           "airdate": "2026-10-05",
           "airtime": "07:00",
-          "summary": "James fears that he's being framed, Frankie jumps into action when Leah is found unconscious, and a resident's secret is revealed",
+          "summary": "James fears that he's being framed, Frankie jumps into action when Leah is found unconscious, and a resident's secret is revealed.",
           "url": "https://www.tvmaze.com/episodes/3778604/hollyoaks-32x118-mon-5-oct-2026"
         },
         {
