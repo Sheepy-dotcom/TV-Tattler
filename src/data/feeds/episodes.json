@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T23:35:31.747Z",
+  "generatedAt": "2026-10-06T04:21:24.411Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 158,
-          "name": "05/10/2026",
-          "airdate": "2026-10-05",
-          "airtime": "06:00",
-          "summary": "Nicola continues to struggle with Ned. Linda receives a shock. Harvey tries to support Kathy.",
-          "url": "https://www.tvmaze.com/episodes/3771170/eastenders-2026-10-05-05102026"
-        },
         {
           "season": 2026,
           "number": 159,
@@ -53,15 +44,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 182,
-          "name": "Mon 5th Oct",
-          "airdate": "2026-10-05",
-          "airtime": "07:00",
-          "summary": "Jodie paints Doug as a danger to the family to get rid of him, Christina disregards Sally's advice concerning Lucy, and Summer learns that Marco has been involved in a car accident.",
-          "url": "https://www.tvmaze.com/episodes/3772729/coronation-street-67x182-mon-5th-oct"
-        },
-        {
-          "season": 67,
           "number": 183,
           "name": "Wed 7th Oct",
           "airdate": "2026-10-07",
@@ -94,15 +76,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 182,
-          "name": "Monday 5th October",
-          "airdate": "2026-10-05",
-          "airtime": "07:00",
-          "summary": "Thea is in need of a plan, while Manpreet puts Gabby first, and Sadie is alarmed to know there are voicemails at large.",
-          "url": "https://www.tvmaze.com/episodes/3772725/emmerdale-55x182-monday-5th-october"
-        },
         {
           "season": 55,
           "number": 183,
@@ -182,15 +155,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 118,
-          "name": "Mon 5 Oct 2026",
-          "airdate": "2026-10-05",
-          "airtime": "07:00",
-          "summary": "James fears that he's being framed, Frankie jumps into action when Leah is found unconscious, and a resident's secret is revealed.",
-          "url": "https://www.tvmaze.com/episodes/3778604/hollyoaks-32x118-mon-5-oct-2026"
-        },
         {
           "season": 32,
           "number": 119,
