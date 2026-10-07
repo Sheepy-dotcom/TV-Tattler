@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T12:28:48.022Z",
+  "generatedAt": "2026-10-07T22:31:57.532Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -97,47 +97,56 @@
         {
           "season": 55,
           "number": 186,
-          "name": "Monday 12th October",
-          "airdate": "2026-10-12",
+          "name": "Sunday 11th October",
+          "airdate": "2026-10-11",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3782307/emmerdale-55x186-monday-12th-october"
+          "summary": "Kim is worried about Joe, while Robert has a suggestion for Gabby, and Vinny feels the support of his family.",
+          "url": "https://www.tvmaze.com/episodes/3783238/emmerdale-55x186-sunday-11th-october"
         },
         {
           "season": 55,
           "number": 187,
-          "name": "Tuesday 13th October",
-          "airdate": "2026-10-13",
+          "name": "Monday 12th October",
+          "airdate": "2026-10-12",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3782308/emmerdale-55x187-tuesday-13th-october"
+          "summary": "Joe puts a new plot into motion, Vinny is in court and Kim is pulled over by the police.",
+          "url": "https://www.tvmaze.com/episodes/3782307/emmerdale-55x187-monday-12th-october"
         },
         {
           "season": 55,
           "number": 188,
-          "name": "Wednesday 14th October",
-          "airdate": "2026-10-14",
+          "name": "Tuesday 13th October",
+          "airdate": "2026-10-13",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3782309/emmerdale-55x188-wednesday-14th-october"
+          "summary": "Matty is finding life at the farm hard, Joe gives Sadie her mission and Robert is excited about his business.",
+          "url": "https://www.tvmaze.com/episodes/3782308/emmerdale-55x188-tuesday-13th-october"
         },
         {
           "season": 55,
           "number": 189,
-          "name": "Thursday 15th October",
-          "airdate": "2026-10-15",
+          "name": "Wednesday 14th October",
+          "airdate": "2026-10-14",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3782310/emmerdale-55x189-thursday-15th-october"
+          "summary": "Sadie comes up with a plan, while Nicola is grateful for Bob's support and Moira offers Matty a room, but Belle can see trouble ahead.",
+          "url": "https://www.tvmaze.com/episodes/3782309/emmerdale-55x189-wednesday-14th-october"
         },
         {
           "season": 55,
           "number": 190,
+          "name": "Thursday 15th October",
+          "airdate": "2026-10-15",
+          "airtime": "07:00",
+          "summary": "Tensions remain high at the Dingles' house, while secrets are revealed during a drinking game and Cain is suspicious of Sadie's motives.",
+          "url": "https://www.tvmaze.com/episodes/3782310/emmerdale-55x190-thursday-15th-october"
+        },
+        {
+          "season": 55,
+          "number": 191,
           "name": "Friday 16th October",
           "airdate": "2026-10-16",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3782311/emmerdale-55x190-friday-16th-october"
+          "summary": "Sadie reels Ruby back in with a sob story, while Robert plans to win big and Moira is feeling alienated.",
+          "url": "https://www.tvmaze.com/episodes/3782311/emmerdale-55x191-friday-16th-october"
         }
       ]
     },
