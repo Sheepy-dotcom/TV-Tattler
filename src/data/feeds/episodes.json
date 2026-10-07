@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T22:09:13.229Z",
+  "generatedAt": "2026-10-07T03:47:33.911Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 159,
-          "name": "06/10/2026",
-          "airdate": "2026-10-06",
-          "airtime": "06:00",
-          "summary": "Linda tells her family about Max. Ned tries to goad Nicola. Alfie wants to get through to Kat.",
-          "url": "https://www.tvmaze.com/episodes/3771171/eastenders-2026-10-06-06102026"
-        },
         {
           "season": 2026,
           "number": 160,
@@ -155,15 +146,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 119,
-          "name": "Tue 6 Oct 2026",
-          "airdate": "2026-10-06",
-          "airtime": "07:00",
-          "summary": "Dodger has concerns about Gemma's involvement in Ste's disappearance, Lucas flees the village, and a resident admits their true feelings",
-          "url": "https://www.tvmaze.com/episodes/3778616/hollyoaks-32x119-tue-6-oct-2026"
-        },
         {
           "season": 32,
           "number": 120,
