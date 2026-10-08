@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T22:31:57.532Z",
+  "generatedAt": "2026-10-08T04:01:15.320Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 160,
-          "name": "07/10/2026",
-          "airdate": "2026-10-07",
-          "airtime": "06:00",
-          "summary": "Linda worries, as she fears her family are not being honest with her. Ian returns to Walford. Nicola tries to support Ryder.",
-          "url": "https://www.tvmaze.com/episodes/3771172/eastenders-2026-10-07-07102026"
-        },
         {
           "season": 2026,
           "number": 161,
@@ -33,15 +24,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 183,
-          "name": "Wed 7th Oct",
-          "airdate": "2026-10-07",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3772730/coronation-street-67x183-wed-7th-oct"
-        },
         {
           "season": 67,
           "number": 184,
@@ -67,15 +49,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 183,
-          "name": "Wednesday 7th October",
-          "airdate": "2026-10-07",
-          "airtime": "07:00",
-          "summary": "Charity is shocked to be going home, while Gabby collapses and Sadie is on a mission.",
-          "url": "https://www.tvmaze.com/episodes/3772726/emmerdale-55x183-wednesday-7th-october"
-        },
         {
           "season": 55,
           "number": 184,
@@ -154,17 +127,7 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": [
-        {
-          "season": 32,
-          "number": 120,
-          "name": "Wed 7 Oct 2026",
-          "airdate": "2026-10-07",
-          "airtime": "07:00",
-          "summary": "Imran refuses to leave Leah's bedside in the hospital, a chase ensues with Donny and Dodger hot on a resident's tail, and someone is left feeling burnt",
-          "url": "https://www.tvmaze.com/episodes/3778618/hollyoaks-32x120-wed-7-oct-2026"
-        }
-      ]
+      "episodes": []
     }
   ]
 }
