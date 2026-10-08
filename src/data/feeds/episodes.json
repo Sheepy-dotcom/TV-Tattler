@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T04:01:15.320Z",
+  "generatedAt": "2026-10-08T12:38:10.746Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -16,6 +16,78 @@
           "airtime": "06:00",
           "summary": "Nicola and Ryder continue to bond. Ned helps Ian open up.",
           "url": "https://www.tvmaze.com/episodes/3771174/eastenders-2026-10-08-08102026"
+        },
+        {
+          "season": 2026,
+          "number": 162,
+          "name": "12/10/2026",
+          "airdate": "2026-10-12",
+          "airtime": "06:00",
+          "summary": "Ned rallies the community to celebrate becoming co-owner of Harry's Barn. Lauren and Mark's secret threatens to catch up with them. Amy finds herself increasingly drawn to Craig.",
+          "url": "https://www.tvmaze.com/episodes/3783708/eastenders-2026-10-12-12102026"
+        },
+        {
+          "season": 2026,
+          "number": 163,
+          "name": "13/10/2026",
+          "airdate": "2026-10-13",
+          "airtime": "06:00",
+          "summary": "Mark faces an impossible choice. Amy's growing distance from her friends causes concern. The Slaters rally around Kat as her grief deepens.",
+          "url": "https://www.tvmaze.com/episodes/3783709/eastenders-2026-10-13-13102026"
+        },
+        {
+          "season": 2026,
+          "number": 164,
+          "name": "14/10/2026",
+          "airdate": "2026-10-14",
+          "airtime": "06:00",
+          "summary": "Kat's grief continues to consume her. Penny pushes Amy for answers. Guilt begins to weigh heavily on Mark.",
+          "url": "https://www.tvmaze.com/episodes/3783710/eastenders-2026-10-14-14102026"
+        },
+        {
+          "season": 2026,
+          "number": 165,
+          "name": "15/10/2026",
+          "airdate": "2026-10-15",
+          "airtime": "06:00",
+          "summary": "Kat and Alfie's relationship hangs in the balance. A desperate search gets under way.",
+          "url": "https://www.tvmaze.com/episodes/3783711/eastenders-2026-10-15-15102026"
+        },
+        {
+          "season": 2026,
+          "number": 166,
+          "name": "19/10/2026",
+          "airdate": "2026-10-19",
+          "airtime": "06:00",
+          "summary": "Driven by determination, Kat continues her search for answers. Cindy returns from her honeymoon, and she's not alone.",
+          "url": "https://www.tvmaze.com/episodes/3783712/eastenders-2026-10-19-19102026"
+        },
+        {
+          "season": 2026,
+          "number": 167,
+          "name": "20/10/2026",
+          "airdate": "2026-10-20",
+          "airtime": "06:00",
+          "summary": "The Slaters rally for Big Mo. Cindy becomes obsessed with identifying Max's mystery woman. Denzel is forced to come clean.",
+          "url": "https://www.tvmaze.com/episodes/3783713/eastenders-2026-10-20-20102026"
+        },
+        {
+          "season": 2026,
+          "number": 168,
+          "name": "21/10/2026",
+          "airdate": "2026-10-21",
+          "airtime": "06:00",
+          "summary": "Max declares war on Cindy. Cindy's suspicions intensify. Lauren is horrified by what she learns.",
+          "url": "https://www.tvmaze.com/episodes/3783714/eastenders-2026-10-21-21102026"
+        },
+        {
+          "season": 2026,
+          "number": 169,
+          "name": "22/10/2026",
+          "airdate": "2026-10-22",
+          "airtime": "06:00",
+          "summary": "Lauren digs into the past and unknowingly raises suspicions in the process. With pressure mounting, Max makes a decision he may come to regret. Cindy demands answers.",
+          "url": "https://www.tvmaze.com/episodes/3783715/eastenders-2026-10-22-22102026"
         }
       ]
     },
@@ -30,7 +102,7 @@
           "name": "Thu 8th Oct",
           "airdate": "2026-10-08",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "The sibling feud between Shona and Jodie reaches boiling point when secrets are exposed, accusations fly, and a gunshot rings out at Number 8, leaving somebody fighting for their life.",
           "url": "https://www.tvmaze.com/episodes/3772731/coronation-street-67x184-thu-8th-oct"
         },
         {
@@ -39,8 +111,107 @@
           "name": "Fri 9th Oct",
           "airdate": "2026-10-09",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "David summons help after the shooting, but can he answer Lisa's questions? Kit reveals his cancer diagnosis after struggling through treatment and receives her support. Elsewhere, Idris catches Sam using his card to fund a crypto scheme, Kevin recalls Fiona's missing gun, and Summer accepts a prison visit from Marco.",
           "url": "https://www.tvmaze.com/episodes/3772732/coronation-street-67x185-fri-9th-oct"
+        },
+        {
+          "season": 67,
+          "number": 186,
+          "name": "Sun 11th Oct",
+          "airdate": "2026-10-11",
+          "airtime": "07:00",
+          "summary": "Kit refuses to act as a character witness for Sarah, Ronnie and Ryan play along with Debbie's mistake and Gary delivers bad news to his boys. Nick is blamed for a bout of food poisoning at Speed Daal.",
+          "url": "https://www.tvmaze.com/episodes/3783691/coronation-street-67x186-sun-11th-oct"
+        },
+        {
+          "season": 67,
+          "number": 187,
+          "name": "Mon 12th Oct",
+          "airdate": "2026-10-12",
+          "airtime": "07:00",
+          "summary": "Brody and Bernie support Kit as his treatment begins, Debbie feels scrutinised by Ronnie and Jake accuses Gary of misplaced loyalty. Leanne and Idris have a bone to pick with Nick.",
+          "url": "https://www.tvmaze.com/episodes/3783692/coronation-street-67x187-mon-12th-oct"
+        },
+        {
+          "season": 67,
+          "number": 188,
+          "name": "Tue 13th Oct",
+          "airdate": "2026-10-13",
+          "airtime": "07:00",
+          "summary": "Todd betrays Kit's confidence to a horrified Sarah, Gary implores Jake to return home and Nick's business begins to suffer. Debbie discovers a pamphlet for a care home.",
+          "url": "https://www.tvmaze.com/episodes/3783693/coronation-street-67x188-tue-13th-oct"
+        },
+        {
+          "season": 67,
+          "number": 189,
+          "name": "Wed 14th Oct",
+          "airdate": "2026-10-14",
+          "airtime": "07:00",
+          "summary": "Sarah's murder trial opens with the case for the prosecution, Debbie confides to Abi her fears regarding Ronnie and Sam comes under fire from his schoolmates. Leanne advises Nick to throw in the towel.",
+          "url": "https://www.tvmaze.com/episodes/3783694/coronation-street-67x189-wed-14th-oct"
+        },
+        {
+          "season": 67,
+          "number": 190,
+          "name": "Thu 15th Oct",
+          "airdate": "2026-10-15",
+          "airtime": "07:00",
+          "summary": "Tyrone convinces Todd to testify in court, Bethany urges Kit to show up for Sarah and Debbie sends Abi to spy on Ronnie. Toyah calls out Leanne's dastardly sabotage plot.",
+          "url": "https://www.tvmaze.com/episodes/3783695/coronation-street-67x190-thu-15th-oct"
+        },
+        {
+          "season": 67,
+          "number": 191,
+          "name": "Fri 16th Oct",
+          "airdate": "2026-10-16",
+          "airtime": "07:00",
+          "summary": "Gary and Kit take their turns in the witness box, Nick resents Idris muscling in on his son and his livelihood and Ken suggests a new focus for Daniel. Debbie scuppers her own treat for Ronnie's birthday.",
+          "url": "https://www.tvmaze.com/episodes/3783696/coronation-street-67x191-fri-16th-oct"
+        },
+        {
+          "season": 67,
+          "number": 192,
+          "name": "Mon 19th Oct",
+          "airdate": "2026-10-19",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783697/coronation-street-67x192-mon-19th-oct"
+        },
+        {
+          "season": 67,
+          "number": 193,
+          "name": "Tue 20th Oct",
+          "airdate": "2026-10-20",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783698/coronation-street-67x193-tue-20th-oct"
+        },
+        {
+          "season": 67,
+          "number": 194,
+          "name": "Wed 21st Oct",
+          "airdate": "2026-10-21",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783699/coronation-street-67x194-wed-21st-oct"
+        },
+        {
+          "season": 67,
+          "number": 195,
+          "name": "Thu 22nd Oct",
+          "airdate": "2026-10-22",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783700/coronation-street-67x195-thu-22nd-oct"
+        },
+        {
+          "season": 67,
+          "number": 196,
+          "name": "Fri 23rd Oct",
+          "airdate": "2026-10-23",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783701/coronation-street-67x196-fri-23rd-oct"
         }
       ]
     },
@@ -127,7 +298,62 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 32,
+          "number": 121,
+          "name": "Mon 12 Oct 2026",
+          "airdate": "2026-10-12",
+          "airtime": "07:00",
+          "summary": "Dee Dee's plan to meet her teacher after school goes awry. Dodger encourages Donny to face his problems head on.",
+          "url": "https://www.tvmaze.com/episodes/3783702/hollyoaks-32x121-mon-12-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 122,
+          "name": "Tue 13 Oct 2026",
+          "airdate": "2026-10-13",
+          "airtime": "07:00",
+          "summary": "Arguments erupt in the Hutchinson household. Gemma turns to her dad Donny for help. And Leah flees the hospital in search of answers.",
+          "url": "https://www.tvmaze.com/episodes/3783703/hollyoaks-32x122-tue-13-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 123,
+          "name": "Wed 14 Oct 2026",
+          "airdate": "2026-10-14",
+          "airtime": "07:00",
+          "summary": "Mercedes' birthday gets off to a rocky start. Meanwhile, a chase ensues when Imran finds Lucas in Chester, but things take a dangerous turn.",
+          "url": "https://www.tvmaze.com/episodes/3783704/hollyoaks-32x123-wed-14-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 124,
+          "name": "Mon 19 Oct 2026",
+          "airdate": "2026-10-19",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783705/hollyoaks-32x124-mon-19-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 125,
+          "name": "Tue 20 Oct 2026",
+          "airdate": "2026-10-20",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783706/hollyoaks-32x125-tue-20-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 126,
+          "name": "Wed 21 Oct 2026",
+          "airdate": "2026-10-21",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3783707/hollyoaks-32x126-wed-21-oct-2026"
+        }
+      ]
     }
   ]
 }
