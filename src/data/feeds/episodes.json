@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T22:44:44.987Z",
+  "generatedAt": "2026-10-09T04:06:31.831Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 161,
-          "name": "08/10/2026",
-          "airdate": "2026-10-08",
-          "airtime": "06:00",
-          "summary": "Nicola and Ryder continue to bond. Ned helps Ian open up.",
-          "url": "https://www.tvmaze.com/episodes/3771174/eastenders-2026-10-08-08102026"
-        },
         {
           "season": 2026,
           "number": 162,
@@ -96,15 +87,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 184,
-          "name": "Thu 8th Oct",
-          "airdate": "2026-10-08",
-          "airtime": "07:00",
-          "summary": "The sibling feud between Shona and Jodie reaches boiling point when secrets are exposed, accusations fly, and a gunshot rings out at Number 8, leaving somebody fighting for their life.",
-          "url": "https://www.tvmaze.com/episodes/3772731/coronation-street-67x184-thu-8th-oct"
-        },
         {
           "season": 67,
           "number": 185,
@@ -220,15 +202,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 184,
-          "name": "Thursday 8th October",
-          "airdate": "2026-10-08",
-          "airtime": "07:00",
-          "summary": "The golf club could hold the answer, while Jacob and Sarah make a decision and Billy offers to visit Gabby in hospital.",
-          "url": "https://www.tvmaze.com/episodes/3772727/emmerdale-55x184-thursday-8th-october"
-        },
         {
           "season": 55,
           "number": 185,
