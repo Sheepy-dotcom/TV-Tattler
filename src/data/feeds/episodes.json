@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T14:09:13.113Z",
+  "generatedAt": "2026-10-13T00:02:30.385Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 162,
-          "name": "12/10/2026",
-          "airdate": "2026-10-12",
-          "airtime": "06:00",
-          "summary": "Ned rallies the community to celebrate becoming co-owner of Harry's Barn. Lauren and Mark's secret threatens to catch up with them. Amy finds herself increasingly drawn to Craig.",
-          "url": "https://www.tvmaze.com/episodes/3783708/eastenders-2026-10-12-12102026"
-        },
         {
           "season": 2026,
           "number": 163,
@@ -87,15 +78,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 187,
-          "name": "Mon 12th Oct",
-          "airdate": "2026-10-12",
-          "airtime": "07:00",
-          "summary": "Brody and Bernie support Kit as his treatment begins, Debbie feels scrutinised by Ronnie and Jake accuses Gary of misplaced loyalty. Leanne and Idris have a bone to pick with Nick.",
-          "url": "https://www.tvmaze.com/episodes/3783692/coronation-street-67x187-mon-12th-oct"
-        },
         {
           "season": 67,
           "number": 188,
@@ -186,15 +168,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 187,
-          "name": "Monday 12th October",
-          "airdate": "2026-10-12",
-          "airtime": "07:00",
-          "summary": "Joe puts a new plot into motion, Vinny is in court and Kim is pulled over by the police.",
-          "url": "https://www.tvmaze.com/episodes/3782307/emmerdale-55x187-monday-12th-october"
-        },
-        {
-          "season": 55,
           "number": 188,
           "name": "Tuesday 13th October",
           "airdate": "2026-10-13",
@@ -236,15 +209,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 121,
-          "name": "Mon 12 Oct 2026",
-          "airdate": "2026-10-12",
-          "airtime": "07:00",
-          "summary": "Dee Dee's plan to meet her teacher after school goes awry. Dodger encourages Donny to face his problems head on.",
-          "url": "https://www.tvmaze.com/episodes/3783702/hollyoaks-32x121-mon-12-oct-2026"
-        },
         {
           "season": 32,
           "number": 122,
