@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T22:10:55.748Z",
+  "generatedAt": "2026-10-14T03:07:22.781Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 163,
-          "name": "13/10/2026",
-          "airdate": "2026-10-13",
-          "airtime": "06:00",
-          "summary": "Mark faces an impossible choice. Amy's growing distance from her friends causes concern. The Slaters rally around Kat as her grief deepens.",
-          "url": "https://www.tvmaze.com/episodes/3783709/eastenders-2026-10-13-13102026"
-        },
         {
           "season": 2026,
           "number": 164,
@@ -78,15 +69,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 188,
-          "name": "Tue 13th Oct",
-          "airdate": "2026-10-13",
-          "airtime": "07:00",
-          "summary": "Todd betrays Kit's confidence to a horrified Sarah, Gary implores Jake to return home and Nick's business begins to suffer. Debbie discovers a pamphlet for a care home.",
-          "url": "https://www.tvmaze.com/episodes/3783693/coronation-street-67x188-tue-13th-oct"
-        },
         {
           "season": 67,
           "number": 189,
@@ -168,15 +150,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 188,
-          "name": "Tuesday 13th October",
-          "airdate": "2026-10-13",
-          "airtime": "07:00",
-          "summary": "Matty is finding life at the farm hard, Joe gives Sadie her mission and Robert is excited about his business.",
-          "url": "https://www.tvmaze.com/episodes/3782308/emmerdale-55x188-tuesday-13th-october"
-        },
-        {
-          "season": 55,
           "number": 189,
           "name": "Wednesday 14th October",
           "airdate": "2026-10-14",
@@ -209,15 +182,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 122,
-          "name": "Tue 13 Oct 2026",
-          "airdate": "2026-10-13",
-          "airtime": "07:00",
-          "summary": "Arguments erupt in the Hutchinson household. Gemma turns to her dad Donny for help. And Leah flees the hospital in search of answers.",
-          "url": "https://www.tvmaze.com/episodes/3783703/hollyoaks-32x122-tue-13-oct-2026"
-        },
         {
           "season": 32,
           "number": 123,
