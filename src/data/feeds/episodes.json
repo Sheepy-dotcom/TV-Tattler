@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T21:11:46.391Z",
+  "generatedAt": "2026-10-15T02:46:44.002Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 164,
-          "name": "14/10/2026",
-          "airdate": "2026-10-14",
-          "airtime": "06:00",
-          "summary": "Kat's grief continues to consume her. Penny pushes Amy for answers. Guilt begins to weigh heavily on Mark.",
-          "url": "https://www.tvmaze.com/episodes/3783710/eastenders-2026-10-14-14102026"
-        },
         {
           "season": 2026,
           "number": 165,
@@ -69,15 +60,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 189,
-          "name": "Wed 14th Oct",
-          "airdate": "2026-10-14",
-          "airtime": "07:00",
-          "summary": "Sarah's murder trial opens with the case for the prosecution, Debbie confides to Abi her fears regarding Ronnie and Sam comes under fire from his schoolmates. Leanne advises Nick to throw in the towel.",
-          "url": "https://www.tvmaze.com/episodes/3783694/coronation-street-67x189-wed-14th-oct"
-        },
         {
           "season": 67,
           "number": 190,
@@ -150,15 +132,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 189,
-          "name": "Wednesday 14th October",
-          "airdate": "2026-10-14",
-          "airtime": "07:00",
-          "summary": "Sadie comes up with a plan, while Nicola is grateful for Bob's support and Moira offers Matty a room, but Belle can see trouble ahead.",
-          "url": "https://www.tvmaze.com/episodes/3782309/emmerdale-55x189-wednesday-14th-october"
-        },
-        {
-          "season": 55,
           "number": 190,
           "name": "Thursday 15th October",
           "airdate": "2026-10-15",
@@ -182,15 +155,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 123,
-          "name": "Wed 14 Oct 2026",
-          "airdate": "2026-10-14",
-          "airtime": "07:00",
-          "summary": "Mercedes' birthday gets off to a rocky start. Meanwhile, a chase ensues when Imran finds Lucas in Chester, but things take a dangerous turn.",
-          "url": "https://www.tvmaze.com/episodes/3783704/hollyoaks-32x123-wed-14-oct-2026"
-        },
         {
           "season": 32,
           "number": 124,
