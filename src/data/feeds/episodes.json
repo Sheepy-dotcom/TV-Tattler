@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T20:49:43.087Z",
+  "generatedAt": "2026-10-16T02:43:12.399Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 165,
-          "name": "15/10/2026",
-          "airdate": "2026-10-15",
-          "airtime": "06:00",
-          "summary": "Kat and Alfie's relationship hangs in the balance. A desperate search gets under way.",
-          "url": "https://www.tvmaze.com/episodes/3783711/eastenders-2026-10-15-15102026"
-        },
         {
           "season": 2026,
           "number": 166,
@@ -60,15 +51,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 190,
-          "name": "Thu 15th Oct",
-          "airdate": "2026-10-15",
-          "airtime": "07:00",
-          "summary": "Tyrone convinces Todd to testify in court, Bethany urges Kit to show up for Sarah and Debbie sends Abi to spy on Ronnie. Toyah calls out Leanne's dastardly sabotage plot.",
-          "url": "https://www.tvmaze.com/episodes/3783695/coronation-street-67x190-thu-15th-oct"
-        },
         {
           "season": 67,
           "number": 191,
@@ -130,15 +112,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 190,
-          "name": "Thursday 15th October",
-          "airdate": "2026-10-15",
-          "airtime": "07:00",
-          "summary": "Tensions remain high at the Dingles' house, while secrets are revealed during a drinking game and Cain is suspicious of Sadie's motives.",
-          "url": "https://www.tvmaze.com/episodes/3782310/emmerdale-55x190-thursday-15th-october"
-        },
         {
           "season": 55,
           "number": 191,
