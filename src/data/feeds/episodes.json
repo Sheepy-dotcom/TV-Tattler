@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T20:23:28.881Z",
+  "generatedAt": "2026-10-17T02:35:04.924Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -43,6 +43,42 @@
           "airtime": "06:00",
           "summary": "Lauren digs into the past and unknowingly raises suspicions in the process. With pressure mounting, Max makes a decision he may come to regret. Cindy demands answers.",
           "url": "https://www.tvmaze.com/episodes/3783715/eastenders-2026-10-22-22102026"
+        },
+        {
+          "season": 2026,
+          "number": 170,
+          "name": "26/10/2026",
+          "airdate": "2026-10-26",
+          "airtime": "06:00",
+          "summary": "Pressure mounts for Max when his plan backfires. Linda and Lee return to Walford, unaware of who awaits them. The Slaters prepare for Zoe's funeral.",
+          "url": "https://www.tvmaze.com/episodes/3790245/eastenders-2026-10-26-26102026"
+        },
+        {
+          "season": 2026,
+          "number": 171,
+          "name": "27/10/2026",
+          "airdate": "2026-10-27",
+          "airtime": "06:00",
+          "summary": "Jack's world is thrown into chaos. The truth tears through the Carter family. Kat's grief leads her into trouble.",
+          "url": "https://www.tvmaze.com/episodes/3790246/eastenders-2026-10-27-27102026"
+        },
+        {
+          "season": 2026,
+          "number": 172,
+          "name": "28/10/2026",
+          "airdate": "2026-10-28",
+          "airtime": "06:00",
+          "summary": "The Slaters say goodbye to Zoe, but events don't go as planned. Jack is forced to come clean to Denise. A revelation comes to light at Zoe's wake.",
+          "url": "https://www.tvmaze.com/episodes/3790247/eastenders-2026-10-28-28102026"
+        },
+        {
+          "season": 2026,
+          "number": 173,
+          "name": "29/10/2026",
+          "airdate": "2026-10-29",
+          "airtime": "06:00",
+          "summary": "Cindy revels in disclosing the truth and goes on the warpath. Jack receives a worrying update.",
+          "url": "https://www.tvmaze.com/episodes/3790248/eastenders-2026-10-29-29102026"
         }
       ]
     },
@@ -53,20 +89,11 @@
       "episodes": [
         {
           "season": 67,
-          "number": 191,
-          "name": "Fri 16th Oct",
-          "airdate": "2026-10-16",
-          "airtime": "07:00",
-          "summary": "Gary and Kit take their turns in the witness box, Nick resents Idris muscling in on his son and his livelihood and Ken suggests a new focus for Daniel. Debbie scuppers her own treat for Ronnie's birthday.",
-          "url": "https://www.tvmaze.com/episodes/3783696/coronation-street-67x191-fri-16th-oct"
-        },
-        {
-          "season": 67,
           "number": 192,
           "name": "Mon 19th Oct",
           "airdate": "2026-10-19",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Sarah's nearest and dearest await the jury's verdict, Sam urges Nick to reconsider his plans, Ronnie discusses a delicate subject with Ed, and Daniel and Idris unwittingly pick opposing sides.",
           "url": "https://www.tvmaze.com/episodes/3783697/coronation-street-67x192-mon-19th-oct"
         },
         {
@@ -75,7 +102,7 @@
           "name": "Tue 20th Oct",
           "airdate": "2026-10-20",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Ronnie continues to fend off Debbie's advances, Ross disapproves of Tyrone's lack of backbone, Daniel embarks on a crusade on behalf of local children, and Alya makes an awkward confession to Adam.",
           "url": "https://www.tvmaze.com/episodes/3783698/coronation-street-67x193-tue-20th-oct"
         },
         {
@@ -84,26 +111,53 @@
           "name": "Wed 21st Oct",
           "airdate": "2026-10-21",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Bernie hides her upset as her test results confirm the worst, Debbie messes up a wedding booking at the hotel, and Ross confiscates Tyrone's phone to wreck his evening with Fiz and the girls.",
           "url": "https://www.tvmaze.com/episodes/3783699/coronation-street-67x194-wed-21st-oct"
         },
         {
           "season": 67,
           "number": 195,
-          "name": "Thu 22nd Oct",
-          "airdate": "2026-10-22",
+          "name": "Fri 23rd Oct",
+          "airdate": "2026-10-23",
           "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3783700/coronation-street-67x195-thu-22nd-oct"
+          "summary": "Debbie rows with an old adversary before setting her sights on a new man, and Fiz confronts Ross for deliberately sabotaging her family's film night.",
+          "url": "https://www.tvmaze.com/episodes/3783701/coronation-street-67x195-fri-23rd-oct"
         },
         {
           "season": 67,
           "number": 196,
-          "name": "Fri 23rd Oct",
-          "airdate": "2026-10-23",
+          "name": "Sun 25th Oct",
+          "airdate": "2026-10-25",
           "airtime": "07:00",
           "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3783701/coronation-street-67x196-fri-23rd-oct"
+          "url": "https://www.tvmaze.com/episodes/3790233/coronation-street-67x196-sun-25th-oct"
+        },
+        {
+          "season": 67,
+          "number": 197,
+          "name": "Mon 26th Oct",
+          "airdate": "2026-10-26",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790234/coronation-street-67x197-mon-26th-oct"
+        },
+        {
+          "season": 67,
+          "number": 198,
+          "name": "Tue 27th Oct",
+          "airdate": "2026-10-27",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790235/coronation-street-67x198-tue-27th-oct"
+        },
+        {
+          "season": 67,
+          "number": 199,
+          "name": "Thu 29th Oct",
+          "airdate": "2026-10-29",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790236/coronation-street-67x199-thu-29th-oct"
         }
       ]
     },
@@ -114,12 +168,75 @@
       "episodes": [
         {
           "season": 55,
-          "number": 191,
-          "name": "Friday 16th October",
-          "airdate": "2026-10-16",
+          "number": 192,
+          "name": "Monday 19th October",
+          "airdate": "2026-10-19",
           "airtime": "07:00",
-          "summary": "Sadie reels Ruby back in with a sob story, while Robert plans to win big and Moira is feeling alienated.",
-          "url": "https://www.tvmaze.com/episodes/3782311/emmerdale-55x191-friday-16th-october"
+          "summary": "Liam takes Cain away fishing before his radiotherapy, while Belle receives some worrying news and Kim is still guarding her secret.",
+          "url": "https://www.tvmaze.com/episodes/3790237/emmerdale-55x192-monday-19th-october"
+        },
+        {
+          "season": 55,
+          "number": 193,
+          "name": "Tuesday 20th October",
+          "airdate": "2026-10-20",
+          "airtime": "07:00",
+          "summary": "Belle goes into a downward spiral, Thea jumps to the wrong conclusion and the money is still missing.",
+          "url": "https://www.tvmaze.com/episodes/3790238/emmerdale-55x193-tuesday-20th-october"
+        },
+        {
+          "season": 55,
+          "number": 194,
+          "name": "Wednesday 21st October",
+          "airdate": "2026-10-21",
+          "airtime": "07:00",
+          "summary": "Thea is determined to bring down Kim Tate, while Chas is suspicious about what Liam is up to and Sadie sabotages dinner plans.",
+          "url": "https://www.tvmaze.com/episodes/3790239/emmerdale-55x194-wednesday-21st-october"
+        },
+        {
+          "season": 55,
+          "number": 195,
+          "name": "Friday 23rd October",
+          "airdate": "2026-10-22",
+          "airtime": "07:00",
+          "summary": "Thea steals Kim's phone, while Liam seems to be hiding something and Kammy makes a declaration.",
+          "url": "https://www.tvmaze.com/episodes/3790240/emmerdale-55x195-friday-23rd-october"
+        },
+        {
+          "season": 55,
+          "number": 196,
+          "name": "Sunday 25th October",
+          "airdate": "2026-10-25",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790241/emmerdale-55x196-sunday-25th-october"
+        },
+        {
+          "season": 55,
+          "number": 197,
+          "name": "Monday 26th October",
+          "airdate": "2026-10-26",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790242/emmerdale-55x197-monday-26th-october"
+        },
+        {
+          "season": 55,
+          "number": 198,
+          "name": "Tuesday 27th October",
+          "airdate": "2026-10-27",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790243/emmerdale-55x198-tuesday-27th-october"
+        },
+        {
+          "season": 55,
+          "number": 199,
+          "name": "Thursday 29th October",
+          "airdate": "2026-10-29",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790244/emmerdale-55x199-thursday-29th-october"
         }
       ]
     },
@@ -134,7 +251,7 @@
           "name": "Mon 19 Oct 2026",
           "airdate": "2026-10-19",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "A mystery is unravelled as viewers journey back in time to when a chance encounter sees two local residents fall in love.",
           "url": "https://www.tvmaze.com/episodes/3783705/hollyoaks-32x124-mon-19-oct-2026"
         },
         {
@@ -143,7 +260,7 @@
           "name": "Tue 20 Oct 2026",
           "airdate": "2026-10-20",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Confessions are made and secret feelings are revealed. Jenson turns sinister as he is faced with rejection, and Frankie's first day at the hospital is off to a distressing start.",
           "url": "https://www.tvmaze.com/episodes/3783706/hollyoaks-32x125-tue-20-oct-2026"
         },
         {
@@ -152,8 +269,35 @@
           "name": "Wed 21 Oct 2026",
           "airdate": "2026-10-21",
           "airtime": "07:00",
-          "summary": "",
+          "summary": "Jenson's past is quickly catching up to him, and Theresa finds herself in the middle of a dangerous mess. Elsewhere, Abigail continues to abuse her position of power.",
           "url": "https://www.tvmaze.com/episodes/3783707/hollyoaks-32x126-wed-21-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 127,
+          "name": "Mon 26 Oct 2026",
+          "airdate": "2026-10-26",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790254/hollyoaks-32x127-mon-26-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 128,
+          "name": "Tue 27 Oct 2026",
+          "airdate": "2026-10-27",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790255/hollyoaks-32x128-tue-27-oct-2026"
+        },
+        {
+          "season": 32,
+          "number": 129,
+          "name": "Wed 28 Oct 2026",
+          "airdate": "2026-10-28",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3790256/hollyoaks-32x129-wed-28-oct-2026"
         }
       ]
     }
