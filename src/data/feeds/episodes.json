@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T18:10:06.082Z",
+  "generatedAt": "2026-10-20T03:00:03.164Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 166,
-          "name": "19/10/2026",
-          "airdate": "2026-10-19",
-          "airtime": "06:00",
-          "summary": "Driven by determination, Kat continues her search for answers. Cindy returns from her honeymoon, and she's not alone.",
-          "url": "https://www.tvmaze.com/episodes/3783712/eastenders-2026-10-19-19102026"
-        },
         {
           "season": 2026,
           "number": 167,
@@ -89,15 +80,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 192,
-          "name": "Mon 19th Oct",
-          "airdate": "2026-10-19",
-          "airtime": "07:00",
-          "summary": "Sarah's nearest and dearest await the jury's verdict, Sam urges Nick to reconsider his plans, Ronnie discusses a delicate subject with Ed, and Daniel and Idris unwittingly pick opposing sides.",
-          "url": "https://www.tvmaze.com/episodes/3783697/coronation-street-67x192-mon-19th-oct"
-        },
-        {
-          "season": 67,
           "number": 193,
           "name": "Tue 20th Oct",
           "airdate": "2026-10-20",
@@ -168,15 +150,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 192,
-          "name": "Monday 19th October",
-          "airdate": "2026-10-19",
-          "airtime": "07:00",
-          "summary": "Liam takes Cain away fishing before his radiotherapy, while Belle receives some worrying news and Kim is still guarding her secret.",
-          "url": "https://www.tvmaze.com/episodes/3790237/emmerdale-55x192-monday-19th-october"
-        },
-        {
-          "season": 55,
           "number": 193,
           "name": "Tuesday 20th October",
           "airdate": "2026-10-20",
@@ -245,15 +218,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 124,
-          "name": "Mon 19 Oct 2026",
-          "airdate": "2026-10-19",
-          "airtime": "07:00",
-          "summary": "A mystery is unravelled as viewers journey back in time to when a chance encounter sees two local residents fall in love.",
-          "url": "https://www.tvmaze.com/episodes/3783705/hollyoaks-32x124-mon-19-oct-2026"
-        },
         {
           "season": 32,
           "number": 125,
