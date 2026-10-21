@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T21:08:13.184Z",
+  "generatedAt": "2026-10-21T02:54:36.219Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 167,
-          "name": "20/10/2026",
-          "airdate": "2026-10-20",
-          "airtime": "06:00",
-          "summary": "The Slaters rally for Big Mo. Cindy becomes obsessed with identifying Max's mystery woman. Denzel is forced to come clean.",
-          "url": "https://www.tvmaze.com/episodes/3783713/eastenders-2026-10-20-20102026"
-        },
         {
           "season": 2026,
           "number": 168,
@@ -80,15 +71,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 193,
-          "name": "Tue 20th Oct",
-          "airdate": "2026-10-20",
-          "airtime": "07:00",
-          "summary": "Ronnie continues to fend off Debbie's advances, Ross disapproves of Tyrone's lack of backbone, Daniel embarks on a crusade on behalf of local children, and Alya makes an awkward confession to Adam.",
-          "url": "https://www.tvmaze.com/episodes/3783698/coronation-street-67x193-tue-20th-oct"
-        },
-        {
-          "season": 67,
           "number": 194,
           "name": "Wed 21st Oct",
           "airdate": "2026-10-21",
@@ -150,15 +132,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 193,
-          "name": "Tuesday 20th October",
-          "airdate": "2026-10-20",
-          "airtime": "07:00",
-          "summary": "Belle goes into a downward spiral, Thea jumps to the wrong conclusion and the money is still missing.",
-          "url": "https://www.tvmaze.com/episodes/3790238/emmerdale-55x193-tuesday-20th-october"
-        },
-        {
-          "season": 55,
           "number": 194,
           "name": "Wednesday 21st October",
           "airdate": "2026-10-21",
@@ -218,15 +191,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 125,
-          "name": "Tue 20 Oct 2026",
-          "airdate": "2026-10-20",
-          "airtime": "07:00",
-          "summary": "Confessions are made and secret feelings are revealed. Jenson turns sinister as he is faced with rejection, and Frankie's first day at the hospital is off to a distressing start.",
-          "url": "https://www.tvmaze.com/episodes/3783706/hollyoaks-32x125-tue-20-oct-2026"
-        },
         {
           "season": 32,
           "number": 126,
