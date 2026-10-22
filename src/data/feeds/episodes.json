@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T21:06:35.304Z",
+  "generatedAt": "2026-10-22T03:00:18.956Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 168,
-          "name": "21/10/2026",
-          "airdate": "2026-10-21",
-          "airtime": "06:00",
-          "summary": "Max declares war on Cindy. Cindy's suspicions intensify. Lauren is horrified by what she learns.",
-          "url": "https://www.tvmaze.com/episodes/3783714/eastenders-2026-10-21-21102026"
-        },
         {
           "season": 2026,
           "number": 169,
@@ -71,15 +62,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 194,
-          "name": "Wed 21st Oct",
-          "airdate": "2026-10-21",
-          "airtime": "07:00",
-          "summary": "Bernie hides her upset as her test results confirm the worst, Debbie messes up a wedding booking at the hotel, and Ross confiscates Tyrone's phone to wreck his evening with Fiz and the girls.",
-          "url": "https://www.tvmaze.com/episodes/3783699/coronation-street-67x194-wed-21st-oct"
-        },
-        {
-          "season": 67,
           "number": 195,
           "name": "Fri 23rd Oct",
           "airdate": "2026-10-23",
@@ -132,15 +114,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 194,
-          "name": "Wednesday 21st October",
-          "airdate": "2026-10-21",
-          "airtime": "07:00",
-          "summary": "Thea is determined to bring down Kim Tate, while Chas is suspicious about what Liam is up to and Sadie sabotages dinner plans.",
-          "url": "https://www.tvmaze.com/episodes/3790239/emmerdale-55x194-wednesday-21st-october"
-        },
-        {
-          "season": 55,
           "number": 195,
           "name": "Friday 23rd October",
           "airdate": "2026-10-22",
@@ -191,15 +164,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 126,
-          "name": "Wed 21 Oct 2026",
-          "airdate": "2026-10-21",
-          "airtime": "07:00",
-          "summary": "Jenson's past is quickly catching up to him, and Theresa finds herself in the middle of a dangerous mess. Elsewhere, Abigail continues to abuse her position of power.",
-          "url": "https://www.tvmaze.com/episodes/3783707/hollyoaks-32x126-wed-21-oct-2026"
-        },
         {
           "season": 32,
           "number": 127,
