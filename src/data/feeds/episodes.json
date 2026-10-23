@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T21:05:58.022Z",
+  "generatedAt": "2026-10-23T02:57:22.975Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 169,
-          "name": "22/10/2026",
-          "airdate": "2026-10-22",
-          "airtime": "06:00",
-          "summary": "Lauren digs into the past and unknowingly raises suspicions in the process. With pressure mounting, Max makes a decision he may come to regret. Cindy demands answers.",
-          "url": "https://www.tvmaze.com/episodes/3783715/eastenders-2026-10-22-22102026"
-        },
         {
           "season": 2026,
           "number": 170,
@@ -112,15 +103,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 195,
-          "name": "Friday 23rd October",
-          "airdate": "2026-10-22",
-          "airtime": "07:00",
-          "summary": "Thea steals Kim's phone, while Liam seems to be hiding something and Kammy makes a declaration.",
-          "url": "https://www.tvmaze.com/episodes/3790240/emmerdale-55x195-friday-23rd-october"
-        },
         {
           "season": 55,
           "number": 196,
