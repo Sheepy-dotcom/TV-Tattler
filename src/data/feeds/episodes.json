@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T20:52:30.284Z",
+  "generatedAt": "2026-10-24T02:53:40.407Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -51,15 +51,6 @@
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
       "episodes": [
-        {
-          "season": 67,
-          "number": 195,
-          "name": "Fri 23rd Oct",
-          "airdate": "2026-10-23",
-          "airtime": "07:00",
-          "summary": "Debbie rows with an old adversary before setting her sights on a new man, and Fiz confronts Ross for deliberately sabotaging her family's film night.",
-          "url": "https://www.tvmaze.com/episodes/3783701/coronation-street-67x195-fri-23rd-oct"
-        },
         {
           "season": 67,
           "number": 196,
