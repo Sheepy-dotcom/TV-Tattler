@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T20:16:39.170Z",
+  "generatedAt": "2026-10-26T02:44:07.398Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -53,15 +53,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 196,
-          "name": "Sun 25th Oct",
-          "airdate": "2026-10-25",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790233/coronation-street-67x196-sun-25th-oct"
-        },
-        {
-          "season": 67,
           "number": 197,
           "name": "Mon 26th Oct",
           "airdate": "2026-10-26",
@@ -94,15 +85,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 196,
-          "name": "Sunday 25th October",
-          "airdate": "2026-10-25",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790241/emmerdale-55x196-sunday-25th-october"
-        },
         {
           "season": 55,
           "number": 197,
