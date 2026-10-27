@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T22:10:50.301Z",
+  "generatedAt": "2026-10-27T03:18:40.580Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 170,
-          "name": "26/10/2026",
-          "airdate": "2026-10-26",
-          "airtime": "06:00",
-          "summary": "Pressure mounts for Max when his plan backfires. Linda and Lee return to Walford, unaware of who awaits them. The Slaters prepare for Zoe's funeral.",
-          "url": "https://www.tvmaze.com/episodes/3790245/eastenders-2026-10-26-26102026"
-        },
         {
           "season": 2026,
           "number": 171,
@@ -53,15 +44,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 197,
-          "name": "Mon 26th Oct",
-          "airdate": "2026-10-26",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790234/coronation-street-67x197-mon-26th-oct"
-        },
-        {
-          "season": 67,
           "number": 198,
           "name": "Tue 27th Oct",
           "airdate": "2026-10-27",
@@ -87,15 +69,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 197,
-          "name": "Monday 26th October",
-          "airdate": "2026-10-26",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790242/emmerdale-55x197-monday-26th-october"
-        },
-        {
-          "season": 55,
           "number": 198,
           "name": "Tuesday 27th October",
           "airdate": "2026-10-27",
@@ -119,15 +92,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 127,
-          "name": "Mon 26 Oct 2026",
-          "airdate": "2026-10-26",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790254/hollyoaks-32x127-mon-26-oct-2026"
-        },
         {
           "season": 32,
           "number": 128,
