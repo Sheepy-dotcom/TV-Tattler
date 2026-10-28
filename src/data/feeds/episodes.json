@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T21:42:21.841Z",
+  "generatedAt": "2026-10-28T03:34:24.998Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 171,
-          "name": "27/10/2026",
-          "airdate": "2026-10-27",
-          "airtime": "06:00",
-          "summary": "Jack's world is thrown into chaos. The truth tears through the Carter family. Kat's grief leads her into trouble.",
-          "url": "https://www.tvmaze.com/episodes/3790246/eastenders-2026-10-27-27102026"
-        },
         {
           "season": 2026,
           "number": 172,
@@ -44,15 +35,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 198,
-          "name": "Tue 27th Oct",
-          "airdate": "2026-10-27",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790235/coronation-street-67x198-tue-27th-oct"
-        },
-        {
-          "season": 67,
           "number": 199,
           "name": "Thu 29th Oct",
           "airdate": "2026-10-29",
@@ -69,15 +51,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 198,
-          "name": "Tuesday 27th October",
-          "airdate": "2026-10-27",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790243/emmerdale-55x198-tuesday-27th-october"
-        },
-        {
-          "season": 55,
           "number": 199,
           "name": "Thursday 29th October",
           "airdate": "2026-10-29",
@@ -92,15 +65,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 128,
-          "name": "Tue 27 Oct 2026",
-          "airdate": "2026-10-27",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790255/hollyoaks-32x128-tue-27-oct-2026"
-        },
         {
           "season": 32,
           "number": 129,
