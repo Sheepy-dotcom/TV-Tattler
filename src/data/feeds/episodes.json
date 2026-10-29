@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T22:12:24.699Z",
+  "generatedAt": "2026-10-29T03:55:14.756Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 172,
-          "name": "28/10/2026",
-          "airdate": "2026-10-28",
-          "airtime": "06:00",
-          "summary": "The Slaters say goodbye to Zoe, but events don't go as planned. Jack is forced to come clean to Denise. A revelation comes to light at Zoe's wake.",
-          "url": "https://www.tvmaze.com/episodes/3790247/eastenders-2026-10-28-28102026"
-        },
         {
           "season": 2026,
           "number": 173,
@@ -64,17 +55,7 @@
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": [
-        {
-          "season": 32,
-          "number": 129,
-          "name": "Wed 28 Oct 2026",
-          "airdate": "2026-10-28",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790256/hollyoaks-32x129-wed-28-oct-2026"
-        }
-      ]
+      "episodes": []
     }
   ]
 }
