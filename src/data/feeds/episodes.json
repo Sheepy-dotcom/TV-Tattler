@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T22:19:09.709Z",
+  "generatedAt": "2026-10-30T03:57:06.825Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -7,49 +7,19 @@
       "slug": "eastenders",
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
-      "episodes": [
-        {
-          "season": 2026,
-          "number": 173,
-          "name": "29/10/2026",
-          "airdate": "2026-10-29",
-          "airtime": "06:00",
-          "summary": "Cindy revels in disclosing the truth and goes on the warpath. Jack receives a worrying update.",
-          "url": "https://www.tvmaze.com/episodes/3790248/eastenders-2026-10-29-29102026"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": [
-        {
-          "season": 67,
-          "number": 199,
-          "name": "Thu 29th Oct",
-          "airdate": "2026-10-29",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790236/coronation-street-67x199-thu-29th-oct"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": [
-        {
-          "season": 55,
-          "number": 199,
-          "name": "Thursday 29th October",
-          "airdate": "2026-10-29",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3790244/emmerdale-55x199-thursday-29th-october"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "hollyoaks",
