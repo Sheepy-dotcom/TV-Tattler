@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T03:41:23.304Z",
+  "generatedAt": "2026-10-31T11:33:01.447Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -7,7 +7,80 @@
       "slug": "eastenders",
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 2026,
+          "number": 174,
+          "name": "02/11/2026",
+          "airdate": "2026-11-02",
+          "airtime": "06:00",
+          "summary": "It's tense in the Branning household as a situation escalates. Cindy is on the warpath. Gemma tries to make friends in Walford.",
+          "url": "https://www.tvmaze.com/episodes/3800614/eastenders-2026-11-02-02112026"
+        },
+        {
+          "season": 2026,
+          "number": 175,
+          "name": "03/11/2026",
+          "airdate": "2026-11-03",
+          "airtime": "06:00",
+          "summary": "Denise sees out a plan for the sake of her family. Linda worries about her children. Ian helps out a friend.",
+          "url": "https://www.tvmaze.com/episodes/3800615/eastenders-2026-11-03-03112026"
+        },
+        {
+          "season": 2026,
+          "number": 176,
+          "name": "04/11/2026",
+          "airdate": "2026-11-04",
+          "airtime": "06:00",
+          "summary": "Ian's Bonfire Night faces some hurdles. Max tries to diffuse the tension. Gemma comes up with a plan to bring the women of Walford together.",
+          "url": "https://www.tvmaze.com/episodes/3800665/eastenders-2026-11-04-04112026"
+        },
+        {
+          "season": 2026,
+          "number": 177,
+          "name": "05/11/2026",
+          "airdate": "2026-11-05",
+          "airtime": "06:00",
+          "summary": "Max is put firmly in his place. Nicola intervenes in a situation for the sake of her sister Gemma.",
+          "url": "https://www.tvmaze.com/episodes/3800687/eastenders-2026-11-05-05112026"
+        },
+        {
+          "season": 2026,
+          "number": 178,
+          "name": "09/11/2026",
+          "airdate": "2026-11-09",
+          "airtime": "06:00",
+          "summary": "Linda makes a worrying discovery. Sharon and Eve strike up an unlikely friendship. Mark and Lauren struggle to find time.",
+          "url": "https://www.tvmaze.com/episodes/3800688/eastenders-2026-11-09-09112026"
+        },
+        {
+          "season": 2026,
+          "number": 179,
+          "name": "10/11/2026",
+          "airdate": "2026-11-10",
+          "airtime": "06:00",
+          "summary": "Linda goes in search of answers. Tensions rise between Suki and Ash. Mark finds himself in a tricky situation.",
+          "url": "https://www.tvmaze.com/episodes/3800689/eastenders-2026-11-10-10112026"
+        },
+        {
+          "season": 2026,
+          "number": 180,
+          "name": "11/11/2026",
+          "airdate": "2026-11-11",
+          "airtime": "06:00",
+          "summary": "Nancy and Lee react badly to news. Eve and Suki face a new hurdle in their adoption journey. Lauren plays with fire.",
+          "url": "https://www.tvmaze.com/episodes/3800690/eastenders-2026-11-11-11112026"
+        },
+        {
+          "season": 2026,
+          "number": 181,
+          "name": "12/11/2026",
+          "airdate": "2026-11-12",
+          "airtime": "06:00",
+          "summary": "Linda vows to support Lee. Nancy finds herself asking Johnny for support. Lauren gets overwhelmed by her feelings.",
+          "url": "https://www.tvmaze.com/episodes/3800691/eastenders-2026-11-12-12112026"
+        }
+      ]
     },
     {
       "slug": "coronation-street",
