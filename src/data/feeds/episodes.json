@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T11:33:01.447Z",
+  "generatedAt": "2026-10-31T16:40:18.914Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -86,19 +86,202 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 67,
+          "number": 201,
+          "name": "Mon 2nd Nov",
+          "airdate": "2026-11-02",
+          "airtime": "07:00",
+          "summary": "Gary and Summer grow concerned for Marco, Idris puts in an appearance at Carla's business meeting, Daniel submits an article to the Gazette, and Christina decides to meet Richie.",
+          "url": "https://www.tvmaze.com/episodes/3800827/coronation-street-67x201-mon-2nd-nov"
+        },
+        {
+          "season": 67,
+          "number": 202,
+          "name": "Tue 3rd Nov",
+          "airdate": "2026-11-03",
+          "airtime": "07:00",
+          "summary": "Idris tasks Brody with an act of diabolical sabotage, Adam and Daniel come to blows in the street, Gary and Marco dwell on Ross's words, and Kit feels suffocated by Bernie's fussing.",
+          "url": "https://www.tvmaze.com/episodes/3800828/coronation-street-67x202-tue-3rd-nov"
+        },
+        {
+          "season": 67,
+          "number": 203,
+          "name": "Wed 4th Nov",
+          "airdate": "2026-11-04",
+          "airtime": "07:00",
+          "summary": "Leanne confronts Brody and Idris with her suspicions, Carla makes a sad announcement to her staff, Dev offers Kit some respite, and Gary tackles Ross about his treatment of Marco.",
+          "url": "https://www.tvmaze.com/episodes/3800833/coronation-street-67x203-wed-4th-nov"
+        },
+        {
+          "season": 67,
+          "number": 204,
+          "name": "Thu 5th Nov",
+          "airdate": "2026-11-05",
+          "airtime": "07:00",
+          "summary": "Kit's outburst at work triggers calls for him to take sick leave, Idris looks forward to seizing control of the factory, Gemma hears from the hospital, and Debbie invites the girls over.",
+          "url": "https://www.tvmaze.com/episodes/3800836/coronation-street-67x204-thu-5th-nov"
+        },
+        {
+          "season": 67,
+          "number": 205,
+          "name": "Mon 9th Nov",
+          "airdate": "2026-11-09",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800837/coronation-street-67x205-mon-9th-nov"
+        },
+        {
+          "season": 67,
+          "number": 206,
+          "name": "Tue 10th Nov",
+          "airdate": "2026-11-10",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800838/coronation-street-67x206-tue-10th-nov"
+        },
+        {
+          "season": 67,
+          "number": 207,
+          "name": "Wed 11th Nov",
+          "airdate": "2026-11-11",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800839/coronation-street-67x207-wed-11th-nov"
+        }
+      ]
     },
     {
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 55,
+          "number": 201,
+          "name": "Monday 2nd November",
+          "airdate": "2026-11-02",
+          "airtime": "07:00",
+          "summary": "Caleb is furious. Robert butters up Marlon. Billy gets a big surprise.",
+          "url": "https://www.tvmaze.com/episodes/3800785/emmerdale-55x201-monday-2nd-november"
+        },
+        {
+          "season": 55,
+          "number": 202,
+          "name": "Tuesday 3rd November",
+          "airdate": "2026-11-03",
+          "airtime": "07:00",
+          "summary": "Caleb confronts Ruby. Marlon is tempted. Charity makes a show of things.",
+          "url": "https://www.tvmaze.com/episodes/3800786/emmerdale-55x202-tuesday-3rd-november"
+        },
+        {
+          "season": 55,
+          "number": 203,
+          "name": "Wednesday 4th November",
+          "airdate": "2026-11-04",
+          "airtime": "07:00",
+          "summary": "Belle is disappointed. Caleb makes a demand. Robert confronts Charity.",
+          "url": "https://www.tvmaze.com/episodes/3800787/emmerdale-55x203-wednesday-4th-november"
+        },
+        {
+          "season": 55,
+          "number": 204,
+          "name": "Thursday 5th November",
+          "airdate": "2026-11-05",
+          "airtime": "07:00",
+          "summary": "Cain urges Kammy to stay quiet. Nicola opens up to Kev, while Caleb begins to panic.",
+          "url": "https://www.tvmaze.com/episodes/3800788/emmerdale-55x204-thursday-5th-november"
+        },
+        {
+          "season": 55,
+          "number": 205,
+          "name": "Monday 9th November",
+          "airdate": "2026-11-09",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800789/emmerdale-55x205-monday-9th-november"
+        },
+        {
+          "season": 55,
+          "number": 206,
+          "name": "Tuesday 10th November",
+          "airdate": "2026-11-10",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800795/emmerdale-55x206-tuesday-10th-november"
+        },
+        {
+          "season": 55,
+          "number": 207,
+          "name": "Wednesday 11th November",
+          "airdate": "2026-11-11",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800796/emmerdale-55x207-wednesday-11th-november"
+        }
+      ]
     },
     {
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 32,
+          "number": 130,
+          "name": "Mon 2 Nov 2026",
+          "airdate": "2026-11-02",
+          "airtime": "07:00",
+          "summary": "Leah hopes to reconnect with Imran, unaware of what he's hiding. An allegation shakes Abigail, and a mother tries to get her son to open up.",
+          "url": "https://www.tvmaze.com/episodes/3800763/hollyoaks-32x130-mon-2-nov-2026"
+        },
+        {
+          "season": 32,
+          "number": 131,
+          "name": "Tue 3 Nov 2026",
+          "airdate": "2026-11-03",
+          "airtime": "07:00",
+          "summary": "As shockwaves ripple through the village, this may be the end of Cindy and Imran's tragic love story. And a phone call leads a resident to make a bold decision.",
+          "url": "https://www.tvmaze.com/episodes/3800764/hollyoaks-32x131-tue-3-nov-2026"
+        },
+        {
+          "season": 32,
+          "number": 132,
+          "name": "Wed 4 Nov 2026",
+          "airdate": "2026-11-04",
+          "airtime": "07:00",
+          "summary": "Maddox shares in his brother's excitement as his health progresses, but not everyone feels the same. Sienna overhears a conversation, and a resident faces questions.",
+          "url": "https://www.tvmaze.com/episodes/3800765/hollyoaks-32x132-wed-4-nov-2026"
+        },
+        {
+          "season": 32,
+          "number": 133,
+          "name": "Mon 9 Nov 2026",
+          "airdate": "2026-11-09",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800766/hollyoaks-32x133-mon-9-nov-2026"
+        },
+        {
+          "season": 32,
+          "number": 134,
+          "name": "Tue 10 Nov 2026",
+          "airdate": "2026-11-10",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800767/hollyoaks-32x134-tue-10-nov-2026"
+        },
+        {
+          "season": 32,
+          "number": 135,
+          "name": "Wed 11 Nov 2026",
+          "airdate": "2026-11-11",
+          "airtime": "07:00",
+          "summary": "",
+          "url": "https://www.tvmaze.com/episodes/3800768/hollyoaks-32x135-wed-11-nov-2026"
+        }
+      ]
     }
   ]
 }
