@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T14:30:22.220Z",
+  "generatedAt": "2026-11-03T00:19:34.449Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 174,
-          "name": "02/11/2026",
-          "airdate": "2026-11-02",
-          "airtime": "06:00",
-          "summary": "It's tense in the Branning household as a situation escalates. Cindy is on the warpath. Gemma tries to make friends in Walford.",
-          "url": "https://www.tvmaze.com/episodes/3800614/eastenders-2026-11-02-02112026"
-        },
         {
           "season": 2026,
           "number": 175,
@@ -89,15 +80,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 201,
-          "name": "Mon 2nd Nov",
-          "airdate": "2026-11-02",
-          "airtime": "07:00",
-          "summary": "Gary and Summer grow concerned for Marco, Idris puts in an appearance at Carla's business meeting, Daniel submits an article to the Gazette, and Christina decides to meet Richie.",
-          "url": "https://www.tvmaze.com/episodes/3800827/coronation-street-67x201-mon-2nd-nov"
-        },
-        {
-          "season": 67,
           "number": 202,
           "name": "Tue 3rd Nov",
           "airdate": "2026-11-03",
@@ -159,15 +141,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 201,
-          "name": "Monday 2nd November",
-          "airdate": "2026-11-02",
-          "airtime": "07:00",
-          "summary": "Caleb is furious. Robert butters up Marlon. Billy gets a big surprise.",
-          "url": "https://www.tvmaze.com/episodes/3800785/emmerdale-55x201-monday-2nd-november"
-        },
-        {
-          "season": 55,
           "number": 202,
           "name": "Tuesday 3rd November",
           "airdate": "2026-11-03",
@@ -227,15 +200,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 130,
-          "name": "Mon 2 Nov 2026",
-          "airdate": "2026-11-02",
-          "airtime": "07:00",
-          "summary": "Leah hopes to reconnect with Imran, unaware of what he's hiding. An allegation shakes Abigail, and a mother tries to get her son to open up.",
-          "url": "https://www.tvmaze.com/episodes/3800763/hollyoaks-32x130-mon-2-nov-2026"
-        },
         {
           "season": 32,
           "number": 131,
