@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T23:05:14.147Z",
+  "generatedAt": "2026-11-05T04:42:19.868Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 176,
-          "name": "04/11/2026",
-          "airdate": "2026-11-04",
-          "airtime": "06:00",
-          "summary": "Ian's Bonfire Night faces some hurdles. Max tries to diffuse the tension. Gemma comes up with a plan to bring the women of Walford together.",
-          "url": "https://www.tvmaze.com/episodes/3800665/eastenders-2026-11-04-04112026"
-        },
         {
           "season": 2026,
           "number": 177,
@@ -71,15 +62,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 203,
-          "name": "Wed 4th Nov",
-          "airdate": "2026-11-04",
-          "airtime": "07:00",
-          "summary": "Leanne confronts Brody and Idris with her suspicions, Carla makes a sad announcement to her staff, Dev offers Kit some respite, and Gary tackles Ross about his treatment of Marco.",
-          "url": "https://www.tvmaze.com/episodes/3800833/coronation-street-67x203-wed-4th-nov"
-        },
-        {
-          "season": 67,
           "number": 204,
           "name": "Thu 5th Nov",
           "airdate": "2026-11-05",
@@ -123,15 +105,6 @@
       "episodes": [
         {
           "season": 55,
-          "number": 203,
-          "name": "Wednesday 4th November",
-          "airdate": "2026-11-04",
-          "airtime": "07:00",
-          "summary": "Belle is disappointed. Caleb makes a demand. Robert confronts Charity.",
-          "url": "https://www.tvmaze.com/episodes/3800787/emmerdale-55x203-wednesday-4th-november"
-        },
-        {
-          "season": 55,
           "number": 204,
           "name": "Thursday 5th November",
           "airdate": "2026-11-05",
@@ -173,15 +146,6 @@
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
       "episodes": [
-        {
-          "season": 32,
-          "number": 132,
-          "name": "Wed 4 Nov 2026",
-          "airdate": "2026-11-04",
-          "airtime": "07:00",
-          "summary": "Maddox shares in his brother's excitement as his health progresses, but not everyone feels the same. Sienna overhears a conversation, and a resident faces questions.",
-          "url": "https://www.tvmaze.com/episodes/3800765/hollyoaks-32x132-wed-4-nov-2026"
-        },
         {
           "season": 32,
           "number": 133,
