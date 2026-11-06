@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T23:08:38.744Z",
+  "generatedAt": "2026-11-06T04:42:13.258Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 177,
-          "name": "05/11/2026",
-          "airdate": "2026-11-05",
-          "airtime": "06:00",
-          "summary": "Max is put firmly in his place. Nicola intervenes in a situation for the sake of her sister Gemma.",
-          "url": "https://www.tvmaze.com/episodes/3800687/eastenders-2026-11-05-05112026"
-        },
         {
           "season": 2026,
           "number": 178,
@@ -62,15 +53,6 @@
       "episodes": [
         {
           "season": 67,
-          "number": 204,
-          "name": "Thu 5th Nov",
-          "airdate": "2026-11-05",
-          "airtime": "07:00",
-          "summary": "Kit's outburst at work triggers calls for him to take sick leave, Idris looks forward to seizing control of the factory, Gemma hears from the hospital, and Debbie invites the girls over.",
-          "url": "https://www.tvmaze.com/episodes/3800836/coronation-street-67x204-thu-5th-nov"
-        },
-        {
-          "season": 67,
           "number": 205,
           "name": "Mon 9th Nov",
           "airdate": "2026-11-09",
@@ -103,15 +85,6 @@
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
       "episodes": [
-        {
-          "season": 55,
-          "number": 204,
-          "name": "Thursday 5th November",
-          "airdate": "2026-11-05",
-          "airtime": "07:00",
-          "summary": "Cain urges Kammy to stay quiet. Nicola opens up to Kev, while Caleb begins to panic.",
-          "url": "https://www.tvmaze.com/episodes/3800788/emmerdale-55x204-thursday-5th-november"
-        },
         {
           "season": 55,
           "number": 205,
