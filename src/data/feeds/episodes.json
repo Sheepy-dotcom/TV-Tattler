@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T23:56:23.607Z",
+  "generatedAt": "2026-11-12T05:40:46.225Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 180,
-          "name": "11/11/2026",
-          "airdate": "2026-11-11",
-          "airtime": "06:00",
-          "summary": "Nancy and Lee react badly to news. Eve and Suki face a new hurdle in their adoption journey. Lauren plays with fire.",
-          "url": "https://www.tvmaze.com/episodes/3800690/eastenders-2026-11-11-11112026"
-        },
         {
           "season": 2026,
           "number": 181,
@@ -32,49 +23,19 @@
       "slug": "coronation-street",
       "name": "Coronation Street",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4139/coronation-street",
-      "episodes": [
-        {
-          "season": 67,
-          "number": 207,
-          "name": "Wed 11th Nov",
-          "airdate": "2026-11-11",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3800839/coronation-street-67x207-wed-11th-nov"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "emmerdale",
       "name": "Emmerdale",
       "tvmazeUrl": "https://www.tvmaze.com/shows/2548/emmerdale",
-      "episodes": [
-        {
-          "season": 55,
-          "number": 207,
-          "name": "Wednesday 11th November",
-          "airdate": "2026-11-11",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3800796/emmerdale-55x207-wednesday-11th-november"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "hollyoaks",
       "name": "Hollyoaks",
       "tvmazeUrl": "https://www.tvmaze.com/shows/4175/hollyoaks",
-      "episodes": [
-        {
-          "season": 32,
-          "number": 135,
-          "name": "Wed 11 Nov 2026",
-          "airdate": "2026-11-11",
-          "airtime": "07:00",
-          "summary": "",
-          "url": "https://www.tvmaze.com/episodes/3800768/hollyoaks-32x135-wed-11-nov-2026"
-        }
-      ]
+      "episodes": []
     }
   ]
 }
