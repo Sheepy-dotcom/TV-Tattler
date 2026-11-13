@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T04:37:44.977Z",
+  "generatedAt": "2026-11-13T13:46:05.923Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -7,7 +7,116 @@
       "slug": "eastenders",
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
-      "episodes": []
+      "episodes": [
+        {
+          "season": 2026,
+          "number": 182,
+          "name": "16/11/2026",
+          "airdate": "2026-11-16",
+          "airtime": "06:00",
+          "summary": "Max faces a decision as the Carters look towards the future. Suki's attempt to protect her family has unexpected consequences. Oscar receives some surprising encouragement.",
+          "url": "https://www.tvmaze.com/episodes/3816220/eastenders-2026-11-16-16112026"
+        },
+        {
+          "season": 2026,
+          "number": 183,
+          "name": "17/11/2026",
+          "airdate": "2026-11-17",
+          "airtime": "06:00",
+          "summary": "A decision threatens to derail what Suki and Eve have been fighting for. Celebrations take an unexpected turn when some surprising news sends emotions running high. Gina and Penny search for answers.",
+          "url": "https://www.tvmaze.com/episodes/3816221/eastenders-2026-11-17-17112026"
+        },
+        {
+          "season": 2026,
+          "number": 184,
+          "name": "18/11/2026",
+          "airdate": "2026-11-18",
+          "airtime": "06:00",
+          "summary": "Suki's actions continue to have consequences. Penny finds herself caught up in a misunderstanding that quickly spirals. Oscar makes a bold declaration in the Vic.",
+          "url": "https://www.tvmaze.com/episodes/3816222/eastenders-2026-11-18-18112026"
+        },
+        {
+          "season": 2026,
+          "number": 185,
+          "name": "19/11/2026",
+          "airdate": "2026-11-19",
+          "airtime": "06:00",
+          "summary": "Eve strikes up an unexpected bond. Vinny and Penny are forced to consider their future. Jasmine's spirits are lifted.",
+          "url": "https://www.tvmaze.com/episodes/3816223/eastenders-2026-11-19-19112026"
+        },
+        {
+          "season": 2026,
+          "number": 186,
+          "name": "23/11/2026",
+          "airdate": "2026-11-23",
+          "airtime": "06:00",
+          "summary": "Eve finds herself grappling with the aftermath. Gina's search for answers takes an unexpected turn. Family tensions continue to simmer for the Carters.",
+          "url": "https://www.tvmaze.com/episodes/3816224/eastenders-2026-11-23-23112026"
+        },
+        {
+          "season": 2026,
+          "number": 187,
+          "name": "24/11/2026",
+          "airdate": "2026-11-24",
+          "airtime": "06:00",
+          "summary": "Gina pushes for the truth, whatever the consequences. Emotions run high as old feelings resurface. Linda's loved ones remain concerned about her wellbeing.",
+          "url": "https://www.tvmaze.com/episodes/3816225/eastenders-2026-11-24-24112026"
+        },
+        {
+          "season": 2026,
+          "number": 188,
+          "name": "25/11/2026",
+          "airdate": "2026-11-25",
+          "airtime": "06:00",
+          "summary": "A long-awaited answer leaves tensions at breaking point. Ned's plans hit an unexpected obstacle. Linda opens up about her fears for the future.",
+          "url": "https://www.tvmaze.com/episodes/3816226/eastenders-2026-11-25-25112026"
+        },
+        {
+          "season": 2026,
+          "number": 189,
+          "name": "26/11/2026",
+          "airdate": "2026-11-26",
+          "airtime": "06:00",
+          "summary": "Nicola takes matters into her own hands. Gina faces a difficult decision. Denise's resilience is put to the test.",
+          "url": "https://www.tvmaze.com/episodes/3816227/eastenders-2026-11-26-26112026"
+        },
+        {
+          "season": 2026,
+          "number": 190,
+          "name": "30/11/2026",
+          "airdate": "2026-11-30",
+          "airtime": "06:00",
+          "summary": "A guilty conscience threatens to get the better of Gina. Wedding plans leave Linda with mixed emotions. Max's celebrations are ruined by a humiliating blow.",
+          "url": "https://www.tvmaze.com/episodes/3816228/eastenders-2026-11-30-30112026"
+        },
+        {
+          "season": 2026,
+          "number": 191,
+          "name": "01/12/2026",
+          "airdate": "2026-12-01",
+          "airtime": "06:00",
+          "summary": "Harry is left facing a life-changing dilemma. Doubts begin to creep in for Linda. Cindy's actions continue to have consequences.",
+          "url": "https://www.tvmaze.com/episodes/3816229/eastenders-2026-12-01-01122026"
+        },
+        {
+          "season": 2026,
+          "number": 192,
+          "name": "02/12/2026",
+          "airdate": "2026-12-02",
+          "airtime": "06:00",
+          "summary": "Tensions rise as a secret threatens to come to light. Denise faces a heartbreaking setback. Penny grows increasingly anxious about the future.",
+          "url": "https://www.tvmaze.com/episodes/3816230/eastenders-2026-12-02-02122026"
+        },
+        {
+          "season": 2026,
+          "number": 193,
+          "name": "03/12/2026",
+          "airdate": "2026-12-03",
+          "airtime": "06:00",
+          "summary": "The fallout from a bombshell revelation continues. Family tensions reach breaking point.",
+          "url": "https://www.tvmaze.com/episodes/3816231/eastenders-2026-12-03-03122026"
+        }
+      ]
     },
     {
       "slug": "coronation-street",
