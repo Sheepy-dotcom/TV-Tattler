@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T23:04:50.822Z",
+  "generatedAt": "2026-11-13T04:37:44.977Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -7,17 +7,7 @@
       "slug": "eastenders",
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
-      "episodes": [
-        {
-          "season": 2026,
-          "number": 181,
-          "name": "12/11/2026",
-          "airdate": "2026-11-12",
-          "airtime": "06:00",
-          "summary": "Linda vows to support Lee. Nancy finds herself asking Johnny for support. Lauren gets overwhelmed by her feelings.",
-          "url": "https://www.tvmaze.com/episodes/3800691/eastenders-2026-11-12-12112026"
-        }
-      ]
+      "episodes": []
     },
     {
       "slug": "coronation-street",
