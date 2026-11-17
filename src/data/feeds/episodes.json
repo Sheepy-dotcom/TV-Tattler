@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T14:31:26.455Z",
+  "generatedAt": "2026-11-17T01:25:44.123Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 182,
-          "name": "16/11/2026",
-          "airdate": "2026-11-16",
-          "airtime": "06:00",
-          "summary": "Max faces a decision as the Carters look towards the future. Suki's attempt to protect her family has unexpected consequences. Oscar receives some surprising encouragement.",
-          "url": "https://www.tvmaze.com/episodes/3816220/eastenders-2026-11-16-16112026"
-        },
         {
           "season": 2026,
           "number": 183,
