@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T15:21:41.979Z",
+  "generatedAt": "2026-11-18T00:22:07.245Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 183,
-          "name": "17/11/2026",
-          "airdate": "2026-11-17",
-          "airtime": "06:00",
-          "summary": "A decision threatens to derail what Suki and Eve have been fighting for. Celebrations take an unexpected turn when some surprising news sends emotions running high. Gina and Penny search for answers.",
-          "url": "https://www.tvmaze.com/episodes/3816221/eastenders-2026-11-17-17112026"
-        },
         {
           "season": 2026,
           "number": 184,
