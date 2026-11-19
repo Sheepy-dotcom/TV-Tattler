@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T23:47:48.054Z",
+  "generatedAt": "2026-11-19T05:30:27.554Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 184,
-          "name": "18/11/2026",
-          "airdate": "2026-11-18",
-          "airtime": "06:00",
-          "summary": "Suki's actions continue to have consequences. Penny finds herself caught up in a misunderstanding that quickly spirals. Oscar makes a bold declaration in the Vic.",
-          "url": "https://www.tvmaze.com/episodes/3816222/eastenders-2026-11-18-18112026"
-        },
         {
           "season": 2026,
           "number": 185,
