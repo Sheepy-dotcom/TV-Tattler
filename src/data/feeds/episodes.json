@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T15:03:12.344Z",
+  "generatedAt": "2026-11-20T00:09:24.442Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 185,
-          "name": "19/11/2026",
-          "airdate": "2026-11-19",
-          "airtime": "06:00",
-          "summary": "Eve strikes up an unexpected bond. Vinny and Penny are forced to consider their future. Jasmine's spirits are lifted.",
-          "url": "https://www.tvmaze.com/episodes/3816223/eastenders-2026-11-19-19112026"
-        },
         {
           "season": 2026,
           "number": 186,
