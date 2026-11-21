@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T05:11:31.242Z",
+  "generatedAt": "2026-11-21T14:00:19.107Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -79,6 +79,42 @@
           "airtime": "06:00",
           "summary": "The fallout from a bombshell revelation continues. Family tensions reach breaking point.",
           "url": "https://www.tvmaze.com/episodes/3816231/eastenders-2026-12-03-03122026"
+        },
+        {
+          "season": 2026,
+          "number": 194,
+          "name": "07/12/2026",
+          "airdate": "2026-12-07",
+          "airtime": "06:00",
+          "summary": "The Hawkins family remains divided as tensions continue to rise. A surprise return to Walford leaves Sean concerned.",
+          "url": "https://www.tvmaze.com/episodes/3826218/eastenders-2026-12-07-07122026"
+        },
+        {
+          "season": 2026,
+          "number": 195,
+          "name": "08/12/2026",
+          "airdate": "2026-12-08",
+          "airtime": "06:00",
+          "summary": "The Hawkins family struggle to move forward. A festive event leads to an unexpected reunion. The fallout from a confession leaves those around them divided.",
+          "url": "https://www.tvmaze.com/episodes/3826219/eastenders-2026-12-08-08122026"
+        },
+        {
+          "season": 2026,
+          "number": 196,
+          "name": "09/12/2026",
+          "airdate": "2026-12-09",
+          "airtime": "06:00",
+          "summary": "The weight of a difficult decision falls on Jack's shoulders. Gemma tries to make peace with her neighbours. One family prepares to bid farewell to Walford.",
+          "url": "https://www.tvmaze.com/episodes/3826220/eastenders-2026-12-09-09122026"
+        },
+        {
+          "season": 2026,
+          "number": 197,
+          "name": "10/12/2026",
+          "airdate": "2026-12-10",
+          "airtime": "06:00",
+          "summary": "A departure takes an unexpected turn. Linda is left questioning her future. Yolande attempts to play peacemaker. A revelation puts someone in Sean's sights.",
+          "url": "https://www.tvmaze.com/episodes/3826221/eastenders-2026-12-10-10122026"
         }
       ]
     },
