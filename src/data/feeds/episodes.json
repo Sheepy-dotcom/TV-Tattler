@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T17:06:04.408Z",
+  "generatedAt": "2026-11-24T03:42:29.406Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 186,
-          "name": "23/11/2026",
-          "airdate": "2026-11-23",
-          "airtime": "06:00",
-          "summary": "Eve finds herself grappling with the aftermath. Gina's search for answers takes an unexpected turn. Family tensions continue to simmer for the Carters.",
-          "url": "https://www.tvmaze.com/episodes/3816224/eastenders-2026-11-23-23112026"
-        },
         {
           "season": 2026,
           "number": 187,
