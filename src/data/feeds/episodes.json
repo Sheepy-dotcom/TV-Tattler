@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T03:42:29.406Z",
+  "generatedAt": "2026-11-24T16:50:51.952Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -106,6 +106,24 @@
           "airtime": "06:00",
           "summary": "A departure takes an unexpected turn. Linda is left questioning her future. Yolande attempts to play peacemaker. A revelation puts someone in Sean's sights.",
           "url": "https://www.tvmaze.com/episodes/3826221/eastenders-2026-12-10-10122026"
+        },
+        {
+          "season": 2026,
+          "number": 198,
+          "name": "14/12/2026",
+          "airdate": "2026-12-14",
+          "airtime": "06:00",
+          "summary": "Denise begins to reassess what's important. Fresh doubts leave Max and Linda at a crossroads. Gemma is determined to make a good impression on Yolande.",
+          "url": "https://www.tvmaze.com/episodes/3833125/eastenders-2026-12-14-14122026"
+        },
+        {
+          "season": 2026,
+          "number": 199,
+          "name": "15/12/2026",
+          "airdate": "2026-12-15",
+          "airtime": "06:00",
+          "summary": "Denise faces a different version of her future and sees all decisions have consequences.",
+          "url": "https://www.tvmaze.com/episodes/3833126/eastenders-2026-12-15-15122026"
         }
       ]
     },
