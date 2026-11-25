@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T16:50:51.952Z",
+  "generatedAt": "2026-11-25T01:49:58.265Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 187,
-          "name": "24/11/2026",
-          "airdate": "2026-11-24",
-          "airtime": "06:00",
-          "summary": "Gina pushes for the truth, whatever the consequences. Emotions run high as old feelings resurface. Linda's loved ones remain concerned about her wellbeing.",
-          "url": "https://www.tvmaze.com/episodes/3816225/eastenders-2026-11-24-24112026"
-        },
         {
           "season": 2026,
           "number": 188,
@@ -124,6 +115,15 @@
           "airtime": "06:00",
           "summary": "Denise faces a different version of her future and sees all decisions have consequences.",
           "url": "https://www.tvmaze.com/episodes/3833126/eastenders-2026-12-15-15122026"
+        },
+        {
+          "season": 2026,
+          "number": 200,
+          "name": "16/12/2026",
+          "airdate": "2026-12-16",
+          "airtime": "06:00",
+          "summary": "A scheme is hatched between two unlikely allies. Lauren tries to cover her tracks. A Walford resident makes a life-changing decision.",
+          "url": "https://www.tvmaze.com/episodes/3833127/eastenders-2026-12-16-16122026"
         }
       ]
     },
