@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T16:38:48.775Z",
+  "generatedAt": "2026-11-26T01:26:26.858Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 188,
-          "name": "25/11/2026",
-          "airdate": "2026-11-25",
-          "airtime": "06:00",
-          "summary": "A long-awaited answer leaves tensions at breaking point. Ned's plans hit an unexpected obstacle. Linda opens up about her fears for the future.",
-          "url": "https://www.tvmaze.com/episodes/3816226/eastenders-2026-11-25-25112026"
-        },
         {
           "season": 2026,
           "number": 189,
@@ -124,6 +115,15 @@
           "airtime": "06:00",
           "summary": "A scheme is hatched between two unlikely allies. Lauren tries to cover her tracks. A Walford resident makes a life-changing decision.",
           "url": "https://www.tvmaze.com/episodes/3833127/eastenders-2026-12-16-16122026"
+        },
+        {
+          "season": 2026,
+          "number": 201,
+          "name": "17/12/2026",
+          "airdate": "2026-12-17",
+          "airtime": "06:00",
+          "summary": "The fallout from a decision leaves a family divided. The Brannings and Beales throw Oscar a surprise birthday party.",
+          "url": "https://www.tvmaze.com/episodes/3833128/eastenders-2026-12-17-17122026"
         }
       ]
     },
