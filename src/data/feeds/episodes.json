@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T16:12:05.389Z",
+  "generatedAt": "2026-11-27T01:23:57.014Z",
   "source": "TVmaze",
   "windowDays": 21,
   "shows": [
@@ -8,15 +8,6 @@
       "name": "EastEnders",
       "tvmazeUrl": "https://www.tvmaze.com/shows/793/eastenders",
       "episodes": [
-        {
-          "season": 2026,
-          "number": 189,
-          "name": "26/11/2026",
-          "airdate": "2026-11-26",
-          "airtime": "06:00",
-          "summary": "Nicola takes matters into her own hands. Gina faces a difficult decision. Denise's resilience is put to the test.",
-          "url": "https://www.tvmaze.com/episodes/3816227/eastenders-2026-11-26-26112026"
-        },
         {
           "season": 2026,
           "number": 190,
